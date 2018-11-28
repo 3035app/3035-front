@@ -10,6 +10,8 @@ import { ErrorsComponent } from 'app/errors/errors.component';
 import { CardsRoutingModule } from 'app/cards/cards-routing.module';
 import { EntryRoutingModule } from 'app/entry/entry-routing.module';
 import { ProcessingRoutingModule } from 'app/processing/processing-routing.module';
+import { BreachRoutingModule } from 'app/breach/breach-routing.module';
+import { RightsRoutingModule } from 'app/rights/rights-routing.module';
 import { TemplatesRoutingModule } from 'app/templates/templates-routing.module';
 import { PortfolioRoutingModule } from 'app/portfolio';
 import { DashboardRoutingModule } from 'app/dashboard';
@@ -60,6 +62,8 @@ const routes: Routes = [
     PortfolioRoutingModule,
     DashboardRoutingModule,
     ProcessingRoutingModule,
+    BreachRoutingModule,
+    RightsRoutingModule,
     RouterModule.forRoot(routes, { useHash: true }),
   ],
   exports: [RouterModule],

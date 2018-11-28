@@ -1,0 +1,43 @@
+<app-header></app-header>
+<main class="container pia-mainContainer pia-mainContainerBlock">
+    <div class="row">
+        <!-- Left sidebar (sections) -->
+        <div class="small-12 medium-3 columns">
+            <aside class="pia-leftSidebar">
+                <!-- <div class="rights-sections">
+                    <div class="rights-section-header">
+                        <h1 class="truncate" title="{{rights.name}}">{{rights.name}}</h1>
+                        <a class="pia-icons pia-icon-close-big" routerLink="/rightses/{{ rights.id }}"
+                            title="{{ 'rights.sections.homepage_link' | translate }}"></a>
+                    </div>
+
+                    <div class="rights-section-body">
+
+                        <ng-container *ngFor="let section of sections">
+                            <div (click)="changeSection(section.id)" class="rights-section-title {{ section.name }}" [ngClass]="{'active': currentSection.id == section.id}">
+                                {{ section.title | translate }}
+                            </div>
+                        </ng-container>
+                    </div>
+                </div> -->
+                <app-rights-attachments></app-rights-attachments>
+            </aside>
+        </div>
+
+        <!-- Main form content -->
+        <div class="small-12 medium-6 columns">
+            <app-rights-form [rights]="rights" [sections]="sections" [currentSection]="currentSection"></app-rights-form>
+
+           
+        </div>
+
+        <!-- Right sidebar (knowledge base) -->
+        <div class="small-12 medium-3 columns">
+            <div class="pia-rightSidebar">
+                <app-knowledge-base [item]=""></app-knowledge-base>
+            </div>
+        </div>
+    </div>
+</main>
+
+<app-modals></app-modals>

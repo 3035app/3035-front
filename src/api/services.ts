@@ -16,5 +16,7 @@ export {
     ProcessingDataTypeService as ProcessingDataTypeApi,
     StructureService as StructureApi,
     ProcessingCommentService as ProcessingCommentApi,
-    ProcessingAttachmentService as ProcessingAttachmentApi
+    ProcessingAttachmentService as ProcessingAttachmentApi,
+    BreachService as BreachApi,
+    RightsService as RightsApi
 } from '@api/service';

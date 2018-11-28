@@ -1,0 +1,53 @@
+<app-header></app-header>
+<main class="container pia-mainContainer pia-mainContainerBlock">
+    <div class="row">
+        <!-- Left sidebar (sections) -->
+        <div class="small-12 medium-3 columns">
+            <aside class="pia-leftSidebar">
+                <div class="breach-sections">
+                    <div class="breach-section-header">
+                        <h1 class="truncate" title="{{breach.name}}">{{breach.name}}</h1>
+                        <a class="pia-icons pia-icon-close-big" routerLink="/breaches/{{ breach.id }}"
+                            title="{{ 'breach.sections.homepage_link' | translate }}"></a>
+                    </div>
+
+                    <div class="breach-section-body">
+
+                        <ng-container *ngFor="let section of sections">
+                            <!-- <div *ngxPermissionsOnly="section.permissions" id="{{section.name}}"> -->
+                            <div (click)="changeSection(section.id)" class="breach-section-title {{ section.name }}" [ngClass]="{'active': currentSection.id == section.id}">
+                                {{ section.title | translate }}
+                            </div>
+                            <!-- </div> -->
+                        </ng-container>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Main form content -->
+        <div class="small-12 medium-6 columns">
+            <app-breach-form [breach]="breach" [sections]="sections" [currentSection]="currentSection"></app-breach-form>
+
+            <div class="breach-bottom-nav">
+                <a *ngIf="currentSection.id > 1" class="breach-previous" (click)="changeSection(currentSection.id - 1)">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    {{ 'breach.form.previous' | translate }}
+                </a>
+                <a *ngIf="currentSection.id < 3" class="breach-next" (click)="changeSection(currentSection.id + 1)">
+                    {{ 'breach.form.next' | translate }}
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Right sidebar (knowledge base) -->
+        <div class="small-12 medium-3 columns">
+            <div class="pia-rightSidebar">
+                <app-knowledge-base [item]=""></app-knowledge-base>
+            </div>
+        </div>
+    </div>
+</main>
+
+<app-modals></app-modals>

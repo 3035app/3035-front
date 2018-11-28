@@ -13,3 +13,5 @@ export { ProcessingDataTypeService } from './processing-data-type.service';
 export { StructureService } from './structure.service';
 export { ProcessingCommentService } from './processing-comment.service';
 export { ProcessingAttachmentService } from './processing-attachment.service';
+export { BreachService } from './breach.service';
+export { RightsService } from './rights.service';

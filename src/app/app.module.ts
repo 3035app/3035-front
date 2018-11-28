@@ -84,6 +84,15 @@ import { AttachmentsComponent as ProcessingAttachmentsComponent } from './proces
 import { AttachmentsService as ProcessingAttachmentsService} from './processing/attachments/attachments.service';
 import { AttachmentItemComponent as ProcessingAttachmentItemComponent } from './processing/attachments/attachment-item/attachment-item.component';
 import { EvaluationBlockComponent } from './processing/evaluation-block/evaluation-block.component';
+import { BreachComponent } from './breach/breach.component';
+import { BreachFormComponent } from './breach/breach-form/breach-form.component';
+import { BreachService} from './breach/breach.service';
+import { RightsComponent } from './rights/rights.component';
+import { RightsFormComponent } from './rights/rights-form/rights-form.component';
+import { RightsService} from './rights/rights.service';
+import { AttachmentsComponent as RightsAttachmentsComponent } from './rights/attachments/attachments.component';
+import { AttachmentsService as RightsAttachmentsService} from './rights/attachments/attachments.service';
+import { AttachmentItemComponent as RightsAttachmentItemComponent } from './rights/attachments/attachment-item/attachment-item.component';
 
 const providersList: any = [
   AppDataService,
@@ -103,6 +112,9 @@ const providersList: any = [
   ProcessingService,
   ProcessingAttachmentsService,
   ProcessingDataTypeService,
+  BreachService,
+  RightsService,
+  RightsAttachmentsService,
   {
     provide: ErrorHandler,
     useClass: AppErrorHandler,
@@ -181,6 +193,12 @@ export function createTranslateLoader(http: HttpClient) {
     ProcessingAttachmentsComponent,
     ProcessingAttachmentItemComponent,
     EvaluationBlockComponent,
+    BreachComponent,
+    BreachFormComponent,
+    RightsComponent,
+    RightsFormComponent,
+    RightsAttachmentsComponent,
+    RightsAttachmentItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,210 @@
+<section class="rights-section">
+  <header autoscroll="true" class="rights-entryContentBlock-header {{ currentSection.name }}">
+    <div>
+      <div class="">
+          <i class="fa fa-pencil-square-o ng-star-inserted"></i>
+      </div>
+    </div>
+    <div class="rights-entryContentBlock-header-title">
+      <h1>Demande d'exercice de droit</h1>
+      <h3>{{ currentSection.short_help | translate }}</h3>
+    </div>
+    <ng-template #defaultBlock>
+      <a routerLink="/summary/{{rights.id}}" class="btn rights-previewBlock">
+        <span class="rights-icons rights-icon-preview"></span>
+        <div>{{ 'rights.header.preview' | translate }}</div>
+      </a>
+    </ng-template>
+  </header>
+  <main>
+
+    <form id="rights-form" #rightsForm="ngForm">
+      <fieldset *ngIf="currentSection.id == 1" id="description" class="form-section">
+         
+        <div class="form-field">
+            <label class="title" for="identification-sensitive">Type de demande</label>
+            <div class="type-sensitive">
+              <div>
+                <input type="checkbox"
+                (change)="updateValue('identification')">
+                <label class="label" for="identification-sensitive">Information</label>
+              </div>
+              <div>
+                <input type="checkbox"
+                (change)="updateValue('identification')">
+                <label class="label" for="identification-sensitive">Accès</label>
+              </div>
+              <div>
+                  <input type="checkbox"
+                  (change)="updateValue('identification')">
+                  <label class="label" for="identification-sensitive">Rectification</label>
+                </div>
+                <div>
+                  <input type="checkbox"
+                  (change)="updateValue('identification')">
+                  <label class="label" for="identification-sensitive">Effacement</label>
+                </div>
+                <div>
+                  <input type="checkbox"
+                  (change)="updateValue('identification')">
+                  <label class="label" for="identification-sensitive">Portabilité</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-field">
+          <label class="title" for="rights-processors">Données concernées</label>
+          <div (click)="editField(processors, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
+            class="pia-questionBlock-contentText"
+            [innerHTML]="rightsForm.form.controls['processors']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === processors.id) || !rightsForm.form.controls['processors']?.value) }"
+          ></div>
+
+          <textarea
+            class="field"
+            id="rights-processors"
+            required
+            name="processors"
+            minRows="8"
+            cols="50"
+            placeholder="Spécifier les données concernées par la demande"
+            #processors
+            (change)="updateRights()"
+            [(ngModel)]="rights.processors"
+            [ngClass]="{ 'hide': (rightsForm.form.controls['processors']?.value && rightsForm.form.controls['processors']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
+          ></textarea>
+        </div>
+        <div class="form-field">
+          <label class="title" for="rights-processors">Format désiré</label>
+          <div (click)="editField(processors, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
+            class="pia-questionBlock-contentText"
+            [innerHTML]="rightsForm.form.controls['processors']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === processors.id) || !rightsForm.form.controls['processors']?.value) }"
+          ></div>
+
+          <textarea
+            class="field"
+            id="rights-processors"
+            required
+            name="processors"
+            minRows="8"
+            cols="50"
+            placeholder="Renseigner le format sous lequel les données seront fournies"
+            #processors
+            (change)="updateRights()"
+            [(ngModel)]="rights.processors"
+            [ngClass]="{ 'hide': (rightsForm.form.controls['processors']?.value && rightsForm.form.controls['processors']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
+          ></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset *ngIf="currentSection.id == 2" id="lifecycle" class="form-section">
+          <div class="form-field">
+            <label class="title" for="rights-lifecycle">{{ 'rights.form.lifecycle.title' | translate }}</label>
+            <div (click)="editField(lifecycle, ['PIA_LGL_LFC'])"
+              class="pia-questionBlock-contentText"
+              [innerHTML]="rightsForm.form.controls['lifecycle']?.value | safeHtml"
+              [ngClass]="{ 'hide': ((editor && elementId === lifecycle.id) || !rightsForm.form.controls['lifecycle']?.value) }"
+            ></div>
+
+            <textarea
+              class="field"
+              id="rights-lifecycle"
+              required
+              name="lifecycle"
+              minRows="8"
+              cols="50"
+              placeholder="{{'rights.form.lifecycle.placeholder' | translate}}"
+              #lifecycle
+              (change)="updateRights()"
+              [(ngModel)]="rights.life_cycle"
+              [ngClass]="{ 'hide': (rightsForm.form.controls['lifecycle']?.value && rightsForm.form.controls['lifecycle']?.value.length > 0) }"
+              (focusin)="editField($event.target, ['PIA_LGL_LFC'])"
+            ></textarea>
+          </div>
+          <div class="form-field">
+            <label class="title" for="rights-processors">{{ 'rights.form.processors.title' | translate }}</label>
+            <div (click)="editField(processors, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
+              class="pia-questionBlock-contentText"
+              [innerHTML]="rightsForm.form.controls['processors']?.value | safeHtml"
+              [ngClass]="{ 'hide': ((editor && elementId === processors.id) || !rightsForm.form.controls['processors']?.value) }"
+            ></div>
+
+            <textarea
+              class="field"
+              id="rights-processors"
+              required
+              name="processors"
+              minRows="8"
+              cols="50"
+              placeholder="{{'rights.form.processors.placeholder' | translate}}"
+              #processors
+              (change)="updateRights()"
+              [(ngModel)]="rights.processors"
+              [ngClass]="{ 'hide': (rightsForm.form.controls['processors']?.value && rightsForm.form.controls['processors']?.value.length > 0) }"
+              (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
+            ></textarea>
+          </div>
+          <div class="form-field">
+            <label class="title" for="rights-recipients">{{ 'rights.form.recipients.title' | translate }}</label>
+            <div (click)="editField(recipients, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
+              class="pia-questionBlock-contentText"
+              [innerHTML]="rightsForm.form.controls['recipients']?.value | safeHtml"
+              [ngClass]="{ 'hide': ((editor && elementId === recipients.id) || !rightsForm.form.controls['recipients']?.value) }"
+            ></div>
+
+            <textarea
+              class="field"
+              id="rights-recipients"
+              required
+              name="recipients"
+              minRows="8"
+              cols="50"
+              placeholder="{{'rights.form.recipients.placeholder' | translate}}"
+              #recipients
+              (change)="updateRights()"
+              [(ngModel)]="rights.recipients"
+              [ngClass]="{ 'hide': (rightsForm.form.controls['recipients']?.value && rightsForm.form.controls['recipients']?.value.length > 0) }"
+              (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
+            ></textarea>
+          </div>
+          <div class="form-field">
+            <label class="title" for="rights-non-eu-transfer">{{ 'rights.form.non-eu-transfer.title' | translate }}</label>
+            <div (click)="editField(nonEuTransfer, ['PIA_LGL_TRAN'])"
+              class="pia-questionBlock-contentText"
+              [innerHTML]="rightsForm.form.controls['non-eu-transfer']?.value | safeHtml"
+              [ngClass]="{ 'hide': ((editor && elementId === nonEuTransfer.id) || !rightsForm.form.controls['non-eu-transfer']?.value) }"
+            ></div>
+
+            <textarea
+              class="field"
+              id="rights-non-eu-transfer"
+              required
+              name="non-eu-transfer"
+              minRows="8"
+              cols="50"
+              placeholder="{{'rights.form.non-eu-transfer.placeholder' | translate}}"
+              #nonEuTransfer
+              (change)="updateRights()"
+              [(ngModel)]="rights.non_eu_transfer"
+              [ngClass]="{ 'hide': (rightsForm.form.controls['non-eu-transfer']?.value && rightsForm.form.controls['non-eu-transfer']?.value.length > 0) }"
+              (focusin)="editField($event.target, ['PIA_LGL_TRAN'])"
+            ></textarea>
+          </div>
+      </fieldset>
+
+      <div 
+        class="form-field validate-container ready" 
+        *ngIf="rights.status === rightsStatus.STATUS_DOING"
+      >
+        <button 
+          class="btn btn-green expanded"
+          (click)="askValidation()"
+        >
+          {{ 'rights.form.ask_validate_button' | translate }}
+        </button>
+      </div>
+    </form>
+  </main>
+</section>

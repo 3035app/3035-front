@@ -15,6 +15,8 @@ import { ProcessingService } from '@api/service/processing.service';
 import { ProcessingCommentService } from '@api/service/processing-comment.service';
 import { ProcessingAttachmentService } from '@api/service/processing-attachment.service';
 import { StructureService } from '@api/service/structure.service';
+import { BreachService } from '@api/service/breach.service';
+import { RightsService } from '@api/service/rights.service';
 
 @NgModule({
   declarations: [],
@@ -35,7 +37,9 @@ import { StructureService } from '@api/service/structure.service';
     ProcessingService,
     ProcessingCommentService,
     ProcessingAttachmentService,
-    StructureService
+    StructureService,
+    BreachService,
+    RightsService
   ]
 })
 

@@ -16,5 +16,7 @@ export {
     ProcessingDataType as ProcessingDataTypeModel,
     Structure as StructureModel,
     ProcessingComment as ProcessingCommentModel,
-    ProcessingAttachment as ProcessingAttachmentModel
+    ProcessingAttachment as ProcessingAttachmentModel,
+    Breach as BreachModel,
+    Rights as RightsModel
 } from '@api/model';
