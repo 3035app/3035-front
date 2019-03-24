@@ -44,4 +44,15 @@ export class PiasListItemComponent implements OnInit {
       this.pia = pia;
     })
   }
+
+  /**
+   * Duplicates a Pia.
+   * @memberof CardItemComponent
+   */
+  duplicatePia() {
+    console.log(this.pia.toJson());
+    this._piaApi.import(this.pia.toJson()).subscribe((thePia: PiaModel) => {
+      this._piaService.pias.push(thePia);
+    });
+  }
 }

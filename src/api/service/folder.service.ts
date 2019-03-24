@@ -20,8 +20,8 @@ export class FolderService extends BaseService<Folder> {
     super(http);
   }
 
-  public getAll(structureId:string): Observable<Folder[]> {
-    return this.httpGetAll(this.routing.all,{structureId: structureId}).pipe(map(folders => {
+  public getAll(structureId: string): Observable<Folder[]> {
+    return this.httpGetAll(this.routing.all, {structureId: structureId}).pipe(map(folders => {
       folders.forEach(folder => {
         folder.processings.forEach((processing, index, processings) => {
           processings[index] = (new Processing()).fromJson(processing);
@@ -60,7 +60,7 @@ export class FolderService extends BaseService<Folder> {
     return this.httpPost(this.routing.all, {structureId: model.structure_id}, model);
   }
 
-  public deleteById(structureId:any, id: any): Observable<Folder> {
+  public deleteById(structureId: any, id: any): Observable<Folder> {
     return this.httpDelete(this.routing.one, {structureId: structureId, id: id });
   }
 

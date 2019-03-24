@@ -27,7 +27,7 @@ export class ListItemFolderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   
+
     // add permission verification
     const hasPerm$ = this.permissionsService.hasPermission('CanCreatePIA');
     hasPerm$.then((bool: boolean) => {
@@ -55,9 +55,9 @@ export class ListItemFolderComponent implements OnInit {
    * @memberof ListItemFolderComponent
    */
   removeFolder(folder) {
-    //@todo waiting for modal refactoring
+    // @todo waiting for modal refactoring
     localStorage.setItem('folder-id', folder.id);
-    //@note structure-id is already set by ProfileSession
+    // @note structure-id is already set by ProfileSession
     this._modalsService.openModal('modal-remove-folder');
   }
 }

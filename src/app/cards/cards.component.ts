@@ -1,6 +1,6 @@
-import { Component, OnInit, ElementRef, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { ModalsService } from 'app/modals/modals.service';
 import { PiaService } from 'app/entry/pia.service';
@@ -31,8 +31,6 @@ export class CardsComponent implements OnInit {
   public structure: any;
 
   constructor(
-    private router: Router,
-    private el: ElementRef,
     private route: ActivatedRoute,
     public _modalsService: ModalsService,
     public _piaService: PiaService,
