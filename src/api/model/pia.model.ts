@@ -26,7 +26,7 @@ export class Pia extends BaseModel {
   public type: string = PiaType.regular;
   public processing: Processing;
 
-  public numberOfQuestions = 36; // TODO Auto compute questions number
+  public numberOfQuestions = 18; // TODO Auto compute questions number
 
   public getStatusLabel(): string {
     return this.status >= 0 ? `pia.statuses.${this.status}` : '';

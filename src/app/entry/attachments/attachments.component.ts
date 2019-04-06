@@ -14,7 +14,7 @@ export class AttachmentsComponent implements OnInit {
 
   @Input() pia: PiaModel;
   attachmentForm: FormGroup;
-  dispplayAttachmentButton = false;
+  displayAttachmentButton = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               public _attachmentsService: AttachmentsService) { }
@@ -24,8 +24,8 @@ export class AttachmentsComponent implements OnInit {
       attachment_file: new FormControl('', [])
     });
     this._attachmentsService.pia = this.pia;
-    //this._attachmentsService.listAttachments();
-    this.dispplayAttachmentButton = (this.pia.status !== 2 && this.pia.status !== 3);
+    this._attachmentsService.listAttachments();
+    this.displayAttachmentButton = (this.pia.status !== 2 && this.pia.status !== 3);
   }
 
   /**
