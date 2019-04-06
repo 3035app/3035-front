@@ -154,16 +154,16 @@ export class PiaService {
     });
   }
 
-  /**
-   * Allow an user to duplicate a PIA.
-   * @param {number} id - The PIA id.
-   * @memberof PiaService
-   */
-  duplicate(id: number) {
-    this.exportData(id).then((data) => {
-      this.importData(data, 'COPY', true);
-    });
-  }
+  // /**
+  //  * Allow an user to duplicate a PIA.
+  //  * @param {number} id - The PIA id.
+  //  * @memberof PiaService
+  //  */
+  // duplicate(id: number) {
+  //   this.exportData(id).then((data) => {
+  //     this.importData(data, 'COPY', true);
+  //   });
+  // }
 
   /**
    * Allow an user to export a PIA.
@@ -188,7 +188,7 @@ export class PiaService {
    * @memberof PiaService
    */
   async importData(data: any, prefix: string, is_duplicate: boolean, is_example?: boolean): Promise<void> {
-    this.piaApi.import(data).subscribe((pia) => {
+    this.piaApi.import(data, null).subscribe((pia) => {
       this.piaApi.computeProgressFromAnswers(pia, data.answers);
       this.pias.push(pia);
     });

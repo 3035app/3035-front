@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { PiaModel } from '@api/models';
 import { PiaService } from '../../../entry/pia.service';
 import { ModalsService } from '../../../modals/modals.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { PiaApi } from '@api/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: '[app-pias-list-item]',
@@ -11,13 +12,14 @@ import { PiaApi } from '@api/services';
   styleUrls: ['./item.component.scss']
 })
 export class PiasListItemComponent implements OnInit {
-
+  @Output() newPIa = new EventEmitter<boolean>()
   @Input() pia: PiaModel
   piaFormGroup: FormGroup
   constructor(
     private _piaApi: PiaApi,
     public _piaService: PiaService,
-    private _modalsService: ModalsService
+    private _modalsService: ModalsService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -50,9 +52,8 @@ export class PiasListItemComponent implements OnInit {
    * @memberof CardItemComponent
    */
   duplicatePia() {
-    console.log(this.pia.toJson());
-    this._piaApi.import(this.pia.toJson()).subscribe((thePia: PiaModel) => {
-      this._piaService.pias.push(thePia);
+    this._piaApi.import(this.pia.toJson(), this._piaService.currentProcessing.id).subscribe((thePia: PiaModel) => {
+      this.router.navigate(['entry', thePia.id, 'section', 3, 'item', 1]);
     });
   }
 }

@@ -11,7 +11,6 @@ import { PiaService } from '../../entry/pia.service';
   styleUrls: ['./list.component.scss']
 })
 export class PiasListComponent implements OnInit {
-
   public processing: ProcessingModel = new ProcessingModel()
   public pias: Array<PiaModel> = []
   sortOrder: string
@@ -26,11 +25,7 @@ export class PiasListComponent implements OnInit {
   ) {
     this.processing = this.route.snapshot.data.processing;
     this._piaService.currentProcessing = this.processing;
-    this.route.params.subscribe( params => {
-      this.piaApi.getAll({'processing' : params.id}).subscribe((pias: Array<PiaModel>) => {
-        this.pias = pias;
-      });
-    });
+    this.getPias();
   }
 
   ngOnInit() {}
@@ -72,5 +67,11 @@ export class PiasListComponent implements OnInit {
     if (this.sortOrder === 'up') {
       this.pias.reverse();
     }
+  }
+
+  protected getPias() {
+    this.piaApi.getAll({'processing' : this.processing.id}).subscribe((pias: Array<PiaModel>) => {
+      this.pias = pias;
+    });
   }
 }

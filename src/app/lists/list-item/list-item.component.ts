@@ -70,4 +70,15 @@ export class ListItemComponent implements OnInit {
   export(id: number) {
     this._piaService.export(id);
   }
+
+  /**
+   * Duplicates a PIA.
+   * @memberof ListItemComponent
+   */
+  duplicatePia() {
+    this.piaApi.import(this.pia.toJson(), this._piaService.currentProcessing.id).subscribe((thePia: PiaModel) => {
+
+      //this._piaService.currentFolder.pias.push(thePia);
+    });
+  }
 }
