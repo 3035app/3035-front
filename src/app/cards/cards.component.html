@@ -107,11 +107,14 @@
                 </li>
                 <li class="divider"></li>
                 <li >
-                  <button name="export-LOW">{{ 'homepage.filters.export_LOW' | translate }}</button>
+                  <button name="export-LOW" (click)="exportLibreOffice()">{{ 'homepage.filters.export_LOW' | translate }}</button>
                 </li>
               </ul>
             </div>
-          </div>
+        </div>
+        <div class="pia-filtersBlock-filters menu-creation" *ngIf="exportIsLoading">
+            {{ 'homepage.filters.export_loading' | translate }}
+        </div>
         <!--
         <div class="pia-filtersBlock-buttons" *ngxPermissionsOnly="['CanImportPIA']">
           <button type="button" (click)="importPia()" class="btn btn-green">

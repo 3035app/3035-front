@@ -108,7 +108,7 @@
       "export": "Export...",
       "export_csv": "Csv",
       "export_LOW": "Libre office",
-      "export_pdf": "Pdf"
+      "export_loading": "Export en cours..."
     },
     "cards": {
       "processing_register": "Registre des traitements",

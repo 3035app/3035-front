@@ -96,7 +96,7 @@
       "export": "Export...",
       "export_csv": "Csv",
       "export_LOW": "Libre office",
-      "export_pdf": "Pdf"
+      "export_loading": "Export in progress..."
     },
     "cards": {
       "processing_register": "Data processing register",
