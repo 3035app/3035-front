@@ -178,6 +178,9 @@
     },
     "structure": {
       "info_button": "Structure informations"
+    },
+    "reporting": {
+      "button": "Reporting"
     }
   },
   "pia": {

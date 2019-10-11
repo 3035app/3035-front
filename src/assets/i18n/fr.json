@@ -196,6 +196,9 @@
     },
     "structure": {
       "info_button": "Informations de la structure"
+    },
+    "reporting": {
+      "button": "Reporting"
     }
   },
   "structure": {

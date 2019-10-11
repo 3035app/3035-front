@@ -21,6 +21,7 @@ import { PiasListComponent } from './pias/list/list.component';
 import { ProcessingResolve } from './processing/processing.resolve.service';
 import { StructureResolve } from './structure/structure.resolve.service';
 import { StructureComponent } from 'app/structure/structure.component';
+import { ReportingComponent } from 'app/reporting/reporting.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,12 @@ const routes: Routes = [
   {
     path: 'structure/:id',
     component: StructureComponent,
+    canActivate: [AuthenticationGuardService],
+    resolve: {structure: StructureResolve}
+  },
+  {
+    path: 'reporting/:id',
+    component: ReportingComponent,
     canActivate: [AuthenticationGuardService],
     resolve: {structure: StructureResolve}
   },
