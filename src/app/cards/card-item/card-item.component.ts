@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { PiaService } from '../../entry/pia.service';
@@ -22,6 +22,8 @@ export class CardItemComponent implements OnInit {
   @Input() processing: any;
   @Input() previousProcessing: any;
   processingForm: FormGroup;
+  checked: boolean = false;
+  @Output() onCheckChange: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('processingName') private processingName: ElementRef;
   @ViewChild('processingAuthor') private processingAuthor: ElementRef;
@@ -168,5 +170,9 @@ export class CardItemComponent implements OnInit {
     this.processingApi.import(this.processing.toJson(), this._piaService.currentFolder.id).subscribe((theProcessing: ProcessingModel) => {
       this._piaService.currentFolder.processings.push(theProcessing);
     });
+  }
+
+  toggleChecked(id) {
+    this.onCheckChange.emit({id, checked: this.checked});
   }
 }

@@ -1,15 +1,21 @@
 <div class="pia-folder-item" [attr.data-id]="folder.id" [attr.data-name]="folder.name" >
-    <div class="pia-cardsBlock-toolbar">
-        <div class="pia-cardsBlock-toolbar-more">
-            <a href="javascript:;" class="btn pia-tooltip pia-dropdown-icon" title="{{ 'homepage.cards.item.tools.more_options' | translate }}">
-                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                <ul class="pia-cardsBlock-toolbar-moreList">
-                    <li class="pia-cardsBlock-toolbar-delete" *ngxPermissionsOnly="['CanDeletePIA']">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        <a href="javascript:;" (click)="removeFolder(folder)">{{ 'homepage.cards.item.tools.remove' | translate }}</a>
-                    </li>
-                </ul>
-            </a>
+    <div class="pia-cardsBlock-checkbox-container">
+        <label class="pia-cardsBlock-checkbox">
+            <input type="checkbox" [(ngModel)]="checked" data-md-icheck (change)="toggleChecked(folder.id)"/>
+            <span class="pia-cardsBlock-checkmark"></span>
+        </label>
+        <div class="pia-cardsBlock-toolbar">
+            <div class="pia-cardsBlock-toolbar-more">
+                <a href="javascript:;" class="btn pia-tooltip pia-dropdown-icon" title="{{ 'homepage.cards.item.tools.more_options' | translate }}">
+                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                    <ul class="pia-cardsBlock-toolbar-moreList">
+                        <li class="pia-cardsBlock-toolbar-delete" *ngxPermissionsOnly="['CanDeletePIA']">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            <a href="javascript:;" (click)="removeFolder(folder)">{{ 'homepage.cards.item.tools.remove' | translate }}</a>
+                        </li>
+                    </ul>
+                </a>
+            </div>
         </div>
     </div>
     <div class="folder-icon" routerLink="/folders/{{folder.id}}">

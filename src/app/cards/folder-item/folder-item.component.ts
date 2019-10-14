@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, NgForm } from '@angular/forms';
 import { FolderApi } from '@api/services';
 import { FolderModel } from '@api/models';
@@ -15,6 +15,8 @@ export class FolderItemComponent implements OnInit {
   @Input() previousFolder;
   editor: any;
   elementId: string;
+  checked: boolean = false;
+  @Output() onCheckChange: EventEmitter<any> = new EventEmitter();
   @ViewChild('folderForm') folderForm: NgForm;
 
   constructor(
@@ -131,5 +133,9 @@ export class FolderItemComponent implements OnInit {
   private closeEditor() {
     tinymce.remove(this.editor);
     this.editor = null;
+  }
+
+  toggleChecked(id) {
+    this.onCheckChange.emit({id, checked: this.checked});
   }
 }

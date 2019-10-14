@@ -104,7 +104,11 @@
       "import_pia": "Importer PIA",
       "list_rocket_content": "Lancez-vous ! Pour commencer<br>un PIA, cliquez sur le +",
       "card_rocket_content": "Lancez-vous !<br><br>Pour commencer<br>un PIA, cliquez<br> sur le +",
-      "go_to_folders": "Retour aux dossiers"
+      "go_to_folders": "Retour aux dossiers",
+      "export": "Export...",
+      "export_csv": "Csv",
+      "export_LOW": "Libre office",
+      "export_loading": "Export en cours..."
     },
     "cards": {
       "processing_register": "Registre des traitements",

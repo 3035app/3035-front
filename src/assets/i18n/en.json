@@ -92,7 +92,11 @@
       "new_folder": "Folder",
       "import_pia": "Import PIA",
       "list_rocket_content": "Get started ! To initiate <br>a PIA, click on the +",
-      "card_rocket_content": "Get started !<br><br>To initiate a PIA,<br> click on New PIA"
+      "card_rocket_content": "Get started !<br><br>To initiate a PIA,<br> click on New PIA",
+      "export": "Export...",
+      "export_csv": "Csv",
+      "export_LOW": "Libre office",
+      "export_loading": "Export in progress..."
     },
     "cards": {
       "processing_register": "Data processing register",
