@@ -27,6 +27,7 @@
       background-color: $pia-full-white;
       padding-top: 6px;
       height: 382px;
+      position: relative;
       &-attachment {
         display: inline-block;
         position: absolute;
@@ -236,7 +237,9 @@
     }
     &-toolbar {
         font-size: 1.45rem;
-        float: right;
+        position: absolute;
+        top: 6px;
+        right: 8px;
         a, button {
           color: $pia-green;
           .fa {
