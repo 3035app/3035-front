@@ -201,6 +201,17 @@
       "button": "Reporting"
     }
   },
+  "reporting": {
+    "processing": {
+      "kpi": "Traitement total",
+      "graph_by_status": "Répartition des status des fiches de traitement"
+    },
+    "pia": {
+      "kpi": "PIA total",
+      "graph_by_status": "Répartition des PIA par status",
+      "graph_by_folder": "Répartition des PIA par dossier"
+    }
+  },
   "structure": {
     "form": {
       "name": {

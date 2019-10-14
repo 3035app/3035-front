@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { AppDataService } from 'app/services/app-data.service';
 import { ProcessingArchitectureService } from 'app/services/processing-architecture.service';
@@ -185,6 +186,7 @@ export function createTranslateLoader(http: HttpClient) {
     ReportingComponent
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -207,7 +209,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     DndModule
   ],
-  exports: [],
+  exports: [ChartsModule],
   providers: providersList,
   bootstrap: [AppComponent]
 })

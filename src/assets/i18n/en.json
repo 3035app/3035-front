@@ -230,6 +230,17 @@
       "mandatory_fields": "All fields must be filled"
     }
   },
+  "reporting": {
+    "processing": {
+      "kpi": "Total processing",
+      "graph_by_status": "Distribution of processing status"
+    },
+    "pia": {
+      "kpi": "Total PIA",
+      "graph_by_status": "Distribution of PIA by status",
+      "graph_by_folder": "Distribution of PIA by folder"
+    }
+  },
   "structure": {
     "form": {
       "name": {
