@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader, TranslatePipe } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { AppDataService } from 'app/services/app-data.service';
 import { ProcessingArchitectureService } from 'app/services/processing-architecture.service';
@@ -84,6 +85,7 @@ import { AttachmentsComponent as ProcessingAttachmentsComponent } from './proces
 import { AttachmentsService as ProcessingAttachmentsService} from './processing/attachments/attachments.service';
 import { AttachmentItemComponent as ProcessingAttachmentItemComponent } from './processing/attachments/attachment-item/attachment-item.component';
 import { EvaluationBlockComponent } from './processing/evaluation-block/evaluation-block.component';
+import { ReportingComponent } from './reporting/reporting.component';
 
 const providersList: any = [
   AppDataService,
@@ -181,8 +183,10 @@ export function createTranslateLoader(http: HttpClient) {
     ProcessingAttachmentsComponent,
     ProcessingAttachmentItemComponent,
     EvaluationBlockComponent,
+    ReportingComponent
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -205,7 +209,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     DndModule
   ],
-  exports: [],
+  exports: [ChartsModule],
   providers: providersList,
   bootstrap: [AppComponent]
 })

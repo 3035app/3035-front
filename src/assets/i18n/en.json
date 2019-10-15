@@ -178,6 +178,9 @@
     },
     "structure": {
       "info_button": "Structure informations"
+    },
+    "reporting": {
+      "button": "Reporting"
     }
   },
   "pia": {
@@ -225,6 +228,17 @@
       "validate_evaluation": "Validate review",
       "subsection_validated": "Subsection reviewed, awaiting final validation",
       "mandatory_fields": "All fields must be filled"
+    }
+  },
+  "reporting": {
+    "processing": {
+      "kpi": "Total processing",
+      "graph_by_status": "Distribution of processing status"
+    },
+    "pia": {
+      "kpi": "Total PIA",
+      "graph_by_status": "Distribution of PIA by status",
+      "graph_by_folder": "Distribution of PIA by folder"
     }
   },
   "structure": {
