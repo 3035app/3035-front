@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<div class="reporting-container">
+  <div class="reporting-row">
+
+    <div class="small-12 medium-12 columns">
+      <h2 class="page-title">
+        
+        <i class="fa fa-building" aria-hidden="true"></i>
+        {{structure.name}}
+        <a routerLink="/folders" class="go-back-link">
+          <i class="fa fa-reply"></i>
+        </a>
+      </h2>
+    </div>
+
+    <div class="reporting-inner-container">
+        <div class="reporting-card">
+          <div class="reporting-card-title">{{ 'reporting.processing.kpi' | translate }}</div>
+          <div class="reporting-card-kpi">{{processings.length}}</div>
+        </div>
+        <div class="reporting-card">
+            <div class="reporting-card-title">{{ 'reporting.pia.kpi' | translate }}</div>
+            <div class="reporting-card-kpi">{{pias.length}}</div>
+        </div>
+      </div>
+      <div class="reporting-inner-container">
+        <div class="reporting-card-graph">
+            <div class="reporting-card-graph-title">{{ 'reporting.processing.graph_by_status' | translate }}</div>
+            <div class="reporting-graph">
+              <canvas 
+                baseChart
+                [datasets]="ProcessingByStatus.data"
+                [labels]="ProcessingByStatus.labels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+              </canvas>
+            </div>
+          </div>
+        <div class="reporting-card-graph">
+            <div class="reporting-card-graph-title">{{ 'reporting.pia.graph_by_folder' | translate }}</div>
+            <div class="reporting-graph">
+              <canvas 
+                baseChart
+                [datasets]="PIAByFolder.data"
+                [labels]="PIAByFolder.labels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+              </canvas>
+            </div>
+        </div>
+        <div class="reporting-card-graph">
+          <div class="reporting-card-graph-title">{{ 'reporting.pia.graph_by_status' | translate }}</div>
+          <div class="reporting-graph">
+            <canvas 
+              baseChart
+              [datasets]="PIAByStatus.data"
+              [labels]="PIAByStatus.labels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

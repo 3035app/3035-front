@@ -8,10 +8,17 @@
         
         <i class="fa fa-building" aria-hidden="true"></i>
         {{structure.name}}
-        <a class="btn btn-green structure-info-button" routerLink="/structure/{{structure.id}}">
-          <i class="fa fa-info-circle"></i>
-          <span>{{ 'homepage.structure.info_button' | translate}}</span>
-        </a>
+        <div class="structure-info-button">
+          <a class="btn btn-green" routerLink="/structure/{{structure.id}}">
+            <i class="fa fa-info-circle"></i>
+            <span>{{ 'homepage.structure.info_button' | translate}}</span>
+          </a>
+          &nbsp;
+          <a class="btn btn-green" routerLink="/reporting/{{structure.id}}">
+            <i class="fa fa-line-chart"></i>
+            <span>{{ 'homepage.reporting.button' | translate}}</span>
+          </a>
+        </div>
         <br>
         <small>{{ 'homepage.cards.processing_register' | translate}}</small>
       </h2>
