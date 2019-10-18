@@ -59,18 +59,20 @@ export class AppComponent {
 
     const roles = {};
 
-    roles['ROLE_USER'] = [];
-
-    roles['ROLE_CONTROLLER'] = [
-      'CanEditPIA', 'CanCancelEvaluatePIA', 'CanAskEvaluatePIA',
-      'AccessToContextSection', 'AccessToPrinciplesSection', 'AccessToRisksSection'
+    roles['ROLE_USER'] = [
+      'CanShowProcessing', 'CanShowPIA',
+      'AccessToContextSection', 'AccessToPrinciplesSection', 'AccessToRisksSection', 'AccessToValidationSection',
     ];
-    roles['ROLE_DPO'] = roles['ROLE_CONTROLLER'].concat([
-      'CanCreatePIA', 'CanCreatePIAExample', 'CanShowPIA',
-      'CanEvaluatePIA', 'CanValidatePIA', 'CanCancelValidatePIA',
-      'CanDeletePIA', 'CanCreateFolder',
-      'CanCreateProcessing', 'CanEditProcessing', 'CanImportProcessing', 'CanShowProcessing', 'CanDeleteProcessing',
-      'AccessToValidationSection',
+
+    roles['ROLE_CONTROLLER'] = roles['ROLE_USER'].concat([
+      'CanEditPIA', 'CanCancelEvaluatePIA', 'CanAskEvaluatePIA',
+      'CanEditProcessing',
+    ]);
+    
+    roles['ROLE_DPO'] = roles['ROLE_USER'].concat([
+      'CanCreateProcessing', 'CanImportProcessing', 'CanDeleteProcessing',
+      'CanCreatePIA', 'CanCreatePIAExample', 'CanEvaluatePIA', 'CanValidatePIA', 'CanCancelValidatePIA', 'CanDeletePIA',
+      'CanCreateFolder',
       'CanEditStructure',
     ]);
     roles['ROLE_SHARED_DPO'] = roles['ROLE_DPO'];
