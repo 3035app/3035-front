@@ -492,7 +492,7 @@ export class CardsComponent implements OnInit {
   }
 
   getProcessing(data: ProcessingCsvRow) {
-    if (!data) { return''};
+    if (!data) {return''};
 
     return `
       ${this.geth1Title(this.translate.instant('summary.processing'))}
@@ -555,9 +555,13 @@ export class CardsComponent implements OnInit {
                   if (item.evaluation_mode === 'question') {
                     evaluation = await this.getEvaluation(section.id, item.id, ref + '.' + measure.id, data.id);
                   }
+
                   currentRiskSection += `${this.geth3Title(measure.title)}`
                   currentRiskSection += `${this.getP(measure.content)}`
-                  currentRiskSection += `${this.getBorderedEvaluation(this.translate.instant(evaluation.title), evaluation.evaluation_comment)}`
+
+                  if(evaluation) {
+                    currentRiskSection += `${this.getBorderedEvaluation(this.translate.instant(evaluation.title), evaluation.evaluation_comment)}`
+                  }
                 }
               }));
           } else if (item.questions) { // Question
@@ -583,7 +587,10 @@ export class CardsComponent implements OnInit {
                   currentRiskSection += `${this.getP(content.join(', '))}`
                   if (item.evaluation_mode === 'question') {
                     const evaluation: any = await this.getEvaluation(section.id, item.id, ref + '.' + question.id, data.id);
-                    currentRiskSection += `${this.getBorderedEvaluation(this.translate.instant(evaluation.title), evaluation.evaluation_comment)}`
+
+                    if(evaluation) {
+                      currentRiskSection += `${this.getBorderedEvaluation(this.translate.instant(evaluation.title), evaluation.evaluation_comment)}`
+                    }
                   }
                 }
               }
@@ -591,7 +598,10 @@ export class CardsComponent implements OnInit {
           }
           if (item.evaluation_mode === 'item') {
             const evaluation: any = await this.getEvaluation(section.id, item.id, ref, data.id);
-            currentRiskSection += `${this.getBorderedEvaluation(this.translate.instant(evaluation.title), evaluation.evaluation_comment)}`
+
+            if(evaluation) {
+              currentRiskSection += `${this.getBorderedEvaluation(this.translate.instant(evaluation.title), evaluation.evaluation_comment)}`
+            }
           }
           risks += currentRiskSection
         }));
@@ -621,6 +631,10 @@ export class CardsComponent implements OnInit {
     console.log(this.processingToExport)
 
     let fileData = '';
+
+    // dirty fix
+    fileData += `${this.getProcessing(this.processingToExport[0])}`
+
     await Promise.all(this.piaToExportOdt.map(async pia => {
       const risks = await this.getRisks(pia)
       fileData += `
@@ -628,7 +642,6 @@ export class CardsComponent implements OnInit {
       <br/>
 
       ${this.getPiaInformation(pia)}
-
       ${this.getProcessing(this.processingToExport.find(process => process.id === pia.processing.id))}
 
       ${risks}
