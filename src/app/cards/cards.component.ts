@@ -633,7 +633,9 @@ export class CardsComponent implements OnInit {
     let fileData = '';
 
     // dirty fix
-    fileData += `${this.getProcessing(this.processingToExport[0])}`
+    this.processingToExport.forEach((processing) => {
+      fileData += `${this.getProcessing(processing)}`
+    });
 
     await Promise.all(this.piaToExportOdt.map(async pia => {
       const risks = await this.getRisks(pia)
@@ -642,7 +644,7 @@ export class CardsComponent implements OnInit {
       <br/>
 
       ${this.getPiaInformation(pia)}
-      ${this.getProcessing(this.processingToExport.find(process => process.id === pia.processing.id))}
+    //  ${this.getProcessing(this.processingToExport.find(process => process.id === pia.processing.id))}
 
       ${risks}
 
