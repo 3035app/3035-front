@@ -20,26 +20,31 @@ interface FolderCsvRow {
   name: string;
   id: number;
   path: string;
-  parentId?: number;
+  parent_id?: number;
   person_in_charge: string;
   structure_id: number;
 }
 
 interface ProcessingCsvRow {
   id: number;
-  parentId: number;
+  parent_id: number;
   author: string;
+  created_at: string;
+  updated_at: string;
+  concerned_people: string;
   consent: string;
   context_of_implementation: string;
   controllers: string;
   description: string;
   designated_controller: string;
   exactness: string;
+  lawfulness: string;
   life_cycle: string;
   minimization: string;
   name: string;
   non_eu_transfer: string;
   processors: string;
+  rights_guarantee: string;
   standards: string;
   status: string;
   storage: string;
@@ -49,7 +54,8 @@ interface ProcessingCsvRow {
 
 
 interface PiaCsvRow {
-  processingId: number;
+  id: number;
+  processing_id: number;
   author_name: string;
   concerned_people_opinion: string;
   concerned_people_searched_content: string;
@@ -69,6 +75,7 @@ interface PiaCsvRow {
   validator_name: string;
   answers: any;
   created_at: Date;
+  updated_at: Date;
 }
 
 @Component({
@@ -320,51 +327,29 @@ export class CardsComponent implements OnInit {
   }
 
   geth1Title(title: string) {
-    return `<h1 class="western" style="border-top: none; border-bottom: 2.25pt solid #0277bd; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.05cm; padding-left: 0cm; padding-right: 0cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2">
-    <font color="#0277bd"><font face="Roboto, sans-serif"><font size="1" style="font-size: 6pt">
-    ${title}
-    </font></font></font>
-    </h1>`
+    return `<h1>${title}</h1>`
   }
 
   geth2Title(title: string) {
-    return `<h2 class="western" style="margin-top: 0cm; margin-bottom: 3px; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: bold; orphans: 2; widows: 2">
-    <font color="#393939"><font face="Roboto, sans-serif"><font size="1" style="font-size: 1.5em">
-      ${title}
-    </font></font></font>
-    </h2>`
+    return `<h2>${title}</h2>`
   }
 
   geth3Title(title: string) {
-    return ` <h3 class="western" style="margin-top: 0.04cm; margin-bottom: 0.04cm; font-variant: normal; letter-spacing: normal; font-style: normal; orphans: 2; widows: 2">
-    <span style="display: inline-block; padding: 0.12cm 0.32cm"><font face="Roboto, sans-serif"><font size="1" style="font-size: 6pt"><b><span style="background: #ffffff"><font color="#393939">
-      ${title}
-    </span></span></b></font></font></font>
-    </h3>`
+    return ` <h3>${title}</h3>`
   }
 
   getBorderedP(content: string) {
-    return `<p style="margin-bottom: 0.16cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2">
-    <span style="display: inline-block; border: 1px solid #a7a7a7; padding: 0.12cm 0.32cm"><font face="Roboto, sans-serif"><font size="1" style="font-size: 6pt"><span style="background: #ffffff"><font color="#c2c2c2">
-      ${content}
-    </span></span></font></font></font>
-    </p>`
+    return `<p style="border: 1px solid #a7a7a7; padding: 0.24cm 0.32cm;">${content}</p>`
   }
 
   getP(content: string) {
-    return `<p style="margin-bottom: 0.16cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2">
-    <span style="display: inline-block; padding: 0.12cm 0.32cm"><font face="Roboto, sans-serif"><font size="1" style="font-size: 6pt"><span style="background: #ffffff"><font color="#0a0a0a">
-      ${content}
-    </span></span></font></font></font>
-    </p>`
+    return `<p>${content}</p>`
   }
 
   getBorderedEvaluation(evaluation: string, comment: string = null) {
-    return `<p style="border: 1px dotted #a7a7a7; padding: 0.12cm; orphans: 2; widows: 2">
-    <span style="display: inline-block; padding: 0.12cm 0.32cm"><span style="font-variant: normal"><font color="#121921"><font face="Roboto, sans-serif"><font size="1" style="font-size: 6pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b><span style="background: #ffffff"><strong>
-    Evaluation: ${evaluation}
-    ${comment ? `<br/>Evaluation comment: ${comment}` : ''}
-    </span></b></span></span></font></font></font></span></strong><font color="#c2c2c2"><font face="Roboto, sans-serif"><font size="1" style="font-size: 6pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #ffffff"><span style="font-variant: normal">&nbsp;</span></span></span></span></span></font></font></font></span>
+    return `<p style="border: 1px dotted #a7a7a7; padding: 0.24cm 0.32cm;>
+        Evaluation: ${evaluation}
+        ${comment ? `<br/>Evaluation comment: ${comment}` : ''}
     </p>`
   }
 
@@ -376,7 +361,7 @@ export class CardsComponent implements OnInit {
       processingDataTypes += this.getP(`
       <p>- ${this.translate.instant(`processing-data-types.form.${type.reference}`)}</p>
       <p>
-        <span>${this.translate.instant(`processing-data-types.form.retention-period`)} ${type.retention_period} (${this.translate.instant(`processing-data-types.form.sensitive-affirmative`)})</span>
+        <span>${this.translate.instant(`processing-data-types.form.retention-period`)} ${type.retention_period} (${this.translate.instant(`types.sensitive ? 'sensitive' : ''`)})</span>
       </p>
       `)
       )
@@ -493,9 +478,11 @@ export class CardsComponent implements OnInit {
 
   getProcessing(data: ProcessingCsvRow) {
     if (!data) {return''};
-
+    
     return `
-      ${this.geth1Title(this.translate.instant('summary.processing'))}
+      ${this.geth1Title(this.translate.instant('summary.processing')+' "'+data.name+'"')}
+      
+      ${this.getP(data.updated_at)}
 
       ${this.geth2Title(this.translate.instant('processing.form.sections.description.title'))}
 
@@ -505,13 +492,34 @@ export class CardsComponent implements OnInit {
       ${this.geth3Title(this.translate.instant('processing.form.context_of_implementation.title'))}
       ${this.getP(data.context_of_implementation)}
 
+      ${this.geth3Title(this.translate.instant('processing.form.controllers.title'))}
+      ${this.getP(data.controllers)}
+
+      ${this.geth3Title(this.translate.instant('processing.form.lawfulness.title'))}
+      ${this.getP(data.lawfulness)}
+
       ${this.geth3Title(this.translate.instant('processing.form.standards.title'))}
       ${this.getP(data.standards)}
+
+      ${this.geth3Title(this.translate.instant('processing.form.consent.title'))}
+      ${this.getP(data.consent)}
+
+      ${this.geth3Title(this.translate.instant('processing.form.rights_guarantee.title'))}
+      ${this.getP(data.rights_guarantee)}
 
       ${this.geth2Title(this.translate.instant('processing.form.sections.data.title'))}
 
       ${this.geth3Title(this.translate.instant('processing.form.data-types'))}
       ${this.getProcessingDataTypes(JSON.parse(data.processing_data_types))}
+
+      ${this.geth3Title(this.translate.instant('processing.form.concerned_people.title'))}
+      ${this.getP(data.concerned_people)}
+
+      ${this.geth3Title(this.translate.instant('processing.form.exactness.title'))}
+      ${this.getP(data.exactness)}
+
+      ${this.geth3Title(this.translate.instant('processing.form.minimization.title'))}
+      ${this.getP(data.minimization)}
 
       ${this.geth3Title(this.translate.instant('processing.form.storage.title'))}
       ${this.getP(data.storage)}
@@ -627,8 +635,8 @@ export class CardsComponent implements OnInit {
       console.log(e)
     }
 
-    console.log(this.folderToExport)
-    console.log(this.processingToExport)
+    //console.log('folderToExport', this.folderToExport)
+    //console.log('processingToExport', this.processingToExport)
 
     let fileData = '';
 
@@ -644,7 +652,7 @@ export class CardsComponent implements OnInit {
       <br/>
 
       ${this.getPiaInformation(pia)}
-    //  ${this.getProcessing(this.processingToExport.find(process => process.id === pia.processing.id))}
+      //${this.getProcessing(this.processingToExport.find(process => process.id === pia.processing.id))}
 
       ${risks}
 
@@ -664,29 +672,11 @@ export class CardsComponent implements OnInit {
       <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <title>Action plan</title>
-        <style type="text/css">
-          @page { margin: 2cm }
-          p { margin-bottom: 0.25cm; line-height: 115% }
-          h1 { margin-bottom: 0.21cm }
-          h1.western { font-family: "Liberation Serif", serif }
-          h1.cjk { font-family: "Songti SC"; font-size: 24pt }
-          h1.ctl { font-family: "Arial Unicode MS"; font-size: 24pt }
-          h2.cjk { font-family: "Songti SC" }
-          h2.ctl { font-family: "Arial Unicode MS" }
-          h3.cjk { font-family: "Songti SC" }
-          h3.ctl { font-family: "Arial Unicode MS" }
-          a:link { so-language: zxx }
-        </style>
       </head>
 
 
       <body lang="en-GB" dir="ltr">
         ${fileData}
-        <p style="margin-bottom: 0cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 100%; orphans: 2; widows: 2">
-          <br/>
-        </p>
-        <p align="center" style="margin-bottom: 0cm; line-height: 100%"><br/>
-        </p>
       </body>`], {type: mime});
 
     saveAs(blob, 'Processing & Pia')
@@ -718,7 +708,7 @@ export class CardsComponent implements OnInit {
         'id',
         'name',
         'path',
-        'parentId',
+        'parent_id',
         'person_in_charge',
         'structure_id'
       ]}
@@ -734,7 +724,7 @@ export class CardsComponent implements OnInit {
       headers: [
         'id',
         'name',
-        'parentId',
+        'parent_id',
         'author',
         'consent',
         'context_of_implementation',
@@ -756,7 +746,7 @@ export class CardsComponent implements OnInit {
     new Angular5Csv(this.processingToExport, 'processing', optionsProcess)
 
     const piaHeaders =  [
-      'processingId',
+      'processing_id',
       'author_name',
       'concerned_people_opinion',
       'concerned_people_searched_content',
@@ -867,7 +857,7 @@ export class CardsComponent implements OnInit {
       id: folder.id,
       name: folder.name,
       path: folder.path,
-      parentId: folder.parent.isRoot ? null : folder.parent.id,
+      parent_id: folder.parent.isRoot ? null : folder.parent.id,
       person_in_charge: folder.person_in_charge,
       structure_id: folder.structure_id,
     }
@@ -875,25 +865,30 @@ export class CardsComponent implements OnInit {
 
   processingToCsv(processing, parentId, id): ProcessingCsvRow {
     return {
-      id,
+      id: id,
       name: processing.name,
-      parentId,
+      parent_id: parentId,
       author: processing.author,
+      created_at: processing.created_at,
+      updated_at: processing.updated_at,
+      concerned_people: processing.concerned_people,
       consent: processing.consent,
       context_of_implementation: processing.context_of_implementation,
       controllers: processing.controllers,
       description: processing.description,
       designated_controller: processing.designated_controller,
       exactness: processing.exactness,
+      lawfulness: processing.lawfulness,
       life_cycle: processing.life_cycle,
       minimization: processing.minimization,
       non_eu_transfer: processing.non_eu_transfer,
+      processing_data_types: JSON.stringify(processing.processing_data_types),
       processors: processing.processors,
+      recipients: processing.recipients,
+      rights_guarantee: processing.rights_guarantee,
       standards: processing.standards,
       status: processing.status,
-      storage: processing.storage,
-      processing_data_types: JSON.stringify(processing.processing_data_types),
-      recipients: processing.recipients
+      storage: processing.storage
     }
   }
 
@@ -909,7 +904,8 @@ export class CardsComponent implements OnInit {
     });
 
     return {
-      processingId,
+      id: pia.id,
+      processing_id: processingId,
       author_name: pia.author_name,
       concerned_people_opinion: pia.concerned_people_opinion,
       concerned_people_searched_content: pia.concerned_people_searched_content,
@@ -928,7 +924,8 @@ export class CardsComponent implements OnInit {
       type: pia.type,
       validator_name: pia.validator_name,
       answers: JSON.stringify(answers),
-      created_at: pia.created_at
+      created_at: pia.created_at,
+      updated_at: pia.updated_at
     }
   }
 
@@ -954,7 +951,8 @@ export class CardsComponent implements OnInit {
       status: pia.status,
       type: pia.type,
       validator_name: pia.validator_name,
-      created_at: pia.created_at
+      created_at: pia.created_at,
+      updated_at: pia.updated_at
     }
   }
 }
