@@ -282,8 +282,8 @@
         "placeholder": "Presentez les fondements de votre traitement (ex: consentement, exécution d'un contrat, obligation légale, etc...)"
       },
       "standards": {
-        "title": "Quels sont les référenciels applicables ?",
-        "placeholder": "Listez les référenciels qui concernent ce traitement"
+        "title": "Quels sont les référentiels applicables ?",
+        "placeholder": "Listez les référentiels qui concernent ce traitement"
       },
       "consent": {
         "title": "Si applicable, comment le consentement des personnes concernées est-il obtenu ou comment sont elles informées?",
