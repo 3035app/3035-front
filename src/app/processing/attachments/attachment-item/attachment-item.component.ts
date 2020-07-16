@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalsService } from '../../../modals/modals.service';
 import { ProcessingModel, ProcessingAttachmentModel } from '@api/models';
-import { ProcessingAttachmentApi } from '@api/services';
+import { AttachmentsService } from 'app/processing/attachments/attachments.service';
 
 @Component({
   selector: 'app-processing-attachment-item',
@@ -13,7 +13,7 @@ export class AttachmentItemComponent {
   @Input() attachment: ProcessingAttachmentModel;
   @Input() processing: ProcessingModel;
 
-  constructor(private _modalsService: ModalsService) { }
+  constructor(private _modalsService: ModalsService, public _attachmentsService: AttachmentsService) { }
 
   /**
    * Deletes an attachment with a given id.
