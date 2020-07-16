@@ -11,7 +11,7 @@
     "profile": "Profil",
     "form": {
       "legend": "S'identifier",
-      "username": "identifiant",
+      "username": "Identifiant",
       "password": "Mot de passe",
       "submit": "Se connecter",
       "error" : "Identifiants incorrects"
