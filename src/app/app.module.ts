@@ -56,6 +56,7 @@ import { ListItemComponent } from 'app/lists/list-item/list-item.component';
 import { SummaryComponent } from 'app/summary/summary.component';
 import { AboutComponent } from 'app/about/about.component';
 import { AppRoutingModule } from 'app/app-routing.module';
+import { SearchComponent } from 'app/search/search.component';
 
 import { ApiModule } from '@api/api.module';
 import { SecurityModule } from '@security/security.module';
@@ -164,6 +165,7 @@ export function createTranslateLoader(http: HttpClient) {
     SafeHtmlPipe,
     Nl2brPipe,
     AboutComponent,
+    SearchComponent,
     TemplatesComponent,
     FolderItemComponent,
     ListItemFolderComponent,

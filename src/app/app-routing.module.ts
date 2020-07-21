@@ -6,6 +6,7 @@ import { SummaryComponent } from 'app/summary/summary.component';
 import { HelpComponent } from 'app/help/help.component';
 import { AboutComponent } from 'app/about/about.component';
 import { ErrorsComponent } from 'app/errors/errors.component';
+import { SearchComponent } from 'app/search/search.component';
 
 import { CardsRoutingModule } from 'app/cards/cards-routing.module';
 import { EntryRoutingModule } from 'app/entry/entry-routing.module';
@@ -38,6 +39,7 @@ const routes: Routes = [
   },
   { path: 'help', component: HelpComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'search', component: SearchComponent },
   {
     path: 'structure/:id',
     component: StructureComponent,
