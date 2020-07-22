@@ -1602,5 +1602,24 @@
         }
       }
     }
+  },
+  "search": {
+    "label": "Search",
+    "search-list": {
+      "table-header": {
+        "type": "Type",
+        "structure_name": "Structure",
+        "folder_name": "Folder",
+        "processing_name": "Processing",
+        "link": "Access"
+      }
+    },
+    "types": {
+      "structure": "Structure",
+      "folder": "Folder",
+      "processing": "Processing"
+    },
+    ,
+    "not_found": "No results found"
   }
 }

@@ -1625,5 +1625,23 @@
         }
       }
     }
+  },
+  "search": {
+    "label": "Rechercher",
+    "search-list": {
+      "table-header": {
+        "type": "Type",
+        "structure_name": "Structure",
+        "folder_name": "Dossier",
+        "processing_name": "Fiche de traitement",
+        "link": "Accéder"
+      }
+    },
+    "types": {
+      "structure": "Structure",
+      "folder": "Dossier",
+      "processing": "Fiche de traitement"
+    },
+    "not_found": "Aucun résultat"
   }
 }
