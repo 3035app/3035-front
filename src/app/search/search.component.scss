@@ -2,4 +2,43 @@
 
 .pia-searchBlock {
 
+  div, table {
+    &:not(.full-width) {
+      width: 80%;
+    }
+  }
+
+  .pia-search-searchForm {
+    position: relative;
+    padding-top: 17px;
+    margin: 0 auto 5rem;
+
+    form {
+      margin: 0;
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+      border: none;
+      padding: 15px 42px 15px 15px;
+    }
+
+    i {
+      font-size: 1.7rem;
+      color: $pia-gray;
+    }
+
+    button {
+      position: absolute;
+      right: 3%;
+      top: 30%;
+    }
+  }
+
+  table {
+    margin: 50px auto 0;
+  }
+
 }

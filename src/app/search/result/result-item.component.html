@@ -1,0 +1,23 @@
+<td>
+  <span>{{ "search.types." + searchResult.type | translate }}</span>
+</td>
+<td>
+  <span>{{ searchResult.structure_name }}</span>
+</td>
+<td>
+  <span>{{ searchResult.folder_name }}</span>
+</td>
+<td>
+  <span>{{ searchResult.processing_name }}</span>
+</td>
+<td>
+  <a *ngIf="searchResult.type !== 'structure'; else navigate" routerLink="{{getRouteByType() + searchResult.id}}">
+    <i class="fa fa-eye"></i>
+  </a>
+  <ng-template #navigate>
+    <a (click)="navigateToStructure()">
+      <i class="fa fa-eye"></i>
+    </a>
+  </ng-template>
+
+</td>

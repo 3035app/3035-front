@@ -1,4 +1,37 @@
 <app-header></app-header>
 <main class="container pia-searchBlock">
 
+  <div class="row full-width">
+    <h1 class="page-title">{{ 'search.label' | translate }}</h1>
+  </div>
+
+  <div class="pia-search-searchForm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="searchForm">
+      <input type="search" formControlName="q" placeholder="{{ 'search.label' | translate }}">
+      <button class="btn" type="submit" title="{{ 'search.label' | translate }}"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+  </div>
+
+  <table *ngIf="searchResults && searchResults.length" class="stack hover">
+
+    <thead>
+    <tr>
+      <th>{{ 'search.search-list.table-header.type' | translate }}</th>
+      <th>{{ 'search.search-list.table-header.structure_name' | translate }}</th>
+      <th>{{ 'search.search-list.table-header.folder_name' | translate }}</th>
+      <th>{{ 'search.search-list.table-header.processing_name' | translate }}</th>
+      <th>{{ 'search.search-list.table-header.link' | translate }}</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let result of searchResults" app-search-result-item [searchResult]="result" [structures]="structures"></tr>
+    </tbody>
+
+  </table>
+
+  <div class="row">
+    <span *ngIf="isSearched && !searchResults.length">{{ 'search.not_found' | translate }}</span>
+  </div>
+
 </main>
