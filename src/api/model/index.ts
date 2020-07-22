@@ -15,3 +15,5 @@ export { ProcessingDataType } from './processing-data-type.model';
 export { Structure } from './structure.model';
 export { ProcessingComment } from './processing-comment.model';
 export { ProcessingAttachment } from './processing-attachment.model';
+export { Search } from './search.model';
+export { SearchResult } from './search-result.model';
