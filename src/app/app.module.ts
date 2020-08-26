@@ -56,6 +56,8 @@ import { ListItemComponent } from 'app/lists/list-item/list-item.component';
 import { SummaryComponent } from 'app/summary/summary.component';
 import { AboutComponent } from 'app/about/about.component';
 import { AppRoutingModule } from 'app/app-routing.module';
+import { SearchComponent } from 'app/search/search.component';
+import { ResultItemComponent } from 'app/search/result/result-item.component';
 
 import { ApiModule } from '@api/api.module';
 import { SecurityModule } from '@security/security.module';
@@ -86,6 +88,7 @@ import { AttachmentsService as ProcessingAttachmentsService} from './processing/
 import { AttachmentItemComponent as ProcessingAttachmentItemComponent } from './processing/attachments/attachment-item/attachment-item.component';
 import { EvaluationBlockComponent } from './processing/evaluation-block/evaluation-block.component';
 import { ReportingComponent } from './reporting/reporting.component';
+import { SearchService } from "./search/search.service";
 
 const providersList: any = [
   AppDataService,
@@ -105,6 +108,7 @@ const providersList: any = [
   ProcessingService,
   ProcessingAttachmentsService,
   ProcessingDataTypeService,
+  SearchService,
   {
     provide: ErrorHandler,
     useClass: AppErrorHandler,
@@ -164,6 +168,8 @@ export function createTranslateLoader(http: HttpClient) {
     SafeHtmlPipe,
     Nl2brPipe,
     AboutComponent,
+    SearchComponent,
+    ResultItemComponent,
     TemplatesComponent,
     FolderItemComponent,
     ListItemFolderComponent,

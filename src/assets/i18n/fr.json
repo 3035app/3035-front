@@ -11,7 +11,7 @@
     "profile": "Profil",
     "form": {
       "legend": "S'identifier",
-      "username": "identifiant",
+      "username": "Identifiant",
       "password": "Mot de passe",
       "submit": "Se connecter",
       "error" : "Identifiants incorrects"
@@ -78,6 +78,7 @@
     },
     "tools": {
       "title": "Outils",
+      "search": "Rechercher",
       "settings": "Paramètres",
       "accessibility": "Accessibilité malvoyants (couleurs à contraste fort, adapté daltonisme)",
       "help": "Aide",
@@ -1624,5 +1625,23 @@
         }
       }
     }
+  },
+  "search": {
+    "label": "Rechercher",
+    "search-list": {
+      "table-header": {
+        "type": "Type",
+        "structure_name": "Structure",
+        "folder_name": "Dossier",
+        "processing_name": "Fiche de traitement",
+        "link": "Accéder"
+      }
+    },
+    "types": {
+      "structure": "Structure",
+      "folder": "Dossier",
+      "processing": "Fiche de traitement"
+    },
+    "not_found": "Aucun résultat"
   }
 }
