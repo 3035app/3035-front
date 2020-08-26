@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map'
 
@@ -7,7 +6,7 @@ import 'rxjs/add/operator/map'
 export class KnowledgeBaseService {
   allKnowledgeBaseData: any[];
   knowledgeBaseData: any[];
-  previousKnowledgeBaseData: any[];
+  previousKnowledgeBaseData: any[] = [];
   q: string;
   filter: string;
   linkKnowledgeBase: string[] = [];
@@ -132,10 +131,11 @@ export class KnowledgeBaseService {
   private specificSearch() {
     if (this.q && this.q.length > 0) {
       const re = new RegExp(this.q, 'i');
-      this.knowledgeBaseData = this.knowledgeBaseData.filter((item2) => (
+      console.log(this.knowledgeBaseData);
+      this.knowledgeBaseData = this.allKnowledgeBaseData.filter((item2) => (
         this.translateService.instant(item2.name).match(re) || this.translateService.instant(item2.description).match(re))
       );
     }
-    this.hasKnowledgeBaseData = this.knowledgeBaseData.length > 0 ? true : false;
+    this.hasKnowledgeBaseData = this.knowledgeBaseData.length > 0;
   }
 }
