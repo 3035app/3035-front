@@ -381,6 +381,7 @@
       "2": "Validated",
       "3": "Archived"
     },
+    "path": "Assortment",
     "pia-list": {
       "table-header": {
         "name": "Name",

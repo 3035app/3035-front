@@ -28,6 +28,7 @@ interface FolderCsvRow {
 interface ProcessingCsvRow {
   id: number;
   parent_id: number;
+  parent_path: string;
   author: string;
   created_at: string;
   updated_at: string;
@@ -338,6 +339,10 @@ export class CardsComponent implements OnInit {
     return ` <h3>${title}</h3>`
   }
 
+  geth4Title(title: string) {
+    return ` <h4>${title}</h4>`
+  }
+
   getBorderedP(content: string) {
     return `<p style="border: 1px solid #a7a7a7; padding: 0.24cm 0.32cm;">${content}</p>`
   }
@@ -370,7 +375,7 @@ export class CardsComponent implements OnInit {
   }
 
   getPiaInformation(data) {
-    let piaInformations = `${this.geth1Title('PIA information')}`;
+    let piaInformations = `${this.geth2Title(this.translate.instant('summary.title'))}`;
 
     if (data.name && data.name.length > 0) {
       piaInformations += `
@@ -483,6 +488,7 @@ export class CardsComponent implements OnInit {
       ${this.geth1Title(this.translate.instant('summary.processing')+' "'+data.name+'"')}
       
       ${this.getP(data.updated_at)}
+      ${this.getP(this.translate.instant('processing.path')+': '+data.parent_path)}
 
       ${this.geth2Title(this.translate.instant('processing.form.sections.description.title'))}
 
@@ -543,7 +549,7 @@ export class CardsComponent implements OnInit {
   async getRisks(data) {
     if (!data) {return''};
 
-    let risks = `${this.geth1Title(this.translate.instant('sections.3.title'))}`;
+    let risks = `${this.geth2Title(this.translate.instant('sections.3.title'))}`;
     await Promise.all(this._piaService.data.sections.map(async (section) => {
 
       // Taking risks section 3 only
@@ -554,7 +560,7 @@ export class CardsComponent implements OnInit {
           // Measure
           if (item.is_measure) {
               const entries: any = await this.measureApi.getAll(data.id).toPromise();
-              currentRiskSection += `${this.geth2Title(this.translate.instant(item.title))} <br/>`;
+              currentRiskSection += `${this.geth3Title(this.translate.instant(item.title))} <br/>`;
 
               await Promise.all(entries.map(async (measure) => {
                 /* Completed measures */
@@ -564,7 +570,7 @@ export class CardsComponent implements OnInit {
                     evaluation = await this.getEvaluation(section.id, item.id, ref + '.' + measure.id, data.id);
                   }
 
-                  currentRiskSection += `${this.geth3Title(measure.title)}`
+                  currentRiskSection += `${this.geth4Title(measure.title)}`
                   currentRiskSection += `${this.getP(measure.content)}`
 
                   if(evaluation) {
@@ -573,11 +579,11 @@ export class CardsComponent implements OnInit {
                 }
               }));
           } else if (item.questions) { // Question
-            currentRiskSection += `${this.geth2Title(this.translate.instant(item.title))} <br/>`;
+            currentRiskSection += `${this.geth3Title(this.translate.instant(item.title))} <br/>`;
             await Promise.all( item.questions.map(async (question) => {
               const answerModel = await this.answerApi.getByRef(data.id, question.id).toPromise();
 
-              currentRiskSection += `${this.geth3Title(this.translate.instant(question.title))}`
+              currentRiskSection += `${this.geth4Title(this.translate.instant(question.title))}`
 
               /* An answer exists */
               if (answerModel && answerModel.data) {
@@ -635,8 +641,8 @@ export class CardsComponent implements OnInit {
       console.log(e)
     }
 
-    //console.log('folderToExport', this.folderToExport)
-    //console.log('processingToExport', this.processingToExport)
+    //console.info('folderToExport', this.folderToExport)
+    //console.info('processingToExport', this.processingToExport)
 
     let fileData = '';
 
@@ -656,12 +662,12 @@ export class CardsComponent implements OnInit {
 
       ${risks}
 
-        ${this.geth1Title('Action Plan')}
-        ${this.geth2Title('Fundamental principles')}
+        ${this.geth3Title('Action Plan')}
+        ${this.geth4Title('Fundamental principles')}
         ${this.getBorderedP('No action plan recorded.')}
-        ${this.geth2Title('Existing or planned measures')}
+        ${this.geth4Title('Existing or planned measures')}
         ${this.getBorderedP('No action plan recorded.')}
-        ${this.geth2Title('Risks')}
+        ${this.geth4Title('Risks')}
         ${this.getBorderedP('No action plan recorded.')}
       `;
       return Promise.resolve();
@@ -842,7 +848,7 @@ export class CardsComponent implements OnInit {
         const folderIds = folderData.children.map(children => children.id)
         const ProcessingIds = folderData.processings.map(process => process.id)
         try {
-          await this.getDataToExport(folderIds, ProcessingIds, folderData.id)
+          await this.getDataToExport(folderIds, ProcessingIds, folderData)
         } catch (e) {
           console.log(e)
           return Promise.reject(e);
@@ -863,11 +869,12 @@ export class CardsComponent implements OnInit {
     }
   }
 
-  processingToCsv(processing, parentId, id): ProcessingCsvRow {
+  processingToCsv(processing, parent, id): ProcessingCsvRow {
     return {
       id: id,
       name: processing.name,
-      parent_id: parentId,
+      parent_id: parent.id,
+      parent_path: parent.path.replace('/root/','/'),
       author: processing.author,
       created_at: processing.created_at,
       updated_at: processing.updated_at,
