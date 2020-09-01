@@ -366,10 +366,11 @@ export class CardsComponent implements OnInit {
       processingDataTypes += this.getP(`
       <p>- ${this.translate.instant(`processing-data-types.form.${type.reference}`)}</p>
       <p>
-        <span>${this.translate.instant(`processing-data-types.form.retention-period`)} ${type.retention_period} (${this.translate.instant(`types.sensitive ? 'sensitive' : ''`)})</span>
+        <span>${this.translate.instant(`processing-data-types.form.retention-period`)}: ${type.retention_period} (${type.sensitive ? this.translate.instant(`processing-data-types.form.sensitive-affirmative`) : ''})</span>
       </p>
       `)
       )
+      //  <span>${this.translate.instant(`processing-data-types.form.retention-period`)} ${type.retention_period} (${this.translate.instant(type.sensitive ? 'processing-data-types.form.sensitive' : '')})</span>
 
     return processingDataTypes;
   }
@@ -731,17 +732,23 @@ export class CardsComponent implements OnInit {
         'id',
         'name',
         'parent_id',
+        'parent_path',
         'author',
+        'created_at',
+        'updated_at',
+        'concerned_people',
         'consent',
         'context_of_implementation',
         'controllers',
         'description',
         'designated_controller',
         'exactness',
+        'lawfulness',
         'life_cycle',
         'minimization',
         'non_eu_transfer',
         'processors',
+        'rights_guarantee',
         'standards',
         'status',
         'storage',
@@ -873,8 +880,8 @@ export class CardsComponent implements OnInit {
     return {
       id: id,
       name: processing.name,
-      parent_id: parent.id,
-      parent_path: parent.path.replace('/root/','/'),
+      parent_id: parent ? parent.id : null,
+      parent_path: parent ? parent.path.replace('/root/','/') : '/',
       author: processing.author,
       created_at: processing.created_at,
       updated_at: processing.updated_at,

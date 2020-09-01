@@ -4,14 +4,14 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 export const environment = {
   name: 'production',
-  production: false,
-  version: '1.0',
+  production: true,
+  version: '1.8.1',
   rollbar_key: '',
   date_format: 'DD MM YY HH:mm:ss',
   api: {
-    client_id:     '49i8o287f8kk00840cg4ggkws0o0g44ocsogkc0w0g84o80co4',
-    client_secret: '22zpxqpr0r40wo0g8kw00k4kccg0wwkso8ccc0ogsgwogcssss',
-    host:          'http://localhost:8001',
+    client_id:     '5zx51xn59n4sowok44gk080800sscs0kgcwg0wg88c4wcss40o',
+    client_secret: '2skj6sui9mwwws8gsosgw4g4k04o8gkc8kk8cw8s0s4kksow48',
+    host:          'https://inovans.admin.pialab.io',
     token_path:    '/oauth/v2/token'
   }
 };
