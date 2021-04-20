@@ -87,15 +87,6 @@
   }
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  /* CSS Statements that only apply on webkit-based browsers (Chrome, Safari, etc.) */
-  .pia-gaugeBlock {
-    &-background {
-      z-index: 1;
-    }
-  }
-}
-
 // Input with range (gauges)
 input[type=range] {
   /*removes default webkit styles*/
