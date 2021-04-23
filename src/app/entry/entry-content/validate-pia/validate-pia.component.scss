@@ -85,6 +85,19 @@
                 color: $pia-full-white;
               }
             }
+            label {
+              border: solid $pia-green 1px;
+              background-color: $pia-green;
+              color: $pia-full-white;
+              font-weight: bold;
+              .fa-circle {
+                display: none;
+              }
+              .fa-check {
+                display: block;
+                color: $pia-full-white;
+              }
+            }
           }
         }
       }
@@ -116,6 +129,9 @@
           text-decoration: none;
           align-self: center;
           &:last-of-type {
+            padding-top: 4px;
+          }
+          &:first-of-type {
             padding-top: 4px;
           }
         }

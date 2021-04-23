@@ -473,10 +473,10 @@ export class CardsComponent implements OnInit {
       ${this.getBorderedP(data.applied_adjustments)}
       `;
     }
-    if (data.rejected_reason && data.rejected_reason.length > 0) {
+    if (data.rejection_reason && data.rejection_reason.length > 0) {
       piaInformations += `
       ${this.geth3Title(this.translate.instant('summary.rejection_reason'))}
-      ${this.getBorderedP(data.rejected_reason)}
+      ${this.getBorderedP(data.rejection_reason)}
       `;
     }
     return piaInformations;

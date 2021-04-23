@@ -36,14 +36,14 @@ export class RefusePIAComponent implements OnInit {
     });
 
 
-    if (this._piaService.pia.rejected_reason && this._piaService.pia.rejected_reason.length > 0) {
-      this.rejectionReasonForm.controls['rejectionReason'].patchValue(this._piaService.pia.rejected_reason);
+    if (this._piaService.pia.rejection_reason && this._piaService.pia.rejection_reason.length > 0) {
+      this.rejectionReasonForm.controls['rejectionReason'].patchValue(this._piaService.pia.rejection_reason);
       this.rejectionReasonForm.controls['rejectionReason'].disable();
       this.showRejectionReasonButtons = true;
     }
 
-    if (this._piaService.pia.applied_adjustments && this._piaService.pia.rejected_reason
-      && this._piaService.pia.applied_adjustments.length > 0 && this._piaService.pia.rejected_reason.length > 0) {
+    if (this._piaService.pia.applied_adjustments && this._piaService.pia.rejection_reason
+      && this._piaService.pia.applied_adjustments.length > 0 && this._piaService.pia.rejection_reason.length > 0) {
       this.modificationsMadeForm.controls['modificationsMade'].patchValue(this._piaService.pia.applied_adjustments);
       this.modificationsMadeForm.controls['modificationsMade'].disable();
       if (this._piaService.pia.status === 1) {
@@ -110,7 +110,7 @@ export class RefusePIAComponent implements OnInit {
     if (userText && typeof userText === 'string') {
       userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
     }
-    this._piaService.pia.rejected_reason = userText;
+    this._piaService.pia.rejection_reason = userText;
     this._piaService.saveCurrentPia().subscribe(() => {
       if (userText && userText.length > 0) {
         this.rejectionReasonForm.controls['rejectionReason'].disable();

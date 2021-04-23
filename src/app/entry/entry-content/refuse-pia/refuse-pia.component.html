@@ -17,6 +17,7 @@
                 </div>
             </div>
         </form>
+        <!--
         <form [formGroup]="modificationsMadeForm" *ngIf="_piaService.pia.status === 1">
             <div class="pia-entryContentBlock-content-subject">
                 <div class="pia-entryContentBlock-content-subject-title">
@@ -33,8 +34,10 @@
                 </div>
             </div>
         </form>
+        -->
     </div>
 
+    <!--
     <div class="pia-entryContentBlock-footer">
         <div class="pia-entryContentBlock-content-cancelButtons" *ngIf="_piaService.pia.status !== 1">
             <button type="button" class="btn btn-red" [ngClass]="{'btn-active': _piaService.pia.status === 4}" (click)="abandon()"
@@ -44,4 +47,5 @@
         </div>
         <button style="display:block;border-radius:0;width:100%;" [disabled]="!showResendValidationButton" routerLink="/entry/{{_piaService.pia.id}}/section/4/item/4" *ngIf="_piaService.pia.status === 1" class="btn btn-green">{{ 'rejection_page.button.send_for_validation' | translate }}</button>
     </div>
+    -->
 </div>

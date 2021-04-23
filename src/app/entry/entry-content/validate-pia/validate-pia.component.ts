@@ -92,6 +92,15 @@ export class ValidatePIAComponent implements OnInit {
    * Allows users to make a simple validation of a PIA.
    * @memberof ValidatePIAComponent
    */
+  PIARejection() {
+    this._piaService.pia.status = 1;
+    this._piaService.saveCurrentPia().subscribe();
+  }
+
+  /**
+   * Allows users to make a simple validation of a PIA.
+   * @memberof ValidatePIAComponent
+   */
   simplePIAValidation() {
     this._piaService.pia.status = 2;
     this._piaService.saveCurrentPia().subscribe(() => {
