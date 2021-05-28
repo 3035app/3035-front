@@ -110,7 +110,7 @@ export class ProcessingService {
   }
 
   /**
-   * Allow an user to export a Processing.
+   * Allows an user to export a Processing.
    * @param {number} id - The Processing id.
    * @returns {Promise}
    * @memberof ProcessingService

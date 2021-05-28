@@ -686,7 +686,7 @@ export class CardsComponent implements OnInit {
         ${fileData}
       </body>`], {type: mime});
 
-    saveAs(blob, 'Processing & Pia')
+    saveAs(blob, 'Processing-DPIA.odt')
     this.exportIsLoading = false;
   }
 
