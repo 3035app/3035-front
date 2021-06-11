@@ -65,7 +65,7 @@ export class AppComponent {
     ];
 
     roles['ROLE_CONTROLLER'] = roles['ROLE_USER'].concat([
-      'CanEditPIA', 'CanValidatePIA', 'CanCancelValidatePIA', 'CanCancelEvaluatePIA', 'CanAskEvaluatePIA',
+      'CanEditPIA', 'CanValidatePIA', 'CanCancelValidatePIA', 'CanCancelEvaluatePIA', 'CanAskEvaluatePIA', 'CanShowEvaluatePIA',
       'CanEditProcessing',
     ]);
 
@@ -73,7 +73,7 @@ export class AppComponent {
 
     roles['ROLE_DPO'] = roles['ROLE_USER'].concat([
       'CanCreateProcessing', 'CanImportProcessing', 'CanDeleteProcessing',
-      'CanCreatePIA', 'CanCreatePIAExample', 'CanEvaluatePIA', 'CanCancelEvaluatePIA', 'CanDeletePIA',
+      'CanCreatePIA', 'CanCreatePIAExample', 'CanEvaluatePIA', 'CanCancelEvaluatePIA', 'CanDeletePIA', 'CanShowEvaluatePIA',
       'CanCreateFolder',
       'CanEditStructure',
     ]);

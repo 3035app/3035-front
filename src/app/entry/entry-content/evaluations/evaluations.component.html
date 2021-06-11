@@ -1,4 +1,4 @@
-<ng-container *ngxPermissionsOnly="['CanEvaluatePIA']">
+<ng-container *ngxPermissionsOnly="['CanEvaluatePIA', 'CanShowEvaluatePIA']">
   <div class="pia-evaluationBlock" *ngIf="_globalEvaluationService.status >= 3" [ngClass]="{'pia-evaluationBlock-shadowed pia-evaluationBlock-self-padding': item.evaluation_mode === 'item'}">
     <div class="pia-evaluationBlock-title">{{ 'evaluations.title' | translate }}</div>
 
@@ -6,16 +6,28 @@
 
       <!-- Buttons -->
       <div class="pia-evaluationBlock-buttons">
-        <button class="btn btn-red" [ngClass]="{'btn-active': evaluation.status === 1}" [disabled]="evaluation.status === 1 || !_globalEvaluationService.evaluationEditionEnabled" (click)="selectedButton($event, 1)" name="fix" type="submit">
-        {{ 'evaluations.to_correct' | translate }}
-      </button>
-        <button class="btn btn-blue" [ngClass]="{'btn-active': evaluation.status === 2}" [disabled]="evaluation.status === 2 || !_globalEvaluationService.evaluationEditionEnabled" *ngIf="section.id !== 1" (click)="selectedButton($event, 2)" name="improvable"
-          type="submit">
-        {{ 'evaluations.improvable' | translate }}
-      </button>
-        <button class="btn btn-green" [ngClass]="{'btn-active': evaluation.status === 3}" [disabled]="evaluation.status === 3 || !_globalEvaluationService.evaluationEditionEnabled" (click)="selectedButton($event, 3)" name="acceptable" type="submit">
-        {{ 'evaluations.acceptable' | translate }}
-      </button>
+        <ng-container *ngxPermissionsOnly="['CanEvaluatePIA']">
+          <button class="btn btn-red" [ngClass]="{'btn-active': evaluation.status === 1}" [disabled]="evaluation.status === 1 || !_globalEvaluationService.evaluationEditionEnabled" (click)="selectedButton($event, 1)" name="fix" type="submit">
+            {{ 'evaluations.to_correct' | translate }}
+          </button>
+          <button class="btn btn-blue" [ngClass]="{'btn-active': evaluation.status === 2}" [disabled]="evaluation.status === 2 || !_globalEvaluationService.evaluationEditionEnabled" *ngIf="section.id !== 1" (click)="selectedButton($event, 2)" name="improvable" type="submit">
+            {{ 'evaluations.improvable' | translate }}
+          </button>
+          <button class="btn btn-green" [ngClass]="{'btn-active': evaluation.status === 3}" [disabled]="evaluation.status === 3 || !_globalEvaluationService.evaluationEditionEnabled" (click)="selectedButton($event, 3)" name="acceptable" type="submit">
+            {{ 'evaluations.acceptable' | translate }}
+          </button>
+        </ng-container>
+        <ng-container *ngxPermissionsExcept="['CanEvaluatePIA']">
+          <button class="btn btn-red" [ngClass]="{'btn-active': evaluation.status === 1}" disabled="" (click)="false" name="fix" type="submit">
+            {{ 'evaluations.to_correct' | translate }}
+          </button>
+          <button class="btn btn-blue" [ngClass]="{'btn-active': evaluation.status === 2}" disabled="" (click)="false" name="improvable" type="submit">
+            {{ 'evaluations.improvable' | translate }}
+          </button>
+          <button class="btn btn-green" [ngClass]="{'btn-active': evaluation.status === 3}" disabled="" (click)="false" name="acceptable" type="submit">
+            {{ 'evaluations.acceptable' | translate }}
+          </button>
+        </ng-container>
       </div>
 
       <div class="pia-evaluationBlock-content pia-evaluationBlock-measure-{{measureId}} pia-evaluationBlock-question-{{questionId}} fadeIn" [ngClass]="{'hide': evaluation.status <= 0}">
