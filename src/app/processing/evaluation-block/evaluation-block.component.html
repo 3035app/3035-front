@@ -53,3 +53,55 @@
 
   </div>
 </ng-container>
+
+<ng-container *ngIf="processing.status !== processingStatus.STATUS_UNDER_VALIDATION">
+  <div class="form-field evaluation-container" *ngxPermissionsOnly="['CanShowEvaluatePIA']">
+
+    <h2>{{ 'evaluations.title' | translate }}</h2>
+
+    <div class="evaluate-buttons">
+      <button
+        class="btn btn-red"
+        [ngClass]="{'btn-active' : processing.evaluation_state === processingEvaluationStates.EVALUATION_STATE_TO_CORRECT}"
+        disabled=""
+      >
+        {{ 'evaluations.to_correct' | translate }}
+      </button>
+
+      <button
+        class="btn btn-blue"
+        [ngClass]="{'btn-active' : processing.evaluation_state === processingEvaluationStates.EVALUATION_STATE_IMPROVABLE}"
+        disabled=""
+      >
+        {{ 'evaluations.improvable' | translate }}
+      </button>
+
+      <button
+        class="btn btn-green"
+        [ngClass]="{'btn-active' : processing.evaluation_state === processingEvaluationStates.EVALUATION_STATE_ACCEPTABLE}"
+        disabled=""
+      >
+        {{ 'evaluations.acceptable' | translate }}
+      </button>
+    </div>
+
+    <div
+      class="field"
+      id="evaluation_comment"
+      class="pia-questionBlock-contentText"
+    >
+      {{ processing.evaluation_comment }}
+    </div>
+  </div>
+
+  <div class="cancel-evaluation-container" *ngIf="processing.status === processingStatus.STATUS_VALIDATED">
+
+    <button
+      class="btn btn-red"
+      (click)="cancelProcessingValidation()"
+    >
+      {{ 'evaluations.cancel' | translate }}
+    </button>
+
+  </div>
+</ng-container>
