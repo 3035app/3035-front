@@ -83,7 +83,7 @@ export class ValidatePIAComponent implements OnInit {
       return false;
     } else {
       const clickedRadioButton = event.target || event.srcElement || event.currentTarget;
-      clickedRadioButton.setAttribute('disabled', true);
+      //clickedRadioButton.setAttribute('disabled', true); // this aims to be a backstop, avoiding going any back after a validation
       this.checkValidationFormStatus();
     }
   }
