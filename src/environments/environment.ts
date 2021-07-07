@@ -5,13 +5,13 @@
 export const environment = {
   name: 'production',
   production: true,
-  version: '1.8.3',
+  version: '1.8.5',
   rollbar_key: '',
   date_format: 'DD MM YY HH:mm:ss',
   api: {
-    client_id:     '5zx51xn59n4sowok44gk080800sscs0kgcwg0wg88c4wcss40o',
-    client_secret: '2skj6sui9mwwws8gsosgw4g4k04o8gkc8kk8cw8s0s4kksow48',
-    host:          'https://inovans.admin.pialab.io',
+    client_id:     '',
+    client_secret: '',
+    host:          'https://backend.url',
     token_path:    '/oauth/v2/token'
   }
 };
