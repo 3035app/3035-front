@@ -2,7 +2,7 @@
   <span>{{ "search.types." + searchResult.type | translate }}</span>
 </td>
 <td>
-  <span>{{ searchResult.structure_name }}</span>
+  <span [innerHtml]="searchResult.structure_name"></span>
 </td>
 <td>
   <span>{{ searchResult.folder_name }}</span>

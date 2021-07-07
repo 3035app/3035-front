@@ -7,7 +7,7 @@
       <h2 class="page-title">
         
         <i class="fa fa-building" aria-hidden="true"></i>
-        {{structure.name}}
+        <span [innerHtml]="structure.name"></span>
         <div class="structure-info-button">
           <a class="btn btn-green" routerLink="/structure/{{structure.id}}">
             <i class="fa fa-info-circle"></i>
