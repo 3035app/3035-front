@@ -299,9 +299,8 @@
           <label class="title" for="structure-registration_date">{{ 'structure.form.registration_date.title' | translate }}</label>
           <div (click)="editDateField(registrationDate)"
             class="value"
-            [innerHTML]="structureForm.form.controls['registration_date']?.value | date | safeHtml"
             [ngClass]="{ 'hide': (elementId === registrationDate.id) }"
-          ></div>
+          >{{ structureForm.form.controls['registration_date']?.value | date:'dd/MM/y' }}</div>
 
           <input type="date"
             class="field"
