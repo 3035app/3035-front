@@ -133,7 +133,6 @@ export class ReportingComponent implements OnInit {
 
     this.ProcessingByStatus.labels = processingByStatusLabels;
     this.ProcessingByStatus.data[0].data = processingByStatusData;
-
   }
 
   private getPIAStatusLabel(status): string {
@@ -141,7 +140,7 @@ export class ReportingComponent implements OnInit {
   }
 
   private getProcessingStatusLabel(status): string {
-    return status >= 0 ? this.translate.instant(`processing.statuses.${status}`) : 'Unknown';
+    return this.translate.instant(`processing.statuses.${status}`);
   }
 
   async getDataForKpi(folder, processing, parentFolderId = null) {

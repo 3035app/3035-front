@@ -348,10 +348,10 @@
       }
     },
     "statuses": {
-      "0": "En cours",
-      "1": "À valider",
-      "2": "Valide",
-      "3": "Archivé"
+      "STATUS_DOING": "En cours",
+      "STATUS_UNDER_VALIDATION": "À valider",
+      "STATUS_VALIDATED": "Validé",
+      "STATUS_ARCHIVED": "Archivé"
     },
     "path": "Classement",
     "pia-list": {
