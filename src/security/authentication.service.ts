@@ -15,6 +15,7 @@ export class AuthenticationService {
   public profileSubject: BehaviorSubject<UserProfileModel> = new BehaviorSubject<UserProfileModel>(null)
   private readonly apiSettings: any = environment.api;
   private readonly dateFormat: string = environment.date_format;
+  public permisionsAndRolesDescriptions: object[];
 
   constructor(
     private http: HttpClient,
@@ -77,6 +78,7 @@ export class AuthenticationService {
         (profile: UserProfileModel) => {
           this.profileSubject.next(profile);
           this.permissionsService.activateCurrentRoles(profile.roles);
+          this.permisionsAndRolesDescriptions = this.permissionsService.getPermisionsAnRolesDescriptions(profile.roles);
         },
         (err) => {
           console.error(err);

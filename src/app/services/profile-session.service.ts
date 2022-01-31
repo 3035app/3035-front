@@ -10,6 +10,7 @@ export class ProfileSession {
   private _hasPortfolioStructures: boolean = false;
   private _hasOwnStructure: boolean = false;
   private _ownStructure: UserProfileStructure;
+  private _ownRolesAndPermissionsDescriptions: object[];
 
   constructor(
     private authService: AuthenticationService,
@@ -36,33 +37,38 @@ export class ProfileSession {
         this.currentStructure = profile.structure;
       }
     });
+    this._ownRolesAndPermissionsDescriptions = this.authService.permisionsAndRolesDescriptions;
   }
-
+  
   public getCurrentStructure(): UserProfileStructure {
     return this.currentStructure;
   }
-
+  
   public navigateToStructure(structure: UserProfileStructure): void {
     this.currentStructure = structure;
     localStorage.setItem('structure-name', structure.name);
     localStorage.setItem('structure-id', structure.id);
-
+    
     this.router.navigate(['folders']);
   }
-
+  
   public hasOwnStructure(): boolean {
     return this._hasOwnStructure;
   }
-
+  
   public getOwnStructure(): UserProfileStructure {
     return this._ownStructure;
   }
-
+  
   public navigateToOwnStructure() {
     return this.navigateToStructure(this._ownStructure);
   }
-
+  
   public hasPortfolioStructures(): boolean {
     return this._hasPortfolioStructures;
+  }
+  
+  public getOwnRolesAndPermissionsDescriptions(): object[] {
+    return this._ownRolesAndPermissionsDescriptions;
   }
 }

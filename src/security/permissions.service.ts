@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 @Injectable()
 export class PermissionsService {
 
   private rolesAndPermissions: any;
+  public rolesAndPermissionsDescriptions: any;
 
   constructor(
     private ngxPermissionsService: NgxPermissionsService,
@@ -34,5 +34,19 @@ export class PermissionsService {
     });
 
     this.ngxPermissionsService.loadPermissions(permissions);
+  }
+
+  public getPermisionsAnRolesDescriptions(roleNames: string[]): object[] {
+    let descriptions = [];
+    roleNames.forEach((roleName) => {
+      let permissions = [];
+      permissions = permissions.concat(this.rolesAndPermissions[roleName]);
+      let permissionsDescriptions = []
+      permissions.forEach((permission) => {
+        permissionsDescriptions.push(this.rolesAndPermissionsDescriptions[permission])
+      })
+      descriptions.push({ 'role': this.rolesAndPermissionsDescriptions[roleName], 'permissions': permissionsDescriptions });
+    });
+    return descriptions;
   }
 }

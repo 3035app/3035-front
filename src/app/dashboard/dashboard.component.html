@@ -9,6 +9,18 @@
       <span class="error">{{'messages.no_structure_assigned' | translate}}</span>
     </div>
   </div>
+  <div class="row">
+    <h2 class="page-title">{{'dashboard.permissions.title' | translate}}</h2>
+    <div class="small-12 medium-12 columns">
+      <p>{{'dashboard.permissions.description' | translate}}</p>
+      <ul *ngFor="let role of rolesAndPermissionsDescriptions">
+        <li>{{role.role | translate}} :</li>
+        <ul *ngFor="let permission of role.permissions">
+          <li>{{permission | translate}}</li>
+        </ul>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <app-modals></app-modals>
