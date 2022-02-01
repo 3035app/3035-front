@@ -36,8 +36,8 @@ export class ProfileSession {
       if (!this._hasPortfolioStructures) {
         this.currentStructure = profile.structure;
       }
+      this._ownRolesAndPermissionsDescriptions = this.authService.permisionsAndRolesDescriptions;
     });
-    this._ownRolesAndPermissionsDescriptions = this.authService.permisionsAndRolesDescriptions;
   }
   
   public getCurrentStructure(): UserProfileStructure {
