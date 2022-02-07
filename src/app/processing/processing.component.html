@@ -14,42 +14,12 @@
                     <div class="processing-section-body">
 
                         <ng-container *ngFor="let section of sections">
-                            <!-- <div *ngxPermissionsOnly="section.permissions" id="{{section.name}}"> -->
                             <div (click)="changeSection(section.id)" class="processing-section-title {{ section.name }}" [ngClass]="{'active': currentSection.id == section.id}">
                                 {{ section.title | translate }}
                             </div>
-                            <!-- </div> -->
                         </ng-container>
                     </div>
                 </div>
-                <div class="pia-section">
-                    <div class="processing-section-header">
-                        <h1 class="truncate" title="{{ 'processing.form.pia_section.title' | translate }}">
-                            {{ 'processing.form.pia_section.title' | translate }}
-                        </h1>
-                        <a class="fa fa-list fa-2x" routerLink="/processing/{{processing.id}}/pias"
-                            title="{{ 'processing.form.pia_section.list_button' | translate }}"></a>
-                    </div>
-                    <button class="btn btn-green expanded" (click)="_modalsService.openModal('modal-list-new-pia')" *ngxPermissionsOnly="['CanCreatePIA']">
-                        {{ 'processing.form.pia_section.new_pia_button' | translate }}
-                    </button>
-                    <div *ngIf="processing.pias_count > 0">
-                        <ul class="pia-quick-list">
-                            <ng-container *ngFor="let pia of pias">
-                            <li 
-                                *ngIf="pia.status !== 4"
-                                [ngClass]="{'pia-archive': pia.status == 4, 'pia-doing': pia.status == 0, 'pia-refused': pia.status == 1, 'pia-valid': pia.status == 2 || pia.status == 3 }"
-                            >
-                                {{ pia.updated_at | date: 'dd/MM/yyyy' }} | {{ 'pia.statuses.' + pia.status | translate }}
-                                <a routerLink="/entry/{{pia.id}}/section/3/item/1">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </li>
-                            </ng-container>
-                        </ul>
-                    </div>
-                </div>
- 
                 <app-processing-attachments [processing]="processing"></app-processing-attachments>
             </aside>
         </div>
@@ -67,6 +37,18 @@
                     {{ 'processing.form.next' | translate }}
                     <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                 </a>
+                <span *ngIf="currentSection.id == 3 && processing.pias_count == 0" >
+                    <a class="processing-next" (click)="createPia()" *ngxPermissionsOnly="['CanCreatePIA']">
+                        {{ 'processing.form.pia_section.new_pia_button' | translate }}
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    </a>
+                </span>
+                <span *ngIf="currentSection.id == 3 && processing.pias_count > 0">
+                    <a class="processing-next" routerLink="/entry/{{pias[0].id}}/section/3/item/1">
+                        {{ 'processing.pia-list.item.actions.edit' | translate }}
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    </a>
+                </span>
             </div>
         </div>
 
