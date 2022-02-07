@@ -10,12 +10,14 @@ import { ProfileSession } from 'app/services/profile-session.service';
 })
 export class DashboardComponent implements OnInit {
   public items = [];
+  public rolesAndPermissionsDescriptions = [];
 
   constructor(
     private session: ProfileSession,
     private router: Router
   ) {}
-
+  
+  
   ngOnInit(): void {
     if (this.session.hasPortfolioStructures()) {
       this.items.push({title: 'dashboard.items.portfolio', icon: 'fa-briefcase', name: 'portfolio', action: () => {
@@ -27,5 +29,6 @@ export class DashboardComponent implements OnInit {
         this.session.navigateToOwnStructure();
       } });
     }
+    this.rolesAndPermissionsDescriptions = this.session.getOwnRolesAndPermissionsDescriptions();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Renderer2, Pipe, PipeTransform, TemplateRef } from '@angular/core';
+import { Component, Renderer2, Pipe, PipeTransform } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -58,6 +58,7 @@ export class AppComponent {
      /*  PERMISSIONS */
 
     const roles = {};
+    const rolesAndPermissionsDescriptions = {};
 
     roles['ROLE_USER'] = [
       'CanShowProcessing', 'CanShowPIA',
@@ -89,17 +90,12 @@ export class AppComponent {
       'CanImportPIA', 'CanExportPIA', 'CanExportProcessing'
     ]);
 
+    rolesAndPermissionsDescriptions['ROLE_USER'] = 'roles.user';
+    rolesAndPermissionsDescriptions['ROLE_SUPER_ADMIN'] = 'Rôle super administrateur';
+    rolesAndPermissionsDescriptions['CanShowProcessing'] = 'Peut consulter la structure';
+    rolesAndPermissionsDescriptions['CanShowPIA'] = 'Peut consulter les PIAs';
+
+    this.permissionsService.rolesAndPermissionsDescriptions = rolesAndPermissionsDescriptions;
     this.permissionsService.loadRolesAndPermissions(roles);
-/*
-    this.ngxPermissionsConfigurationService.addPermissionStrategy('disable', (templateRef: TemplateRef<any>) => {
-      this._renderer.setAttribute(templateRef.elementRef.nativeElement.nextSibling, 'disabled', 'true');
-    });
-
-    this.ngxPermissionsConfigurationService.addPermissionStrategy('enable', (templateRef: TemplateRef<any>) => {
-      this._renderer.removeAttribute(templateRef.elementRef.nativeElement.nextSibling, 'disabled');
-    });
-
-    this.ngxPermissionsConfigurationService.setDefaultOnUnauthorizedStrategy('disable');
-*/
   }
 }
