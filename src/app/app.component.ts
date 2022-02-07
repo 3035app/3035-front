@@ -64,6 +64,8 @@ export class AppComponent {
       'AccessToContextSection', 'AccessToPrinciplesSection', 'AccessToRisksSection', 'AccessToValidationSection',
     ];
 
+    roles['ROLE_EVALUATOR'] = roles['ROLE_USER'].concat(['CanShowEvaluatePIA', 'CanEvaluatePIA']);
+
     roles['ROLE_CONTROLLER'] = roles['ROLE_USER'].concat([
       'CanEditPIA', 'CanValidatePIA', 'CanCancelValidatePIA', 'CanCancelEvaluatePIA', 'CanAskEvaluatePIA', 'CanShowEvaluatePIA',
       'CanEditProcessing',
