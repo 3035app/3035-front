@@ -24,7 +24,6 @@
           <span class="pia-icons pia-icon-close"></span>
       </button>
       <form class="pia-cardsBlock-item-form" (ngSubmit)="onSubmitProcessing()" [formGroup]="processingForm">
-          
           <div>
               <label for="author">{{ 'homepage.cards.author' | translate }}</label>
               <input formControlName="author" type="text" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}" id="author"
@@ -36,7 +35,6 @@
                   id="designated_controller" required>
           </div>
           <p>&nbsp;</p>
-         
           <div class="pia-cardsBlock-item-btn">
               <button type="submit" [disabled]="processingForm.invalid" class="btn btn-green get-focus" id="processing-save-card-btn">{{ 'homepage.cards.start' | translate }}</button>
           </div>

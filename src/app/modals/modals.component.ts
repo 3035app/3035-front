@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ModalsService } from './modals.service';
 import { MeasureService } from 'app/entry/entry-content/measures/measures.service';
@@ -32,6 +32,7 @@ export class ModalsComponent implements OnInit {
   piaTypes: any;
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     public _modalsService: ModalsService,
     public _piaService: PiaService,
@@ -51,12 +52,17 @@ export class ModalsComponent implements OnInit {
       validator_name: new FormControl(),
       type: new FormControl()
     });
-
+    
     this.processingForm = new FormGroup({
       name: new FormControl(),
       author: new FormControl(),
-      designated_controller: new FormControl()
+      designated_controller: new FormControl(),
+      evaluator_name: new FormControl(),
+      validator_name: new FormControl()
     });
+    if (this.route.snapshot.data.processing) {
+      this.piaForm.setValue({author_name: this.route.snapshot.data.processing.author ? this.route.snapshot.data.processing.author : '', evaluator_name: this.route.snapshot.params.evaluator_name && this.route.snapshot.params.evaluator_name !== 'null' ? this.route.snapshot.params.evaluator_name : '', validator_name: this.route.snapshot.params.validator_name && this.route.snapshot.params.validator_name !== 'null' ? this.route.snapshot.params.validator_name : '', type: 'advanced'});
+    }
 
     this.folderForm = new FormGroup({
       name: new FormControl(),
@@ -89,6 +95,7 @@ export class ModalsComponent implements OnInit {
    */
   onSubmit() {
     const pia = new PiaModel();
+    console.log(this.piaForm.value.author_name, this.piaForm.value.evaluator_name, this.piaForm.value.validator_name)
     pia.author_name = this.piaForm.value.author_name;
     pia.evaluator_name = this.piaForm.value.evaluator_name;
     pia.validator_name = this.piaForm.value.validator_name;
@@ -115,7 +122,7 @@ export class ModalsComponent implements OnInit {
 
     this._processingApi.create(processing, this._piaService.currentFolder).subscribe((newProcessing: ProcessingModel) => {
       this.piaForm.reset();
-      this.router.navigate(['processing', newProcessing.id]);
+      this.router.navigate(['processing', newProcessing.id, {evaluator_name: this.processingForm.value.evaluator_name, validator_name: this.processingForm.value.validator_name}]);
     });
   }
 
