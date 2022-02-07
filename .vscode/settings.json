@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "Processing and PIA"
+        "Processing and PIA",
+        "vscode"
     ]
 }
