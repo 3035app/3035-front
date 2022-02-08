@@ -58,16 +58,15 @@ export class AppComponent {
      /*  PERMISSIONS */
 
     const roles = {};
-    const rolesAndPermissionsDescriptions = {};
 
     roles['ROLE_USER'] = [
       'CanShowProcessing', 'CanShowPIA',
       'AccessToContextSection', 'AccessToPrinciplesSection', 'AccessToRisksSection', 'AccessToValidationSection',
     ];
 
-    roles['ROLE_REDACTOR'] = roles['ROLE_USER'].concat(['CanShowEvaluatePIA', 'CanEditPIA', 'CanEditProcessing', 'CanAskEvaluatePIA', 'CanCreatePIA']);
+    roles['ROLE_REDACTOR'] = roles['ROLE_USER'].concat(['CanCreateProcessing', 'CanEditProcessing', 'CanCreatePIA', 'CanEditPIA', 'CanAskEvaluatePIA', 'CanCancelEvaluatePIA']);
 
-    roles['ROLE_EVALUATOR'] = roles['ROLE_USER'].concat(['CanShowEvaluatePIA', 'CanEvaluatePIA']);
+    roles['ROLE_EVALUATOR'] = roles['ROLE_USER'].concat(['CanShowEvaluatePIA', 'CanEvaluatePIA', 'CanCancelValidatePIA']);
 
     roles['ROLE_CONTROLLER'] = roles['ROLE_USER'].concat([
       'CanEditPIA', 'CanValidatePIA', 'CanCancelValidatePIA', 'CanCancelEvaluatePIA', 'CanAskEvaluatePIA', 'CanShowEvaluatePIA',
@@ -90,12 +89,6 @@ export class AppComponent {
       'CanImportPIA', 'CanExportPIA', 'CanExportProcessing'
     ]);
 
-    rolesAndPermissionsDescriptions['ROLE_USER'] = 'roles.user';
-    rolesAndPermissionsDescriptions['ROLE_SUPER_ADMIN'] = 'Rôle super administrateur';
-    rolesAndPermissionsDescriptions['CanShowProcessing'] = 'Peut consulter la structure';
-    rolesAndPermissionsDescriptions['CanShowPIA'] = 'Peut consulter les PIAs';
-
-    this.permissionsService.rolesAndPermissionsDescriptions = rolesAndPermissionsDescriptions;
     this.permissionsService.loadRolesAndPermissions(roles);
   }
 }
