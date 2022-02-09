@@ -1649,7 +1649,37 @@
     },
     "not_found": "Aucun résultat"
   },
-  "roles": {
-    "user": "Rôle utilisateur"
+  "role_description": {
+    "welcome": "Bonjour",
+    "reminder": "Nous vous rappelons que vous pouvez consulter la documentation sur le sharepoint des DPO.",
+    "conclusion": "Nous vous souhaitons une bonne navigation sur l'application.",
+    "ROLE_USER": {
+      "label": "Invité",
+      "description": "Votre profil PiaLab vous permet de consulter les fiches de traitement et analyses d'impact pour lesquelles vous avez des droits d'accès."
+    },
+    "ROLE_REDACTOR": {
+      "label": "Rédacteur",
+      "description": "Votre profil PiaLab vous permet de créer et compléter des fiches de traitement et analyses d'impact, les soumettre à l'évaluateur pour validation, et accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Vous pouvez également utiliser les fonctionnalités d'export à votre disposition. Des notifications vous seront adressées par email dès lors que des modifications interviendront sur les fiches de traitement et analyses d'impact qui relèvent de votre périmètre. Vous pourrez interagir avec l'évaluateur via la fonctionnalité de commentaires implémentée au sein des fiches de traitement et analyse d'impact."
+    },
+    "ROLE_EVALUATOR": {
+      "label": "Evaluateur",
+      "description": "Votre profil PiaLab vous permet d'évaluer les fiches de traitement et analyses d'impact qui vous sont soumises par leur rédacteur et accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Vous pouvez également utiliser les fonctionnalités d'export à votre disposition. Dès lors que vous refusez la validation d'une fiche de traitement ou d'une analyse d'impact, son rédacteur en est informé pour qu'il puisse la modifier et vous la soumettre de nouveau. Vous pouvez commenter lorsque vous le souhaitez les informations complétées par le rédacteur pour qu'il puisse visualiser vos différentes remarques. Dès lors que vous validez une fiche de traitement et une analyse d'impact, elle est soumise pour avis au DPO. Des notifications vous seront adressées par email dès lors que des modifications interviendront sur les fiches de traitement et analyses d'impact qui relèvent de votre périmètre."
+    },
+    "ROLE_DPO": {
+      "label": "DPO",
+      "description": "Votre profil PiaLab vous permet d'émettre un avis sur les analyses d'impact qui ont été préalablement évaluées par l'évaluateur. Vous pouvez également utiliser les fonctionnalités d'export à votre disposition. Dès lors que vous émettez un avis favorable sur une analyse d'impact, elle est soumise pour validation au responsable de traitement."
+    },
+    "ROLE_SHARED_DPO": {
+      "label": "DPO mutualisé",
+      "description": "Votre profil PiaLab vous permet d'émettre un avis sur les analyses d'impact qui ont été préalablement évaluées par l'évaluateur. Vous pouvez également utiliser les fonctionnalités d'export à votre disposition. Dès lors que vous émettez un avis favorable sur une analyse d'impact, elle est soumise pour validation au responsable de traitement."
+    },
+    "ROLE_CONTROLLER": {
+      "label": "Responsable de traitement",
+      "description": "Votre profil PiaLab vous permet de valider les fiches de traitement et analyses d'impact qui ont été préalablement évaluées par l'évaluateur et pour lesquelles un avis a été émis par le DPO et le cas échéant par les personnes concernées. Vous pouvez accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Dès lors que vous refusez la validation d'une analyse d'impact, l'ensemble des parties prenantes sont informées (rédacteur, évaluateur, DPO). Dès lors que vous validez une analyse d'impact, il vous sera proposé de la signer."
+    },
+    "ROLE_CONTROLLER_MULTI": {
+      "label": "Responsable de traitement multi-registre",
+      "description": "Votre profil PiaLab vous permet de valider les fiches de traitement et analyses d'impact qui ont été préalablement évaluées par l'évaluateur et pour lesquelles un avis a été émis par le DPO et le cas échéant par les personnes concernées. Vous pouvez accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Dès lors que vous refusez la validation d'une analyse d'impact, l'ensemble des parties prenantes sont informées (rédacteur, évaluateur, DPO). Dès lors que vous validez une analyse d'impact, il vous sera proposé de la signer."
+    }
   }
 }

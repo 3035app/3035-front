@@ -10,7 +10,7 @@ import { ProfileSession } from 'app/services/profile-session.service';
 })
 export class DashboardComponent implements OnInit {
   public items = [];
-  public rolesAndPermissionsDescriptions = [];
+  public higherRole = {};
 
   constructor(
     private session: ProfileSession,
@@ -29,6 +29,6 @@ export class DashboardComponent implements OnInit {
         this.session.navigateToOwnStructure();
       } });
     }
-    this.rolesAndPermissionsDescriptions = this.session.getOwnRolesAndPermissionsDescriptions();
+    this.higherRole = this.session.getOwnHigherRole();
   }
 }

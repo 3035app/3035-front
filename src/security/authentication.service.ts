@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { environment } from 'environments/environment';
 import { User } from '@security/user.model';
 import { PermissionsService } from '@security/permissions.service';
 import { UserProfileApi, UserTokenApi } from '@api/services';
 import { UserProfileModel, UserTokenModel } from '@api/models';
-import * as Moment from 'moment';
 
 @Injectable()
 export class AuthenticationService {
@@ -18,7 +15,6 @@ export class AuthenticationService {
   public permisionsAndRolesDescriptions: object[];
 
   constructor(
-    private http: HttpClient,
     private permissionsService: PermissionsService,
     private userProfileApi: UserProfileApi,
     private userTokenApi: UserTokenApi
@@ -78,7 +74,6 @@ export class AuthenticationService {
         (profile: UserProfileModel) => {
           this.profileSubject.next(profile);
           this.permissionsService.activateCurrentRoles(profile.roles);
-          this.permisionsAndRolesDescriptions = this.permissionsService.getPermisionsAnRolesDescriptions(profile.roles);
         },
         (err) => {
           console.error(err);
