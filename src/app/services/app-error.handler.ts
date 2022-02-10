@@ -7,10 +7,12 @@ import { AuthenticationService } from '@security/authentication.service'
 
 @Injectable()
 export class AppErrorHandler implements ErrorHandler {
+  private higherRole: {role: string, label: string, description};
 
-  constructor(private i18n: TranslateService, @Inject(Injector) private readonly injector: Injector) {
-
-  }
+  constructor(
+    private i18n: TranslateService,
+    @Inject(Injector) private readonly injector: Injector
+  ) {}
 
   private get toastr(): ToastrService {
     return this.injector.get(ToastrService);
@@ -29,6 +31,7 @@ export class AppErrorHandler implements ErrorHandler {
   }
 
   handleHttpError(httpError: HttpErrorResponse) {
+    this.higherRole = this.auth.getOwnHigherRole();
 
     let trans = 'messages.http.' + httpError.status;
     if (httpError.error.error_code) {
@@ -36,7 +39,7 @@ export class AppErrorHandler implements ErrorHandler {
     }
 
     this.toastr.error(
-      this.i18n.instant(trans+'.content'),
+      this.i18n.instant(trans+'.content', { role_label: this.higherRole.label }),
       this.i18n.instant(trans+'.title')
     );
     switch (httpError.status) {

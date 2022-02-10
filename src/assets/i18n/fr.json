@@ -42,8 +42,8 @@
         "content": "Vous n'êtes pas autorisé à faire cette action"
       },
       "403": {
-        "title": "Action non-autorisée",
-        "content": "Vous n'êtes pas autorisé à faire cette action"
+        "title": "Vous n'avez pas les droits pour cette action",
+        "content": "Vous avez un profil {{role_label}} ; vous n'avez donc pas les droits pour cette action."
       },
       "409": {
         "title": "Conflit détecté",
