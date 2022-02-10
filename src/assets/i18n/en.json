@@ -7,19 +7,23 @@
     "description": "This software by the is meant to guide the data controllers in building and demonstrating compliance to the GDPR. It helps to properly carry out a data protection impact assessment by facilitating the use of the PIA method developed by the CNIL.",
     "start": "Start"
   },
-  "dashboard":{
-    "title" : "Dashboard",
-    "items" :{
-      "portfolio" : "Portfolio",
-      "processings" : "Data processing register"
+  "dashboard": {
+    "title": "Dashboard",
+    "items": {
+      "portfolio": "Portfolio",
+      "processings": "Data processing register"
+    },
+    "permissions": {
+      "title": "Mes droits au sein de l'application",
+      "description": "Bonjour, voici le détail de vos rôles au sein de l'application ainsi qu'une description des droits accordés :"
     }
   },
-  "portfolio":{
-    "title" : "Customer Portfolio"
+  "portfolio": {
+    "title": "Customer Portfolio"
   },
   "messages": {
-    "no_structure_assigned":"No structure is assigned to you",
-    "client_error":{
+    "no_structure_assigned": "No structure is assigned to you",
+    "client_error": {
       "title": "An error occurred",
       "content": "Please contact your administrator"
     },
@@ -149,7 +153,7 @@
         },
         "edit_pia": "Edit PIA",
         "consult_pia": "Consult PIA",
-        "back_to_parent":"Back"
+        "back_to_parent": "Back"
       }
     },
     "lists": {
@@ -310,7 +314,7 @@
         "title": "Quels sont les référenciels applicables ?",
         "placeholder": "Listez les référenciels qui concernent ce traitement"
       },
-      "non-eu-transfer":  {
+      "non-eu-transfer": {
         "title": "Transfert hors UE",
         "placeholder": "Laisser vide si pas de transfert de données hors UE"
       },

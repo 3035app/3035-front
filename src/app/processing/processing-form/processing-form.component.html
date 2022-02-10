@@ -19,18 +19,19 @@
   <main>
 
     <form id="processing-form" #processingForm="ngForm">
-
-      <div 
-        class="form-field cancel-validate-container" 
-        *ngIf="processing.status === processingStatus.STATUS_UNDER_VALIDATION"
-      >
-        <a
-          class="cancel-validation-link" 
-          (click)="cancelAskValidation()"
+      <ng-container *ngxPermissionsOnly="['CanCancelAskEvaluateProcessing']">
+        <div 
+          class="form-field cancel-validate-container" 
+          *ngIf="processing.status === processingStatus.STATUS_UNDER_VALIDATION"
         >
-          {{ 'processing.form.cancel_ask_validate_button' | translate }}
-        </a>
-      </div>
+          <a
+            class="cancel-validation-link" 
+            (click)="cancelAskValidation()"
+          >
+            {{ 'processing.form.cancel_ask_validate_button' | translate }}
+          </a>
+        </div>
+      </ng-container>
 
       <ng-container *ngIf="processing.status === processingStatus.STATUS_VALIDATED">
         <div class="validated-label" *ngIf="processing.evaluation_state === processingEvaluationStates.EVALUATION_STATE_ACCEPTABLE">

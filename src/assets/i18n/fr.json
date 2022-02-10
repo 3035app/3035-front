@@ -14,22 +14,26 @@
       "username": "Identifiant",
       "password": "Mot de passe",
       "submit": "Se connecter",
-      "error" : "Identifiants incorrects"
+      "error": "Identifiants incorrects"
     }
   },
-  "dashboard":{
-    "title" : "Tableau de bord",
-    "items" :{
-      "portfolio" : "Portefeuille Client",
-      "processings" : "Registre des traitements"
+  "dashboard": {
+    "title": "Tableau de bord",
+    "items": {
+      "portfolio": "Portefeuille Client",
+      "processings": "Registre des traitements"
+    },
+    "permissions": {
+      "title": "Mes droits au sein de l'application",
+      "description": "Bonjour, voici le détail de vos rôles au sein de l'application ainsi qu'une description des droits accordés :"
     }
   },
-  "portfolio":{
-    "title" : "Portefeuille client"
+  "portfolio": {
+    "title": "Portefeuille client"
   },
   "messages": {
-    "no_structure_assigned":"Aucune structure ne vous est assignée",
-    "client_error":{
+    "no_structure_assigned": "Aucune structure ne vous est assignée",
+    "client_error": {
       "title": "Une erreur est survenue",
       "content": "Veuillez contacter votre administrateur"
     },
@@ -144,7 +148,7 @@
       "pia_types": {
         "regular": "Traitement",
         "simplified": "Traitement simplifié",
-        "advanced"  : "Traitement avec analyse d'impact"
+        "advanced": "Traitement avec analyse d'impact"
       },
       "pias_number": "Nombre de PIA",
       "folder": {
@@ -166,7 +170,7 @@
         },
         "edit_pia": "Éditer le PIA",
         "consult_pia": "Consulter le PIA",
-        "back_to_parent":"Retour",
+        "back_to_parent": "Retour",
         "edit_processing": "Éditer le traitement",
         "consult_processing": "Consulter le traitement"
       }
@@ -302,7 +306,7 @@
         "title": "Les données sont-elles exactes et tenues à jour ?",
         "placeholder": "Décrivez les mesures prévues pour assurer la qualité et la pertinence des données."
       },
-      "non-eu-transfer":  {
+      "non-eu-transfer": {
         "title": "En cas de transfert de données en dehors de l'Union européenne, les données sont-elles protégées de manière équivalente ?",
         "placeholder": "Pour chaque pays en dehors de l'Union européenne où des données sont stockées ou traitées, identifiez-le et indiquez s'il est reconnu comme adéquat ou décrivez les clauses qui encadrent le transfert.(Laisser vide si pas de transfert de données hors UE)"
       },
@@ -543,47 +547,47 @@
       "PIA_VAL_DPO": {
         "name": "Avis du délégué à la protection des données",
         "description": "L'article <a target=\"_blank\" href=\"https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre4#Article35\">35-2 du RGPD</a>, dispose que le responsable de traitement demande conseil au délégué à la protection des données lors d'une analyse d'impact relative à la protection des données.<br><strong>Cet avis peut être défavorable à la mise en œuvre du traitement, sans pour autant contraindre la décision du responsable de traitement.</strong>",
-    		"source": "PIAF Objets connectés p36"
+        "source": "PIAF Objets connectés p36"
       },
       "PIA_VAL_CONC": {
         "name": "Avis des personnes concernées",
         "description": "L'article <a target=\"_blank\" href=\"https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre4#Article35\">35-9 du RGPD</a>, dispose que le responsable de traitement demande l'avis des personnes concernées le cas échéant.<br>Cet avis peut être recueilli par divers moyens, selon le contexte (étude interne ou externe concernant la finalité et les moyens du traitement, question aux représentants du personnel ou aux syndicats, enquête auprès des futurs clients du responsable de traitement.<br><strong>Si le responsable de traitement décide de passer outre</strong> l’avis des personnes concernées, il doit <strong>consigner la justification de sa décision.</strong><br>Si le responsable de traitement considère que <br>recueillir l’avis des personnes concernées n’est pas pertinent</strong>, il doit également en <strong>consigner la justification.</strong>",
-    		"source": "PIAF Objets connectés p39"
+        "source": "PIAF Objets connectés p39"
       },
       "PIA_VAL_RT": {
         "name": "Validation du responsable de traitement",
         "description": "<strong>Le responsable de traitement décide formellement</strong> de l’acceptabilité des mesures choisies, des risques résiduels et du plan d'action, de manière argumentée, au regard des enjeux préalablement identifiés et de l'avis des parties prenantes. Le PIA peut ainsi être :<br>- validé ;<br>- à améliorer (expliquer en quoi) ;<br>- refusé (ainsi que le traitement considéré).<br>Le cas échéant, il conviendra de revoir les étapes précédentes pour que le PIA puisse être validé.<br>Cette décision ne préjuge en rien de l’évaluation de conformité qui peut être faite, le cas échéant, par l'autorité de protection des données (en France, la CNIL), par exemple dans le cadre de formalités préalables ou de contrôles.",
-		    "source": "PIAF Objets connectés p 40"
+        "source": "PIAF Objets connectés p 40"
       },
       "PIA_TEC_ANO": {
         "placeholder": "Décrivez ici les mécanismes d’anonymisation mis en oeuvre",
         "name": "Anonymisation",
         "description": "Description des mécanismes d’anonymisation, des garanties qu'ils apportent contre une réidentification éventuelle et à quelle fin ils sont mis en oeuvre.",
-    		"source": "Aucune"
+        "source": "Aucune"
       },
       "PIA_TEC_CLO": {
         "placeholder": "Indiquez ici si un cloisonnement du traitement est prévu, et comment il est réalisé.",
         "name": "Cloisonnement",
         "description": "Méthodes utilisées pour cloisonner le traitement.",
-    		"source": "Aucune"
+        "source": "Aucune"
       },
       "PIA_TEC_CHIF": {
         "placeholder": "Décrivez ici les moyens cryptographiques mis en œuvre pour assurer la confidentialité et l'intégrité des données",
         "name": "Chiffrement",
         "description": "Moyens mis en œuvre pour <strong>assurer la confidentialité des données</strong> conservées (en base de données, dans des fichiers plats, dans les sauvegardes, etc.) ainsi que les modalités de gestion des clés de chiffrement (création, conservation, modification en cas de suspections de compromission, etc.). <br><br> Détaillez les moyens de chiffrement employés pour les flux de données (VPN, TLS, etc.) intégrés dans le traitement.",
-    		"source": "PIAF objets connectés p23"
+        "source": "PIAF objets connectés p23"
       },
       "PIA_TEC_CTLA": {
         "placeholder": "Indiquez ici comment les profils utilisateurs sont définis et attribués.",
         "name": "Contrôle des accès logiques",
         "description": "Description de la manière dont les profils utilisateurs sont définis et attribués. Il conviendra de détailler les moyens d’<strong>authentification</strong> mis en œuvre en précisant, le cas échéant précisez les règles applicables aux mots de passe (longueur minimale, structure obligatoire, durée de validité, nombre de tentatives infructueuses avant blocage du compte, etc.).",
-    		"source": "PIAF Objets connectés p21"
+        "source": "PIAF Objets connectés p21"
       },
       "PIA_TEC_LOG": {
         "placeholder": "Indiquez ici si des événements sont journalisés et la durée de conservation de ces traces.",
         "name": "Journalisation",
         "description": "Politiques de journalisation des événements et de conservation des traces qui en résultent.",
-    		"source": "Aucune"
+        "source": "Aucune"
       },
       "PIA_TEC_ARCH": {
         "placeholder": "Indiquez ici l'ensemble des modalités de conservation et gestion d’archives électroniques contenant des données à caractère personnel.",
@@ -595,13 +599,13 @@
         "placeholder": "Indiquez ici les procédures concernant le cycle de vie des documents papier contenant des données à caractère personnel.",
         "name": "Sécurisation des documents papier",
         "description": "Politiques concernant les documents papiers contenant des données sont utilisés dans le cadre du traitement. Elles décrivent comment ils sont imprimés, stockés, détruits et échangés.",
-    		"source": "PIAF Objets connectés p21"
+        "source": "PIAF Objets connectés p21"
       },
       "PIA_TEC_MINI": {
-        "placeholder":"Décrivez ici les méthodes mises en oeuvre pour réduire la sensibilité des données.",
+        "placeholder": "Décrivez ici les méthodes mises en oeuvre pour réduire la sensibilité des données.",
         "name": "Minimisation des données",
         "description": "La sensibilité des données peut être réduite à l'aide des méthodes suivantes : filtrage et retrait, réduction de la sensibilité par transformation, réduction du caractère identifiant des données, réduction de l'accumulation de données, restriction de l’accès aux données",
-    		"source": "PIAF objets connectés p41"
+        "source": "PIAF objets connectés p41"
       },
       "PIA_SEC_EXP": {
         "placeholder": "Décrivez ici les moyens mis en oeuvre pour garantir la mise à jour et le niveau de sécurité des logiciels utilisés.",
@@ -616,10 +620,10 @@
         "source": "WIKI Lutte_contre_les_logiciels_malveillants"
       },
       "PIA_SEC_COMP": {
-        "placeholder":"Décrivez ici les mesures prises afin de diminuer les risques d'attaques contre les logiciels exploités par le traitement.",
+        "placeholder": "Décrivez ici les mesures prises afin de diminuer les risques d'attaques contre les logiciels exploités par le traitement.",
         "name": "Gestion des postes de travail",
         "description": "Mesures prises afin de diminuer la possibilité que les caractéristiques des logiciels (systèmes d’exploitation,applications métiers, logiciels bureautiques, paramétrages…) ne soient exploitées pour porter atteinte aux données à caractère personnel (mises à jour, protection physique et des accès, travail sur un espace réseau sauvegardé, contrôleurs d’intégrité, journalisation, etc.).",
-        "source":"WIKI Gestion_des_postes_de_travail"
+        "source": "WIKI Gestion_des_postes_de_travail"
       },
       "PIA_SEC_WEB": {
         "placeholder": "Décrivez ici les méthodes et moyens mis en oeuvre pour protéger les sites web.",
@@ -628,7 +632,7 @@
         "source": "WIKI Sécurité_des_sites_web"
       },
       "PIA_SEC_BKP": {
-        "placeholder":"Indiquez ici comment les sauvegardes sont gérées et conservées.",
+        "placeholder": "Indiquez ici comment les sauvegardes sont gérées et conservées.",
         "name": "Sauvegarde des données",
         "description": "Existence d'une politique de sauvegarde permettant d'assurer la disponibilité et/ou l’intégrité des données à caractère personnel, tout en protégeant leur confidentialité (régularité des sauvegardes, chiffrement du canal de transmission des données, test d'intégrité, etc.).",
         "source": "WIKI Sauvegardes"
@@ -640,7 +644,7 @@
         "source": "PIAF Objets connectés p25"
       },
       "PIA_SEC_CTR": {
-        "placeholder":"Décrivez ici les garanties contractuelles assurant la protection des données à caractère personnel confiées à des sous traitant.",
+        "placeholder": "Décrivez ici les garanties contractuelles assurant la protection des données à caractère personnel confiées à des sous traitant.",
         "name": "Contrat de sous-traitance",
         "description": "Les données à caractère personnel communiquées à ou gérées par des sous-traitants doivent bénéficier de garanties suffisantes. <strong>Faire appel uniquement à des sous-traitants présentant des garanties suffisantes</strong> (notamment en termes de connaissances spécialisées, de fiabilité et de ressources). Exiger la communication par le prestataire de sa politique de sécurité des systèmes d’information. <br>Prendre et documenter les moyens (audits de sécurité, visite des installations, etc.) permettant d’<strong>assurer l’effectivité des garanties offertes par le sous-traitant<strong> en matière de protection des données. Ces garanties incluent notamment :<br> - le chiffrement des données selon leur sensibilité ou à défaut l’existence de procédures garantissant que la société de prestation n’a pas accès aux données qui lui sont confiées<br>- le chiffrement des transmissions de données (ex : connexion de type HTTPS, VPN, etc.)<br>- des garanties en matière de protection du réseau, de traçabilité (journaux, audits), de gestion des habilitations, d’authentification, etc.<br><strong>Prévoir un contrat avec les sous-traitants</strong>, qui définit notamment l’objet, la durée, la finalité du traitement et les obligations des parties. S’assurer qu’il contient en particulier des dispositions fixant :<br>- leur obligation en matière de confidentialité des données personnelles confiées<br>- des contraintes minimales en matière d’authentification des utilisateurs<br>- les conditions de restitution et/ou de destruction des données en fin du contrat<br>- les règles de gestion et de notification des incidents. Celles-ci devraient comprendre une information du responsable de traitement en cas de découverte de faille de sécurité ou d’incident de sécurité et cela dans les plus brefs délais lorsqu’il s’agit d’une violation de données à caractère personnel.<br>- Dans le cas de l’utilisation de fournisseur de cloud computing :<br>\t1. identifier clairement les données et les traitements qui passeront dans le cloud ;<br>\t2. définir ses propres exigences de sécurité technique et juridique ;<br>\t3. conduire une étude de risques afin d'identifier les mesures de sécurité appropriées ;<br>\t4. identifier le type de cloud pertinent pour le traitement envisagé ;<br>\t5. choisir un prestataire présentant des garanties suffisantes ;<br>\t6. revoir la politique de sécurité interne ;<br>\t7. surveiller les évolutions dans le temps.",
         "source": "Guide Bleu 2017 p19 et https://www.cnil.fr/fr/cloud-computing-les-conseils-de-la-cnil-pour-les-entreprises-qui-utilisent-ces-nouveaux-services"
@@ -649,58 +653,58 @@
         "placeholder": "Indiquez ici sur quel type de réseau le traitement est mis en œuvre et les équipements assurant sa sécurisation.",
         "name": "Sécurisation des canaux informatiques",
         "description": "En fonction du type de réseau sur lequel le traitement est mis en œuvre (isolé, privé, ou Internet), le responsable de traitement doit mettre en place des systèmes de protection adéquats : pare-feu, sondes de détection d'intrusion ou autres dispositifs actifs ou passifs sont chargés d'assurer la sécurité du réseau.",
-    		"source": "PIAF Objets connectés p25"
+        "source": "PIAF Objets connectés p25"
       },
       "PIA_SEC_PHY": {
-        "placeholder":"Indiquez ici la manière dont est réalisée le contrôle d’accès physique aux locaux hébergeant le traitement.",
+        "placeholder": "Indiquez ici la manière dont est réalisée le contrôle d’accès physique aux locaux hébergeant le traitement.",
         "name": "Sécurité physique",
         "description": "Existence d'un contrôle des accès physique aux locaux hébergeant le traitement (zonage, accompagnement des visiteurs, port de badge, portes verrouillées, etc.).<br>Indiquez s’il existe des moyens d’alerte en cas d’effraction.",
-    		"source": "PIAF Objets connectés p25"
+        "source": "PIAF Objets connectés p25"
       },
       "PIA_SEC_LOG": {
-        "placeholder":"Décrivez ici les mesures mises en place pour être capable de détecter les incidents concernant des données à caractère personnel.",
+        "placeholder": "Décrivez ici les mesures mises en place pour être capable de détecter les incidents concernant des données à caractère personnel.",
         "name": "Traçabilité",
         "description": "Existence de mesures mises en place pour être capable de détecter les incidents concernant des données à caractère personnel de façon précoce et de disposer d’éléments exploitables pour les étudier ou pour fournir des preuves dans le cadre d’enquêtes  (architecture et politique de journalisation, respect des obligation en matière de protection des données à caractère personnel, etc.).",
         "source": "WIKI Surveillance"
       },
       "PIA_SEC_MAT": {
-        "placeholder":"Décrivez ici les méthodes et moyens mis en place pour limiter les risques d'attaques contre le matériel utilisé par le traitement.",
+        "placeholder": "Décrivez ici les méthodes et moyens mis en place pour limiter les risques d'attaques contre le matériel utilisé par le traitement.",
         "name": "Sécurisation des matériels",
         "description": "Existence de mesures prises pour diminuer la possibilité que les caractéristiques des matériels (serveurs, postes fixes, ordinateurs portables, périphériques, relais de communication, supports amovibles, etc.) soient exploitées pour porter atteinte aux données à caractère personnel (inventaire, cloisonnement, redondance matérielle, limiter l'accès, etc.).",
         "source": "WIKI Sécurité_des_matériels"
       },
       "PIA_SEC_SRC": {
-        "placeholder":"Décrivez les méthodes et moyens mis en place pour éviter les risques qui peuvent l'être.",
+        "placeholder": "Décrivez les méthodes et moyens mis en place pour éviter les risques qui peuvent l'être.",
         "name": "Eloignement des sources de risques",
         "description": "Existence de mesures pour éviter que des sources de risques, humaines ou non humaines, auxquelles il est possible de ne pas être confronté, portent atteinte aux données à caractère personnel (produits dangereux, zones géographiques dangereuses, transfert des données en dehors de l'UE, etc.).",
-    		"source": "WIKI Éloignement_des_sources_de_risques"
+        "source": "WIKI Éloignement_des_sources_de_risques"
       },
       "PIA_SEC_PROT": {
-        "placeholder":"Décrivez ici les mesures prises pour réduire ou éviter les risques liés à des sources non humaines.",
+        "placeholder": "Décrivez ici les mesures prises pour réduire ou éviter les risques liés à des sources non humaines.",
         "name": "Protection contre les sources de risques non humaines",
         "description": "Existence de mesures pour réduire ou éviter les risques liés à des sources non humaines (phénomènes climatiques, incendie, dégât des eaux, accidents internes ou externes, animaux, etc.) qui pourraient affecter la sécurité des données à caractère personnel  (mesures de prévention, détection, protection, etc.).",
         "source": "WIKI Protection_contre_les_sources_de_risques_non_humaines"
       },
       "PIA_ORG_ORG": {
-        "placeholder":"Décrivez ici l'organisation de la protection de la vie privée au sein de votre organisme.",
+        "placeholder": "Décrivez ici l'organisation de la protection de la vie privée au sein de votre organisme.",
         "name": "Organisation de la politique de protection de la vie privée",
         "description": "Existence d’une organisation apte à diriger et contrôler la protection des données à caractère personnel au sein de l’organisme (désignation d'un un CIL/DPD, création d'un comité de suivi, etc.).",
         "source": "WIKI Organisation"
       },
       "PIA_ORG_POL": {
-        "placeholder":"Décrivez ici les méthodes de gestion de la base documentaire encadrant l'organisation de la protection de la vie privée au sein de votre organisme.",
+        "placeholder": "Décrivez ici les méthodes de gestion de la base documentaire encadrant l'organisation de la protection de la vie privée au sein de votre organisme.",
         "name": "Gérer la politique de protection de la vie privée",
         "description": "Le Responsable de traitement doit disposer d’une base documentaire formalisant les objectifs et les règles à appliquer dans le domaine « Informatique et libertés » (plan d'action, révision régulière de la politique « Informatique et libertés », etc.).",
         "source": "WIKI Politique_(gestion_des_règles)"
       },
       "PIA_ORG_RMGT": {
-        "placeholder":"Décrivez ici les processus destinés à maîtriser les risques que les traitements de l’organisme font peser sur les droits et libertés des personnes concernées.",
+        "placeholder": "Décrivez ici les processus destinés à maîtriser les risques que les traitements de l’organisme font peser sur les droits et libertés des personnes concernées.",
         "name": "Gérer les risques",
         "description": "Existence d'une politique définissant les processus destinés à maîtriser les risques que les traitements de l’organisme font peser sur les droits et libertés des personnes concernées (recensement des traitements de données à caractère personnel, des données, des supports, appréciation des risques, déterminer les mesures existantes ou prévues, etc.).",
         "source": "WIKI Gestion_des_risques"
       },
       "PIA_ORG_PBD": {
-        "placeholder":"Décrivez ici les méthodes assurant la prise en compte de la protection des données à caractère personnel dès l'initiation d'un nouveau projet.",
+        "placeholder": "Décrivez ici les méthodes assurant la prise en compte de la protection des données à caractère personnel dès l'initiation d'un nouveau projet.",
         "name": "Intégrer la protection de la vie privée dans les projets",
         "description": "Existence de procédures décrivant les méthodes destinées à prendre en compte la protection des données à caractère personnel dans tout nouveau traitement (labels de confiance, référentiels, gestion des risques pour la personne concernée selon la méthodologie CNIL ou une méthode interne, etc.).",
         "source": "WIKI Gestion_des_projets"
@@ -712,22 +716,22 @@
         "source": "WIKI Gestion_des_incidents_et_des_violations_de_données"
       },
       "PIA_ORG_PERS": {
-        "placeholder":"Indiquez ici les mesures de votre politique de ressource humaine répondant aux problématiques informatique et libertés dans votre organisme.",
+        "placeholder": "Indiquez ici les mesures de votre politique de ressource humaine répondant aux problématiques informatique et libertés dans votre organisme.",
         "name": "Gestion des personnels",
         "description": "Existence d'un plan encadrant les <strong>mesures de sensibilisation</strong> prises à l’arrivée d’une personne dans sa fonction et d'une procédure décrivant les <strong>mesures prises au départ des personnes accédant aux données</strong>.",
         "source": "PIAF Objets connectés p24"
       },
       "PIA_ORG_EXT": {
-        "placeholder":"Indiquez ici, pour les tiers amenés à avoir accès aux données, les modalités et les mesures de sécurité mises en œuvre pour ces accès.",
+        "placeholder": "Indiquez ici, pour les tiers amenés à avoir accès aux données, les modalités et les mesures de sécurité mises en œuvre pour ces accès.",
         "name": "Gestion des tiers accédant aux données.",
         "description": "Existence d'une procédure visant à réduire les risques que les accès légitimes aux données par des tiers peuvent faire peser sur les libertés et la vie privée des personnes concernées (identification des tiers, contrat de sous-traitance, convention, BCR, etc.).",
         "source": "WIKI Relations_avec_les_tiers"
       },
       "PIA_ORG_AUD": {
-        "placeholder":"Décrivez ici les processus qui assurent un contrôle régulier des traitements de données.",
+        "placeholder": "Décrivez ici les processus qui assurent un contrôle régulier des traitements de données.",
         "name": "Superviser la protection de la vie privée",
         "description": "Existence de mesures permettant de disposer d’une vision globale et à jour de l’état de protection des données et de la conformité au RGPD (contrôler la conformité des traitements, objectifs et indicateurs, responsabilités, etc.).",
-        "source":"WIKI Supervision"
+        "source": "WIKI Supervision"
       },
       "PIA_DEF_EXA": {
         "name": "Qualité des données",
@@ -737,7 +741,7 @@
       "PIA_DEF_MES": {
         "name": "Mesure",
         "description": "A choisir parmi celles disponibles dans la section \"Mesures existantes ou prévues\", que vous pouvez compléter si nécessaire.",
-    		"source": "Aucune"
+        "source": "Aucune"
       },
       "PIA_DEF_RT": {
         "name": "Responsable de traitement",
@@ -752,7 +756,7 @@
       "PIA_DEF_DEST": {
         "name": "Destinataires des données",
         "description": "Personne physique ou morale, l'autorité publique, le service ou tout autre organisme qui reçoit communication de données à caractère personnel, qu'il s'agisse ou non d'un tiers. Toutefois, les autorités publiques qui sont susceptibles de recevoir communication de données à caractère personnel dans le cadre d'une mission d'enquête particulière conformément au droit de l'Union ou au droit d'un État membre ne sont pas considérées comme des destinataires; le traitement de ces données par les autorités publiques en question est conforme aux règles applicables en matière de protection des données en fonction des finalités du traitement.",
-    		"source": "RGPD Art. 4.9"
+        "source": "RGPD Art. 4.9"
       },
       "PIA_DEF_SUPT": {
         "name": "Typologie des supports de DCP",
@@ -777,12 +781,12 @@
       "PIA_DEF_ACC": {
         "name": "Droit d'accès",
         "description": "La personne concernée a le droit d'obtenir du responsable du traitement la confirmation que des données à caractère personnel la concernant sont ou ne sont pas traitées et, lorsqu'elles le sont, l'accès auxdites données à caractère personnel ainsi que d'autres informations précisées à l'<a target=\"_blank\" href=\"https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3#Article15\">article 15 du RGPD</a>.<br>Il existe des particularités concernant l'accès au dossiers médicaux, voir <a target=\"_blank\" href=\"https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000773559\">Décret 2002-637</a>, et l'exercice du droit d'accès par les titulaires de l'autorité parentale, pour les mineurs, ou le représentant légal, pour les personnes faisant l'objet d'une mesure de tutelle voir <a target=\"_blank\" href=\"https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000886460\">Article 58 de la loi Informatique et Libertés</a>.",
-    		"source":"RGPD Article 15 pour la définition et WIKI Exercice_des_droits_d’accès_et_à_la_portabilité pour les exceptions du droit Français"
+        "source": "RGPD Article 15 pour la définition et WIKI Exercice_des_droits_d’accès_et_à_la_portabilité pour les exceptions du droit Français"
       },
       "PIA_DEF_PORT": {
         "name": "Droit à la portabilité",
         "description": "Les personnes concernées ont le droit de recevoir les données à caractère personnel les concernant qu'elles ont fournies à un responsable du traitement, dans un format structuré, couramment utilisé et lisible par machine, et ont le droit de transmettre ces données à un autre responsable du traitement sans que le responsable du traitement auquel les données à caractère personnel ont été communiquées y fasse obstacle sous les conditions décrites à l'<a target=\"_blank\" href=\"https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3#Article20\">Article 20 du RGPD</a>.",
-    		"source": "RGPD Art. 20"
+        "source": "RGPD Art. 20"
       },
       "PIA_DEF_RECT": {
         "name": "Droit à la rectification",
@@ -792,32 +796,32 @@
       "PIA_DEF_EFF": {
         "name": "Droit à l'effacement (droit à l'oubli)",
         "description": "La personne concernée a le droit d'obtenir du responsable du traitement l'effacement, dans les meilleurs délais, de données à caractère personnel la concernant et le responsable du traitement a l'obligation d'effacer ces données à caractère personnel dans les meilleurs délais, conformément à l'<a target=\"_blank\" href=\"https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3#Article17\">article 17 du RGPD</a>",
-    		"source": "RGPD Art. 17 (tronqué)"
+        "source": "RGPD Art. 17 (tronqué)"
       },
       "PIA_DEF_LIM": {
         "name": "Droit à la limitation",
         "description": "La personne concernée a le droit d'obtenir du responsable de traitement la limitation du traitement conformément à l'<a target=\"_blank\" href=\"https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3#Article18\">article 18 du RGPD</a>",
-    		"source": "RGPD Art. 18 (tronqué)"
+        "source": "RGPD Art. 18 (tronqué)"
       },
       "PIA_DEF_OPP": {
         "name": "Droit à l'opposition",
         "description": "La personne concernée a le droit de s'opposer à tout moment, pour des raisons tenant à sa situation particulière, à un  traitement  des  données à  caractère personnel la  concernant conformément à l'<a target=\"_blank\" href=\"https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre3#Article21\">article 21 du RGPD</a>.",
-    		"source": "RGPD Art. 21 (tronqué)"
+        "source": "RGPD Art. 21 (tronqué)"
       },
       "PIA_DEF_CHIF": {
         "name": "Chiffrement",
         "description": "Le chiffrement d’un message permet de garantir que seuls l’émetteur et le(s) destinataire(s) légitime(s) d’un message en connaissent le contenu. C’est une sorte d’enveloppe scellée numérique. Une fois chiffré, faute d'avoir la clé spécifique, un message est inaccessible et illisible, que ce soit par les humains ou les machines.<br>Il existe deux grandes familles de chiffrement : le chiffrement symétrique et le chiffrement asymétrique.<br>- <strong>Le chiffrement symétrique</strong> permet de chiffrer et de déchiffrer un contenu avec la même clé, appelée alors la « clé secrète ». Le chiffrement symétrique est particulièrement rapide mais nécessite que l’émetteur et le destinataire se mettent d’accord sur une clé secrète commune ou se la transmettent par un autre canal. Celui-ci doit être choisi avec précautions, sans quoi la clé pourrait être récupérée par les mauvaises personnes, ce qui n’assurerait plus la confidentialité du message.<br>- <strong>Le chiffrement asymétrique</strong> suppose que le (futur) destinataire est muni d’une paire de clés (clé privée, clé publique) et qu’il a fait en sorte que les émetteurs potentiels aient accès à sa clé publique. Dans ce cas, l’émetteur utilise la clé publique du destinataire pour chiffrer le message tandis que le destinataire utilise sa clé privée pour le déchiffrer. Parmi ses avantages, la clé publique peut être connue de tous et publiée. Mais attention : il est nécessaire que les émetteurs aient confiance en l’origine de la clé publique, qu’ils soient sûrs qu’il s’agit bien de celle du destinataire. Autre point fort : plus besoin de partager une même clé secrète ! Le chiffrement asymétrique permet de s’en dispenser mais il est plus lent.",
-    		"source": "Guide Bleu 2017 p23 https://www.cnil.fr/fr/comprendre-les-grands-principes-de-la-cryptologie-et-du-chiffrement"
+        "source": "Guide Bleu 2017 p23 https://www.cnil.fr/fr/comprendre-les-grands-principes-de-la-cryptologie-et-du-chiffrement"
       },
       "PIA_DEF_ANO": {
         "name": "Anonymisation",
         "description": "Le but d'une solution d'anonymisation est de faire perdre le caractère identifiant des données à caractère personnel. Une solution d’anonymisation doit être construite au cas par cas et adaptée aux usages prévus. Pour aider à évaluer une bonne solution d’anonymisation, le <a target=\"_blank\" href=\"http://ec.europa.eu/justice/data-protection/article-29/documentation/opinion-recommendation/files/2014/wp216_fr.pdf\">G29</a> propose trois critères :<br>- <strong>L’individualisation : </strong>est-il toujours possible d’isoler un individu ?<br>- <strong>La corrélation : </strong>est-il possible de relier entre eux des ensembles de données distincts concernant un même individu ?<br>- <strong>L’inférence :</strong> peut-on déduire de l’information sur un individu ? <br>Ainsi : <strong>un ensemble de données pour lequel il n’est possible ni d’individualiser ni de corréler ni d’inférer est a priori anonyme</strong> ;<br>un ensemble de données pour lequel <strong>au moins un des trois critères n’est pas respecté </strong>ne pourra être considéré comme anonyme qu’à la suite d’une analyse détaillée des risques de ré-identification.",
-    		"source": "WIKI pour la première phrase, site CNIL pour la description des recommandations du G29 https://www.cnil.fr/fr/le-g29-publie-un-avis-sur-les-techniques-danonymisation-0"
+        "source": "WIKI pour la première phrase, site CNIL pour la description des recommandations du G29 https://www.cnil.fr/fr/le-g29-publie-un-avis-sur-les-techniques-danonymisation-0"
       },
       "PIA_DEF_PSEU": {
         "name": "Pseudonymisation",
         "description": "Traitement des données à caractère personnel de telle façon que celles-ci ne puissent plus être attribuées à une personne concernée précise sans avoir recours à des informations supplémentaires, pour autant que ces informations supplémentaires soient conservées séparément et soumises à des mesures techniques et organisationnelles afin de garantir que les données à caractère personnel ne sont pas attribuées à une personne physique identifiée ou identifiable.<br>La pseudonymisation réduit le risque de mise en corrélation d’un ensemble de données avec l’identité  originale d’une personne concernée; à ce titre, <strong>c’est une mesure de sécurité utile, mais non une méthode d'anonymisation.</strong>",
-    		"source": "RGPD Art. 4.5 pour la définition, guidelines G29 p22 pour le distinction avec l'anonymisation http://ec.europa.eu/justice/data-protection/article-29/documentation/opinion-recommendation/files/2014/wp216_fr.pdf"
+        "source": "RGPD Art. 4.5 pour la définition, guidelines G29 p22 pour le distinction avec l'anonymisation http://ec.europa.eu/justice/data-protection/article-29/documentation/opinion-recommendation/files/2014/wp216_fr.pdf"
       },
       "PIA_DEF_CLO": {
         "name": "Cloisonnement",
@@ -827,22 +831,22 @@
       "PIA_DEF_CTLA": {
         "name": "Contrôle d'accès logique",
         "description": "Il consiste à limiter les risques que des personnes non autorisées accèdent aux données à caractère personnel sous forme numérique.<br>Pour cela, il convient de :<br>- <strong>définir des profils d’habilitation</strong> dans les systèmes en séparant les tâches et les domaines de responsabilité, afin de limiter l’accès des utilisateurs aux seules données strictement nécessaires à l’accomplissement de leurs missions. <br>- <strong>supprimer les permissions d’accès des utilisateurs dès qu’ils ne sont plus habilités à accéder à un local ou à une ressource informatique</strong>, ainsi qu’<strong>la fin de leur contrat.</strong> <br>- <strong> Réaliser une revue annuelle des habilitations</strong> afin d’identifier et de supprimer les comptes non utilisés et de réaligner les droits accordés sur les fonctions de chaque utilisateur.",
-    		"source": "WIKI Contrôle_des_accès_logiques et Guide Bleu 2017 p9 pour les précautions"
+        "source": "WIKI Contrôle_des_accès_logiques et Guide Bleu 2017 p9 pour les précautions"
       },
       "PIA_DEF_PWD": {
         "name": "Mot de passe",
         "description": "Basée sur la gestion d’un secret, l’authentification par identifiant et mot de passe est un moyen simple et peu coûteux à déployer pour contrôler un accès. Toutefois, cette méthode d’authentification présente un niveau de sécurité faible.<br>Les exigences minimales de la CNIL en termes de taille et de complexité du mot de passe varient en fonction des mesures complémentaires mises en place pour fiabiliser le processus d’authentification :<br>ainsi, si une authentification est basée exclusivement sur un mot de passe, cela implique a minima l’utilisation d’un mot de passe complexe d’au moins 12 caractères composé de majuscules de minuscules, de chiffres et de<br>caractères spéciaux.  Des mesures complémentaires à la saisie d’un mot de passe (restrictions, d’accès, collecte d’autres donnée, support détenu en propre par l’utilisateur) permettent de réduire la longueur et la complexité du mot de passe, car ces mesures permettent d’assurer un niveau de sécurité équivalent au mot de passe seul.",
-    		"source": "Guide Bleu 2017 p7 : https://www.cnil.fr/fr/authentification-par-mot-de-passe-les-mesures-de-securite-elementaires synthétisé"
+        "source": "Guide Bleu 2017 p7 : https://www.cnil.fr/fr/authentification-par-mot-de-passe-les-mesures-de-securite-elementaires synthétisé"
       },
       "PIA_DEF_AUTH": {
         "name": "Authentification",
         "description": "L'authentification est une <strong>opération par laquelle l'utilisateur apporte la preuve de son identité</strong>, pour cela il existe plusieurs mécanismes catégorisés selon qu’ils font intervenir :<br>- ce que l’on sait, par exemple un mot de passe ;<br>- ce que l’on a, par exemple une carte à puce ;<br>- une caractéristique qui nous est propre, par exemple une empreinte digitale ou encore la manière de rédiger une signature manuscrite.<br>Pour rappel, la loi Informatique et Libertés subordonne l’utilisation de la biométrie à l’autorisation préalable de la CNIL<br><strong>L’authentification d’un utilisateur est qualifiée de forte lorsqu’elle a recours à une combinaison d’au moins deux de ces catégories.</strong>",
-    		"source": "Guide Bleu p7"
+        "source": "Guide Bleu p7"
       },
       "PIA_DEF_LOG": {
         "name": "Journalisation",
         "description": "Dispositif permettant d’enregistrer des actions effectuées sur le système informatique afin de pouvoir <strong>identifier un accès frauduleux</strong> ou <strong>une utilisation abusive</strong> de données personnelles, ou de déterminer l’origine d’un incident. Il convient d’enregistrer certaines des actions effectuées sur les systèmes informatiques. Pour ce faire, un dispositif de gestion des traces et des incidents doit être mis en place. Celui-ci doit <strong>enregistrer les évènements pertinents</strong> et <strong>garantir que ces enregistrements ne peuvent être altérés.</strong> Dans tous les cas, il ne faut <strong>pas conserver ces éléments pendant une durée excessive.</strong>",
-    		"source": "Guide Bleu 2017 p10"
+        "source": "Guide Bleu 2017 p10"
       },
       "PIA_DEF_ARCH": {
         "name": "Archivage",
@@ -862,7 +866,7 @@
       "PIA_DEF_SRC": {
         "name": "Source de risque",
         "description": "Personne, interne ou externe à l'organisme, agissant de manière accidentelle ou délibérée (ex : administrateur informatique, utilisateur, attaquant externe, concurrent), ou source non humaine (ex : eau, matériaux dangereux, virus informatique non ciblé) qui peut être à l’origine d’un risque.",
-    		"source": "PIA1 p12 et WIKI Types_et_exemples_de_sources_de_risques synthétisés"
+        "source": "PIA1 p12 et WIKI Types_et_exemples_de_sources_de_risques synthétisés"
       },
       "PIA_DEF_MEN": {
         "name": "Menace",
@@ -872,17 +876,17 @@
       "PIA_DEF_MENA": {
         "name": "Menaces pouvant conduire à un accès illégitime aux données",
         "description": "Menaces concernant : </strong><br>- <strong>Les matériels</strong>, utilisés de manière inadaptée, observés, modifiés ou perdus (utilisation d'un support contenant des données sensibles pour des raisons personnelles ou lors d'un transport pour lequel il n'est pas adapté, observation d'un écran, ajout d'un matériel destiné à récupérer des données etc.)<br>- <strong>Les logiciels</strong>, utilisés de manière inadaptée, observés ou modifiés (élévation de privilèges, collecte de données de configuration, installation d'un outil de prise de main à distance, etc.)<br>- <strong>Les canaux informatiques</strong> qui sont observés (interception de flux réseau, etc.)<br>- <strong>Les personnes</strong>, observées, détournées ou perdues (divulgation involontaire, à la suite de pressions ou grâce à de l'hameçonnage, changement d'employeur, etc.)<br>- <strong>Les documents papier</strong>, observés ou perdus (photocopies, impressions oubliées, récupération de documents au rebut, vol de courrier, etc.)<br>- <strong>Les canaux papier</strong> qui sont observés",
-    		"source": "WIKI Menaces_pouvant_mener_à_un_accès_illégitime_à_des_données synthétisé"
+        "source": "WIKI Menaces_pouvant_mener_à_un_accès_illégitime_à_des_données synthétisé"
       },
       "PIA_DEF_MENM": {
         "name": "Menaces pouvant conduire à une modification illégitime aux données",
         "description": "<strong>Menaces concernant : </strong><br>- <strong>Les matériels</strong> qui ont été modifiés (ajout d'un matériel incompatible, retrait d'un indispensable, etc.)<br>- <strong>Les logiciels</strong> utilisés de manière inadaptée ou modifiés (erreur de manipulation, modifications inopportunes, etc.)<br>- <strong>Les canaux informatiques</strong> qui sont utilisés de manière inadaptée (réémission de flux intercepté, etc.)<br>- <strong>Les personnes</strong> surchargées ou détournées (tâche non maîtrisée, perturbation des conditions de travail, influence, etc.)<br>- Les documents papier qui ont été modifiés (modification de document, remplacement par un faux, etc.)<br>- <strong>Les canaux papier</strong> qui ont été modifiés (échange de parapheur, envoi de courriers contradictoires, etc.)",
-    		"source": "WIKI Menaces_pouvant_mener_à_une_modification_non_désirées_de_données"
+        "source": "WIKI Menaces_pouvant_mener_à_une_modification_non_désirées_de_données"
       },
       "PIA_DEF_MENI": {
         "name": "Menaces pouvant conduire à une indisponibilité des données",
         "description": "<strong>Menaces concernant : </strong><br>- <strong>Les matériels</strong> : utilisés de manière inadaptée, surchargés, modifiés, détériorés, perdus (stockage saturé, attaque DOS, modification menant à une panne,  incendie, vol ou perte, etc.)<br>- <strong>Les logiciels</strong> : utilisés de manière inadaptée, surchargés, modifiés, détériorés, perdus (effacement de données, injection de données, bombe logique, licence non renouvelée, etc.)<br>- <strong>Les canaux informatiques</strong> : surchargés, détériorés, perdus (téléchargement non autorisé, coupure d’accès Internet, etc.)<br>- <strong>Les personnes</strong> : surchargées, détériorées, perdues (mauvaise utilisation des compétences, absence, départ, etc.)<br>- <strong>Les documents papier</strong> : utilisés de manière inadaptée, détériorés, perdus (effacement, destruction, vol ou perte, etc.)<br>- <strong>Les canaux papier</strong> : détériorés, modifiés, perdus (grève des postes, changement de locaux, disparition d'un transporteur de documents, réorganisation, etc.)",
-    		"source": "WIKI Menaces_pouvant_mener_à_une_disparition_de_données"
+        "source": "WIKI Menaces_pouvant_mener_à_une_disparition_de_données"
       },
       "PIA_DEF_GRV": {
         "name": "Gravité",
@@ -897,7 +901,7 @@
       "PIA_DEF_PBDS": {
         "name": "Gestion de projet",
         "description": "Démarche consistant à prendre en compte la protection des données à caractère personnel dans tout nouveau traitement (labels de confiance, référentiels, gestion des risques pour la personne concernée selon la méthodologie de la CNIL ou une méthode interne, etc.), notamment :<br>- Utiliser la démarche de gestion des risques de la CNIL dès l’élaboration d’un service ou la conception d’une application.<br>- Privilégier le recours à des labels de confiance dans les domaines de la SSI et « Informatique et libertés » (procédures, produits, systèmes de management, organismes, personnes, etc.).<br>- Privilégier le recours à des référentiels éprouvés et reconnus.",
-    		"source": "WIKI Gestion_des_projets - les recommandations ne sont pas citées"
+        "source": "WIKI Gestion_des_projets - les recommandations ne sont pas citées"
       },
       "PIA_DEF_VIOL": {
         "name": "Violation de données",
@@ -907,17 +911,17 @@
       "PIA_VAL_CART": {
         "name": "La cartographie des risques",
         "description": "Ce graphique représente les risques engendrés par le traitement et les risques résiduels compte tenu de l’ensemble des mesures correctives. Il démontre que si les mesures complémentaires décrites dans le plan d'action sont correctement mises en œuvre, la vraisemblance et/ou la gravité des risques résiduels devraient réduire.",
-    		"source": "Aucune"
+        "source": "Aucune"
       },
       "PIA_VAL_ACT": {
         "name": "Le plan d'action",
         "description": "Le plan d'action est la description de la stratégie, des moyens et des effectifs à mettre en oeuvre pour que les mesures correctives définies entrent en fonction. Pour chaque tâche il convient de désigner un responsable et de définir des délais.",
-    		"source": "Aucune"
+        "source": "Aucune"
       },
       "PIA_DEF_ENJ": {
         "name": "Enjeux du traitement",
         "description": "Il s'agit des motivations menant à la mise en oeuvre du traitement, les bénéfices attendus (pour l’organisme, pour les personnes concernées, pour la société en général…).",
-    		"source": "PIA1 p6 (note 8 en bas de page)"
+        "source": "PIA1 p6 (note 8 en bas de page)"
       },
       "PIA_DEF_ST": {
         "name": "Sous-traitant",
@@ -927,7 +931,7 @@
       "PIA_DEF_RGPD": {
         "name": "RGPD (Règlement Général sur la Protection des Données)",
         "description": "Règlement relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de ces données (<a target=\"_blank\" href=\"http://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:32016R0679&from=DE\">UE 2016-679</a>), adopté le 27 avril 2016 par l'Union Européenne, il entrera en application  le 25/05/2018, abrogeant la directive 95/46/CE.",
-    		"source": "RGPD en-tête"
+        "source": "RGPD en-tête"
       },
       "PIA_DEF_PC": {
         "name": "Personne concernée",
@@ -1644,5 +1648,38 @@
       "processing": "Fiche de traitement"
     },
     "not_found": "Aucun résultat"
+  },
+  "role_description": {
+    "welcome": "Bonjour",
+    "reminder": "Nous vous rappelons que vous pouvez consulter la documentation sur le sharepoint des DPO.",
+    "conclusion": "Nous vous souhaitons une bonne navigation sur l'application.",
+    "ROLE_USER": {
+      "label": "Invité",
+      "description": "Votre profil PiaLab vous permet de consulter les fiches de traitement et analyses d'impact pour lesquelles vous avez des droits d'accès."
+    },
+    "ROLE_REDACTOR": {
+      "label": "Rédacteur",
+      "description": "Votre profil PiaLab vous permet de créer et compléter des fiches de traitement et analyses d'impact, les soumettre à l'évaluateur pour validation, et accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Vous pouvez également utiliser les fonctionnalités d'export à votre disposition. Des notifications vous seront adressées par email dès lors que des modifications interviendront sur les fiches de traitement et analyses d'impact qui relèvent de votre périmètre. Vous pourrez interagir avec l'évaluateur via la fonctionnalité de commentaires implémentée au sein des fiches de traitement et analyse d'impact."
+    },
+    "ROLE_EVALUATOR": {
+      "label": "Evaluateur",
+      "description": "Votre profil PiaLab vous permet d'évaluer les fiches de traitement et analyses d'impact qui vous sont soumises par leur rédacteur et accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Vous pouvez également utiliser les fonctionnalités d'export à votre disposition. Dès lors que vous refusez la validation d'une fiche de traitement ou d'une analyse d'impact, son rédacteur en est informé pour qu'il puisse la modifier et vous la soumettre de nouveau. Vous pouvez commenter lorsque vous le souhaitez les informations complétées par le rédacteur pour qu'il puisse visualiser vos différentes remarques. Dès lors que vous validez une fiche de traitement et une analyse d'impact, elle est soumise pour avis au DPO. Des notifications vous seront adressées par email dès lors que des modifications interviendront sur les fiches de traitement et analyses d'impact qui relèvent de votre périmètre."
+    },
+    "ROLE_DPO": {
+      "label": "DPO",
+      "description": "Votre profil PiaLab vous permet d'émettre un avis sur les analyses d'impact qui ont été préalablement évaluées par l'évaluateur. Vous pouvez également utiliser les fonctionnalités d'export à votre disposition. Dès lors que vous émettez un avis favorable sur une analyse d'impact, elle est soumise pour validation au responsable de traitement."
+    },
+    "ROLE_SHARED_DPO": {
+      "label": "DPO mutualisé",
+      "description": "Votre profil PiaLab vous permet d'émettre un avis sur les analyses d'impact qui ont été préalablement évaluées par l'évaluateur. Vous pouvez également utiliser les fonctionnalités d'export à votre disposition. Dès lors que vous émettez un avis favorable sur une analyse d'impact, elle est soumise pour validation au responsable de traitement."
+    },
+    "ROLE_CONTROLLER": {
+      "label": "Responsable de traitement",
+      "description": "Votre profil PiaLab vous permet de valider les fiches de traitement et analyses d'impact qui ont été préalablement évaluées par l'évaluateur et pour lesquelles un avis a été émis par le DPO et le cas échéant par les personnes concernées. Vous pouvez accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Dès lors que vous refusez la validation d'une analyse d'impact, l'ensemble des parties prenantes sont informées (rédacteur, évaluateur, DPO). Dès lors que vous validez une analyse d'impact, il vous sera proposé de la signer."
+    },
+    "ROLE_CONTROLLER_MULTI": {
+      "label": "Responsable de traitement multi-registre",
+      "description": "Votre profil PiaLab vous permet de valider les fiches de traitement et analyses d'impact qui ont été préalablement évaluées par l'évaluateur et pour lesquelles un avis a été émis par le DPO et le cas échéant par les personnes concernées. Vous pouvez accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Dès lors que vous refusez la validation d'une analyse d'impact, l'ensemble des parties prenantes sont informées (rédacteur, évaluateur, DPO). Dès lors que vous validez une analyse d'impact, il vous sera proposé de la signer."
+    }
   }
 }

@@ -1,0 +1,6 @@
+{
+    "conventionalCommits.scopes": [
+        "Roles and permissions",
+        "Dashboard"
+    ]
+}

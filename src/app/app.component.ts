@@ -1,4 +1,4 @@
-import { Component, Renderer2, Pipe, PipeTransform, TemplateRef } from '@angular/core';
+import { Component, Renderer2, Pipe, PipeTransform } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -64,18 +64,18 @@ export class AppComponent {
       'AccessToContextSection', 'AccessToPrinciplesSection', 'AccessToRisksSection', 'AccessToValidationSection',
     ];
 
+    roles['ROLE_REDACTOR'] = roles['ROLE_USER'].concat(['CanCreateProcessing', 'CanEditProcessing', 'CanCreatePIA', 'CanEditPIA', 'CanAskEvaluatePIA', 'CanCancelAskEvaluatePIA', 'CanCancelAskEvaluateProcessing']);
+
+    roles['ROLE_EVALUATOR'] = roles['ROLE_USER'].concat(['CanShowEvaluatePIA', 'CanEvaluatePIA', 'CanCancelPIAEvaluation', 'CanCancelProcessingEvaluation']);
+
     roles['ROLE_CONTROLLER'] = roles['ROLE_USER'].concat([
-      'CanEditPIA', 'CanValidatePIA', 'CanCancelValidatePIA', 'CanCancelEvaluatePIA', 'CanAskEvaluatePIA', 'CanShowEvaluatePIA',
-      'CanEditProcessing',
+      'CanValidatePIA', 'CanCancelValidatePIA', 'CanShowEvaluatePIA'
     ]);
 
     roles['ROLE_CONTROLLER_MULTI'] = roles['ROLE_CONTROLLER'];
 
     roles['ROLE_DPO'] = roles['ROLE_USER'].concat([
-      'CanCreateProcessing', 'CanImportProcessing', 'CanDeleteProcessing',
-      'CanCreatePIA', 'CanCreatePIAExample', 'CanEvaluatePIA', 'CanCancelEvaluatePIA', 'CanDeletePIA', 'CanShowEvaluatePIA',
-      'CanCreateFolder',
-      'CanEditStructure',
+      'CanShowEvaluatePIA', 'CanEditStructure',
     ]);
     roles['ROLE_SHARED_DPO'] = roles['ROLE_DPO'];
 
@@ -86,16 +86,5 @@ export class AppComponent {
     ]);
 
     this.permissionsService.loadRolesAndPermissions(roles);
-/*
-    this.ngxPermissionsConfigurationService.addPermissionStrategy('disable', (templateRef: TemplateRef<any>) => {
-      this._renderer.setAttribute(templateRef.elementRef.nativeElement.nextSibling, 'disabled', 'true');
-    });
-
-    this.ngxPermissionsConfigurationService.addPermissionStrategy('enable', (templateRef: TemplateRef<any>) => {
-      this._renderer.removeAttribute(templateRef.elementRef.nativeElement.nextSibling, 'disabled');
-    });
-
-    this.ngxPermissionsConfigurationService.setDefaultOnUnauthorizedStrategy('disable');
-*/
   }
 }
