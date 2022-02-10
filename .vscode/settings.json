@@ -1,6 +1,8 @@
 {
     "conventionalCommits.scopes": [
         "Roles and permissions",
-        "Dashboard"
+        "Dashboard",
+        "Processing and PIA",
+        "vscode"
     ]
 }

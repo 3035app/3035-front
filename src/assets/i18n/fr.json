@@ -24,8 +24,7 @@
       "processings": "Registre des traitements"
     },
     "permissions": {
-      "title": "Mes droits au sein de l'application",
-      "description": "Bonjour, voici le détail de vos rôles au sein de l'application ainsi qu'une description des droits accordés :"
+      "title": "Mes droits au sein de l'application"
     }
   },
   "portfolio": {
@@ -131,7 +130,7 @@
       "placeholder_processing_name": "Intitulé du Traitement",
       "author": "Saisie",
       "placeholder_author": "Prénom, nom",
-      "evaluation": "Évaluation",
+      "evaluation": "Évaluation (nom du DPO)",
       "placeholder_evaluation": "Prénom, nom",
       "validation": "Validation",
       "placeholder_validation": "Prénom, nom",

@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { ProcessingModel } from '@api/models';
+import { PiaModel, ProcessingModel } from '@api/models';
 import { ProcessingFormComponent } from './processing-form/processing-form.component';
 import { ModalsService } from '../modals/modals.service';
 import { PiaService } from '../entry/pia.service';
 import { PiaApi } from '@api/services';
-import { PiaModel } from '@api/models';
 import { PiaStatus } from '@api/model/pia.model';
 
 @Component({
@@ -23,6 +22,7 @@ export class ProcessingComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     protected _modalsService: ModalsService,
     private _piaService: PiaService,
     private piaApi: PiaApi
@@ -82,6 +82,23 @@ export class ProcessingComponent implements OnInit {
         'PIA_LGL_DEST',
         'PIA_LGL_TRAN'
       ]);
+    }
+  }
+
+  createPia() {
+    if (this.route.snapshot.params.evaluator_name !== 'null' && this.route.snapshot.params.validator_name !== 'null') {
+      const pia = new PiaModel();
+      pia.author_name = this._piaService.currentProcessing.author;
+      pia.evaluator_name = this.route.snapshot.params.evaluator_name;
+      pia.validator_name = this.route.snapshot.params.validator_name;
+      // disable the type feature
+      pia.type = 'advanced'; // this.piaForm.value.type;
+      pia.processing = this._piaService.currentProcessing;
+      this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
+        this.router.navigate(['entry', newPia.id, 'section', 3, 'item', 1]);
+      });
+    } else {
+      this._modalsService.openModal('modal-list-new-pia')
     }
   }
 }
