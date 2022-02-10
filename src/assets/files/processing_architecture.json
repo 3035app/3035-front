@@ -1,23 +1,38 @@
 [
-    {
-      "id": 1,
-      "permissions": ["AccessToGeneralSection"],
-      "title": "processing.form.sections.description.title",
-      "name" : "description-section",
-      "short_help": "processing.form.sections.description.short_help"
-    },
-    {
-      "id": 2,
-      "title": "processing.form.sections.data.title",
-      "permissions": ["AccessToDataSection"],
-      "name": "data-section",
-      "short_help": "processing.form.sections.data.short_help"
-    },
-    {
-      "id": 3,
-      "permissions": ["AccessToLifeCycleSection"],
-      "name": "lifecycle-section",
-      "title": "processing.form.sections.lifecycle.title",
-      "short_help": "processing.form.sections.lifecycle.short_help"
-    }
+  {
+    "id": 1,
+    "permissions": [
+      "AccessToGeneralSection"
+    ],
+    "title": "processing.form.sections.description.title",
+    "name": "description-section",
+    "short_help": "processing.form.sections.description.short_help"
+  },
+  {
+    "id": 2,
+    "title": "processing.form.sections.data.title",
+    "permissions": [
+      "AccessToDataSection"
+    ],
+    "name": "data-section",
+    "short_help": "processing.form.sections.data.short_help"
+  },
+  {
+    "id": 3,
+    "permissions": [
+      "AccessToLifeCycleSection"
+    ],
+    "name": "lifecycle-section",
+    "title": "processing.form.sections.lifecycle.title",
+    "short_help": "processing.form.sections.lifecycle.short_help"
+  },
+  {
+    "id": 4,
+    "permissions": [
+      "AccessToMeasuresSection"
+    ],
+    "name": "measures-section",
+    "title": "processing.form.sections.measures.title",
+    "short_help": "processing.form.sections.measures.short_help"
+  }
 ]

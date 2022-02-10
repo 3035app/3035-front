@@ -270,19 +270,19 @@
       "ask_validate_button": "Demander l'évaluation du traitement",
       "cancel_ask_validate_button": "Annuler la demande d'évaluation du traitement",
       "description": {
-        "title": "Quelles sont les finalités du traitement ?",
+        "title": "Quelles sont les finalités du traitement ? Sont-elles déterminées, explicites et légitimes ?",
         "placeholder": "Décrivez les objectifs et finalités du traitement"
       },
       "context_of_implementation": {
-        "title": "Quel est le contexte de mise en œuvre du traitement ?",
+        "title": "Quel est le traitement qui fait l'objet de l'étude ?",
         "placeholder": "Décrivez le contexte de mise en œuvre du traitement"
       },
       "controllers": {
-        "title": "Quelles sont les personnes responsables du traitement?",
+        "title": "Quelles sont les responsabilités liées au traitement ?",
         "placeholder": "Désignez les personnes opérationnelles qui sont responsables du traitement"
       },
       "lawfulness": {
-        "title": "Quels sont les fondements qui rendent le traitement licite ?",
+        "title": "Quel(s) est(sont) les fondement(s) qui rend(ent) votre traitement licite ?",
         "placeholder": "Presentez les fondements de votre traitement (ex: consentement, exécution d'un contrat, obligation légale, etc...)"
       },
       "standards": {
@@ -290,7 +290,7 @@
         "placeholder": "Listez les référentiels qui concernent ce traitement"
       },
       "consent": {
-        "title": "Si applicable, comment le consentement des personnes concernées est-il obtenu ou comment sont elles informées?",
+        "title": "Si applicable, comment le consentement des personnes concernées est-il obtenu ?",
         "placeholder": "Décrivez les modalités prévues pour obtenir le consentement des personnes concernées ou les informer qu'elles sont concernées par le traitement."
       },
       "rights_guarantee": {
@@ -309,9 +309,9 @@
         "title": "En cas de transfert de données en dehors de l'Union européenne, les données sont-elles protégées de manière équivalente ?",
         "placeholder": "Pour chaque pays en dehors de l'Union européenne où des données sont stockées ou traitées, identifiez-le et indiquez s'il est reconnu comme adéquat ou décrivez les clauses qui encadrent le transfert.(Laisser vide si pas de transfert de données hors UE)"
       },
-      "data-types": "Types de données traitées",
+      "data-types": "Quelles sont les données traitées ? Quelle est la durée de conservation des données ?",
       "storage": {
-        "title": "Où les données sont elles stockées",
+        "title": "Quels sont les supports des données ?",
         "placeholder": "Décrivez le/les lieux de stockage des données"
       },
       "processors": {
@@ -323,7 +323,7 @@
         "placeholder": "Listez les destinataires du traitement"
       },
       "lifecycle": {
-        "title": "Cycle de vie des données",
+        "title": "Comment le cycle de vie des données se déroule-t-il (description fonctionnelle) ?",
         "placeholder": "Décrivez le cycle de vie des données pour ce traitement (description fonctionnelle)"
       },
       "concerned_people": {
@@ -336,11 +336,15 @@
           "short_help": ""
         },
         "data": {
-          "title": "Données traitées",
+          "title": "Données, processus et supports",
           "short_help": ""
         },
         "lifecycle": {
-          "title": "Cycle de vie des données",
+          "title": "Principes fondamentaux : Proportionnalité et nécessité",
+          "short_help": ""
+        },
+        "measures": {
+          "title": "Principes fondamentaux : Mesures protectrices des droits",
           "short_help": ""
         }
       },
