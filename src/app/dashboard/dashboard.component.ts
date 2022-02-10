@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileSession } from 'app/services/profile-session.service';
+import { AuthenticationService } from '@security/authentication.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private session: ProfileSession,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService,
   ) {}
   
   
@@ -29,6 +31,6 @@ export class DashboardComponent implements OnInit {
         this.session.navigateToOwnStructure();
       } });
     }
-    this.higherRole = this.session.getOwnHigherRole();
+    this.higherRole = this.authService.getOwnHigherRole();
   }
 }

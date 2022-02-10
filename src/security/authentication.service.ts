@@ -5,6 +5,7 @@ import { User } from '@security/user.model';
 import { PermissionsService } from '@security/permissions.service';
 import { UserProfileApi, UserTokenApi } from '@api/services';
 import { UserProfileModel, UserTokenModel } from '@api/models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class AuthenticationService {
@@ -12,12 +13,13 @@ export class AuthenticationService {
   public profileSubject: BehaviorSubject<UserProfileModel> = new BehaviorSubject<UserProfileModel>(null)
   private readonly apiSettings: any = environment.api;
   private readonly dateFormat: string = environment.date_format;
-  public permisionsAndRolesDescriptions: object[];
+  private _ownRoles: string[];
 
   constructor(
     private permissionsService: PermissionsService,
     private userProfileApi: UserProfileApi,
-    private userTokenApi: UserTokenApi
+    private userTokenApi: UserTokenApi,
+    private i18n: TranslateService,
   ) {
   }
 
@@ -74,6 +76,7 @@ export class AuthenticationService {
         (profile: UserProfileModel) => {
           this.profileSubject.next(profile);
           this.permissionsService.activateCurrentRoles(profile.roles);
+          this._ownRoles = profile.roles;
         },
         (err) => {
           console.error(err);
@@ -93,4 +96,11 @@ export class AuthenticationService {
       }).toPromise();
   }
 
+  public getOwnHigherRole(): {role: string, label: string, description: string} {
+    let higherRole = {role: 'ROLE_USER', label: this.i18n.instant('role_description.ROLE_USER.label'), description: this.i18n.instant('role_description.ROLE_USER.description')};
+    this._ownRoles.forEach((role) => {
+      higherRole = {role, label: this.i18n.instant(`role_description.${role}.label`), description: this.i18n.instant(`role_description.${role}.description`)};
+    });
+    return higherRole;
+  }
 }

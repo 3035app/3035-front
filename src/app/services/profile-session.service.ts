@@ -10,7 +10,6 @@ export class ProfileSession {
   private _hasPortfolioStructures: boolean = false;
   private _hasOwnStructure: boolean = false;
   private _ownStructure: UserProfileStructure;
-  private _ownRoles: string[];
 
   constructor(
     private authService: AuthenticationService,
@@ -35,7 +34,6 @@ export class ProfileSession {
       if (!this._hasPortfolioStructures) {
         this.currentStructure = profile.structure;
       }
-      this._ownRoles = profile.roles;
     });
   }
   
@@ -65,13 +63,5 @@ export class ProfileSession {
   
   public hasPortfolioStructures(): boolean {
     return this._hasPortfolioStructures;
-  }
-  
-  public getOwnHigherRole(): object {
-    let higherRole = {role: 'ROLE_USER', label: 'role_description.ROLE_USER.label', description: 'role_description.ROLE_USER.description'};
-    this._ownRoles.forEach((role) => {
-      higherRole = {role, label: `role_description.${role}.label`, description: `role_description.${role}.description`};
-    });
-    return higherRole;
   }
 }
