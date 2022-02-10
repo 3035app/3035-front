@@ -93,15 +93,16 @@
       {{ processing.evaluation_comment }}
     </div>
   </div>
+  <ng-container *ngxPermissionsOnly="['CanCancelProcessingEvaluation']">
+    <div class="cancel-evaluation-container" *ngIf="processing.status === processingStatus.STATUS_VALIDATED">
 
-  <div class="cancel-evaluation-container" *ngIf="processing.status === processingStatus.STATUS_VALIDATED">
+      <button
+        class="btn btn-red"
+        (click)="cancelProcessingValidation()"
+      >
+        {{ 'evaluations.cancel' | translate }}
+      </button>
 
-    <button
-      class="btn btn-red"
-      (click)="cancelProcessingValidation()"
-    >
-      {{ 'evaluations.cancel' | translate }}
-    </button>
-
-  </div>
+    </div>
+  </ng-container>
 </ng-container>

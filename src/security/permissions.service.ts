@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 @Injectable()
 export class PermissionsService {
 
   private rolesAndPermissions: any;
+  public rolesAndPermissionsDescriptions: any;
 
   constructor(
     private ngxPermissionsService: NgxPermissionsService,
@@ -35,4 +35,5 @@ export class PermissionsService {
 
     this.ngxPermissionsService.loadPermissions(permissions);
   }
+
 }

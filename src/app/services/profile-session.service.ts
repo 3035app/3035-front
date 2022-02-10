@@ -10,6 +10,7 @@ export class ProfileSession {
   private _hasPortfolioStructures: boolean = false;
   private _hasOwnStructure: boolean = false;
   private _ownStructure: UserProfileStructure;
+  private _ownRoles: string[];
 
   constructor(
     private authService: AuthenticationService,
@@ -28,41 +29,49 @@ export class ProfileSession {
         this.currentStructure = null;
         return;
       }
-
       this._hasPortfolioStructures = profile.portfolio_structures.length !== 0;
       this._hasOwnStructure = profile.structure !== null;
       this._ownStructure = profile.structure;
       if (!this._hasPortfolioStructures) {
         this.currentStructure = profile.structure;
       }
+      this._ownRoles = profile.roles;
     });
   }
-
+  
   public getCurrentStructure(): UserProfileStructure {
     return this.currentStructure;
   }
-
+  
   public navigateToStructure(structure: UserProfileStructure): void {
     this.currentStructure = structure;
     localStorage.setItem('structure-name', structure.name);
     localStorage.setItem('structure-id', structure.id);
-
+    
     this.router.navigate(['folders']);
   }
-
+  
   public hasOwnStructure(): boolean {
     return this._hasOwnStructure;
   }
-
+  
   public getOwnStructure(): UserProfileStructure {
     return this._ownStructure;
   }
-
+  
   public navigateToOwnStructure() {
     return this.navigateToStructure(this._ownStructure);
   }
-
+  
   public hasPortfolioStructures(): boolean {
     return this._hasPortfolioStructures;
+  }
+  
+  public getOwnHigherRole(): object {
+    let higherRole = {role: 'ROLE_USER', label: 'role_description.ROLE_USER.label', description: 'role_description.ROLE_USER.description'};
+    this._ownRoles.forEach((role) => {
+      higherRole = {role, label: `role_description.${role}.label`, description: `role_description.${role}.description`};
+    });
+    return higherRole;
   }
 }
