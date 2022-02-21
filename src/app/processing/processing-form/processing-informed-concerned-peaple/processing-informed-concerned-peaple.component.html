@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="processing-informed-concerned-peaple small-12" id="mention-form-data">
+    <div class="type-enabled">
+      <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field"
+        [(ngModel)]="mention-form.enabled"
+        (change)="updateValue('mention-form', true)"
+        id="mention-form"
+      >
+      <label class="enabled-label" for="mention-form">{{ 'processing-informed-concerned-peaple.form.mention-form'| translate }}</label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="processing-informed-concerned-peaple small-12" id="mention-contract-data">
+    <div class="type-enabled">
+      <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field"
+        [(ngModel)]="mention-contract.enabled"
+        (change)="updateValue('mention-contract', true)"
+        id="mention-contract"
+      >
+      <label class="enabled-label" for="mention-contract">{{ 'processing-informed-concerned-peaple.form.mention-contract'| translate }}</label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="processing-informed-concerned-peaple small-12" id="terms-data">
+    <div class="type-enabled">
+      <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field"
+        [(ngModel)]="terms.enabled"
+        (change)="updateValue('terms', true)"
+        id="terms"
+      >
+      <label class="enabled-label" for="terms">{{ 'processing-informed-concerned-peaple.form.terms'| translate }}</label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="processing-informed-concerned-peaple small-12" id="display-data">
+    <div class="type-enabled">
+      <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field"
+        [(ngModel)]="display.enabled"
+        (change)="updateValue('display', true)"
+        id="display"
+      >
+      <label class="enabled-label" for="display">{{ 'processing-informed-concerned-peaple.form.display'| translate }}</label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="processing-informed-concerned-peaple small-12" id="phone-data">
+    <div class="type-enabled">
+      <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field"
+        [(ngModel)]="phone.enabled"
+        (change)="updateValue('phone', true)"
+        id="phone"
+      >
+      <label class="enabled-label" for="phone">{{ 'processing-informed-concerned-peaple.form.phone'| translate }}</label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="processing-informed-concerned-peaple small-12" id="other-data">
+    <div class="type-enabled">
+      <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field"
+        [(ngModel)]="other.enabled"
+        (change)="updateValue('other', true)"
+        id="other"
+      >
+      <label class="enabled-label" for="other">{{ 'processing-informed-concerned-peaple.form.other'| translate }}</label>
+    </div>
+  </div>
+</div>

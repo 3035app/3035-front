@@ -1,4 +1,4 @@
-@import '../../../assets/stylesheets/variables';
+@import "../../../assets/stylesheets/variables";
 
 // Main processing content styles
 .processing {
@@ -12,7 +12,7 @@
       margin-bottom: 14px;
       background-color: $pia-full-white;
       position: relative;
-      box-shadow: 1px 1px 15px 1px rgba(210,210,210,1);
+      box-shadow: 1px 1px 15px 1px rgba(210, 210, 210, 1);
       &.description-section {
         > div:last-child {
           h1 {
@@ -62,7 +62,10 @@
         width: 420px;
         padding-bottom: 10px;
       }
-      h1, h2, h3, h4 {
+      h1,
+      h2,
+      h3,
+      h4 {
         margin: 0;
         padding: 0;
         line-height: 1.2;
@@ -93,7 +96,8 @@
         color: $pia-gray-dark;
         margin-bottom: 10px;
       }
-      div, h1 {
+      div,
+      h1 {
         display: inline-block;
         vertical-align: top;
       }
@@ -112,21 +116,21 @@
         }
       }
       &-progress {
-          background-color: transparent;
+        background-color: transparent;
+        display: block;
+        top: 60%;
+        left: 0;
+        right: 0;
+        position: absolute;
+        font-size: 1rem;
+        color: $pia-full-white;
+        text-align: center;
+        min-height: auto !important;
+        div {
           display: block;
-          top: 60%;
-          left: 0;
-          right: 0;
-          position: absolute;
-          font-size: 1rem;
-          color: $pia-full-white;
-          text-align: center;
-          min-height: auto !important;
-          div {
-            display: block;
-            background-color: transparent;
-            min-height: inherit;
-          }
+          background-color: transparent;
+          min-height: inherit;
+        }
       }
     }
     &-content {
@@ -155,7 +159,8 @@
       &-nav {
         position: relative;
         margin-top: 5px;
-        .processing-previousLink, .processing-nextLink {
+        .processing-previousLink,
+        .processing-nextLink {
           display: inline-block;
           vertical-align: middle;
           width: 49.5%;
@@ -307,7 +312,10 @@
       a {
         width: 81%;
         border-radius: 4px;
-        &:focus, &:hover, &:active, &.active {
+        &:focus,
+        &:hover,
+        &:active,
+        &.active {
           color: $pia-full-white !important;
         }
       }
@@ -321,11 +329,16 @@
           max-width: 164px;
         }
         a {
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-green;
           }
         }
-        .fa-pencil-square-o.processing-fa-valid, .fa-cog.processing-fa-valid, .fa-check-square-o {
+        .fa-pencil-square-o.processing-fa-valid,
+        .fa-cog.processing-fa-valid,
+        .fa-check-square-o {
           color: $pia-green;
         }
       }
@@ -338,11 +351,16 @@
           max-width: 62px;
         }
         a {
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-blue;
           }
         }
-        .fa-pencil-square-o.processing-fa-valid, .fa-cog.processing-fa-valid, .fa-check-square-o {
+        .fa-pencil-square-o.processing-fa-valid,
+        .fa-cog.processing-fa-valid,
+        .fa-check-square-o {
           color: $pia-blue;
         }
       }
@@ -356,11 +374,16 @@
           max-width: 182px;
         }
         a {
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-red;
           }
         }
-        .fa-pencil-square-o.processing-fa-valid, .fa-cog.processing-fa-valid, .fa-check-square-o {
+        .fa-pencil-square-o.processing-fa-valid,
+        .fa-cog.processing-fa-valid,
+        .fa-check-square-o {
           color: $pia-red;
         }
       }
@@ -375,11 +398,15 @@
           display: none;
         }
         a {
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-dark-black;
           }
         }
-        .fa-cog.processing-fa-valid, .fa-check-square-o {
+        .fa-cog.processing-fa-valid,
+        .fa-check-square-o {
           color: $pia-dark-black;
         }
       }
@@ -406,7 +433,7 @@
     margin-bottom: 10px;
     background-color: $pia-full-white;
     padding: 12px 32px;
-    box-shadow: 1px 1px 15px 1px rgba(210,210,210,1);
+    box-shadow: 1px 1px 15px 1px rgba(210, 210, 210, 1);
     .hide {
       display: none;
     }
@@ -482,12 +509,12 @@
     }
   }
   .validate-container {
-    opacity:0.5;
+    opacity: 0.5;
     &.ready {
-      opacity:1;
+      opacity: 1;
     }
     .btn.expanded {
-      margin:0;
+      margin: 0;
     }
   }
 }

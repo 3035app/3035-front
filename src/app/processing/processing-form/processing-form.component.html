@@ -358,6 +358,13 @@
 
       <fieldset *ngIf="currentSection.id == 4" id="measures" class="form-section">
         <div class="form-field">
+          <label class="title" for="processing-informed-concerned-peaple">{{ 'processing.form.informed_concerned_peaple' | translate }}</label>
+          <app-processing-informed-concerned-peaple [(ngModel)]="processing.processing_data_types" name="data-types" id="processing-informed-concerned-peaple"
+            (click)="updateKnowledgeBase(['PIA_LGL_DATA', 'PIA_LGL_DUR'])" (change)="updateProcessing(true)"
+            [processingId]="processing.id"></app-processing-informed-concerned-peaple>
+          <app-processing-comments [processing]="processing" [field]="'data-types'"></app-processing-comments>
+        </div>
+        <div class="form-field">
           <label class="title" for="processing-consent">{{ 'processing.form.consent.title' | translate }}</label>
           <div (click)="editField(consent, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
             class="pia-questionBlock-contentText"

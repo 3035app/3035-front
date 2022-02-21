@@ -271,27 +271,27 @@
       "cancel_ask_validate_button": "Annuler la demande d'évaluation du traitement",
       "description": {
         "title": "Quelles sont les finalités du traitement ? Sont-elles déterminées, explicites et légitimes ?",
-        "placeholder": "Décrivez les objectifs et finalités du traitement"
+        "placeholder": "Listez les finalités du traitement. Expliquez en quoi elles sont déterminées, explicites et légitimes."
       },
       "context_of_implementation": {
         "title": "Quel est le traitement qui fait l'objet de l'étude ?",
-        "placeholder": "Décrivez le contexte de mise en œuvre du traitement"
+        "placeholder": "Présentez le traitement de manière synthétique : son nom, sa finalité, ses enjeux (apports attendus), son contexte d’utilisation, etc."
       },
       "controllers": {
         "title": "Quelles sont les responsabilités liées au traitement ?",
-        "placeholder": "Désignez les personnes opérationnelles qui sont responsables du traitement"
+        "placeholder": "Décrivez les responsabilités des parties prenantes : le responsable du traitement, les potentiels sous-traitants et les potentiels co-responsables."
       },
       "lawfulness": {
         "title": "Quel(s) est(sont) les fondement(s) qui rend(ent) votre traitement licite ?",
-        "placeholder": "Presentez les fondements de votre traitement (ex: consentement, exécution d'un contrat, obligation légale, etc...)"
+        "placeholder": "Présentez le(s) fondemen(s) de votre traitement (ex : consentement, exécution du contrat, obligation légale, intérêts vitaux, etc.)."
       },
       "standards": {
         "title": "Quels sont les référentiels applicables ?",
-        "placeholder": "Listez les référentiels qui concernent ce traitement"
+        "placeholder": "Recensez les référentiels applicables au traitement, utiles ou à respecter, notamment les codes de conduite approuvés et certifications en matière de protection des données."
       },
       "consent": {
         "title": "Si applicable, comment le consentement des personnes concernées est-il obtenu ?",
-        "placeholder": "Décrivez les modalités prévues pour obtenir le consentement des personnes concernées ou les informer qu'elles sont concernées par le traitement."
+        "placeholder": "Décrivez les modalités prévues pour obtenir le consentement des personnes concernées."
       },
       "rights_guarantee": {
         "title": "Mesures protectrices des droits",
@@ -303,33 +303,34 @@
       },
       "exactness": {
         "title": "Les données sont-elles exactes et tenues à jour ?",
-        "placeholder": "Décrivez les mesures prévues pour assurer la qualité et la pertinence des données."
+        "placeholder": "Décrivez les mesures prévues pour vous assurer de la qualité des données."
       },
       "non-eu-transfer": {
         "title": "En cas de transfert de données en dehors de l'Union européenne, les données sont-elles protégées de manière équivalente ?",
-        "placeholder": "Pour chaque pays en dehors de l'Union européenne où des données sont stockées ou traitées, identifiez-le et indiquez s'il est reconnu comme adéquat ou décrivez les clauses qui encadrent le transfert.(Laisser vide si pas de transfert de données hors UE)"
+        "placeholder": "Pour chaque pays en dehors de l’Union Européenne où des données sont stockées ou traitées, identifiez-le et indiquez s’il est reconnu comme adéquat ou décrivez des clauses qui encadrent le transfert."
       },
       "data-types": "Quelles sont les données traitées ? Quelle est la durée de conservation des données ?",
       "storage": {
         "title": "Quels sont les supports des données ?",
-        "placeholder": "Décrivez le/les lieux de stockage des données"
+        "placeholder": "Listez les supports des données de votre traitement (systèmes informatiques, serveurs, logiciels réseaux, personnes, supports papier, etc.)."
       },
       "processors": {
         "title": "Sous traitants",
-        "placeholder": "Listez les sous traitants"
+        "placeholder": "Listez les sous-traitants impliqués dans le traitement."
       },
       "recipients": {
         "title": "Destinataires",
-        "placeholder": "Listez les destinataires du traitement"
+        "placeholder": "Listez les destinataires des données."
       },
       "lifecycle": {
         "title": "Comment le cycle de vie des données se déroule-t-il (description fonctionnelle) ?",
-        "placeholder": "Décrivez le cycle de vie des données pour ce traitement (description fonctionnelle)"
+        "placeholder": "Décrivez le cycle de vie des données (de leur collecte à leur destruction en passant par leur stockage, les différentes étapes de traitements, l’archivage, etc.), par exemple à l’aide d’un schéma des flux de données (vous pouvez l’ajouter en pièce jointe) et d’une description de chaque processus mis en œuvre."
       },
       "concerned_people": {
         "title": "Personnes concernées",
-        "placeholder": "Détaillez les types de personnes concernées"
+        "placeholder": "Listez les personnes concernées par le traitement."
       },
+      "informed_concerned_peaple": "Comment les personnes concernées sont-elles informées à propos du traitement ?",
       "sections": {
         "description": {
           "title": "Description de l'activité de traitement",
@@ -398,6 +399,16 @@
       "location": "Données de localisation (ex. déplacements, données GPS, GSM, ...)",
       "internet": "Internet(ex. cookies, traceurs, données de navigation, mesures d’audience, ...)",
       "other": "Autres catégories de données"
+    }
+  },
+  "processing-informed-concerned-peaple": {
+    "form": {
+      "mention-form": "Mention dans un formulaire",
+      "mention-contract": "Mention dans le contrat de travail",
+      "terms": "Conditions générales de vente",
+      "display": "Affichage dans les locaux",
+      "phone": "Par téléphone",
+      "other": "Autre"
     }
   },
   "pia": {
