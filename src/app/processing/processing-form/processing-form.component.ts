@@ -54,7 +54,7 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
     if (dataTypes) {
       return
     };
-
+    console.log(this.processing);
     this.processingApi.update(this.processing).subscribe(() => { });
   }
 
