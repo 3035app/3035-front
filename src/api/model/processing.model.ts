@@ -30,6 +30,50 @@ export class Processing extends BaseModel {
   public concerned_people: string;
   public comments: ProcessingCommentModel[] = [];
   public attachments: ProcessingAttachmentModel[] = [];
+  public informed_concerned_peaple: object = {
+    mention_form: false,
+    mention_contract: false,
+    terms: false,
+    display: false,
+    phone: false,
+    other: false
+  };
+  public consent_concerned_peaple: object = {
+    optin_website: false,
+    optin_user_space: false,
+    phone: false,
+    paper: false,
+    signing_paper_form: false,
+    signing_contract: false,
+    signing_standard_form: false,
+    other: false
+  };
+  public access_concerned_peaple: object = {
+    contact_dpo: false,
+    contact_referent: false,
+    customer_area_form: false,
+    paper_form: false,
+    other: false
+  };
+  public delete_concerned_peaple: object = {
+    contact_dpo: false,
+    contact_referent: false,
+    customer_area_form: false,
+    paper_form: false,
+    other: false
+  };
+  public limit_concerned_peaple: object = {
+    contact_dpo: false,
+    contact_referent: false,
+    customer_area_form: false,
+    paper_form: false,
+    other: false
+  };
+  public subcontractors_obligations: object = {
+    yes: false,
+    no: false,
+    partially: false
+  };
 }
 
 export enum ProcessingStatus {

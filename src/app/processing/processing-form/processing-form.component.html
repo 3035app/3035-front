@@ -44,31 +44,6 @@
 
       <fieldset *ngIf="currentSection.id == 1" id="description" class="form-section">
         <div class="form-field">
-          <label class="title" for="processing-description">{{ 'processing.form.description.title' | translate }}</label>
-          <div (click)="editField(description, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
-            class="pia-questionBlock-contentText"
-            [innerHTML]="processingForm.form.controls['description']?.value | safeHtml"
-            [ngClass]="{ 'hide': ((editor && elementId === description.id) || !processingForm.form.controls['description']?.value) }"
-          ></div>
-
-          <textarea
-            class="field"
-            id="processing-description"
-            required
-            name="description"
-            minRows="8"
-            cols="50"
-            placeholder="{{'processing.form.description.placeholder' | translate }}"
-            #description
-            (change)="updateProcessing()"
-            [(ngModel)]="processing.description"
-            [ngClass]="{ 'hide': (processingForm.form.controls['description']?.value && processingForm.form.controls['description']?.value.length > 0) }"
-            (focusin)="editField($event.target, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
-          ></textarea>
-          <app-processing-comments [processing]="processing" [field]="'description'"></app-processing-comments>
-        </div>
-
-        <div class="form-field">
           <label class="title" for="processing-context_of_implementation">{{ 'processing.form.context_of_implementation.title' | translate }}</label>
           <div (click)="editField(context_of_implementation, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
             class="pia-questionBlock-contentText"
@@ -119,31 +94,6 @@
         </div>
 
         <div class="form-field">
-          <label class="title" for="processing-lawfulness">{{ 'processing.form.lawfulness.title' | translate }}</label>
-          <div (click)="editField(lawfulness, ['PIA_LGL_FOND'])"
-            class="pia-questionBlock-contentText"
-            [innerHTML]="processingForm.form.controls['lawfulness']?.value | safeHtml"
-            [ngClass]="{ 'hide': ((editor && elementId === lawfulness.id) || !processingForm.form.controls['lawfulness']?.value) }"
-          ></div>
-
-          <textarea
-            class="field"
-            id="processing-lawfulness"
-            required
-            name="lawfulness"
-            minRows="8"
-            cols="50"
-            placeholder="{{'processing.form.lawfulness.placeholder' | translate}}"
-            #lawfulness
-            (change)="updateProcessing()"
-            [(ngModel)]="processing.lawfulness"
-            [ngClass]="{ 'hide': (processingForm.form.controls['lawfulness']?.value && processingForm.form.controls['lawfulness']?.value.length > 0) }"
-            (focusin)="editField($event.target, ['PIA_LGL_FOND'])"
-          ></textarea>
-          <app-processing-comments [processing]="processing" [field]="'lawfulness'"></app-processing-comments>
-        </div>
-
-        <div class="form-field">
           <label class="title" for="processing-standards">{{ 'processing.form.standards.title' | translate }}</label>
           <div (click)="editField(standards, ['PIA_LGL_FOND'])"
             class="pia-questionBlock-contentText"
@@ -168,32 +118,7 @@
           <app-processing-comments [processing]="processing" [field]="'standards'"></app-processing-comments>
         </div>
 
-        <div class="form-field">
-          <label class="title" for="processing-consent">{{ 'processing.form.consent.title' | translate }}</label>
-          <div (click)="editField(consent, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
-            class="pia-questionBlock-contentText"
-            [innerHTML]="processingForm.form.controls['consent']?.value | safeHtml"
-            [ngClass]="{ 'hide': ((editor && elementId === consent.id) || !processingForm.form.controls['consent']?.value) }"
-          ></div>
-
-          <textarea
-            class="field"
-            id="processing-consent"
-            required
-            name="consent"
-            minRows="8"
-            cols="50"
-            placeholder="{{'processing.form.consent.placeholder' | translate}}"
-            #consent
-            (change)="updateProcessing()"
-            [(ngModel)]="processing.consent"
-            [ngClass]="{ 'hide': (processingForm.form.controls['consent']?.value && processingForm.form.controls['consent']?.value.length > 0) }"
-            (focusin)="editField($event.target, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
-          ></textarea>
-          <app-processing-comments [processing]="processing" [field]="'consent'"></app-processing-comments>
-        </div>
-
-        <div class="form-field">
+        <!-- <div class="form-field"> ???
           <label class="title" for="processing-rights-guarantee">{{ 'processing.form.rights_guarantee.title' | translate }}</label>
           <div (click)="editField(guarantee, ['PIA_DEF_ACC', 'PIA_DEF_PORT', 'PIA_DEF_RECT', 'PIA_DEF_EFF', 'PIA_DEF_LIM'])"
             class="pia-questionBlock-contentText"
@@ -216,7 +141,7 @@
             (focusin)="editField($event.target, ['PIA_DEF_ACC', 'PIA_DEF_PORT', 'PIA_DEF_RECT', 'PIA_DEF_EFF', 'PIA_DEF_LIM'])"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'rights-guarantee'"></app-processing-comments>
-        </div>
+        </div> -->
       </fieldset>
 
       <fieldset [hidden]="currentSection.id !== 2" id="data" class="form-section">
@@ -231,6 +156,46 @@
             [processingId]="processing.id"
           ></app-processing-data-types>
           <app-processing-comments [processing]="processing" [field]="'data-types'"></app-processing-comments>
+        </div>
+
+        <div class="form-field">
+          <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle.title' | translate }}</label>
+          <div (click)="editField(lifecycle, ['PIA_LGL_LFC'])" class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['lifecycle']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === lifecycle.id) || !processingForm.form.controls['lifecycle']?.value) }">
+          </div>
+        
+          <textarea class="field" id="processing-lifecycle" required name="lifecycle" minRows="8" cols="50"
+            placeholder="{{'processing.form.lifecycle.placeholder' | translate}}" #lifecycle (change)="updateProcessing()"
+            [(ngModel)]="processing.life_cycle"
+            [ngClass]="{ 'hide': (processingForm.form.controls['lifecycle']?.value && processingForm.form.controls['lifecycle']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_LFC'])"></textarea>
+          <app-processing-comments [processing]="processing" [field]="'lifecycle'"></app-processing-comments>
+        </div>
+
+        <div class="form-field">
+          <label class="title" for="processing-storage">{{ 'processing.form.storage.title' | translate }}</label>
+          <div (click)="editField(storage, ['PIA_LGL_SUPT'])"
+            class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['storage']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === storage.id) || !processingForm.form.controls['storage']?.value) }"
+          ></div>
+
+          <textarea
+            class="field"
+            id="processing-storage"
+            required
+            name="storage"
+            minRows="8"
+            cols="50"
+            placeholder="{{'processing.form.storage.placeholder' | translate}}"
+            #storage
+            (change)="updateProcessing()"
+            [(ngModel)]="processing.storage"
+            [ngClass]="{ 'hide': (processingForm.form.controls['storage']?.value && processingForm.form.controls['storage']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_SUPT'])"
+          ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'storage'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -259,28 +224,85 @@
         </div>
 
         <div class="form-field">
-          <label class="title" for="processing-exactness">{{ 'processing.form.exactness.title' | translate }}</label>
-          <div (click)="editField(exactness, ['PIA_DEF_EXA'])"
+          <label class="title" for="processing-processors">{{ 'processing.form.processors.title' | translate }}</label>
+          <div (click)="editField(processors, ['PIA_LGL_ST', 'PIA_LGL_DEST'])" class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['processors']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === processors.id) || !processingForm.form.controls['processors']?.value) }">
+          </div>
+        
+          <textarea class="field" id="processing-processors" required name="processors" minRows="8" cols="50"
+            placeholder="{{'processing.form.processors.placeholder' | translate}}" #processors (change)="updateProcessing()"
+            [(ngModel)]="processing.processors"
+            [ngClass]="{ 'hide': (processingForm.form.controls['processors']?.value && processingForm.form.controls['processors']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"></textarea>
+          <app-processing-comments [processing]="processing" [field]="'processors'"></app-processing-comments>
+        </div>
+
+        <div class="form-field">
+          <label class="title" for="processing-recipients">{{ 'processing.form.recipients.title' | translate }}</label>
+          <div (click)="editField(recipients, ['PIA_LGL_ST', 'PIA_LGL_DEST'])" class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['recipients']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === recipients.id) || !processingForm.form.controls['recipients']?.value) }">
+          </div>
+        
+          <textarea class="field" id="processing-recipients" required name="recipients" minRows="8" cols="50"
+            placeholder="{{'processing.form.recipients.placeholder' | translate}}" #recipients (change)="updateProcessing()"
+            [(ngModel)]="processing.recipients"
+            [ngClass]="{ 'hide': (processingForm.form.controls['recipients']?.value && processingForm.form.controls['recipients']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"></textarea>
+          <app-processing-comments [processing]="processing" [field]="'recipients'"></app-processing-comments>
+        </div>
+      </fieldset>
+
+      <fieldset *ngIf="currentSection.id == 3" id="lifecycle" class="form-section">
+        <div class="form-field">
+          <label class="title" for="processing-description">{{ 'processing.form.description.title' | translate }}</label>
+          <div (click)="editField(description, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
             class="pia-questionBlock-contentText"
-            [innerHTML]="processingForm.form.controls['exactness']?.value | safeHtml"
-            [ngClass]="{ 'hide': ((editor && elementId === exactness.id) || !processingForm.form.controls['exactness']?.value) }"
+            [innerHTML]="processingForm.form.controls['description']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === description.id) || !processingForm.form.controls['description']?.value) }"
           ></div>
 
           <textarea
             class="field"
-            id="processing-exactness"
+            id="processing-description"
             required
-            name="exactness"
+            name="description"
             minRows="8"
             cols="50"
-            placeholder="{{'processing.form.exactness.placeholder' | translate}}"
-            #exactness
+            placeholder="{{'processing.form.description.placeholder' | translate }}"
+            #description
             (change)="updateProcessing()"
-            [(ngModel)]="processing.exactness"
-            [ngClass]="{ 'hide': (processingForm.form.controls['exactness']?.value && processingForm.form.controls['exactness']?.value.length > 0) }"
-            (focusin)="editField($event.target, ['PIA_DEF_EXA'])"
+            [(ngModel)]="processing.description"
+            [ngClass]="{ 'hide': (processingForm.form.controls['description']?.value && processingForm.form.controls['description']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
           ></textarea>
-          <app-processing-comments [processing]="processing" [field]="'exactness'"></app-processing-comments>
+          <app-processing-comments [processing]="processing" [field]="'description'"></app-processing-comments>
+        </div>
+
+        <div class="form-field">
+          <label class="title" for="processing-lawfulness">{{ 'processing.form.lawfulness.title' | translate }}</label>
+          <div (click)="editField(lawfulness, ['PIA_LGL_FOND'])"
+            class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['lawfulness']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === lawfulness.id) || !processingForm.form.controls['lawfulness']?.value) }"
+          ></div>
+
+          <textarea
+            class="field"
+            id="processing-lawfulness"
+            required
+            name="lawfulness"
+            minRows="8"
+            cols="50"
+            placeholder="{{'processing.form.lawfulness.placeholder' | translate}}"
+            #lawfulness
+            (change)="updateProcessing()"
+            [(ngModel)]="processing.lawfulness"
+            [ngClass]="{ 'hide': (processingForm.form.controls['lawfulness']?.value && processingForm.form.controls['lawfulness']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_FOND'])"
+          ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'lawfulness'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -309,128 +331,387 @@
         </div>
 
         <div class="form-field">
-          <label class="title" for="processing-storage">{{ 'processing.form.storage.title' | translate }}</label>
-          <div (click)="editField(storage, ['PIA_LGL_SUPT'])"
+          <label class="title" for="processing-exactness">{{ 'processing.form.exactness.title' | translate }}</label>
+          <div (click)="editField(exactness, ['PIA_DEF_EXA'])"
             class="pia-questionBlock-contentText"
-            [innerHTML]="processingForm.form.controls['storage']?.value | safeHtml"
-            [ngClass]="{ 'hide': ((editor && elementId === storage.id) || !processingForm.form.controls['storage']?.value) }"
+            [innerHTML]="processingForm.form.controls['exactness']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === exactness.id) || !processingForm.form.controls['exactness']?.value) }"
           ></div>
 
           <textarea
             class="field"
-            id="processing-storage"
+            id="processing-exactness"
             required
-            name="storage"
+            name="exactness"
             minRows="8"
             cols="50"
-            placeholder="{{'processing.form.storage.placeholder' | translate}}"
-            #storage
+            placeholder="{{'processing.form.exactness.placeholder' | translate}}"
+            #exactness
             (change)="updateProcessing()"
-            [(ngModel)]="processing.storage"
-            [ngClass]="{ 'hide': (processingForm.form.controls['storage']?.value && processingForm.form.controls['storage']?.value.length > 0) }"
-            (focusin)="editField($event.target, ['PIA_LGL_SUPT'])"
+            [(ngModel)]="processing.exactness"
+            [ngClass]="{ 'hide': (processingForm.form.controls['exactness']?.value && processingForm.form.controls['exactness']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_DEF_EXA'])"
           ></textarea>
-          <app-processing-comments [processing]="processing" [field]="'storage'"></app-processing-comments>
+          <app-processing-comments [processing]="processing" [field]="'exactness'"></app-processing-comments>
         </div>
       </fieldset>
 
-      <fieldset *ngIf="currentSection.id == 3" id="lifecycle" class="form-section">
-          <div class="form-field">
-            <label class="title" for="processing-lifecycle">{{ 'processing.form.lifecycle.title' | translate }}</label>
-            <div (click)="editField(lifecycle, ['PIA_LGL_LFC'])"
-              class="pia-questionBlock-contentText"
-              [innerHTML]="processingForm.form.controls['lifecycle']?.value | safeHtml"
-              [ngClass]="{ 'hide': ((editor && elementId === lifecycle.id) || !processingForm.form.controls['lifecycle']?.value) }"
-            ></div>
-
-            <textarea
-              class="field"
-              id="processing-lifecycle"
-              required
-              name="lifecycle"
-              minRows="8"
-              cols="50"
-              placeholder="{{'processing.form.lifecycle.placeholder' | translate}}"
-              #lifecycle
-              (change)="updateProcessing()"
-              [(ngModel)]="processing.life_cycle"
-              [ngClass]="{ 'hide': (processingForm.form.controls['lifecycle']?.value && processingForm.form.controls['lifecycle']?.value.length > 0) }"
-              (focusin)="editField($event.target, ['PIA_LGL_LFC'])"
-            ></textarea>
-            <app-processing-comments [processing]="processing" [field]="'lifecycle'"></app-processing-comments>
+      <fieldset *ngIf="currentSection.id == 4" id="measures" class="form-section">
+        <div class="form-field" (click)="updateKnowledgeBase()">
+          <label class="title">{{ 'processing.form.informed_concerned_peaple' | translate }}</label>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_mention_form"
+                [(ngModel)]="processing.informed_concerned_peaple.mention_form" (change)="updateProcessing()" id="informed_mention_form">
+              <label class="enabled-label" for="informed_mention_form">{{ 'processing_informed_concerned_peaple.form.mention_form'|
+                translate }}</label>
+            </div>
           </div>
-          <div class="form-field">
-            <label class="title" for="processing-processors">{{ 'processing.form.processors.title' | translate }}</label>
-            <div (click)="editField(processors, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
-              class="pia-questionBlock-contentText"
-              [innerHTML]="processingForm.form.controls['processors']?.value | safeHtml"
-              [ngClass]="{ 'hide': ((editor && elementId === processors.id) || !processingForm.form.controls['processors']?.value) }"
-            ></div>
-
-            <textarea
-              class="field"
-              id="processing-processors"
-              required
-              name="processors"
-              minRows="8"
-              cols="50"
-              placeholder="{{'processing.form.processors.placeholder' | translate}}"
-              #processors
-              (change)="updateProcessing()"
-              [(ngModel)]="processing.processors"
-              [ngClass]="{ 'hide': (processingForm.form.controls['processors']?.value && processingForm.form.controls['processors']?.value.length > 0) }"
-              (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
-            ></textarea>
-            <app-processing-comments [processing]="processing" [field]="'processors'"></app-processing-comments>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_mention_contract"
+                [(ngModel)]="processing.informed_concerned_peaple.mention_contract" (change)="updateProcessing()" id="informed_mention_contract">
+              <label class="enabled-label" for="informed_mention_contract">{{
+                'processing_informed_concerned_peaple.form.mention_contract'| translate }}</label>
+            </div>
           </div>
-          <div class="form-field">
-            <label class="title" for="processing-recipients">{{ 'processing.form.recipients.title' | translate }}</label>
-            <div (click)="editField(recipients, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
-              class="pia-questionBlock-contentText"
-              [innerHTML]="processingForm.form.controls['recipients']?.value | safeHtml"
-              [ngClass]="{ 'hide': ((editor && elementId === recipients.id) || !processingForm.form.controls['recipients']?.value) }"
-            ></div>
-
-            <textarea
-              class="field"
-              id="processing-recipients"
-              required
-              name="recipients"
-              minRows="8"
-              cols="50"
-              placeholder="{{'processing.form.recipients.placeholder' | translate}}"
-              #recipients
-              (change)="updateProcessing()"
-              [(ngModel)]="processing.recipients"
-              [ngClass]="{ 'hide': (processingForm.form.controls['recipients']?.value && processingForm.form.controls['recipients']?.value.length > 0) }"
-              (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
-            ></textarea>
-            <app-processing-comments [processing]="processing" [field]="'recipients'"></app-processing-comments>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_terms" [(ngModel)]="processing.informed_concerned_peaple.terms"
+                (change)="updateProcessing()" id="informed_terms">
+              <label class="enabled-label" for="informed_terms">{{ 'processing_informed_concerned_peaple.form.terms'| translate
+                }}</label>
+            </div>
           </div>
-          <div class="form-field">
-            <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer.title' | translate }}</label>
-            <div (click)="editField(nonEuTransfer, ['PIA_LGL_TRAN'])"
-              class="pia-questionBlock-contentText"
-              [innerHTML]="processingForm.form.controls['non-eu-transfer']?.value | safeHtml"
-              [ngClass]="{ 'hide': ((editor && elementId === nonEuTransfer.id) || !processingForm.form.controls['non-eu-transfer']?.value) }"
-            ></div>
-
-            <textarea
-              class="field"
-              id="processing-non-eu-transfer"
-              required
-              name="non-eu-transfer"
-              minRows="8"
-              cols="50"
-              placeholder="{{'processing.form.non-eu-transfer.placeholder' | translate}}"
-              #nonEuTransfer
-              (change)="updateProcessing()"
-              [(ngModel)]="processing.non_eu_transfer"
-              [ngClass]="{ 'hide': (processingForm.form.controls['non-eu-transfer']?.value && processingForm.form.controls['non-eu-transfer']?.value.length > 0) }"
-              (focusin)="editField($event.target, ['PIA_LGL_TRAN'])"
-            ></textarea>
-            <app-processing-comments [processing]="processing" [field]="'non-eu-transfer'"></app-processing-comments>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_display" [(ngModel)]="processing.informed_concerned_peaple.display"
+                (change)="updateProcessing()" id="informed_display">
+              <label class="enabled-label" for="informed_display">{{ 'processing_informed_concerned_peaple.form.display'| translate
+                }}</label>
+            </div>
           </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_phone" [(ngModel)]="processing.informed_concerned_peaple.phone"
+                (change)="updateProcessing()" id="informed_phone">
+              <label class="enabled-label" for="informed_phone">{{ 'processing_informed_concerned_peaple.form.phone'| translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_other" [(ngModel)]="processing.informed_concerned_peaple.other"
+                (change)="updateProcessing()" id="informed_other">
+              <label class="enabled-label" for="informed_other">{{ 'processing_informed_concerned_peaple.form.other'| translate
+                }}</label>
+            </div>
+          </div>
+          <app-processing-comments [processing]="processing" [field]="'informed_concerned_peaple'"></app-processing-comments>
+        </div>
+
+        <div class="form-field">
+          <label class="title" for="processing-consent">{{ 'processing.form.consent.title' | translate }}</label>
+          <div (click)="editField(consent, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
+            class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['consent']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === consent.id) || !processingForm.form.controls['consent']?.value) }"
+          ></div>
+
+          <textarea
+            class="field"
+            id="processing-consent"
+            required
+            name="consent"
+            minRows="8"
+            cols="50"
+            placeholder="{{'processing.form.consent.placeholder' | translate}}"
+            #consent
+            (change)="updateProcessing()"
+            [(ngModel)]="processing.consent"
+            [ngClass]="{ 'hide': (processingForm.form.controls['consent']?.value && processingForm.form.controls['consent']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
+          ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'consent'"></app-processing-comments>
+        </div>
+
+        <div class="form-field" (click)="updateKnowledgeBase()">
+          <label class="title">{{ 'processing.form.consent_concerned_peaple' |
+            translate }}</label>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_optin_website"
+                [(ngModel)]="processing.consent_concerned_peaple.optin_website" (change)="updateProcessing()" id="consent_optin_website">
+              <label class="enabled-label" for="consent_optin_website">{{ 'processing_consent_concerned_peaple.form.optin_website'|
+                translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_optin_user_space"
+                [(ngModel)]="processing.consent_concerned_peaple.optin_user_space" (change)="updateProcessing()" id="consent_optin_user_space">
+              <label class="enabled-label" for="consent_optin_user_space">{{
+                'processing_consent_concerned_peaple.form.optin_user_space'| translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_phone"
+                [(ngModel)]="processing.consent_concerned_peaple.phone" (change)="updateProcessing()" id="consent_phone">
+              <label class="enabled-label" for="consent_phone">{{ 'processing_consent_concerned_peaple.form.phone'| translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_paper"
+                [(ngModel)]="processing.consent_concerned_peaple.paper" (change)="updateProcessing()" id="consent_paper">
+              <label class="enabled-label" for="consent_paper">{{ 'processing_consent_concerned_peaple.form.paper'| translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_signing_paper_form"
+                [(ngModel)]="processing.consent_concerned_peaple.signing_paper_form" (change)="updateProcessing()" id="consent_signing_paper_form">
+              <label class="enabled-label" for="consent_signing_paper_form">{{ 'processing_consent_concerned_peaple.form.signing_paper_form'| translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_signing_contract"
+                [(ngModel)]="processing.consent_concerned_peaple.signing_contract" (change)="updateProcessing()" id="consent_signing_contract">
+              <label class="enabled-label" for="consent_signing_contract">{{ 'processing_consent_concerned_peaple.form.signing_contract'| translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_signing_standard_form"
+                [(ngModel)]="processing.consent_concerned_peaple.signing_standard_form" (change)="updateProcessing()" id="consent_signing_standard_form">
+              <label class="enabled-label" for="consent_signing_standard_form">{{ 'processing_consent_concerned_peaple.form.signing_standard_form'| translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_other"
+                [(ngModel)]="processing.consent_concerned_peaple.other" (change)="updateProcessing()" id="other">
+              <label class="enabled-label" for="other">{{ 'processing_consent_concerned_peaple.form.other'| translate
+                }}</label>
+            </div>
+          </div>
+          <app-processing-comments [processing]="processing" [field]="'consent_concerned_peaple'"></app-processing-comments>
+        </div>
+
+        <div class="form-field" (click)="updateKnowledgeBase()">
+          <label class="title">{{ 'processing.form.access_concerned_peaple' |
+            translate }}</label>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_contact_dpo"
+                [(ngModel)]="processing.access_concerned_peaple.contact_dpo" (change)="updateProcessing()"
+                id="access_contact_dpo">
+              <label class="enabled-label" for="access_contact_dpo">{{
+                'processing_access_concerned_peaple.form.contact_dpo'|
+                translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_contact_referent"
+                [(ngModel)]="processing.access_concerned_peaple.contact_referent" (change)="updateProcessing()"
+                id="access_contact_referent">
+              <label class="enabled-label" for="access_contact_referent">{{
+                'processing_access_concerned_peaple.form.contact_referent'| translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_customer_area_form"
+                [(ngModel)]="processing.access_concerned_peaple.customer_area_form" (change)="updateProcessing()" id="access_customer_area_form">
+              <label class="enabled-label" for="access_customer_area_form">{{ 'processing_access_concerned_peaple.form.customer_area_form'| translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_paper_form"
+                [(ngModel)]="processing.access_concerned_peaple.paper_form" (change)="updateProcessing()" id="access_paper_form">
+              <label class="enabled-label" for="access_paper_form">{{ 'processing_access_concerned_peaple.form.paper_form'|
+                translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_other"
+                [(ngModel)]="processing.access_concerned_peaple.other" (change)="updateProcessing()" id="access_other">
+              <label class="enabled-label" for="access_other">{{ 'processing_access_concerned_peaple.form.other'| translate
+                }}</label>
+            </div>
+          </div>
+          <app-processing-comments [processing]="processing" [field]="'access_concerned_peaple'"></app-processing-comments>
+        </div>
+
+        <div class="form-field" (click)="updateKnowledgeBase()">
+          <label class="title">{{ 'processing.form.delete_concerned_peaple' |
+            translate }}</label>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_contact_dpo"
+                [(ngModel)]="processing.delete_concerned_peaple.contact_dpo" (change)="updateProcessing()"
+                id="delete_contact_dpo">
+              <label class="enabled-label" for="delete_contact_dpo">{{
+                'processing_delete_concerned_peaple.form.contact_dpo'|
+                translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_contact_referent"
+                [(ngModel)]="processing.delete_concerned_peaple.contact_referent" (change)="updateProcessing()"
+                id="delete_contact_referent">
+              <label class="enabled-label" for="delete_contact_referent">{{
+                'processing_delete_concerned_peaple.form.contact_referent'| translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_customer_area_form"
+                [(ngModel)]="processing.delete_concerned_peaple.customer_area_form" (change)="updateProcessing()" id="delete_customer_area_form">
+              <label class="enabled-label" for="delete_customer_area_form">{{ 'processing_delete_concerned_peaple.form.customer_area_form'| translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_paper_form"
+                [(ngModel)]="processing.delete_concerned_peaple.paper_form" (change)="updateProcessing()" id="delete_paper_form">
+              <label class="enabled-label" for="delete_paper_form">{{ 'processing_delete_concerned_peaple.form.paper_form'|
+                translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_other"
+                [(ngModel)]="processing.delete_concerned_peaple.other" (change)="updateProcessing()" id="delete_other">
+              <label class="enabled-label" for="delete_other">{{ 'processing_delete_concerned_peaple.form.other'| translate
+                }}</label>
+            </div>
+          </div>
+          <app-processing-comments [processing]="processing" [field]="'delete_concerned_peaple'"></app-processing-comments>
+        </div>
+
+        <div class="form-field" (click)="updateKnowledgeBase()">
+          <label class="title">{{ 'processing.form.limit_concerned_peaple' |
+            translate }}</label>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_contact_dpo"
+                [(ngModel)]="processing.limit_concerned_peaple.contact_dpo" (change)="updateProcessing()"
+                id="limit_contact_dpo">
+              <label class="enabled-label" for="limit_contact_dpo">{{
+                'processing_limit_concerned_peaple.form.contact_dpo'|
+                translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_contact_referent"
+                [(ngModel)]="processing.limit_concerned_peaple.contact_referent" (change)="updateProcessing()"
+                id="limit_contact_referent">
+              <label class="enabled-label" for="limit_contact_referent">{{
+                'processing_limit_concerned_peaple.form.contact_referent'| translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_customer_area_form"
+                [(ngModel)]="processing.limit_concerned_peaple.customer_area_form" (change)="updateProcessing()" id="limit_customer_area_form">
+              <label class="enabled-label" for="limit_customer_area_form">{{ 'processing_limit_concerned_peaple.form.customer_area_form'| translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_paper_form"
+                [(ngModel)]="processing.limit_concerned_peaple.paper_form" (change)="updateProcessing()" id="limit_paper_form">
+              <label class="enabled-label" for="limit_paper_form">{{ 'processing_limit_concerned_peaple.form.paper_form'|
+                translate
+                }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_other"
+                [(ngModel)]="processing.limit_concerned_peaple.other" (change)="updateProcessing()" id="limit_other">
+              <label class="enabled-label" for="limit_other">{{ 'processing_limit_concerned_peaple.form.other'| translate
+                }}</label>
+            </div>
+          </div>
+          <app-processing-comments [processing]="processing" [field]="'limit_concerned_peaple'"></app-processing-comments>
+        </div>
+
+        <div class="form-field" (click)="updateKnowledgeBase()">
+          <label class="title">{{ 'processing.form.subcontractors_obligations' |
+            translate }}</label>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="subcontractors_obligations_yes"
+                [(ngModel)]="processing.subcontractors_obligations.yes" (change)="updateProcessing()"
+                id="subcontractors_obligations_yes">
+              <label class="enabled-label" for="subcontractors_obligations_yes">{{
+                'processing_subcontractors_obligations.form.yes'|
+                translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="subcontractors_obligations_no"
+                [(ngModel)]="processing.subcontractors_obligations.no" (change)="updateProcessing()"
+                id="subcontractors_obligations_no">
+              <label class="enabled-label" for="subcontractors_obligations_no">{{
+                'processing_subcontractors_obligations.form.no'| translate }}</label>
+            </div>
+          </div>
+          <div class="small-12">
+            <div class="type-enabled">
+              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="subcontractors_obligations_partially"
+                [(ngModel)]="processing.subcontractors_obligations.partially" (change)="updateProcessing()" id="subcontractors_obligations_partially">
+              <label class="enabled-label" for="subcontractors_obligations_partially">{{ 'processing_subcontractors_obligations.form.partially'| translate
+                }}</label>
+            </div>
+          </div>
+          <app-processing-comments [processing]="processing" [field]="'subcontractors_obligations'"></app-processing-comments>
+        </div>
+
+        <div class="form-field">
+          <label class="title" for="processing-non-eu-transfer">{{ 'processing.form.non-eu-transfer.title' | translate }}</label>
+          <div (click)="editField(nonEuTransfer, ['PIA_LGL_TRAN'])"
+            class="pia-questionBlock-contentText"
+            [innerHTML]="processingForm.form.controls['non-eu-transfer']?.value | safeHtml"
+            [ngClass]="{ 'hide': ((editor && elementId === nonEuTransfer.id) || !processingForm.form.controls['non-eu-transfer']?.value) }"
+          ></div>
+
+          <textarea
+            class="field"
+            id="processing-non-eu-transfer"
+            required
+            name="non-eu-transfer"
+            minRows="8"
+            cols="50"
+            placeholder="{{'processing.form.non-eu-transfer.placeholder' | translate}}"
+            #nonEuTransfer
+            (change)="updateProcessing()"
+            [(ngModel)]="processing.non_eu_transfer"
+            [ngClass]="{ 'hide': (processingForm.form.controls['non-eu-transfer']?.value && processingForm.form.controls['non-eu-transfer']?.value.length > 0) }"
+            (focusin)="editField($event.target, ['PIA_LGL_TRAN'])"
+          ></textarea>
+          <app-processing-comments [processing]="processing" [field]="'non-eu-transfer'"></app-processing-comments>
+        </div>
       </fieldset>
 
       <div 
