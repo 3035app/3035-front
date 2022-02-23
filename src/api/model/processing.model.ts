@@ -30,7 +30,7 @@ export class Processing extends BaseModel {
   public concerned_people: string;
   public comments: ProcessingCommentModel[] = [];
   public attachments: ProcessingAttachmentModel[] = [];
-  public informed_concerned_peaple: object = {
+  public informed_concerned_people: object = {
     mention_form: false,
     mention_contract: false,
     terms: false,
@@ -38,7 +38,7 @@ export class Processing extends BaseModel {
     phone: false,
     other: false
   };
-  public consent_concerned_peaple: object = {
+  public consent_concerned_people: object = {
     optin_website: false,
     optin_user_space: false,
     phone: false,
@@ -48,21 +48,21 @@ export class Processing extends BaseModel {
     signing_standard_form: false,
     other: false
   };
-  public access_concerned_peaple: object = {
+  public access_concerned_people: object = {
     contact_dpo: false,
     contact_referent: false,
     customer_area_form: false,
     paper_form: false,
     other: false
   };
-  public delete_concerned_peaple: object = {
+  public delete_concerned_people: object = {
     contact_dpo: false,
     contact_referent: false,
     customer_area_form: false,
     paper_form: false,
     other: false
   };
-  public limit_concerned_peaple: object = {
+  public limit_concerned_people: object = {
     contact_dpo: false,
     contact_referent: false,
     customer_area_form: false,

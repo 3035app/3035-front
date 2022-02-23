@@ -330,11 +330,11 @@
         "title": "Personnes concernées",
         "placeholder": "Listez les personnes concernées par le traitement."
       },
-      "informed_concerned_peaple": "Comment les personnes concernées sont-elles informées à propos du traitement ?",
-      "consent_concerned_peaple": "Si applicable, comment le consentement des personnes concernées est-il obtenu ?",
-      "access_concerned_peaple": "Comment les personnes concernées peuvent elles exercer leurs droit d'accès et droit à la portabilité ?",
-      "delete_concerned_peaple": "Comment les personnes concernées peuvent-elles exercer leurs droit de rectification et droit à l'effacement (droit à l'oubli) ?",
-      "limit_concerned_peaple": "Comment les personnes concernées peuvent-elle exercer leurs droit de limitation et droit d'opposition ?",
+      "informed_concerned_people": "Comment les personnes concernées sont-elles informées à propos du traitement ?",
+      "consent_concerned_people": "Si applicable, comment le consentement des personnes concernées est-il obtenu ?",
+      "access_concerned_people": "Comment les personnes concernées peuvent elles exercer leurs droit d'accès et droit à la portabilité ?",
+      "delete_concerned_people": "Comment les personnes concernées peuvent-elles exercer leurs droit de rectification et droit à l'effacement (droit à l'oubli) ?",
+      "limit_concerned_people": "Comment les personnes concernées peuvent-elle exercer leurs droit de limitation et droit d'opposition ?",
       "subcontractors_obligations": "Les obligations des sous-traitants sont-elles clairement définies et contractualisées ?",
       "sections": {
         "description": {
@@ -406,7 +406,7 @@
       "other": "Autres catégories de données"
     }
   },
-  "processing_informed_concerned_peaple": {
+  "processing_informed_concerned_people": {
     "form": {
       "mention_form": "Mention dans un formulaire",
       "mention_contract": "Mention dans le contrat de travail",
@@ -416,7 +416,7 @@
       "other": "Autre"
     }
   },
-  "processing_consent_concerned_peaple": {
+  "processing_consent_concerned_people": {
     "form": {
       "optin_website": "Opt-in sur le site Internet",
       "optin_user_space": "Opt-in sur l'espace utilisateur",
@@ -428,7 +428,7 @@
       "other": "Autre"
     }
   },
-  "processing_access_concerned_peaple": {
+  "processing_access_concerned_people": {
     "form": {
       "contact_dpo": "Contact direct du DPO",
       "contact_referent": "Contact du référent RGPD",
@@ -437,7 +437,7 @@
       "other": "Autre"
     }
   },
-  "processing_delete_concerned_peaple": {
+  "processing_delete_concerned_people": {
     "form": {
       "contact_dpo": "Contact direct du DPO",
       "contact_referent": "Contact du référent RGPD",
@@ -446,7 +446,7 @@
       "other": "Autre"
     }
   },
-  "processing_limit_concerned_peaple": {
+  "processing_limit_concerned_people": {
     "form": {
       "contact_dpo": "Contact direct du DPO",
       "contact_referent": "Contact du référent RGPD",
