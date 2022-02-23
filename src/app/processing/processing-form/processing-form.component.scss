@@ -43,6 +43,16 @@
           background-color: $pia-green;
         }
       }
+      &.measures-section {
+        > div:last-child {
+          h1 {
+            color: #ffd700;
+          }
+        }
+        > div:first-child {
+          background-color: #ffd700;
+        }
+      }
       > div:first-child {
         width: 74px;
         position: relative;
@@ -516,5 +526,10 @@
     .btn.expanded {
       margin: 0;
     }
+  }
+  .enabled-label {
+    font-size: 1.2em;
+    margin: 5px;
+    padding-left: 15px;
   }
 }

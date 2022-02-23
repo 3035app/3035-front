@@ -331,6 +331,11 @@
         "placeholder": "Listez les personnes concernées par le traitement."
       },
       "informed_concerned_peaple": "Comment les personnes concernées sont-elles informées à propos du traitement ?",
+      "consent_concerned_peaple": "Si applicable, comment le consentement des personnes concernées est-il obtenu ?",
+      "access_concerned_peaple": "Comment les personnes concernées peuvent elles exercer leurs droit d'accès et droit à la portabilité ?",
+      "delete_concerned_peaple": "Comment les personnes concernées peuvent-elles exercer leurs droit de rectification et droit à l'effacement (droit à l'oubli) ?",
+      "limit_concerned_peaple": "Comment les personnes concernées peuvent-elle exercer leurs droit de limitation et droit d'opposition ?",
+      "subcontractors_obligations": "Les obligations des sous-traitants sont-elles clairement définies et contractualisées ?",
       "sections": {
         "description": {
           "title": "Description de l'activité de traitement",
@@ -401,14 +406,60 @@
       "other": "Autres catégories de données"
     }
   },
-  "processing-informed-concerned-peaple": {
+  "processing_informed_concerned_peaple": {
     "form": {
-      "mention-form": "Mention dans un formulaire",
-      "mention-contract": "Mention dans le contrat de travail",
+      "mention_form": "Mention dans un formulaire",
+      "mention_contract": "Mention dans le contrat de travail",
       "terms": "Conditions générales de vente",
       "display": "Affichage dans les locaux",
       "phone": "Par téléphone",
       "other": "Autre"
+    }
+  },
+  "processing_consent_concerned_peaple": {
+    "form": {
+      "optin_website": "Opt-in sur le site Internet",
+      "optin_user_space": "Opt-in sur l'espace utilisateur",
+      "phone": "Par téléphone",
+      "paper": "Sur papier libre",
+      "signing_paper_form": "Signature d'un formulaire papier",
+      "signing_contract": "Signature d'un contrat",
+      "signing_standard_form": "Signature d'un formulaire normalisé",
+      "other": "Autre"
+    }
+  },
+  "processing_access_concerned_peaple": {
+    "form": {
+      "contact_dpo": "Contact direct du DPO",
+      "contact_referent": "Contact du référent RGPD",
+      "customer_area_form": "Formulaire sur l'espace client",
+      "paper_form": "Formulaire papier",
+      "other": "Autre"
+    }
+  },
+  "processing_delete_concerned_peaple": {
+    "form": {
+      "contact_dpo": "Contact direct du DPO",
+      "contact_referent": "Contact du référent RGPD",
+      "customer_area_form": "Formulaire sur l'espace client",
+      "paper_form": "Formulaire papier",
+      "other": "Autre"
+    }
+  },
+  "processing_limit_concerned_peaple": {
+    "form": {
+      "contact_dpo": "Contact direct du DPO",
+      "contact_referent": "Contact du référent RGPD",
+      "customer_area_form": "Formulaire sur l'espace client",
+      "paper_form": "Formulaire papier",
+      "other": "Autre"
+    }
+  },
+  "processing_subcontractors_obligations": {
+    "form": {
+      "yes": "Oui",
+      "no": "Non",
+      "partially": "Partiellement"
     }
   },
   "pia": {

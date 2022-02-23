@@ -33,17 +33,17 @@
                     <i class="fa fa-angle-double-left" aria-hidden="true"></i>
                     {{ 'processing.form.previous' | translate }}
                 </a>
-                <a *ngIf="currentSection.id < 3" class="processing-next" (click)="changeSection(currentSection.id + 1)">
+                <a *ngIf="currentSection.id < 4" class="processing-next" (click)="changeSection(currentSection.id + 1)">
                     {{ 'processing.form.next' | translate }}
                     <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                 </a>
-                <span *ngIf="currentSection.id == 3 && processing.pias_count == 0" >
+                <span *ngIf="currentSection.id == 4 && processing.pias_count == 0" >
                     <a class="processing-next" (click)="createPia()" *ngxPermissionsOnly="['CanCreatePIA']">
                         {{ 'processing.form.pia_section.new_pia_button' | translate }}
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                     </a>
                 </span>
-                <span *ngIf="currentSection.id == 3 && processing.pias_count > 0">
+                <span *ngIf="currentSection.id == 4 && processing.pias_count > 0">
                     <a class="processing-next" routerLink="/entry/{{pias[0].id}}/section/3/item/1">
                         {{ 'processing.pia-list.item.actions.edit' | translate }}
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>

@@ -1,5 +1,4 @@
-
-@import '../../assets/stylesheets/variables';
+@import "../../assets/stylesheets/variables";
 
 // Sections
 .processing {
@@ -48,6 +47,9 @@
       &.lifecycle-section {
         color: $pia-green;
       }
+      &.measures-section {
+        color: #ffd700;
+      }
 
       cursor: pointer;
       hr {
@@ -57,8 +59,11 @@
         height: 1px;
       }
 
-      &:focus, &:hover, &:active, &.active {
-        color: $pia-green!important;
+      &:focus,
+      &:hover,
+      &:active,
+      &.active {
+        color: $pia-green !important;
       }
     }
     &-list {
@@ -104,7 +109,10 @@
       a {
         width: 81%;
         border-radius: 4px;
-        &:focus, &:hover, &:active, &.active {
+        &:focus,
+        &:hover,
+        &:active,
+        &.active {
           color: $pia-full-white !important;
         }
       }
@@ -118,11 +126,16 @@
           max-width: 164px;
         }
         a {
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-green;
           }
         }
-        .fa-pencil-square-o.pia-fa-valid, .fa-cog.pia-fa-valid, .fa-check-square-o {
+        .fa-pencil-square-o.pia-fa-valid,
+        .fa-cog.pia-fa-valid,
+        .fa-check-square-o {
           color: $pia-green;
         }
       }
@@ -135,11 +148,16 @@
           max-width: 62px;
         }
         a {
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-blue;
           }
         }
-        .fa-pencil-square-o.pia-fa-valid, .fa-cog.pia-fa-valid, .fa-check-square-o {
+        .fa-pencil-square-o.pia-fa-valid,
+        .fa-cog.pia-fa-valid,
+        .fa-check-square-o {
           color: $pia-blue;
         }
       }
@@ -153,11 +171,16 @@
           max-width: 182px;
         }
         a {
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-red;
           }
         }
-        .fa-pencil-square-o.pia-fa-valid, .fa-cog.pia-fa-valid, .fa-check-square-o {
+        .fa-pencil-square-o.pia-fa-valid,
+        .fa-cog.pia-fa-valid,
+        .fa-check-square-o {
           color: $pia-red;
         }
       }
@@ -182,7 +205,7 @@
 }
 
 .pia-section {
-  margin-top:2em;
+  margin-top: 2em;
 
   .processing-section-header {
     display: flex;
@@ -220,8 +243,8 @@ ul.pia-quick-list {
   padding-left: 0;
   & > li {
     background: $pia-full-white;
-    margin:0.5em 0;
-    box-shadow: 0 1px 2px transparentize($pia-gray,0.5);
+    margin: 0.5em 0;
+    box-shadow: 0 1px 2px transparentize($pia-gray, 0.5);
     padding: 0.3em 0.6em;
     &.pia-archive,
     &.pia-doing,

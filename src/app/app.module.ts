@@ -89,7 +89,6 @@ import { AttachmentItemComponent as ProcessingAttachmentItemComponent } from './
 import { EvaluationBlockComponent } from './processing/evaluation-block/evaluation-block.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { SearchService } from "./search/search.service";
-import { ProcessingInformedConcernedPeapleComponent } from './processing/processing-form/processing-informed-concerned-peaple/processing-informed-concerned-peaple.component';
 
 const providersList: any = [
   AppDataService,
@@ -190,8 +189,7 @@ export function createTranslateLoader(http: HttpClient) {
     ProcessingAttachmentsComponent,
     ProcessingAttachmentItemComponent,
     EvaluationBlockComponent,
-    ReportingComponent,
-    ProcessingInformedConcernedPeapleComponent
+    ReportingComponent
   ],
   imports: [
     ChartsModule,
