@@ -364,7 +364,11 @@
       "STATUS_DOING": "En cours",
       "STATUS_UNDER_VALIDATION": "À valider",
       "STATUS_VALIDATED": "Validé",
-      "STATUS_ARCHIVED": "Archivé"
+      "STATUS_ARCHIVED": "Archivé",
+      "0": "En cours",
+      "1": "À valider",
+      "2": "Validé",
+      "3": "Archivé"
     },
     "path": "Classement",
     "pia-list": {
