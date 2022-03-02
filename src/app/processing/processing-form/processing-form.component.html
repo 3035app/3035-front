@@ -358,56 +358,56 @@
 
       <fieldset *ngIf="currentSection.id == 4" id="measures" class="form-section">
         <div class="form-field" (click)="updateKnowledgeBase()">
-          <label class="title">{{ 'processing.form.informed_concerned_peaple' | translate }}</label>
+          <label class="title">{{ 'processing.form.informed_concerned_people' | translate }}</label>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_mention_form"
-                [(ngModel)]="processing.informed_concerned_peaple.mention_form" (change)="updateProcessing()" id="informed_mention_form">
-              <label class="enabled-label" for="informed_mention_form">{{ 'processing_informed_concerned_peaple.form.mention_form'|
+              <input type="checkbox" class="field" name="informed_mention_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.informed_concerned_people.mention_form" (change)="updateProcessing()" id="informed_mention_form">
+              <label class="enabled-label" for="informed_mention_form">{{ 'processing_informed_concerned_people.form.mention_form'|
                 translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_mention_contract"
-                [(ngModel)]="processing.informed_concerned_peaple.mention_contract" (change)="updateProcessing()" id="informed_mention_contract">
+              <input type="checkbox" class="field" name="informed_mention_contract" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.informed_concerned_people.mention_contract" (change)="updateProcessing()" id="informed_mention_contract">
               <label class="enabled-label" for="informed_mention_contract">{{
-                'processing_informed_concerned_peaple.form.mention_contract'| translate }}</label>
+                'processing_informed_concerned_people.form.mention_contract'| translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_terms" [(ngModel)]="processing.informed_concerned_peaple.terms"
+              <input type="checkbox" class="field" name="informed_terms" [disabled]="!hasEditPermission" [(ngModel)]="processing.informed_concerned_people.terms"
                 (change)="updateProcessing()" id="informed_terms">
-              <label class="enabled-label" for="informed_terms">{{ 'processing_informed_concerned_peaple.form.terms'| translate
+              <label class="enabled-label" for="informed_terms">{{ 'processing_informed_concerned_people.form.terms'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_display" [(ngModel)]="processing.informed_concerned_peaple.display"
+              <input type="checkbox" class="field" name="informed_display" [disabled]="!hasEditPermission" [(ngModel)]="processing.informed_concerned_people.display"
                 (change)="updateProcessing()" id="informed_display">
-              <label class="enabled-label" for="informed_display">{{ 'processing_informed_concerned_peaple.form.display'| translate
+              <label class="enabled-label" for="informed_display">{{ 'processing_informed_concerned_people.form.display'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_phone" [(ngModel)]="processing.informed_concerned_peaple.phone"
+              <input type="checkbox" class="field" name="informed_phone" [disabled]="!hasEditPermission" [(ngModel)]="processing.informed_concerned_people.phone"
                 (change)="updateProcessing()" id="informed_phone">
-              <label class="enabled-label" for="informed_phone">{{ 'processing_informed_concerned_peaple.form.phone'| translate
+              <label class="enabled-label" for="informed_phone">{{ 'processing_informed_concerned_people.form.phone'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="informed_other" [(ngModel)]="processing.informed_concerned_peaple.other"
+              <input type="checkbox" class="field" name="informed_other" [disabled]="!hasEditPermission" [(ngModel)]="processing.informed_concerned_people.other"
                 (change)="updateProcessing()" id="informed_other">
-              <label class="enabled-label" for="informed_other">{{ 'processing_informed_concerned_peaple.form.other'| translate
+              <label class="enabled-label" for="informed_other">{{ 'processing_informed_concerned_people.form.other'| translate
                 }}</label>
             </div>
           </div>
-          <app-processing-comments [processing]="processing" [field]="'informed_concerned_peaple'"></app-processing-comments>
+          <app-processing-comments [processing]="processing" [field]="'informed_concerned_people'"></app-processing-comments>
         </div>
 
         <div class="form-field">
@@ -436,223 +436,223 @@
         </div>
 
         <div class="form-field" (click)="updateKnowledgeBase()">
-          <label class="title">{{ 'processing.form.consent_concerned_peaple' |
+          <label class="title">{{ 'processing.form.consent_concerned_people' |
             translate }}</label>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_optin_website"
-                [(ngModel)]="processing.consent_concerned_peaple.optin_website" (change)="updateProcessing()" id="consent_optin_website">
-              <label class="enabled-label" for="consent_optin_website">{{ 'processing_consent_concerned_peaple.form.optin_website'|
+              <input type="checkbox" class="field" name="consent_optin_website" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.consent_concerned_people.optin_website" (change)="updateProcessing()" id="consent_optin_website">
+              <label class="enabled-label" for="consent_optin_website">{{ 'processing_consent_concerned_people.form.optin_website'|
                 translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_optin_user_space"
-                [(ngModel)]="processing.consent_concerned_peaple.optin_user_space" (change)="updateProcessing()" id="consent_optin_user_space">
+              <input type="checkbox" class="field" name="consent_optin_user_space" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.consent_concerned_people.optin_user_space" (change)="updateProcessing()" id="consent_optin_user_space">
               <label class="enabled-label" for="consent_optin_user_space">{{
-                'processing_consent_concerned_peaple.form.optin_user_space'| translate }}</label>
+                'processing_consent_concerned_people.form.optin_user_space'| translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_phone"
-                [(ngModel)]="processing.consent_concerned_peaple.phone" (change)="updateProcessing()" id="consent_phone">
-              <label class="enabled-label" for="consent_phone">{{ 'processing_consent_concerned_peaple.form.phone'| translate
+              <input type="checkbox" class="field" name="consent_phone" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.consent_concerned_people.phone" (change)="updateProcessing()" id="consent_phone">
+              <label class="enabled-label" for="consent_phone">{{ 'processing_consent_concerned_people.form.phone'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_paper"
-                [(ngModel)]="processing.consent_concerned_peaple.paper" (change)="updateProcessing()" id="consent_paper">
-              <label class="enabled-label" for="consent_paper">{{ 'processing_consent_concerned_peaple.form.paper'| translate
+              <input type="checkbox" class="field" name="consent_paper" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.consent_concerned_people.paper" (change)="updateProcessing()" id="consent_paper">
+              <label class="enabled-label" for="consent_paper">{{ 'processing_consent_concerned_people.form.paper'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_signing_paper_form"
-                [(ngModel)]="processing.consent_concerned_peaple.signing_paper_form" (change)="updateProcessing()" id="consent_signing_paper_form">
-              <label class="enabled-label" for="consent_signing_paper_form">{{ 'processing_consent_concerned_peaple.form.signing_paper_form'| translate
+              <input type="checkbox" class="field" name="consent_signing_paper_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.consent_concerned_people.signing_paper_form" (change)="updateProcessing()" id="consent_signing_paper_form">
+              <label class="enabled-label" for="consent_signing_paper_form">{{ 'processing_consent_concerned_people.form.signing_paper_form'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_signing_contract"
-                [(ngModel)]="processing.consent_concerned_peaple.signing_contract" (change)="updateProcessing()" id="consent_signing_contract">
-              <label class="enabled-label" for="consent_signing_contract">{{ 'processing_consent_concerned_peaple.form.signing_contract'| translate
+              <input type="checkbox" class="field" name="consent_signing_contract" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.consent_concerned_people.signing_contract" (change)="updateProcessing()" id="consent_signing_contract">
+              <label class="enabled-label" for="consent_signing_contract">{{ 'processing_consent_concerned_people.form.signing_contract'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_signing_standard_form"
-                [(ngModel)]="processing.consent_concerned_peaple.signing_standard_form" (change)="updateProcessing()" id="consent_signing_standard_form">
-              <label class="enabled-label" for="consent_signing_standard_form">{{ 'processing_consent_concerned_peaple.form.signing_standard_form'| translate
+              <input type="checkbox" class="field" name="consent_signing_standard_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.consent_concerned_people.signing_standard_form" (change)="updateProcessing()" id="consent_signing_standard_form">
+              <label class="enabled-label" for="consent_signing_standard_form">{{ 'processing_consent_concerned_people.form.signing_standard_form'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="consent_other"
-                [(ngModel)]="processing.consent_concerned_peaple.other" (change)="updateProcessing()" id="other">
-              <label class="enabled-label" for="other">{{ 'processing_consent_concerned_peaple.form.other'| translate
+              <input type="checkbox" class="field" name="consent_other" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.consent_concerned_people.other" (change)="updateProcessing()" id="other">
+              <label class="enabled-label" for="other">{{ 'processing_consent_concerned_people.form.other'| translate
                 }}</label>
             </div>
           </div>
-          <app-processing-comments [processing]="processing" [field]="'consent_concerned_peaple'"></app-processing-comments>
+          <app-processing-comments [processing]="processing" [field]="'consent_concerned_people'"></app-processing-comments>
         </div>
 
         <div class="form-field" (click)="updateKnowledgeBase()">
-          <label class="title">{{ 'processing.form.access_concerned_peaple' |
+          <label class="title">{{ 'processing.form.access_concerned_people' |
             translate }}</label>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_contact_dpo"
-                [(ngModel)]="processing.access_concerned_peaple.contact_dpo" (change)="updateProcessing()"
+              <input type="checkbox" class="field" name="access_contact_dpo" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.access_concerned_people.contact_dpo" (change)="updateProcessing()"
                 id="access_contact_dpo">
               <label class="enabled-label" for="access_contact_dpo">{{
-                'processing_access_concerned_peaple.form.contact_dpo'|
+                'processing_access_concerned_people.form.contact_dpo'|
                 translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_contact_referent"
-                [(ngModel)]="processing.access_concerned_peaple.contact_referent" (change)="updateProcessing()"
+              <input type="checkbox" class="field" name="access_contact_referent" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.access_concerned_people.contact_referent" (change)="updateProcessing()"
                 id="access_contact_referent">
               <label class="enabled-label" for="access_contact_referent">{{
-                'processing_access_concerned_peaple.form.contact_referent'| translate }}</label>
+                'processing_access_concerned_people.form.contact_referent'| translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_customer_area_form"
-                [(ngModel)]="processing.access_concerned_peaple.customer_area_form" (change)="updateProcessing()" id="access_customer_area_form">
-              <label class="enabled-label" for="access_customer_area_form">{{ 'processing_access_concerned_peaple.form.customer_area_form'| translate
+              <input type="checkbox" class="field" name="access_customer_area_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.access_concerned_people.customer_area_form" (change)="updateProcessing()" id="access_customer_area_form">
+              <label class="enabled-label" for="access_customer_area_form">{{ 'processing_access_concerned_people.form.customer_area_form'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_paper_form"
-                [(ngModel)]="processing.access_concerned_peaple.paper_form" (change)="updateProcessing()" id="access_paper_form">
-              <label class="enabled-label" for="access_paper_form">{{ 'processing_access_concerned_peaple.form.paper_form'|
+              <input type="checkbox" class="field" name="access_paper_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.access_concerned_people.paper_form" (change)="updateProcessing()" id="access_paper_form">
+              <label class="enabled-label" for="access_paper_form">{{ 'processing_access_concerned_people.form.paper_form'|
                 translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="access_other"
-                [(ngModel)]="processing.access_concerned_peaple.other" (change)="updateProcessing()" id="access_other">
-              <label class="enabled-label" for="access_other">{{ 'processing_access_concerned_peaple.form.other'| translate
+              <input type="checkbox" class="field" name="access_other" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.access_concerned_people.other" (change)="updateProcessing()" id="access_other">
+              <label class="enabled-label" for="access_other">{{ 'processing_access_concerned_people.form.other'| translate
                 }}</label>
             </div>
           </div>
-          <app-processing-comments [processing]="processing" [field]="'access_concerned_peaple'"></app-processing-comments>
+          <app-processing-comments [processing]="processing" [field]="'access_concerned_people'"></app-processing-comments>
         </div>
 
         <div class="form-field" (click)="updateKnowledgeBase()">
-          <label class="title">{{ 'processing.form.delete_concerned_peaple' |
+          <label class="title">{{ 'processing.form.delete_concerned_people' |
             translate }}</label>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_contact_dpo"
-                [(ngModel)]="processing.delete_concerned_peaple.contact_dpo" (change)="updateProcessing()"
+              <input type="checkbox" class="field" name="delete_contact_dpo" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.delete_concerned_people.contact_dpo" (change)="updateProcessing()"
                 id="delete_contact_dpo">
               <label class="enabled-label" for="delete_contact_dpo">{{
-                'processing_delete_concerned_peaple.form.contact_dpo'|
+                'processing_delete_concerned_people.form.contact_dpo'|
                 translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_contact_referent"
-                [(ngModel)]="processing.delete_concerned_peaple.contact_referent" (change)="updateProcessing()"
+              <input type="checkbox" class="field" name="delete_contact_referent" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.delete_concerned_people.contact_referent" (change)="updateProcessing()"
                 id="delete_contact_referent">
               <label class="enabled-label" for="delete_contact_referent">{{
-                'processing_delete_concerned_peaple.form.contact_referent'| translate }}</label>
+                'processing_delete_concerned_people.form.contact_referent'| translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_customer_area_form"
-                [(ngModel)]="processing.delete_concerned_peaple.customer_area_form" (change)="updateProcessing()" id="delete_customer_area_form">
-              <label class="enabled-label" for="delete_customer_area_form">{{ 'processing_delete_concerned_peaple.form.customer_area_form'| translate
+              <input type="checkbox" class="field" name="delete_customer_area_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.delete_concerned_people.customer_area_form" (change)="updateProcessing()" id="delete_customer_area_form">
+              <label class="enabled-label" for="delete_customer_area_form">{{ 'processing_delete_concerned_people.form.customer_area_form'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_paper_form"
-                [(ngModel)]="processing.delete_concerned_peaple.paper_form" (change)="updateProcessing()" id="delete_paper_form">
-              <label class="enabled-label" for="delete_paper_form">{{ 'processing_delete_concerned_peaple.form.paper_form'|
+              <input type="checkbox" class="field" name="delete_paper_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.delete_concerned_people.paper_form" (change)="updateProcessing()" id="delete_paper_form">
+              <label class="enabled-label" for="delete_paper_form">{{ 'processing_delete_concerned_people.form.paper_form'|
                 translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="delete_other"
-                [(ngModel)]="processing.delete_concerned_peaple.other" (change)="updateProcessing()" id="delete_other">
-              <label class="enabled-label" for="delete_other">{{ 'processing_delete_concerned_peaple.form.other'| translate
+              <input type="checkbox" class="field" name="delete_other" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.delete_concerned_people.other" (change)="updateProcessing()" id="delete_other">
+              <label class="enabled-label" for="delete_other">{{ 'processing_delete_concerned_people.form.other'| translate
                 }}</label>
             </div>
           </div>
-          <app-processing-comments [processing]="processing" [field]="'delete_concerned_peaple'"></app-processing-comments>
+          <app-processing-comments [processing]="processing" [field]="'delete_concerned_people'"></app-processing-comments>
         </div>
 
         <div class="form-field" (click)="updateKnowledgeBase()">
-          <label class="title">{{ 'processing.form.limit_concerned_peaple' |
+          <label class="title">{{ 'processing.form.limit_concerned_people' |
             translate }}</label>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_contact_dpo"
-                [(ngModel)]="processing.limit_concerned_peaple.contact_dpo" (change)="updateProcessing()"
+              <input type="checkbox" class="field" name="limit_contact_dpo" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.limit_concerned_people.contact_dpo" (change)="updateProcessing()"
                 id="limit_contact_dpo">
               <label class="enabled-label" for="limit_contact_dpo">{{
-                'processing_limit_concerned_peaple.form.contact_dpo'|
+                'processing_limit_concerned_people.form.contact_dpo'|
                 translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_contact_referent"
-                [(ngModel)]="processing.limit_concerned_peaple.contact_referent" (change)="updateProcessing()"
+              <input type="checkbox" class="field" name="limit_contact_referent" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.limit_concerned_people.contact_referent" (change)="updateProcessing()"
                 id="limit_contact_referent">
               <label class="enabled-label" for="limit_contact_referent">{{
-                'processing_limit_concerned_peaple.form.contact_referent'| translate }}</label>
+                'processing_limit_concerned_people.form.contact_referent'| translate }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_customer_area_form"
-                [(ngModel)]="processing.limit_concerned_peaple.customer_area_form" (change)="updateProcessing()" id="limit_customer_area_form">
-              <label class="enabled-label" for="limit_customer_area_form">{{ 'processing_limit_concerned_peaple.form.customer_area_form'| translate
+              <input type="checkbox" class="field" name="limit_customer_area_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.limit_concerned_people.customer_area_form" (change)="updateProcessing()" id="limit_customer_area_form">
+              <label class="enabled-label" for="limit_customer_area_form">{{ 'processing_limit_concerned_people.form.customer_area_form'| translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_paper_form"
-                [(ngModel)]="processing.limit_concerned_peaple.paper_form" (change)="updateProcessing()" id="limit_paper_form">
-              <label class="enabled-label" for="limit_paper_form">{{ 'processing_limit_concerned_peaple.form.paper_form'|
+              <input type="checkbox" class="field" name="limit_paper_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.limit_concerned_people.paper_form" (change)="updateProcessing()" id="limit_paper_form">
+              <label class="enabled-label" for="limit_paper_form">{{ 'processing_limit_concerned_people.form.paper_form'|
                 translate
                 }}</label>
             </div>
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="limit_other"
-                [(ngModel)]="processing.limit_concerned_peaple.other" (change)="updateProcessing()" id="limit_other">
-              <label class="enabled-label" for="limit_other">{{ 'processing_limit_concerned_peaple.form.other'| translate
+              <input type="checkbox" class="field" name="limit_other" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.limit_concerned_people.other" (change)="updateProcessing()" id="limit_other">
+              <label class="enabled-label" for="limit_other">{{ 'processing_limit_concerned_people.form.other'| translate
                 }}</label>
             </div>
           </div>
-          <app-processing-comments [processing]="processing" [field]="'limit_concerned_peaple'"></app-processing-comments>
+          <app-processing-comments [processing]="processing" [field]="'limit_concerned_people'"></app-processing-comments>
         </div>
 
         <div class="form-field" (click)="updateKnowledgeBase()">
@@ -660,7 +660,7 @@
             translate }}</label>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="subcontractors_obligations_yes"
+              <input type="checkbox" class="field" name="subcontractors_obligations_yes" [disabled]="!hasEditPermission"
                 [(ngModel)]="processing.subcontractors_obligations.yes" (change)="updateProcessing()"
                 id="subcontractors_obligations_yes">
               <label class="enabled-label" for="subcontractors_obligations_yes">{{
@@ -670,7 +670,7 @@
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="subcontractors_obligations_no"
+              <input type="checkbox" class="field" name="subcontractors_obligations_no" [disabled]="!hasEditPermission"
                 [(ngModel)]="processing.subcontractors_obligations.no" (change)="updateProcessing()"
                 id="subcontractors_obligations_no">
               <label class="enabled-label" for="subcontractors_obligations_no">{{
@@ -679,7 +679,7 @@
           </div>
           <div class="small-12">
             <div class="type-enabled">
-              <input *ngxPermissionsOnly="['CanEditProcessing']" type="checkbox" class="field" name="subcontractors_obligations_partially"
+              <input type="checkbox" class="field" name="subcontractors_obligations_partially" [disabled]="!hasEditPermission"
                 [(ngModel)]="processing.subcontractors_obligations.partially" (change)="updateProcessing()" id="subcontractors_obligations_partially">
               <label class="enabled-label" for="subcontractors_obligations_partially">{{ 'processing_subcontractors_obligations.form.partially'| translate
                 }}</label>
