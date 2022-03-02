@@ -23,6 +23,7 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
   processingFullyFilled: boolean = false;
   processingStatus = ProcessingStatus;
   processingEvaluationStates = ProcessingEvaluationStates;
+  hasEditPermission: boolean = false;
 
   constructor(
     private processingApi: ProcessingApi,
@@ -32,6 +33,11 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
     private knowledgeBaseService: KnowledgeBaseService
   ) {
     this.knowledgeBaseService.knowledgeBaseData = [];
+    this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
+      if (hasPerm) {
+        this.hasEditPermission = true;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -53,8 +59,8 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
 
     if (dataTypes) {
       return
-    };
-    console.log(this.processing);
+    }
+
     this.processingApi.update(this.processing).subscribe(() => { });
   }
 
