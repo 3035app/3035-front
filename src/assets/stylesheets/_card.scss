@@ -1,322 +1,341 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
 .pia-cardsBlock {
-    width: 276px;
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    margin-right: 12px;
-    margin-bottom: 50px;
-    //height: 370px;
-    border: 1px solid $pia-full-white;
+  width: 276px;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin-right: 12px;
+  margin-bottom: 50px;
+  //height: 370px;
+  border: 1px solid $pia-full-white;
+  background-color: $pia-full-white;
+  -webkit-box-shadow: 1px 1px 2px 1px rgba(204, 202, 204, 1);
+  -moz-box-shadow: 1px 1px 2px 1px rgba(204, 202, 204, 1);
+  box-shadow: 1px 1px 2px 1px rgba(204, 202, 204, 1);
+  &-title {
+    height: 23px;
+  }
+  &-header-title {
+    border-bottom: 1px solid $pia-green;
+    color: $pia-green;
+    height: 20px;
+    margin-top: -30px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  &-item {
+    padding: 9px;
     background-color: $pia-full-white;
-    -webkit-box-shadow: 1px 1px 2px 1px rgba(204,202,204,1);
-    -moz-box-shadow: 1px 1px 2px 1px rgba(204,202,204,1);
-    box-shadow: 1px 1px 2px 1px rgba(204,202,204,1);
-    &-title {
-      height: 23px;
-    }
-    &-header-title {
-      border-bottom: 1px solid $pia-green;
-      color: $pia-green;
-      height: 20px;
-      margin-top: -30px;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-    &-item {
-      padding: 9px;
-      background-color: $pia-full-white;
-      padding-top: 6px;
-      height: 382px;
-      position: relative;
-      &-attachment {
-        display: inline-block;
+    padding-top: 6px;
+    height: 382px;
+    position: relative;
+    &-attachment {
+      display: inline-block;
+      position: absolute;
+      vertical-align: middle;
+      left: 6px;
+      cursor: pointer;
+      ul {
+        display: none;
         position: absolute;
-        vertical-align: middle;
-        left: 6px;
-        cursor: pointer;
-        ul {
-          display: none;
-          position: absolute;
-          z-index: 999;
-          top: 18px;
-          left: 2px;
-          font-size: 1rem;
-          color: $pia-gray-dark;
-          background-color: $pia-full-white;
-          text-align: center;
-          min-width: 100px;
-          margin: 10px 0;
-          padding: 2px 4px;
-          box-shadow: 1px 1px 2px 1px rgba(214, 212, 214, 1);
-          li {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            border-bottom: 1px dotted $pia-gray-dark;
-            padding: 2px 0;
-            &:last-child {
-              border-bottom: none;
-            }
+        z-index: 999;
+        top: 18px;
+        left: 2px;
+        font-size: 1rem;
+        color: $pia-gray-dark;
+        background-color: $pia-full-white;
+        text-align: center;
+        min-width: 100px;
+        margin: 10px 0;
+        padding: 2px 4px;
+        box-shadow: 1px 1px 2px 1px rgba(214, 212, 214, 1);
+        li {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          border-bottom: 1px dotted $pia-gray-dark;
+          padding: 2px 0;
+          &:last-child {
+            border-bottom: none;
           }
         }
-        &:focus, &:hover, &:active {
-          ul {
+      }
+      &:focus,
+      &:hover,
+      &:active {
+        ul {
+          display: block;
+        }
+      }
+    }
+    &-status {
+      margin-top: 5px;
+      &-infos {
+        width: 150px;
+        div {
+          color: $pia-gray;
+          font-size: 1.3rem;
+          margin-bottom: -1px;
+          font-style: italic;
+          &:last-child {
+            font-size: 1.45rem;
+            color: $pia-dark-black;
+          }
+        }
+        .pendingValidation {
+          margin-bottom: -20px;
+          padding-right: 12px;
+        }
+      }
+      &-infos,
+      &-progressBar {
+        display: inline-block;
+        vertical-align: top;
+      }
+      &-progressBar {
+        width: 100px;
+        text-align: right;
+        div {
+          color: $pia-green;
+          font-style: italic;
+          text-align: right;
+          font-size: 1rem;
+        }
+        progress {
+          width: 100%;
+          position: relative;
+          margin-top: 5px;
+          &:after {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            content: "";
+            height: 12px;
+            width: 1px;
+            margin-top: -6px;
+            background-color: $pia-green;
+          }
+          &:before {
+            position: absolute;
+            content: "";
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            background-color: $pia-green;
+          }
+        }
+        progress[value] {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background-color: transparent;
+          height: 12px;
+          &::-webkit-progress-bar {
+            background-color: transparent;
+          }
+          &::-webkit-progress-value {
+            background-color: $pia-green;
+          }
+        }
+        progress[value]::-moz-progress-bar {
+          background-color: $pia-green;
+        }
+      }
+      &-refused {
+        color: $pia-red !important;
+      }
+    }
+    &-form {
+      div {
+        label {
+          color: $pia-green;
+          font-size: 1.3rem;
+          font-style: italic;
+        }
+        input {
+          padding-bottom: 6px;
+          display: block;
+          border: 0;
+          font-size: 1.4rem;
+          color: $pia-dark-black;
+          width: 100%;
+          margin-top: -2px;
+          height: 22px;
+          &::placeholder {
+            color: $pia-gray;
+          }
+          &:hover {
+            outline: 1px dotted $pia-green;
+            cursor: text;
+          }
+        }
+        &:first-child {
+          input {
+            margin-top: 0;
+            font-size: 2.1rem;
+            padding-bottom: 23px;
+            height: auto;
+          }
+        }
+      }
+      &-attachment {
+        position: relative;
+        display: inline-block;
+        button {
+          font-size: 1rem;
+          color: $pia-gray;
+          background-color: $pia-full-white;
+          display: none;
+          position: absolute;
+          bottom: -14px;
+          left: -50%;
+          text-align: center;
+          width: 78px;
+          padding: 2px 4px;
+          -webkit-box-shadow: 1px 1px 2px 1px rgba(204, 202, 204, 1);
+          -moz-box-shadow: 1px 1px 2px 1px rgba(204, 202, 204, 1);
+          box-shadow: 1px 1px 2px 1px rgba(204, 202, 204, 1);
+        }
+        &:focus,
+        &:hover,
+        &:active {
+          button {
             display: block;
           }
         }
       }
-      &-status {
-        margin-top: 5px;
-        &-infos {
-          width: 150px;
-          div {
-            color: $pia-gray;
-            font-size: 1.3rem;
-            margin-bottom: -1px;
-            font-style: italic;
-            &:last-child {
-              font-size: 1.45rem;
-              color: $pia-dark-black;
-            }
-          }
-          .pendingValidation {
-            margin-bottom: -20px;
-            padding-right: 12px;
-          }
-        }
-        &-infos, &-progressBar {
-          display: inline-block;
-          vertical-align: top;
-        }
-        &-progressBar {
-          width: 100px;
-          text-align: right;
-          div {
-            color: $pia-green;
-            font-style: italic;
-            text-align: right;
-            font-size: 1rem;
-          }
-          progress {
-            width: 100%;
-            position: relative;
-            margin-top: 5px;
-            &:after {
-              position: absolute;
-              left: 0;
-              top: 50%;
-              content: '';
-              height: 12px;
-              width: 1px;
-              margin-top: -6px;
-              background-color: $pia-green;
-            }
-            &:before {
-              position: absolute;
-              content: '';
-              left: 0;
-              right: 0;
-              top: 50%;
-              height: 1px;
-              background-color: $pia-green;
-            }
-          }
-          progress[value] {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-color: transparent;
-            height: 12px;
-            &::-webkit-progress-bar {
-              background-color: transparent;
-            }
-            &::-webkit-progress-value {
-              background-color: $pia-green;
-            }
-          }
-          progress[value]::-moz-progress-bar {
-            background-color: $pia-green;
-          }
-        }
-        &-refused {
-          color: $pia-red !important;
-        }
-      }
-      &-form {
-          div {
-              label {
-                  color: $pia-green;
-                  font-size: 1.3rem;
-                  font-style: italic;
-              }
-              input {
-                  padding-bottom: 6px;
-                  display: block;
-                  border: 0;
-                  font-size: 1.4rem;
-                  color: $pia-dark-black;
-                  width: 100%;
-                  margin-top: -2px;
-                  height: 22px;
-                  &::placeholder {
-                      color: $pia-gray;
-                  }
-                  &:hover {
-                    outline: 1px dotted $pia-green;
-                    cursor: text;
-                  }
-              }
-              &:first-child {
-                  input {
-                      margin-top: 0;
-                      font-size: 2.1rem;
-                      padding-bottom: 23px;
-                      height: auto;
-                  }
-              }
-          }
-          &-attachment {
-              position: relative;
-              display: inline-block;
-              button {
-                  font-size: 1rem;
-                  color: $pia-gray;
-                  background-color: $pia-full-white;
-                  display: none;
-                  position: absolute;
-                  bottom: -14px;
-                  left: -50%;
-                  text-align: center;
-                  width: 78px;
-                  padding: 2px 4px;
-                  -webkit-box-shadow: 1px 1px 2px 1px rgba(204,202,204,1);
-                  -moz-box-shadow: 1px 1px 2px 1px rgba(204,202,204,1);
-                  box-shadow: 1px 1px 2px 1px rgba(204,202,204,1);
-              }
-              &:focus, &:hover, &:active {
-                  button {
-                      display: block;
-                  }
-              }
-          }
-      }
-      &-date {
-          div {
-              color: $pia-gray;
-              font-size: 1rem;
-              margin-bottom: -1px;
-              &:first-child {
-                  font-style: italic;
-              }
-          }
-          time {
-              font-size: 1.45rem;
-              color: $pia-dark-black;
-          }
-      }
-      &-btn {
-          position: absolute;
-          bottom: 5px;
-          left: 9px;
-          right: 9px;
-          border-top: 1px solid $pia-green;
-          padding-top: 13px;
-          margin-top: 21px;
-          text-align: center;
-          a, button {
-              //border-radius: 20px;
-              border: 1px solid;
-              padding: 9px 20px;
-              display: inline-block;
-          }
-          a {
-            text-decoration: none;
-            padding: 5.5px 21px;
-          }
+      &.form-separator {
+        border-top: 1px solid #2bbbad;
+        margin-top: 20px;
+        padding-top: 20px;
       }
     }
-    &-toolbar {
+    &-date {
+      div {
+        color: $pia-gray;
+        font-size: 1rem;
+        margin-bottom: -1px;
+        &:first-child {
+          font-style: italic;
+        }
+      }
+      time {
         font-size: 1.45rem;
-        position: absolute;
-        top: 6px;
-        right: 8px;
-        a, button {
-          color: $pia-green;
-          .fa {
-            margin: 0 3px;
-          }
-        }
-        > div {
-          display: inline-block;
-          vertical-align: top;
-          position: relative;
-        }
-        &-more {
-          position: relative;
-           > a {
-            &:focus, &:hover, &:active {
-              cursor: context-menu;
-              .pia-cardsBlock-toolbar-moreList {
-                display: block;
-                box-shadow: 2px 2px 4px 0px rgba(204,202,204,1);
-                -webkit-box-shadow: 2px 2px 4px 0px rgba(204,202,204,1);
-                -moz-box-shadow: 2px 2px 4px 0px rgba(204,202,204,1);
-              }
-            }
-          }
-        }
-        &-moreList {
-            z-index: 999;
-            margin: 0;
-            padding: 0;
-            display: none;
-            position: absolute;
-            right: 2.1em;
-            top: 0;
-            padding-right: 0;
-            background-color: $pia-full-white;
-            width: 125px;
-            li {
-                width: 100%;
-                padding-left: 15px;
-                list-style-type: none;
-                color: $pia-green;
-                padding: 0;
-                background-color: $pia-full-white;
-                padding-left: 10px;
-                text-align: left;
-                .fa, a {
-                    display: inline-block;
-                    vertical-align: middle;
-                    font-size: 1.2rem;
-                }
-                .fa {
-                    margin-right: 3px;
-                }
-                a {
-                    text-align: left;
-                    padding: 2px;
-                    text-decoration: none;
-                    line-height: 1;
-                    font-size: 1.2rem;
-                }
-                &:focus, &:hover, &:active {
-                    color: $pia-full-white;
-                    background-color: $pia-green;
-                    a {
-                        color: $pia-full-white;
-                    }
-                }
-            }
-        }
+        color: $pia-dark-black;
+      }
     }
+    &-btn {
+      position: absolute;
+      bottom: 5px;
+      left: 9px;
+      right: 9px;
+      border-top: 1px solid $pia-green;
+      padding-top: 13px;
+      margin-top: 21px;
+      text-align: center;
+      a,
+      button {
+        //border-radius: 20px;
+        border: 1px solid;
+        padding: 9px 20px;
+        display: inline-block;
+      }
+      a {
+        text-decoration: none;
+        padding: 5.5px 21px;
+      }
+    }
+  }
+  &-toolbar {
+    font-size: 1.45rem;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    a,
+    button {
+      color: $pia-green;
+      .fa {
+        margin: 0 3px;
+      }
+    }
+    > div {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+    }
+    &-more {
+      position: relative;
+      > a {
+        &:focus,
+        &:hover,
+        &:active {
+          cursor: context-menu;
+          .pia-cardsBlock-toolbar-moreList {
+            display: block;
+            box-shadow: 2px 2px 4px 0px rgba(204, 202, 204, 1);
+            -webkit-box-shadow: 2px 2px 4px 0px rgba(204, 202, 204, 1);
+            -moz-box-shadow: 2px 2px 4px 0px rgba(204, 202, 204, 1);
+          }
+        }
+      }
+    }
+    &-moreList {
+      z-index: 999;
+      margin: 0;
+      padding: 0;
+      display: none;
+      position: absolute;
+      right: 2.1em;
+      top: 0;
+      padding-right: 0;
+      background-color: $pia-full-white;
+      width: 125px;
+      li {
+        width: 100%;
+        padding-left: 15px;
+        list-style-type: none;
+        color: $pia-green;
+        padding: 0;
+        background-color: $pia-full-white;
+        padding-left: 10px;
+        text-align: left;
+        .fa,
+        a {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 1.2rem;
+        }
+        .fa {
+          margin-right: 3px;
+        }
+        a {
+          text-align: left;
+          padding: 2px;
+          text-decoration: none;
+          line-height: 1;
+          font-size: 1.2rem;
+        }
+        &:focus,
+        &:hover,
+        &:active {
+          color: $pia-full-white;
+          background-color: $pia-green;
+          a {
+            color: $pia-full-white;
+          }
+        }
+      }
+    }
+  }
 }
 
 .pia-exampleBlock {
   display: none !important;
 }
 
-.pia-dropdown-icon {  
+.pia-dropdown-icon {
   background: $pia-green;
   padding: 0.5em;
   position: absolute;
@@ -325,5 +344,11 @@
   border-radius: 0 0 0 0.5em;
   i.fa.fa-ellipsis-h {
     color: white;
+  }
+}
+
+.ng-select {
+  input {
+    padding-bottom: 0 !important;
   }
 }

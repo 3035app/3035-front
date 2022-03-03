@@ -30,6 +30,13 @@ export class ModalsComponent implements OnInit {
   removeAttachmentForm: FormGroup;
   enableSubmit = true;
   piaTypes: any;
+  selectedCar: number;
+  cars = [
+      { id: 1, name: 'Volvo' },
+      { id: 2, name: 'Saab' },
+      { id: 3, name: 'Opel' },
+      { id: 4, name: 'Audi' },
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -153,5 +160,10 @@ export class ModalsComponent implements OnInit {
         this.removeAttachmentForm.controls['comment'].value.length > 0) {
       this.enableSubmit = false;
     }
+  }
+
+  onChangeSelectUser() {
+    console.log(this._modalsService.data.elementId);
+    console.log(this._modalsService.data.elementType);
   }
 }

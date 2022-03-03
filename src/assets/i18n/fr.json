@@ -1750,5 +1750,10 @@
       "label": "Responsable de traitement multi-registre",
       "description": "Votre profil PiaLab vous permet de valider les fiches de traitement et analyses d'impact qui ont été préalablement évaluées par l'évaluateur et pour lesquelles un avis a été émis par le DPO et le cas échéant par les personnes concernées. Vous pouvez accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Dès lors que vous refusez la validation d'une analyse d'impact, l'ensemble des parties prenantes sont informées (rédacteur, évaluateur, DPO). Dès lors que vous validez une analyse d'impact, il vous sera proposé de la signer."
     }
+  },
+  "share": {
+    "add_user_label": "Partager avec des utilisateurs",
+    "placeholder_add_user": "Ajouter des utilisateurs",
+    "shared_users_list_label": "Liste des utilisateurs autorisés"
   }
 }

@@ -4,7 +4,7 @@ import { PaginationService } from '../entry/entry-content/pagination.service';
 
 @Injectable()
 export class ModalsService {
-
+  data: {elementId?: number, elementType?: string};
 
   constructor(
     private _router: Router,
@@ -16,7 +16,7 @@ export class ModalsService {
    * @param {string} modal_id - Unique id of the modal which has to be opened.
    * @memberof ModalsService
    */
-  openModal(modal_id: string) {
+  openModal(modal_id: string, data: {elementId?: number, elementType?: string}) {
     if (modal_id === 'pia-declare-measures' ||
         modal_id === 'pia-action-plan-no-evaluation' ||
         modal_id === 'pia-dpo-missing-evaluations') {
@@ -43,6 +43,8 @@ export class ModalsService {
         input.focus();
       }
     }
+    this.data = data
+    console.log(this.data)
   }
 
   /**
