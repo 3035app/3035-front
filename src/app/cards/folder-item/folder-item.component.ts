@@ -138,4 +138,8 @@ export class FolderItemComponent implements OnInit {
   toggleChecked(id) {
     this.onCheckChange.emit({id, checked: this.checked});
   }
+
+  protected fetchUsers() {
+    return this.userApi.getAll(this.folder.structure_id).toPromise();
+  }
 }

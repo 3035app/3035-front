@@ -14,3 +14,4 @@ export { StructureService } from './structure.service';
 export { ProcessingCommentService } from './processing-comment.service';
 export { ProcessingAttachmentService } from './processing-attachment.service';
 export { SearchService } from './search.service';
+export { UserService } from './user.service';

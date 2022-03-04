@@ -16,6 +16,7 @@ import { ProcessingCommentService } from '@api/service/processing-comment.servic
 import { ProcessingAttachmentService } from '@api/service/processing-attachment.service';
 import { StructureService } from '@api/service/structure.service';
 import { SearchService } from "@api/service/search.service";
+import { UserService } from "@api/service/user.service";
 
 @NgModule({
   declarations: [],
@@ -37,7 +38,8 @@ import { SearchService } from "@api/service/search.service";
     ProcessingCommentService,
     ProcessingAttachmentService,
     StructureService,
-    SearchService
+    SearchService,
+    UserService
   ]
 })
 

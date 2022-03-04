@@ -18,5 +18,6 @@ export {
     ProcessingComment as ProcessingCommentModel,
     ProcessingAttachment as ProcessingAttachmentModel,
     Search as SearchModel,
-    SearchResult as SearchResultModel
+    SearchResult as SearchResultModel,
+    User as UserModel
 } from '@api/model';

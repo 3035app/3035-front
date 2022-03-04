@@ -16,7 +16,7 @@ export class ModalsService {
    * @param {string} modal_id - Unique id of the modal which has to be opened.
    * @memberof ModalsService
    */
-  openModal(modal_id: string, data: {elementId?: number, elementType?: string}) {
+  openModal(modal_id: string, data?: {elementId?: number, elementType?: string}) {
     if (modal_id === 'pia-declare-measures' ||
         modal_id === 'pia-action-plan-no-evaluation' ||
         modal_id === 'pia-dpo-missing-evaluations') {
@@ -36,15 +36,14 @@ export class ModalsService {
     if (gf) {
       gf.focus();
     }
-
+    
     if(modal_id === 'modal-list-new-folder' || modal_id === 'modal-list-new-processing' || modal_id === 'modal-list-new-pia') {
       const input = <HTMLInputElement>e.querySelector(modal_id === 'modal-list-new-pia' ? 'input#author_name' : 'input#name');
       if (input) {
         input.focus();
       }
     }
-    this.data = data
-    console.log(this.data)
+    this.data = data;
   }
 
   /**
