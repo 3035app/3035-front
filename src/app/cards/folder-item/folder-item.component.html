@@ -4,7 +4,7 @@
             <input type="checkbox" [(ngModel)]="checked" data-md-icheck (change)="toggleChecked(folder.id)"/>
             <span class="pia-cardsBlock-checkmark"></span>
         </label>
-        <button class="folder-permissions-btn" name="folder-permissions-btn" (click)="_modalsService.openModal('modal-list-folder-permissions', {elementId: folder.id, elementType: 'folder', users: users})"><i class="fa fa-users" aria-hidden="true"></i></button>
+        <button class="folder-permissions-btn" name="folder-permissions-btn" (click)="openPermissionsModal()"><i class="fa fa-users" aria-hidden="true"></i></button>
         <div class="pia-cardsBlock-toolbar">
             <div class="pia-cardsBlock-toolbar-more">
                 <a href="javascript:;" class="btn pia-tooltip pia-dropdown-icon" title="{{ 'homepage.cards.item.tools.more_options' | translate }}">

@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { ModalsService } from './modals.service';
 import { MeasureService } from 'app/entry/entry-content/measures/measures.service';
 import { PiaService } from 'app/entry/pia.service';
 import { AttachmentsService } from 'app/entry/attachments/attachments.service';
-import { FormControl, FormGroup } from '@angular/forms';
 
 import { PiaModel, FolderModel, ProcessingModel } from '@api/models';
-import { PiaApi, FolderApi, ProcessingApi, ProcessingAttachmentApi } from '@api/services';
+import { PiaApi, FolderApi, ProcessingApi, ProcessingAttachmentApi, UserApi } from '@api/services';
 import { AttachmentsService as ProcessingAttachmentsService } from 'app/processing/attachments/attachments.service';
 import { PiaType } from '@api/model/pia.model';
 
@@ -30,13 +30,7 @@ export class ModalsComponent implements OnInit {
   removeAttachmentForm: FormGroup;
   enableSubmit = true;
   piaTypes: any;
-  selectedCar: number;
-  cars = [
-      { id: 1, name: 'Volvo' },
-      { id: 2, name: 'Saab' },
-      { id: 3, name: 'Opel' },
-      { id: 4, name: 'Audi' },
-  ];
+  selectedUser: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,8 +43,9 @@ export class ModalsComponent implements OnInit {
     private piaApi: PiaApi,
     public processingAttachmentApi: ProcessingAttachmentApi,
     public processingAttachmentsService: ProcessingAttachmentsService,
-    public _folderApi: FolderApi
-  ) { }
+    public _folderApi: FolderApi,
+    private userApi: UserApi
+  ) {}
 
   ngOnInit() {
     this.piaForm = new FormGroup({
@@ -162,8 +157,17 @@ export class ModalsComponent implements OnInit {
     }
   }
 
+  protected fetchFolderUsers() {
+    return this.userApi.getFolderUsers(this._modalsService.data.elementId).toPromise();
+  }
+
   onChangeSelectUser() {
-    console.log(this._modalsService.data.elementId);
-    console.log(this._modalsService.data.elementType);
+    const folder = new FolderModel();
+    if (this.selectedUser) {
+      this._folderApi.updateFolderUser(this._modalsService.data.elementId, this.selectedUser, folder).subscribe(async () => {
+        this.selectedUser = null;
+        this._modalsService.data.folderUsers = await this.fetchFolderUsers()
+      });
+    }
   }
 }

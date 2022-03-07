@@ -3,7 +3,7 @@ import { FormGroup, FormControl, NgForm } from '@angular/forms';
 import { FolderApi } from '@api/services';
 import { FolderModel } from '@api/models';
 import { ModalsService } from '../../modals/modals.service';
-import {PermissionsService} from '@security/permissions.service';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-folder-item',
@@ -35,7 +35,7 @@ export class FolderItemComponent implements OnInit {
           const fc = this.folderForm.form.get(field);
           bool ? fc.enable() : fc.disable();
       }
-    } );
+    });
   }
 
   /**
@@ -139,7 +139,7 @@ export class FolderItemComponent implements OnInit {
     this.onCheckChange.emit({id, checked: this.checked});
   }
 
-  protected fetchUsers() {
-    return this.userApi.getAll(this.folder.structure_id).toPromise();
+  openPermissionsModal() {
+      this._modalsService.openModal('modal-list-folder-permissions', {elementId: this.folder.id, elementType: 'folder'})
   }
 }

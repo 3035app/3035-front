@@ -425,13 +425,18 @@
             <div>
                 <label for="name">{{ 'share.add_user_label' | translate }}</label>
             </div>
-            <ng-select [(ngModel)]="selectedCar" placeholder="{{ 'share.placeholder_add_user' | translate }}" (change)="onChangeSelectUser()">
-                <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
+            <ng-select [(ngModel)]="selectedUser" placeholder="{{ 'share.placeholder_add_user' | translate }}" (change)="onChangeSelectUser()">
+                <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} - {{user.role}}</ng-option>
             </ng-select>
         </div>
         <div class="pia-cardsBlock-item-form form-separator">
             <div>
                 <label for="name">{{ 'share.shared_users_list_label' | translate }}</label>
+            </div>
+            <div *ngIf="_modalsService.data?.folderUsers?.length > 0">
+                <ul>
+                    <li *ngFor="let folderUser of _modalsService.data.folderUsers">{{folderUser.firstName}} {{folderUser.lastName}}</li>
+                </ul>
             </div>
         </div>
     </div>

@@ -1,14 +1,16 @@
 import {ElementRef, Injectable, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { PaginationService } from '../entry/entry-content/pagination.service';
+import { UserApi } from '@api/services';
 
 @Injectable()
 export class ModalsService {
-  data: {elementId?: number, elementType?: string};
+  data: { elementId?: number, elementType?: string, folderUsers?: any[], users?: any[] };
 
   constructor(
     private _router: Router,
-    private _paginationService: PaginationService
+    private _paginationService: PaginationService,
+    private _userApi: UserApi
   ) {}
 
   /**
@@ -16,7 +18,7 @@ export class ModalsService {
    * @param {string} modal_id - Unique id of the modal which has to be opened.
    * @memberof ModalsService
    */
-  openModal(modal_id: string, data?: {elementId?: number, elementType?: string}) {
+  async openModal(modal_id: string, data?: { elementId?: number, elementType?: string, folderUsers?: any[], users?: any[] }) {
     if (modal_id === 'pia-declare-measures' ||
         modal_id === 'pia-action-plan-no-evaluation' ||
         modal_id === 'pia-dpo-missing-evaluations') {
@@ -44,6 +46,11 @@ export class ModalsService {
       }
     }
     this.data = data;
+    if (modal_id === 'modal-list-folder-permissions') {
+      const structureId = parseInt(localStorage.getItem('structure-id'), 10)
+      this._userApi.getAll(structureId).subscribe(users => this.data.users = users)
+      this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => this.data.folderUsers = folderUsers)
+    }
   }
 
   /**
