@@ -23,20 +23,6 @@
         <small>{{ 'homepage.cards.processing_register' | translate}}</small>
       </h2>
       <div class="pia-filtersBlock">
-        <!--
-
-          Hiding list button because of lack of working feature with this view mode
-
-        <button class="pia-filtersBlock-switch btn" type="button" *ngIf="viewStyle.view === 'list'" (click)="viewOnCard()">
-          <i class="fa fa-list" aria-hidden="true"></i>
-          <div>{{ 'homepage.filters.card' | translate }}</div>
-        </button>
-        <button class="pia-filtersBlock-switch btn" type="button" *ngIf="viewStyle.view === 'card'" (click)="viewOnList()">
-          <i class="fa fa-list" aria-hidden="true"></i>
-          <div>{{ 'homepage.filters.list' | translate }}</div>
-        </button>
-
-        -->
         <div class="pia-filtersBlock-filters menu-sort">
           <button class="pia-filtersBlock-filters-btn btn" type="button">
             {{ 'homepage.filters.sort' | translate }} {{ 'homepage.filters.sort_by' | translate }}...
@@ -59,28 +45,6 @@
             </ul>
           </div>
         </div>
-        <!--
-          <div class="pia-filtersBlock-filters menu-creation" *ngxPermissionsOnly="['CanCreatePIA']">
-            <button class="pia-filtersBlock-filters-btn btn" type="button">
-              {{ 'homepage.filters.new' | translate }}
-              <span class="fa fa-angle-down"></span>
-            </button>
-            <div class="pia-filtersBlock-filters-list">
-              <ul>
-                <li>
-                  <button name="create-pia-btn" (click)="_modalsService.openModal('modal-list-new-pia')">{{ 'homepage.filters.new_pia' | translate }}</button>
-                </li>
-                <li >
-                  <button name="create-from-tpl-btn" routerLink="/templates">{{ 'homepage.filters.new_from_template' | translate }}</button>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <button name="create-folder-btn" (click)="_modalsService.openModal('modal-list-new-folder')">{{ 'homepage.filters.new_folder' | translate }}</button>
-                </li>
-              </ul>
-            </div>
-          </div>
-         -->
         <div class="pia-filtersBlock-filters menu-creation" *ngxPermissionsOnly="['CanCreateProcessing']">
           <button class="pia-filtersBlock-filters-btn btn" type="button">
             {{ 'homepage.filters.new' | translate }}
@@ -122,20 +86,6 @@
         <div class="pia-filtersBlock-filters menu-creation" *ngIf="exportIsLoading">
             {{ 'homepage.filters.export_loading' | translate }}
         </div>
-        <!--
-        <div class="pia-filtersBlock-buttons" *ngxPermissionsOnly="['CanImportPIA']">
-          <button type="button" (click)="importPia()" class="btn btn-green">
-            <i class="fa fa-upload" aria-hidden="true"></i>{{ 'homepage.filters.import_pia' | translate }}
-          </button>
-        </div>
-
-        <div class="hide">
-          <form enctype="multipart/form-data" [formGroup]="importPiaForm">
-            <input type="file" formControlName="import_file" id="import_file" (change)="importPia($event)" class="hide">
-          </form>
-          <a href="" id="pia-exportBlock"></a>
-        </div>
-        -->
       </div>
     </div>
   </div>
