@@ -48,7 +48,7 @@ export class ModalsService {
       }
     }
     this.data = data;
-    if (modal_id === 'modal-list-folder-permissions') {
+    if (modal_id === 'modal-list-element-permissions') {
       const structureId = parseInt(localStorage.getItem('structure-id'), 10)
       this._userApi.getAll(structureId).subscribe(users => {
         const roles = [];

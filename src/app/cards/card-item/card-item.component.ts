@@ -177,6 +177,6 @@ export class CardItemComponent implements OnInit {
   }
 
   openPermissionsModal() {
-    this._modalsService.openModal('modal-list-folder-permissions', {elementId: this.processing.id, elementType: 'processing'})
+    this._modalsService.openModal('modal-list-element-permissions', {elementId: this.processing.id, elementType: 'processing'})
   }
 }

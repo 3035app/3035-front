@@ -140,6 +140,6 @@ export class FolderItemComponent implements OnInit {
   }
 
   openPermissionsModal() {
-      this._modalsService.openModal('modal-list-folder-permissions', {elementId: this.folder.id, elementType: 'folder'})
+      this._modalsService.openModal('modal-list-element-permissions', {elementId: this.folder.id, elementType: 'folder'})
   }
 }
