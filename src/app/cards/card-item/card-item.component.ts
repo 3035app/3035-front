@@ -175,4 +175,8 @@ export class CardItemComponent implements OnInit {
   toggleChecked(id) {
     this.onCheckChange.emit({id, checked: this.checked});
   }
+
+  openPermissionsModal() {
+    this._modalsService.openModal('modal-list-folder-permissions', {elementId: this.processing.id, elementType: 'processing'})
+  }
 }

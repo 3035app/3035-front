@@ -7,7 +7,6 @@ import { BaseService } from '@api/service/base.service';
 import { Processing } from '@api/model/processing.model';
 import { Template } from '@api/model/template.model';
 import { FolderModel } from '@api/models';
-import { Folder } from '@api/model';
 
 @Injectable()
 export class ProcessingService extends BaseService<Processing> {
@@ -19,7 +18,8 @@ export class ProcessingService extends BaseService<Processing> {
     one: '/processings/{id}',
     export: '/processings/{id}/export',
     import: '/processings/import',
-    template: '/processings/new-from-template/{templateId}'
+    template: '/processings/new-from-template/{templateId}',
+    processingUser: '/processings/{processingId}/users/{userId}',
   };
 
   constructor(http: HttpClient) {
@@ -73,5 +73,13 @@ export class ProcessingService extends BaseService<Processing> {
 
   public createFromTemplate(model: Processing, template: Template): Observable<Processing> {
     return this.httpPost(this.routing.template, { templateId: template.id }, model);
+  }
+
+  public updateProcessingUser(processingId: any, userId: any, model?): Observable<Processing> {
+    return this.httpPut(this.routing.processingUser, {processingId, userId }, model);
+  }
+
+  public deleteProcessingUser(processingId: any, userId: any, model?): Observable<Processing> {
+    return this.httpDelete(this.routing.processingUser, {processingId, userId }, model);
   }
 }

@@ -347,6 +347,15 @@
   }
 }
 
+.permissions-btn {
+  color: #a7a7a7;
+  cursor: pointer;
+  font-size: 1.5em;
+  position: absolute;
+  right: 60px;
+  top: 9px;
+}
+
 .ng-select {
   input {
     padding-bottom: 0 !important;

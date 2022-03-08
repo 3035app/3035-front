@@ -433,9 +433,9 @@
             <div>
                 <label for="name">{{ 'share.shared_users_list_label' | translate }}</label>
             </div>
-            <div *ngIf="_modalsService.data?.folderUsers?.length > 0">
+            <div *ngIf="_modalsService.data?.elementUsers?.length > 0">
                 <ul>
-                    <li *ngFor="let folderUser of _modalsService.data.folderUsers">{{folderUser.firstName}} {{folderUser.lastName}} <i class="fa fa-trash-o cursor-pointer ml-2" aria-hidden="true" (click)="onDeleteFolderUser(folderUser.id)"></i></li>
+                    <li *ngFor="let elementUser of _modalsService.data.elementUsers">{{elementUser.firstName}} {{elementUser.lastName}} <i class="fa fa-trash-o cursor-pointer ml-2" aria-hidden="true" (click)="onDeleteElementUser(elementUser.id)"></i></li>
                 </ul>
             </div>
         </div>

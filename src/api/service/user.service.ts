@@ -12,7 +12,8 @@ export class UserService extends BaseService<User> {
 
   protected routing: any = {
     all: '/structures/{structureId}/users',
-    folderUsers: '/folders/{folderId}/users'
+    folderUsers: '/folders/{folderId}/users',
+    processingUsers: '/processings/{processingId}/users'
   };
 
   constructor(http: HttpClient) {
@@ -25,5 +26,9 @@ export class UserService extends BaseService<User> {
 
   public getFolderUsers(folderId: any): Observable<User[]> {
     return this.httpGetAll(this.routing.folderUsers, {folderId: folderId })
+  }
+
+  public getProcessingUsers(processingId: any): Observable<User[]> {
+    return this.httpGetAll(this.routing.processingUsers, { processingId })
   }
 }

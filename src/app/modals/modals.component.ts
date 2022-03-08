@@ -102,7 +102,7 @@ export class ModalsComponent implements OnInit {
     pia.evaluator_name = this.piaForm.value.evaluator_name;
     pia.validator_name = this.piaForm.value.validator_name;
     // disable the type feature
-    pia.type = 'advanced'; // this.piaForm.value.type;
+    pia.type = 'advanced';
     pia.processing = this._piaService.currentProcessing;
 
     this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
@@ -157,24 +157,46 @@ export class ModalsComponent implements OnInit {
     }
   }
 
-  protected fetchFolderUsers() {
-    return this.userApi.getFolderUsers(this._modalsService.data.elementId).toPromise();
-  }
-
-  onChangeSelectUser() {
-    const folder = new FolderModel();
-    if (this.selectedUser) {
-      this._folderApi.updateFolderUser(this._modalsService.data.elementId, this.selectedUser, folder).subscribe(async () => {
-        this.selectedUser = null;
-        this._modalsService.data.folderUsers = await this.fetchFolderUsers()
-      });
+  protected fetchElementUsers() {
+    if (this._modalsService.data.elementType === 'folder') {
+      return this.userApi.getFolderUsers(this._modalsService.data.elementId).toPromise();
+    }
+    if (this._modalsService.data.elementType === 'processing') {
+      return this.userApi.getProcessingUsers(this._modalsService.data.elementId).toPromise();
     }
   }
 
-  onDeleteFolderUser(userId) {
-    const folder = new FolderModel();
-    this._folderApi.deleteFolderUser(this._modalsService.data.elementId, userId, folder).subscribe(async () => {
-      this._modalsService.data.folderUsers = await this.fetchFolderUsers()
-    });
+  onChangeSelectUser() {
+    if (this.selectedUser) {
+      if (this._modalsService.data.elementType === 'folder') {
+        const folder = new FolderModel();
+        this._folderApi.updateFolderUser(this._modalsService.data.elementId, this.selectedUser, folder).subscribe(async () => {
+          this.selectedUser = null;
+          this._modalsService.data.elementUsers = await this.fetchElementUsers()
+        });
+      }
+      if (this._modalsService.data.elementType === 'processing') {
+        const processing = new ProcessingModel();
+        this._processingApi.updateProcessingUser(this._modalsService.data.elementId, this.selectedUser, processing).subscribe(async () => {
+          this.selectedUser = null;
+          this._modalsService.data.elementUsers = await this.fetchElementUsers()
+        });
+      }
+    }
+  }
+
+  onDeleteElementUser(userId) {
+    if (this._modalsService.data.elementType === "folder") {
+      const folder = new FolderModel();
+      this._folderApi.deleteFolderUser(this._modalsService.data.elementId, userId, folder).subscribe(async () => {
+        this._modalsService.data.elementUsers = await this.fetchElementUsers()
+      });
+    }
+    if (this._modalsService.data.elementType === "processing") {
+      const processing = new ProcessingModel();
+      this._processingApi.deleteProcessingUser(this._modalsService.data.elementId, userId, processing).subscribe(async () => {
+        this._modalsService.data.elementUsers = await this.fetchElementUsers()
+      });
+    }
   }
 }

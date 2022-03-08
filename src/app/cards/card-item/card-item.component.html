@@ -8,6 +8,8 @@
           <input type="checkbox" [(ngModel)]="checked" data-md-icheck (change)="toggleChecked(processing.id)"/>
           <span class="pia-cardsBlock-checkmark"></span>
         </label>
+        <button class="permissions-btn" name="folder-permissions-btn" (click)="openPermissionsModal()"><i
+            class="fa fa-users" aria-hidden="true"></i></button>
         <div class="pia-cardsBlock-toolbar">
           <div class="pia-cardsBlock-toolbar-more">
             <a href="javascript:;" class="btn pia-tooltip pia-dropdown-icon" title="{{ 'homepage.cards.item.tools.more_options' | translate }}">

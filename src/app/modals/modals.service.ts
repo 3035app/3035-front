@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class ModalsService {
-  data: { elementId?: number, elementType?: string, folderUsers?: any[], users?: any[] };
+  data: { elementId?: number, elementType?: string, elementUsers?: any[], users?: any[] };
 
   constructor(
     private _router: Router,
@@ -20,7 +20,7 @@ export class ModalsService {
    * @param {string} modal_id - Unique id of the modal which has to be opened.
    * @memberof ModalsService
    */
-  async openModal(modal_id: string, data?: { elementId?: number, elementType?: string, folderUsers?: any[], users?: any[] }) {
+  async openModal(modal_id: string, data?: { elementId?: number, elementType?: string, elementUsers?: any[], users?: any[] }) {
     if (modal_id === 'pia-declare-measures' ||
         modal_id === 'pia-action-plan-no-evaluation' ||
         modal_id === 'pia-dpo-missing-evaluations') {
@@ -62,7 +62,12 @@ export class ModalsService {
           return user;
         });
       })
-      this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => this.data.folderUsers = folderUsers)
+      if (data.elementType === 'folder') {
+        this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => this.data.elementUsers = folderUsers)
+      }
+      if (data.elementType === 'processing') {
+        this._userApi.getProcessingUsers(this.data.elementId).subscribe(processingUsers => this.data.elementUsers = processingUsers)
+      }
     }
   }
 
