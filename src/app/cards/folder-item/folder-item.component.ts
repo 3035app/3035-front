@@ -139,6 +139,10 @@ export class FolderItemComponent implements OnInit {
     this.onCheckChange.emit({id, checked: this.checked});
   }
 
+  /**
+   * Open the modal for the allocation of permissions for folders.
+   * @memberof FolderItemComponent
+   */
   openPermissionsModal() {
       this._modalsService.openModal('modal-list-element-permissions', {elementId: this.folder.id, elementType: 'folder'})
   }

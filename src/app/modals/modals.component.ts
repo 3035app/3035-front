@@ -166,6 +166,10 @@ export class ModalsComponent implements OnInit {
     }
   }
 
+  /**
+   * Attaches a user to element on change select (modal for allocation of permissions for folders and processings).
+   * @memberof ModalsComponent
+   */
   onChangeSelectUser() {
     if (this.selectedUser) {
       if (this._modalsService.data.elementType === 'folder') {
@@ -185,6 +189,10 @@ export class ModalsComponent implements OnInit {
     }
   }
 
+  /**
+   * Detach a user from an element on trash click (modal for allocation of permissions for folders and processings).
+   * @memberof ModalsComponent
+   */
   onDeleteElementUser(userId) {
     if (this._modalsService.data.elementType === "folder") {
       const folder = new FolderModel();

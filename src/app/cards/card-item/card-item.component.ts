@@ -176,6 +176,10 @@ export class CardItemComponent implements OnInit {
     this.onCheckChange.emit({id, checked: this.checked});
   }
 
+  /**
+   * Open the modal for the allocation of permissions for processings.
+   * @memberof CardItemComponent
+   */
   openPermissionsModal() {
     this._modalsService.openModal('modal-list-element-permissions', {elementId: this.processing.id, elementType: 'processing'})
   }
