@@ -426,7 +426,7 @@
                 <label for="name">{{ 'share.add_user_label' | translate }}</label>
             </div>
             <ng-select [(ngModel)]="selectedUser" placeholder="{{ 'share.placeholder_add_user' | translate }}" (change)="onChangeSelectUser()">
-                <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} - {{user.role}}</ng-option>
+                <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} - {{user.roles}}</ng-option>
             </ng-select>
         </div>
         <div class="pia-cardsBlock-item-form form-separator">
@@ -435,7 +435,7 @@
             </div>
             <div *ngIf="_modalsService.data?.folderUsers?.length > 0">
                 <ul>
-                    <li *ngFor="let folderUser of _modalsService.data.folderUsers">{{folderUser.firstName}} {{folderUser.lastName}}</li>
+                    <li *ngFor="let folderUser of _modalsService.data.folderUsers">{{folderUser.firstName}} {{folderUser.lastName}} <i class="fa fa-trash-o cursor-pointer ml-2" aria-hidden="true" (click)="onDeleteFolderUser(folderUser.id)"></i></li>
                 </ul>
             </div>
         </div>

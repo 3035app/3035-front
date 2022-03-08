@@ -72,4 +72,8 @@ export class FolderService extends BaseService<Folder> {
   public updateFolderUser(folderId: any, userId: any, model?): Observable<Folder> {
     return this.httpPut(this.routing.folderUser, {folderId, userId }, model);
   }
+
+  public deleteFolderUser(folderId: any, userId: any, model?): Observable<Folder> {
+    return this.httpDelete(this.routing.folderUser, {folderId, userId }, model);
+  }
 }

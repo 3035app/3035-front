@@ -1,7 +1,8 @@
-import {ElementRef, Injectable, Output} from '@angular/core';
+import {Injectable} from '@angular/core';
 import { Router } from '@angular/router';
 import { PaginationService } from '../entry/entry-content/pagination.service';
 import { UserApi } from '@api/services';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class ModalsService {
@@ -10,7 +11,8 @@ export class ModalsService {
   constructor(
     private _router: Router,
     private _paginationService: PaginationService,
-    private _userApi: UserApi
+    private _userApi: UserApi,
+    private i18n: TranslateService,
   ) {}
 
   /**
@@ -48,7 +50,18 @@ export class ModalsService {
     this.data = data;
     if (modal_id === 'modal-list-folder-permissions') {
       const structureId = parseInt(localStorage.getItem('structure-id'), 10)
-      this._userApi.getAll(structureId).subscribe(users => this.data.users = users)
+      this._userApi.getAll(structureId).subscribe(users => {
+        const roles = [];
+        this.data.users = users;
+        this.data.users = this.data.users.map(user => {
+          const rolesLabel = [];
+          user.roles.forEach(role => {
+            rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
+          })
+          user.roles = rolesLabel.join('/');
+          return user;
+        });
+      })
       this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => this.data.folderUsers = folderUsers)
     }
   }

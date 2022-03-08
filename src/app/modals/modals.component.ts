@@ -170,4 +170,11 @@ export class ModalsComponent implements OnInit {
       });
     }
   }
+
+  onDeleteFolderUser(userId) {
+    const folder = new FolderModel();
+    this._folderApi.deleteFolderUser(this._modalsService.data.elementId, userId, folder).subscribe(async () => {
+      this._modalsService.data.folderUsers = await this.fetchFolderUsers()
+    });
+  }
 }
