@@ -123,6 +123,7 @@ export class ModalsComponent implements OnInit {
     processing.designated_controller = this.processingForm.value.designated_controller;
 
     this._processingApi.create(processing, this._piaService.currentFolder).subscribe((newProcessing: ProcessingModel) => {
+      newProcessing.can_show = true;
       this.piaForm.reset();
       this.router.navigate(['processing', newProcessing.id, {evaluator_name: this.processingForm.value.evaluator_name, validator_name: this.processingForm.value.validator_name}]);
     });
@@ -140,6 +141,7 @@ export class ModalsComponent implements OnInit {
     folder.structure_id = folder.parent.structure_id;
 
     this._folderApi.create(folder).subscribe((newFolder: FolderModel) => {
+      newFolder.can_access = true;
       this._modalsService.closeModal();
       this.folderForm.reset();
       this._piaService.currentFolder.children.push(newFolder);
