@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { environment } from 'environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -25,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   _hasPortfolio: boolean = false;
   _hasOwnStructure: boolean = false;
   public currentRoute: string;
+  public higherRole = {};
 
   constructor(
     private _router: Router,
@@ -57,6 +57,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this._hasPortfolio = this.session.hasPortfolioStructures();
     this._hasOwnStructure = this.session.hasOwnStructure();
+    this.higherRole = this.authService.getOwnHigherRole();
   }
 
   hasPortfolio() {

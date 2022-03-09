@@ -97,10 +97,12 @@ export class AuthenticationService {
   }
 
   public getOwnHigherRole(): {role: string, label: string, description: string} {
-    let higherRole = {role: 'ROLE_USER', label: this.i18n.instant('role_description.ROLE_USER.label'), description: this.i18n.instant('role_description.ROLE_USER.description')};
-    this._ownRoles.forEach((role) => {
-      higherRole = {role, label: this.i18n.instant(`role_description.${role}.label`), description: this.i18n.instant(`role_description.${role}.description`)};
-    });
+    let higherRole = { role: 'ROLE_USER', label: this.i18n.instant('role_description.ROLE_USER.label'), description: this.i18n.instant('role_description.ROLE_USER.description') };
+    if (this._ownRoles) {
+      this._ownRoles.forEach((role) => {
+        higherRole = {role, label: this.i18n.instant(`role_description.${role}.label`), description: this.i18n.instant(`role_description.${role}.description`)};
+      });
+    }
     return higherRole;
   }
 }

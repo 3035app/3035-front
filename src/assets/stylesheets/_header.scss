@@ -25,7 +25,10 @@
           text-transform: uppercase;
           font-weight: 500;
           font-size: 1.38rem;
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-full-white;
             color: $pia-blue;
           }
@@ -59,7 +62,8 @@
             text-align: left;
             color: $pia-full-white;
             cursor: pointer;
-            a, a:active {
+            a,
+            a:active {
               font-size: 1.2rem;
               text-transform: none;
               font-weight: normal;
@@ -89,7 +93,8 @@
           }
         }
         &:hover {
-          > a, > ul {
+          > a,
+          > ul {
             background-color: $pia-full-white;
           }
           .fa-globe {
@@ -102,7 +107,9 @@
               background-color: $pia-full-white;
               a {
                 display: block;
-                &:focus, &:hover, &:active {
+                &:focus,
+                &:hover,
+                &:active {
                   color: $pia-full-white;
                   background-color: $pia-blue;
                 }
@@ -113,7 +120,9 @@
         > a {
           cursor: context-menu;
           padding: 4px 14px !important;
-          &:focus, &:hover, &:active {
+          &:focus,
+          &:hover,
+          &:active {
             & + ul {
               display: block;
               background-color: $pia-full-white;
@@ -132,12 +141,15 @@
           margin: 0;
           position: absolute;
           top: 28px;
-          left: -1px;
+          // left: -1px;
           min-width: 200px;
           list-style-type: none;
           box-shadow: 2px 2px 4px 1px rgba(181, 181, 181, 1);
+          right: 0;
         }
-        &:focus, &:hover, &:active {
+        &:focus,
+        &:hover,
+        &:active {
           > a {
             color: $pia-blue !important;
             background-color: $pia-full-white;
@@ -172,7 +184,9 @@
             margin-left: 8px;
             float: right;
           }
-          &:focus, &:hover, &:active {
+          &:focus,
+          &:hover,
+          &:active {
             background-color: $pia-full-white;
             & + form {
               display: block;
@@ -213,7 +227,8 @@
             margin: 10px 0;
             border-bottom: 1px solid $pia-gray;
             padding-bottom: 10px;
-            input, label {
+            input,
+            label {
               display: inline-block;
               vertical-align: top;
             }
@@ -251,7 +266,9 @@
             padding-left: 8px !important;
           }
         }
-        &:focus, &:hover, &:active {
+        &:focus,
+        &:hover,
+        &:active {
           > a {
             color: $pia-blue !important;
             background-color: $pia-full-white;

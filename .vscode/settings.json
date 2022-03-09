@@ -1,10 +1,11 @@
 {
-    "conventionalCommits.scopes": [
-        "Roles and permissions",
-        "Dashboard",
-        "Processing and PIA",
-        "vscode",
-        "Error messages",
-        "Processing"
-    ]
+  "conventionalCommits.scopes": [
+    "Roles and permissions",
+    "Dashboard",
+    "Processing and PIA",
+    "vscode",
+    "Error messages",
+    "Processing",
+    "Header"
+  ]
 }
