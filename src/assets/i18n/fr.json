@@ -43,7 +43,35 @@
       },
       "403": {
         "title": "Vous n'avez pas les droits pour cette action",
-        "content": "Vous avez un profil {{role_label}} ; vous n'avez donc pas les droits pour cette action."
+        "content": "Vous avez un profil {{role_label}} ; vous n'avez donc pas les droits pour cette action.",
+        "1": {
+          "title": "Action non autorisée",
+          "content": "Vous ne pouvez pas créer de fiche de traitement à la racine."
+        },
+        "2": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à modifier ce dossier."
+        },
+        "3": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à modifier cette fiche de traitement."
+        },
+        "4": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à créer une fiche de traitement dans ce dossier."
+        },
+        "5": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à créer un dossier dans ce dossier."
+        },
+        "6": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à supprimer ce dossier."
+        },
+        "7": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à supprimer cette fiche de traitement."
+        }
       },
       "409": {
         "title": "Conflit détecté",

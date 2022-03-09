@@ -53,13 +53,15 @@ export class FolderItemComponent implements OnInit {
    * @memberof FolderItemComponent
    */
   folderNameFocusOut() {
-    let userText = this.folderForm.controls['name'].value;
-    if (userText  && typeof userText === 'string') {
-      userText = userText.replace(/^\s+/, '').replace(/\s+$/, ''); // trim value
-    }
-    if (userText !== '') {
-      this.folder.name = userText;
-      this.updateFolder();
+    if (this.folder.can_access) {
+      let userText = this.folderForm.controls['name'].value;
+      if (userText  && typeof userText === 'string') {
+        userText = userText.replace(/^\s+/, '').replace(/\s+$/, ''); // trim value
+      }
+      if (userText !== '') {
+        this.folder.name = userText;
+        this.updateFolder();
+      }
     }
   }
 

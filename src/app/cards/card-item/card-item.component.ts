@@ -24,6 +24,7 @@ export class CardItemComponent implements OnInit {
   processingForm: FormGroup;
   checked: boolean = false;
   @Output() onCheckChange: EventEmitter<any> = new EventEmitter();
+  hasManageProcessingPermissions: boolean = false;
 
   @ViewChild('processingName') private processingName: ElementRef;
   @ViewChild('processingAuthor') private processingAuthor: ElementRef;
@@ -56,6 +57,8 @@ export class CardItemComponent implements OnInit {
           bool ? fc.enable() : fc.disable();
       }
     });
+
+    this.permissionsService.hasPermission('CanManageProcessingPermissions').then((bool: boolean) => this.hasManageProcessingPermissions = bool);
   }
 
   /**

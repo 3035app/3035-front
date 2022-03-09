@@ -1,4 +1,4 @@
-<div class="pia-cardsBlock pia" [ngClass]="{'pia-archiveBlock': processing.status == 1}" [attr.data-id]="processing.id" [attr.data-name]="processing.name" *ngIf="processing.can_show">
+<div class="pia-cardsBlock pia" [ngClass]="{'pia-archiveBlock': processing.status == 1}" [attr.data-id]="processing.id" [attr.data-name]="processing.name" *ngIf="processing.can_show || hasManageProcessingPermissions">
     <div class="pia-cardsBlock-header-title" *ngIf="processing.id !== null">
       <span *ngIf="!previousProcessing || previousProcessing.status !== processing.status">{{ ('processing.statuses.' + processing.status) | translate }}</span>
     </div>
