@@ -3,8 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { PiaService } from '../../entry/pia.service';
 
-import { ProcessingModel, FolderModel } from '@api/models';
-import { ProcessingApi } from '@api/services';
+import { ProcessingModel } from '@api/models';
+import { ProcessingApi, UserApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
 import { ModalsService } from '../../modals/modals.service';
 
@@ -25,6 +25,7 @@ export class CardItemComponent implements OnInit {
   checked: boolean = false;
   @Output() onCheckChange: EventEmitter<any> = new EventEmitter();
   hasManageProcessingPermissions: boolean = false;
+  hasProcessingUsers: boolean = true;
 
   @ViewChild('processingName') private processingName: ElementRef;
   @ViewChild('processingAuthor') private processingAuthor: ElementRef;
@@ -34,7 +35,8 @@ export class CardItemComponent implements OnInit {
     private _modalsService: ModalsService,
     public _piaService: PiaService,
     private processingApi: ProcessingApi,
-    private permissionsService: PermissionsService
+    private permissionsService: PermissionsService,
+    private _userApi: UserApi
   ) {
 
   }
@@ -59,6 +61,12 @@ export class CardItemComponent implements OnInit {
     });
 
     this.permissionsService.hasPermission('CanManageProcessingPermissions').then((bool: boolean) => this.hasManageProcessingPermissions = bool);
+
+    this._userApi.getProcessingUsers(this.processing.id).subscribe(processingUsers => {
+      if (processingUsers.length === 0) {
+        this.hasProcessingUsers = false;
+      }
+    })
   }
 
   /**

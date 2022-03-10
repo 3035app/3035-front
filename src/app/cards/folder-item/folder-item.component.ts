@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl, NgForm } from '@angular/forms';
-import { FolderApi } from '@api/services';
+import { NgForm } from '@angular/forms';
+import { FolderApi, UserApi } from '@api/services';
 import { FolderModel } from '@api/models';
 import { ModalsService } from '../../modals/modals.service';
 import { PermissionsService } from '@security/permissions.service';
@@ -18,12 +18,15 @@ export class FolderItemComponent implements OnInit {
   checked: boolean = false;
   @Output() onCheckChange: EventEmitter<any> = new EventEmitter();
   @ViewChild('folderForm') folderForm: NgForm;
-
+  hasManageFolderPermissions: boolean = false;
+  hasFolderUsers: boolean = true;
+  
   constructor(
     private folderApi: FolderApi,
     private _modalsService: ModalsService,
     private permissionsService: PermissionsService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private _userApi: UserApi
   ) { }
 
   ngOnInit() {
@@ -36,6 +39,14 @@ export class FolderItemComponent implements OnInit {
           bool ? fc.enable() : fc.disable();
       }
     });
+
+    this.permissionsService.hasPermission('CanManageFolderPermissions').then((bool: boolean) => this.hasManageFolderPermissions = bool);
+
+    this._userApi.getFolderUsers(this.folder.id).subscribe(folderUsers => {
+      if (folderUsers.length === 0) {
+        this.hasFolderUsers = false;
+      }
+    })
   }
 
   /**

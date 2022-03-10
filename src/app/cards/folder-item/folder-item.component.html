@@ -10,7 +10,7 @@
                 <a href="javascript:;" class="btn pia-tooltip pia-dropdown-icon" title="{{ 'homepage.cards.item.tools.more_options' | translate }}">
                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                     <ul class="pia-cardsBlock-toolbar-moreList" *ngIf="folder.can_access">
-                        <li class="pia-cardsBlock-toolbar-delete" *ngxPermissionsOnly="['CanDeletePIA']">
+                        <li class="pia-cardsBlock-toolbar-delete" *ngxPermissionsOnly="['CanDeleteFolder']">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                             <a href="javascript:;" (click)="removeFolder(folder)">{{ 'homepage.cards.item.tools.remove' | translate }}</a>
                         </li>
@@ -19,14 +19,14 @@
             </div>
         </div>
     </div>
-    <div class="folder-icon" routerLink="/folders/{{folder.id}}" *ngIf="folder.can_access">
+    <div class="folder-icon" routerLink="/folders/{{folder.id}}" *ngIf="folder.can_access || !hasFolderUsers || hasManageFolderPermissions">
         <i class="fa fa-folder-open" aria-hidden="true"></i>
     </div>
-    <div class="folder-icon" *ngIf="!folder.can_access">
+    <div class="folder-icon" *ngIf="!folder.can_access && hasFolderUsers && !hasManageFolderPermissions">
         <i class="fa fa-folder-open" aria-hidden="true"></i>
     </div>
     <form #folderForm="ngForm">
-        <input class="folder-title" [(ngModel)]="folder.name" name="name" required (focusout)="folderNameFocusOut()" [disabled]="!folder.can_access" [readonly]="!folder.can_access"/>
+        <input class="folder-title" [(ngModel)]="folder.name" name="name" required (focusout)="folderNameFocusOut()" [disabled]="!folder.can_access && hasFolderUsers" [readonly]="!folder.can_access && hasFolderUsers"/>
         <div class="form-field person-in-charge">
             <label class="title person-in-charge-label" for="person-in-charge">{{ 'homepage.cards.folder.person_in_charge' | translate }}</label>
             <div (click)="editField(personInCharge)"
@@ -49,7 +49,7 @@
             ></textarea>
           </div>
     </form>
-    <div class="bottom-actions" *ngIf="folder.can_access">
+    <div class="bottom-actions" *ngIf="folder.can_access || !hasFolderUsers || hasManageFolderPermissions">
         <a class="btn btn-green" routerLink="/folders/{{folder.id}}" href="#">{{ 'homepage.cards.folder.open' | translate }}</a>
     </div>
 </div>
