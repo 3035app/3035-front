@@ -19,7 +19,10 @@
             </div>
         </div>
     </div>
-    <div class="folder-icon" routerLink="/folders/{{folder.id}}">
+    <div class="folder-icon" routerLink="/folders/{{folder.id}}" *ngIf="folder.can_access">
+        <i class="fa fa-folder-open" aria-hidden="true"></i>
+    </div>
+    <div class="folder-icon" *ngIf="!folder.can_access">
         <i class="fa fa-folder-open" aria-hidden="true"></i>
     </div>
     <form #folderForm="ngForm">
@@ -46,7 +49,7 @@
             ></textarea>
           </div>
     </form>
-    <div class="bottom-actions">
+    <div class="bottom-actions" *ngIf="folder.can_access">
         <a class="btn btn-green" routerLink="/folders/{{folder.id}}" href="#">{{ 'homepage.cards.folder.open' | translate }}</a>
     </div>
 </div>
