@@ -75,7 +75,7 @@ export class AppComponent {
     roles['ROLE_CONTROLLER_MULTI'] = roles['ROLE_CONTROLLER'];
 
     roles['ROLE_DPO'] = roles['ROLE_USER'].concat([
-      'CanShowEvaluatePIA', 'CanEditStructure', 'CanManageFolderPermissions', 'CanManageProcessingPermissions'
+      'CanShowEvaluatePIA', 'CanEditStructure', 'CanManageFolderPermissions', 'CanManageProcessingPermissions', 'CanCreateProcessing', 'CanDeleteFolder'
     ]);
     roles['ROLE_SHARED_DPO'] = roles['ROLE_DPO'];
 
