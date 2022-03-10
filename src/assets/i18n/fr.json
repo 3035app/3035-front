@@ -71,6 +71,10 @@
         "7": {
           "title": "Action non autorisée",
           "content": "Vous n'êtes pas autorisé à supprimer cette fiche de traitement."
+        },
+        "8": {
+          "title": "Action non autorisée",
+          "content": "Seul le DPO peut créer un dossier à la racine."
         }
       },
       "409": {
