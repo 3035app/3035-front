@@ -64,7 +64,7 @@ export class AppComponent {
       'AccessToContextSection', 'AccessToPrinciplesSection', 'AccessToRisksSection', 'AccessToValidationSection',
     ];
 
-    roles['ROLE_REDACTOR'] = roles['ROLE_USER'].concat(['CanCreateProcessing', 'CanEditProcessing', 'CanCreatePIA', 'CanEditPIA', 'CanAskEvaluatePIA', 'CanCancelAskEvaluatePIA', 'CanCancelAskEvaluateProcessing']);
+    roles['ROLE_REDACTOR'] = roles['ROLE_USER'].concat(['CanCreateProcessing', 'CanEditProcessing', 'CanCreatePIA', 'CanEditPIA', 'CanAskEvaluatePIA', 'CanCancelAskEvaluatePIA', 'CanCancelAskEvaluateProcessing', 'CanDeleteFolder', 'CanDeleteProcessing', 'CanDeletePIA']);
 
     roles['ROLE_EVALUATOR'] = roles['ROLE_USER'].concat(['CanShowEvaluatePIA', 'CanEvaluatePIA', 'CanCancelPIAEvaluation', 'CanCancelProcessingEvaluation']);
 
@@ -75,7 +75,7 @@ export class AppComponent {
     roles['ROLE_CONTROLLER_MULTI'] = roles['ROLE_CONTROLLER'];
 
     roles['ROLE_DPO'] = roles['ROLE_USER'].concat([
-      'CanShowEvaluatePIA', 'CanEditStructure',
+      'CanShowEvaluatePIA', 'CanEditStructure', 'CanManageFolderPermissions', 'CanManageProcessingPermissions', 'CanCreateProcessing', 'CanDeleteFolder'
     ]);
     roles['ROLE_SHARED_DPO'] = roles['ROLE_DPO'];
 

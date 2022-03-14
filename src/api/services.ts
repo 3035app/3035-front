@@ -17,5 +17,6 @@ export {
     StructureService as StructureApi,
     ProcessingCommentService as ProcessingCommentApi,
     ProcessingAttachmentService as ProcessingAttachmentApi,
-    SearchService as SearchApi
+    SearchService as SearchApi,
+    UserService as UserApi
 } from '@api/service';

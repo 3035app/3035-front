@@ -34,8 +34,13 @@ export class AppErrorHandler implements ErrorHandler {
     this.higherRole = this.auth.getOwnHigherRole();
 
     let trans = 'messages.http.' + httpError.status;
+
     if (httpError.error.error_code) {
       trans = trans + '.' + httpError.error.error_code;
+    }
+
+    if (httpError.error.message.includes('messages.http.403')) {
+      trans += `.${httpError.error.message.replace('messages.http.403.', '')}`;
     }
 
     this.toastr.error(

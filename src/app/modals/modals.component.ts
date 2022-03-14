@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { ModalsService } from './modals.service';
 import { MeasureService } from 'app/entry/entry-content/measures/measures.service';
 import { PiaService } from 'app/entry/pia.service';
 import { AttachmentsService } from 'app/entry/attachments/attachments.service';
-import { FormControl, FormGroup } from '@angular/forms';
 
 import { PiaModel, FolderModel, ProcessingModel } from '@api/models';
-import { PiaApi, FolderApi, ProcessingApi, ProcessingAttachmentApi } from '@api/services';
+import { PiaApi, FolderApi, ProcessingApi, ProcessingAttachmentApi, UserApi } from '@api/services';
 import { AttachmentsService as ProcessingAttachmentsService } from 'app/processing/attachments/attachments.service';
 import { PiaType } from '@api/model/pia.model';
 
@@ -30,6 +30,7 @@ export class ModalsComponent implements OnInit {
   removeAttachmentForm: FormGroup;
   enableSubmit = true;
   piaTypes: any;
+  selectedUser: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,8 +43,9 @@ export class ModalsComponent implements OnInit {
     private piaApi: PiaApi,
     public processingAttachmentApi: ProcessingAttachmentApi,
     public processingAttachmentsService: ProcessingAttachmentsService,
-    public _folderApi: FolderApi
-  ) { }
+    public _folderApi: FolderApi,
+    private userApi: UserApi
+  ) {}
 
   ngOnInit() {
     this.piaForm = new FormGroup({
@@ -100,7 +102,7 @@ export class ModalsComponent implements OnInit {
     pia.evaluator_name = this.piaForm.value.evaluator_name;
     pia.validator_name = this.piaForm.value.validator_name;
     // disable the type feature
-    pia.type = 'advanced'; // this.piaForm.value.type;
+    pia.type = 'advanced';
     pia.processing = this._piaService.currentProcessing;
 
     this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
@@ -121,6 +123,7 @@ export class ModalsComponent implements OnInit {
     processing.designated_controller = this.processingForm.value.designated_controller;
 
     this._processingApi.create(processing, this._piaService.currentFolder).subscribe((newProcessing: ProcessingModel) => {
+      newProcessing.can_show = true;
       this.piaForm.reset();
       this.router.navigate(['processing', newProcessing.id, {evaluator_name: this.processingForm.value.evaluator_name, validator_name: this.processingForm.value.validator_name}]);
     });
@@ -138,6 +141,7 @@ export class ModalsComponent implements OnInit {
     folder.structure_id = folder.parent.structure_id;
 
     this._folderApi.create(folder).subscribe((newFolder: FolderModel) => {
+      newFolder.can_access = true;
       this._modalsService.closeModal();
       this.folderForm.reset();
       this._piaService.currentFolder.children.push(newFolder);
@@ -152,6 +156,57 @@ export class ModalsComponent implements OnInit {
     if (this.removeAttachmentForm.controls['comment'].value &&
         this.removeAttachmentForm.controls['comment'].value.length > 0) {
       this.enableSubmit = false;
+    }
+  }
+
+  protected fetchElementUsers() {
+    if (this._modalsService.data.elementType === 'folder') {
+      return this.userApi.getFolderUsers(this._modalsService.data.elementId).toPromise();
+    }
+    if (this._modalsService.data.elementType === 'processing') {
+      return this.userApi.getProcessingUsers(this._modalsService.data.elementId).toPromise();
+    }
+  }
+
+  /**
+   * Attaches a user to element on change select (modal for allocation of permissions for folders and processings).
+   * @memberof ModalsComponent
+   */
+  onChangeSelectUser() {
+    if (this.selectedUser) {
+      if (this._modalsService.data.elementType === 'folder') {
+        const folder = new FolderModel();
+        this._folderApi.updateFolderUser(this._modalsService.data.elementId, this.selectedUser, folder).subscribe(async () => {
+          this.selectedUser = null;
+          this._modalsService.data.elementUsers = await this.fetchElementUsers()
+        });
+      }
+      if (this._modalsService.data.elementType === 'processing') {
+        const processing = new ProcessingModel();
+        this._processingApi.updateProcessingUser(this._modalsService.data.elementId, this.selectedUser, processing).subscribe(async () => {
+          this.selectedUser = null;
+          this._modalsService.data.elementUsers = await this.fetchElementUsers()
+        });
+      }
+    }
+  }
+
+  /**
+   * Detach a user from an element on trash click (modal for allocation of permissions for folders and processings).
+   * @memberof ModalsComponent
+   */
+  onDeleteElementUser(userId) {
+    if (this._modalsService.data.elementType === "folder") {
+      const folder = new FolderModel();
+      this._folderApi.deleteFolderUser(this._modalsService.data.elementId, userId, folder).subscribe(async () => {
+        this._modalsService.data.elementUsers = await this.fetchElementUsers()
+      });
+    }
+    if (this._modalsService.data.elementType === "processing") {
+      const processing = new ProcessingModel();
+      this._processingApi.deleteProcessingUser(this._modalsService.data.elementId, userId, processing).subscribe(async () => {
+        this._modalsService.data.elementUsers = await this.fetchElementUsers()
+      });
     }
   }
 }

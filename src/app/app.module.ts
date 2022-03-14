@@ -89,6 +89,7 @@ import { AttachmentItemComponent as ProcessingAttachmentItemComponent } from './
 import { EvaluationBlockComponent } from './processing/evaluation-block/evaluation-block.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { SearchService } from "./search/search.service";
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const providersList: any = [
   AppDataService,
@@ -213,7 +214,8 @@ export function createTranslateLoader(http: HttpClient) {
       positionClass: 'toast-top-right',
       onActivateTick: true
     }),
-    DndModule
+    DndModule,
+    NgSelectModule
   ],
   exports: [ChartsModule],
   providers: providersList,

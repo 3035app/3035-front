@@ -414,3 +414,30 @@
         </form>
     </div>
 </div>
+
+<div class="pia-modalBlock" id="modal-list-element-permissions">
+    <div class="pia-modalBlock-content bounceIn">
+        <button tabindex="1" type="button" class="pia-modalBlock-close btn" title="{{ 'homepage.cards.title_close_creation' | translate }}"
+            (click)="_modalsService.closeModal()">
+            <span class="pia-icons pia-icon-close"></span>
+        </button>
+        <div class="pia-cardsBlock-item-form">
+            <div>
+                <label for="name">{{ 'share.add_user_label' | translate }}</label>
+            </div>
+            <ng-select [(ngModel)]="selectedUser" placeholder="{{ 'share.placeholder_add_user' | translate }}" (change)="onChangeSelectUser()">
+                <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} - {{user.roles}}</ng-option>
+            </ng-select>
+        </div>
+        <div class="pia-cardsBlock-item-form form-separator">
+            <div>
+                <label for="name">{{ 'share.shared_users_list_label' | translate }}</label>
+            </div>
+            <div *ngIf="_modalsService.data?.elementUsers?.length > 0">
+                <ul>
+                    <li *ngFor="let elementUser of _modalsService.data.elementUsers">{{elementUser.firstName}} {{elementUser.lastName}} <i class="fa fa-trash-o cursor-pointer ml-2" aria-hidden="true" (click)="onDeleteElementUser(elementUser.id)"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

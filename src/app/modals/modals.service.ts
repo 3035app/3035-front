@@ -1,14 +1,18 @@
-import {ElementRef, Injectable, Output} from '@angular/core';
+import {Injectable} from '@angular/core';
 import { Router } from '@angular/router';
 import { PaginationService } from '../entry/entry-content/pagination.service';
+import { UserApi } from '@api/services';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class ModalsService {
-
+  data: { elementId?: number, elementType?: string, elementUsers?: any[], users?: any[] };
 
   constructor(
     private _router: Router,
-    private _paginationService: PaginationService
+    private _paginationService: PaginationService,
+    private _userApi: UserApi,
+    private i18n: TranslateService,
   ) {}
 
   /**
@@ -16,7 +20,7 @@ export class ModalsService {
    * @param {string} modal_id - Unique id of the modal which has to be opened.
    * @memberof ModalsService
    */
-  openModal(modal_id: string) {
+  async openModal(modal_id: string, data?: { elementId?: number, elementType?: string, elementUsers?: any[], users?: any[] }) {
     if (modal_id === 'pia-declare-measures' ||
         modal_id === 'pia-action-plan-no-evaluation' ||
         modal_id === 'pia-dpo-missing-evaluations') {
@@ -36,11 +40,33 @@ export class ModalsService {
     if (gf) {
       gf.focus();
     }
-
+    
     if(modal_id === 'modal-list-new-folder' || modal_id === 'modal-list-new-processing' || modal_id === 'modal-list-new-pia') {
       const input = <HTMLInputElement>e.querySelector(modal_id === 'modal-list-new-pia' ? 'input#author_name' : 'input#name');
       if (input) {
         input.focus();
+      }
+    }
+    this.data = data;
+    if (modal_id === 'modal-list-element-permissions') {
+      const structureId = parseInt(localStorage.getItem('structure-id'), 10)
+      this._userApi.getAll(structureId).subscribe(users => {
+        const roles = [];
+        this.data.users = users;
+        this.data.users = this.data.users.map(user => {
+          const rolesLabel = [];
+          user.roles.forEach(role => {
+            rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
+          })
+          user.roles = rolesLabel.join('/');
+          return user;
+        });
+      })
+      if (data.elementType === 'folder') {
+        this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => this.data.elementUsers = folderUsers)
+      }
+      if (data.elementType === 'processing') {
+        this._userApi.getProcessingUsers(this.data.elementId).subscribe(processingUsers => this.data.elementUsers = processingUsers)
       }
     }
   }

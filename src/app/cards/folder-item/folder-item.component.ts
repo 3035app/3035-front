@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl, NgForm } from '@angular/forms';
-import { FolderApi } from '@api/services';
+import { NgForm } from '@angular/forms';
+import { FolderApi, UserApi } from '@api/services';
 import { FolderModel } from '@api/models';
 import { ModalsService } from '../../modals/modals.service';
-import {PermissionsService} from '@security/permissions.service';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-folder-item',
@@ -18,12 +18,15 @@ export class FolderItemComponent implements OnInit {
   checked: boolean = false;
   @Output() onCheckChange: EventEmitter<any> = new EventEmitter();
   @ViewChild('folderForm') folderForm: NgForm;
-
+  hasManageFolderPermissions: boolean = false;
+  hasFolderUsers: boolean = true;
+  
   constructor(
     private folderApi: FolderApi,
     private _modalsService: ModalsService,
     private permissionsService: PermissionsService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private _userApi: UserApi
   ) { }
 
   ngOnInit() {
@@ -35,7 +38,15 @@ export class FolderItemComponent implements OnInit {
           const fc = this.folderForm.form.get(field);
           bool ? fc.enable() : fc.disable();
       }
-    } );
+    });
+
+    this.permissionsService.hasPermission('CanManageFolderPermissions').then((bool: boolean) => this.hasManageFolderPermissions = bool);
+
+    this._userApi.getFolderUsers(this.folder.id).subscribe(folderUsers => {
+      if (folderUsers.length === 0) {
+        this.hasFolderUsers = false;
+      }
+    })
   }
 
   /**
@@ -53,13 +64,15 @@ export class FolderItemComponent implements OnInit {
    * @memberof FolderItemComponent
    */
   folderNameFocusOut() {
-    let userText = this.folderForm.controls['name'].value;
-    if (userText  && typeof userText === 'string') {
-      userText = userText.replace(/^\s+/, '').replace(/\s+$/, ''); // trim value
-    }
-    if (userText !== '') {
-      this.folder.name = userText;
-      this.updateFolder();
+    if (this.folder.can_access) {
+      let userText = this.folderForm.controls['name'].value;
+      if (userText  && typeof userText === 'string') {
+        userText = userText.replace(/^\s+/, '').replace(/\s+$/, ''); // trim value
+      }
+      if (userText !== '') {
+        this.folder.name = userText;
+        this.updateFolder();
+      }
     }
   }
 
@@ -137,5 +150,13 @@ export class FolderItemComponent implements OnInit {
 
   toggleChecked(id) {
     this.onCheckChange.emit({id, checked: this.checked});
+  }
+
+  /**
+   * Open the modal for the allocation of permissions for folders.
+   * @memberof FolderItemComponent
+   */
+  openPermissionsModal() {
+      this._modalsService.openModal('modal-list-element-permissions', {elementId: this.folder.id, elementType: 'folder'})
   }
 }

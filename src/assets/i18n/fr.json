@@ -43,7 +43,39 @@
       },
       "403": {
         "title": "Vous n'avez pas les droits pour cette action",
-        "content": "Vous avez un profil {{role_label}} ; vous n'avez donc pas les droits pour cette action."
+        "content": "Vous avez un profil {{role_label}} ; vous n'avez donc pas les droits pour cette action.",
+        "1": {
+          "title": "Action non autorisée",
+          "content": "Vous ne pouvez pas créer de fiche de traitement à la racine."
+        },
+        "2": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à modifier ce dossier."
+        },
+        "3": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à modifier cette fiche de traitement."
+        },
+        "4": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à créer une fiche de traitement dans ce dossier."
+        },
+        "5": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à créer un dossier dans ce dossier."
+        },
+        "6": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à supprimer ce dossier."
+        },
+        "7": {
+          "title": "Action non autorisée",
+          "content": "Vous n'êtes pas autorisé à supprimer cette fiche de traitement."
+        },
+        "8": {
+          "title": "Action non autorisée",
+          "content": "Seul le DPO peut créer un dossier à la racine."
+        }
       },
       "409": {
         "title": "Conflit détecté",
@@ -1750,5 +1782,10 @@
       "label": "Responsable de traitement multi-registre",
       "description": "Votre profil PiaLab vous permet de valider les fiches de traitement et analyses d'impact qui ont été préalablement évaluées par l'évaluateur et pour lesquelles un avis a été émis par le DPO et le cas échéant par les personnes concernées. Vous pouvez accéder à l'historique des activités sur les traitements pour lesquels vous avez accès. Dès lors que vous refusez la validation d'une analyse d'impact, l'ensemble des parties prenantes sont informées (rédacteur, évaluateur, DPO). Dès lors que vous validez une analyse d'impact, il vous sera proposé de la signer."
     }
+  },
+  "share": {
+    "add_user_label": "Partager avec des utilisateurs",
+    "placeholder_add_user": "Ajouter des utilisateurs",
+    "shared_users_list_label": "Liste des utilisateurs autorisés"
   }
 }

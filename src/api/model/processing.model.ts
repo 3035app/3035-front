@@ -74,6 +74,7 @@ export class Processing extends BaseModel {
     no: false,
     partially: false
   };
+  public can_show: boolean;
 }
 
 export enum ProcessingStatus {

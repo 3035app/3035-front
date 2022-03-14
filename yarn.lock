@@ -150,7 +150,7 @@
     "symbol-observable" "1.2.0"
     "yargs-parser" "10.1.0"
 
-"@angular/common@^5.2.11":
+"@angular/common@^5.2.11", "@angular/common@>=5.0.0 <7.0.0":
   "integrity" "sha512-LniJjGAeftUJDJh+2+LEjltcGen08C/VMxQ/eUYmesytKy1sN+MWzh3GbpKfEWtWmyUsYTG9lAAJNo3L3jPwsw=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-5.2.11.tgz"
   "version" "5.2.11"
@@ -174,14 +174,14 @@
   dependencies:
     "tslib" "^1.7.1"
 
-"@angular/core@^5.2.11":
+"@angular/core@^5.2.11", "@angular/core@>=5.0.0 <7.0.0":
   "integrity" "sha512-h2vpvXNAdOqKzbVaZcHnHGMT5A8uDnizk6FgGq6SPyw9s3d+/VxZ9LJaPjUk3g2lICA7og1tUel+2YfF971MlQ=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-5.2.11.tgz"
   "version" "5.2.11"
   dependencies:
     "tslib" "^1.7.1"
 
-"@angular/forms@^5.2.11":
+"@angular/forms@^5.2.11", "@angular/forms@>=5.0.0 <7.0.0":
   "integrity" "sha512-wBllFlIubPclAFRXUc84Kc7TMeKOftzrQraVZ7ooTNeFLLa/FZLN2K8HGyRde8X/XDsMu1XAmjNfkz++spwTzA=="
   "resolved" "https://registry.npmjs.org/@angular/forms/-/forms-5.2.11.tgz"
   "version" "5.2.11"
@@ -245,6 +245,13 @@
     "chalk" "^2.0.0"
     "esutils" "^2.0.2"
     "js-tokens" "^4.0.0"
+
+"@ng-select/ng-select@^1.5.2":
+  "integrity" "sha1-5nEVcF+ZHLRNhZg/D7OzxvcJwu4="
+  "resolved" "https://registry.npmjs.org/@ng-select/ng-select/-/ng-select-1.5.2.tgz"
+  "version" "1.5.2"
+  dependencies:
+    "tslib" "^1.7.1"
 
 "@ngtools/webpack@6.1.5":
   "integrity" "sha512-vrvFFvUqo4hlrLRBTG7a3gsAneitd0/tj2zHsiN97RmefxHSS+3m0pkVw8G3BMAagp2L42AiVfNV4wvYDe+TXA=="

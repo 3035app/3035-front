@@ -17,3 +17,4 @@ export { ProcessingComment } from './processing-comment.model';
 export { ProcessingAttachment } from './processing-attachment.model';
 export { Search } from './search.model';
 export { SearchResult } from './search-result.model';
+export { User } from './user.model';

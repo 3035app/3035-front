@@ -13,7 +13,8 @@ export class FolderService extends BaseService<Folder> {
 
   protected routing: any = {
     all: '/structures/{structureId}/folders',
-    one: '/structures/{structureId}/folders/{id}'
+    one: '/structures/{structureId}/folders/{id}',
+    folderUser: '/folders/{folderId}/users/{userId}',
   };
 
   constructor(http: HttpClient) {
@@ -66,5 +67,13 @@ export class FolderService extends BaseService<Folder> {
 
   public delete(model: Folder): Observable<Folder> {
     return this.deleteById(model.structure_id, model.id);
+  }
+
+  public updateFolderUser(folderId: any, userId: any, model?): Observable<Folder> {
+    return this.httpPut(this.routing.folderUser, {folderId, userId }, model);
+  }
+
+  public deleteFolderUser(folderId: any, userId: any, model?): Observable<Folder> {
+    return this.httpDelete(this.routing.folderUser, {folderId, userId }, model);
   }
 }

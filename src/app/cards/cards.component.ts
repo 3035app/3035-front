@@ -9,7 +9,7 @@ import { ModalsService } from 'app/modals/modals.service';
 import { PiaService } from 'app/entry/pia.service';
 import { environment } from 'environments/environment';
 
-import { FolderModel, ProcessingModel, EvaluationModel, PiaModel } from '@api/models';
+import { FolderModel, ProcessingModel, EvaluationModel } from '@api/models';
 import { FolderApi, ProcessingApi, MeasureApi, EvaluationApi, PiaApi, AnswerApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
 import { ProfileSession } from '../services/profile-session.service';
@@ -127,7 +127,6 @@ export class CardsComponent implements OnInit {
       this.canCreateProcessing = bool;
     });
     this.applySortOrder();
-    // this.initPiaForm();
     this.initProcessingForm();
   }
 
@@ -257,11 +256,6 @@ export class CardsComponent implements OnInit {
         this.viewStyle.view = params['view'];
         this.folderId = (params.id ? params.id : null);
         this.viewOnCard();
-        /*if (localStorage.getItem('homepageDisplayMode') === 'list') {
-          this.viewOnList();
-        } else {
-          this.viewOnCard();
-        }*/
       }
     );
   }
@@ -370,7 +364,6 @@ export class CardsComponent implements OnInit {
       </p>
       `)
       )
-      //  <span>${this.translate.instant(`processing-data-types.form.retention-period`)} ${type.retention_period} (${this.translate.instant(type.sensitive ? 'processing-data-types.form.sensitive' : '')})</span>
 
     return processingDataTypes;
   }
@@ -483,7 +476,7 @@ export class CardsComponent implements OnInit {
   }
 
   getProcessing(data: ProcessingCsvRow) {
-    if (!data) {return''};
+    if (!data) {return''}
     
     return `
       ${this.geth1Title(this.translate.instant('summary.processing')+' "'+data.name+'"')}
