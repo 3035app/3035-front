@@ -8,11 +8,13 @@ export class Processing extends BaseModel {
   public status: number;
   public description: string;
   public author: string;
+  public author_id: number;
   public life_cycle: string;
   public storage: string;
   public standards: string;
   public processors: string;
   public designated_controller: string;
+  public designated_controller_id: number;
   public controllers: string;
   public non_eu_transfer: string;
   public processing_data_types: any;

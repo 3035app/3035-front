@@ -49,21 +49,21 @@ export class ModalsComponent implements OnInit {
 
   ngOnInit() {
     this.piaForm = new FormGroup({
-      author_name: new FormControl(),
-      evaluator_name: new FormControl(),
-      validator_name: new FormControl(),
+      author_id: new FormControl(),
+      evaluator_id: new FormControl(),
+      validator_id: new FormControl(),
       type: new FormControl()
     });
     
     this.processingForm = new FormGroup({
       name: new FormControl(),
-      author: new FormControl(),
-      designated_controller: new FormControl(),
-      evaluator_name: new FormControl(),
-      validator_name: new FormControl()
+      author_id: new FormControl(),
+      designated_controller_id: new FormControl(),
+      evaluator_id: new FormControl(),
+      validator_id: new FormControl()
     });
     if (this.route.snapshot.data.processing) {
-      this.piaForm.setValue({author_name: this.route.snapshot.data.processing.author ? this.route.snapshot.data.processing.author : '', evaluator_name: this.route.snapshot.params.evaluator_name && this.route.snapshot.params.evaluator_name !== 'null' ? this.route.snapshot.params.evaluator_name : '', validator_name: this.route.snapshot.params.validator_name && this.route.snapshot.params.validator_name !== 'null' ? this.route.snapshot.params.validator_name : '', type: 'advanced'});
+      this.piaForm.setValue({author_id: this.route.snapshot.data.processing.author_id ? this.route.snapshot.data.processing.author_id : '', evaluator_id: this.route.snapshot.params.evaluator_id && this.route.snapshot.params.evaluator_id !== 'null' ? this.route.snapshot.params.evaluator_id : '', validator_id: this.route.snapshot.params.validator_id && this.route.snapshot.params.validator_id !== 'null' ? this.route.snapshot.params.validator_id : '', type: 'advanced'});
     }
 
     this.folderForm = new FormGroup({
@@ -97,10 +97,9 @@ export class ModalsComponent implements OnInit {
    */
   onSubmit() {
     const pia = new PiaModel();
-    console.log(this.piaForm.value.author_name, this.piaForm.value.evaluator_name, this.piaForm.value.validator_name)
-    pia.author_name = this.piaForm.value.author_name;
-    pia.evaluator_name = this.piaForm.value.evaluator_name;
-    pia.validator_name = this.piaForm.value.validator_name;
+    pia.author_id = this.piaForm.value.author_id;
+    pia.evaluator_id = this.piaForm.value.evaluator_id;
+    pia.validator_id = this.piaForm.value.validator_id;
     // disable the type feature
     pia.type = 'advanced';
     pia.processing = this._piaService.currentProcessing;
@@ -119,14 +118,15 @@ export class ModalsComponent implements OnInit {
   onSubmitProcessing() {
     const processing = new ProcessingModel();
     processing.name = this.processingForm.value.name;
-    processing.author = this.processingForm.value.author;
-    processing.designated_controller = this.processingForm.value.designated_controller;
+    processing.author_id = this.processingForm.value.author_id;
+    processing.designated_controller_id = this.processingForm.value.designated_controller_id;
+    console.log(processing);
 
-    this._processingApi.create(processing, this._piaService.currentFolder).subscribe((newProcessing: ProcessingModel) => {
-      newProcessing.can_show = true;
-      this.piaForm.reset();
-      this.router.navigate(['processing', newProcessing.id, {evaluator_name: this.processingForm.value.evaluator_name, validator_name: this.processingForm.value.validator_name}]);
-    });
+    // this._processingApi.create(processing, this._piaService.currentFolder).subscribe((newProcessing: ProcessingModel) => {
+    //   newProcessing.can_show = true;
+    //   this.piaForm.reset();
+    //   this.router.navigate(['processing', newProcessing.id, {evaluator_id: this.processingForm.value.evaluator_id, validator_id: this.processingForm.value.validator_id}]);
+    // });
   }
 
   /**

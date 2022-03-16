@@ -86,13 +86,13 @@ export class ProcessingComponent implements OnInit {
   }
 
   createPia() {
-    if (this.route.snapshot.params.evaluator_name !== 'null' && this.route.snapshot.params.validator_name !== 'null') {
+    if (this.route.snapshot.params.evaluator_id !== 'null' && this.route.snapshot.params.validator_id !== 'null') {
       const pia = new PiaModel();
-      pia.author_name = this._piaService.currentProcessing.author;
-      pia.evaluator_name = this.route.snapshot.params.evaluator_name;
-      pia.validator_name = this.route.snapshot.params.validator_name;
+      pia.author_id = this._piaService.currentProcessing.author_id;
+      pia.evaluator_id = this.route.snapshot.params.evaluator_id;
+      pia.validator_id = this.route.snapshot.params.validator_id;
       // disable the type feature
-      pia.type = 'advanced'; // this.piaForm.value.type;
+      pia.type = 'advanced';
       pia.processing = this._piaService.currentProcessing;
       this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
         this.router.navigate(['entry', newPia.id, 'section', 3, 'item', 1]);

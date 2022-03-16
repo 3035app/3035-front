@@ -47,11 +47,10 @@ export class ModalsService {
         input.focus();
       }
     }
-    this.data = data;
-    if (modal_id === 'modal-list-element-permissions') {
+    this.data = data || {};
+    if (modal_id === 'modal-list-element-permissions' || modal_id === 'modal-list-new-processing') {
       const structureId = parseInt(localStorage.getItem('structure-id'), 10)
       this._userApi.getAll(structureId).subscribe(users => {
-        const roles = [];
         this.data.users = users;
         this.data.users = this.data.users.map(user => {
           const rolesLabel = [];
@@ -62,11 +61,13 @@ export class ModalsService {
           return user;
         });
       })
-      if (data.elementType === 'folder') {
-        this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => this.data.elementUsers = folderUsers)
-      }
-      if (data.elementType === 'processing') {
-        this._userApi.getProcessingUsers(this.data.elementId).subscribe(processingUsers => this.data.elementUsers = processingUsers)
+      if (modal_id === 'modal-list-element-permissions') {
+        if (data.elementType === 'folder') {
+          this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => this.data.elementUsers = folderUsers)
+        }
+        if (data.elementType === 'processing') {
+          this._userApi.getProcessingUsers(this.data.elementId).subscribe(processingUsers => this.data.elementUsers = processingUsers)
+        }
       }
     }
   }

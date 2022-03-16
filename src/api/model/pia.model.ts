@@ -10,6 +10,9 @@ export class Pia extends BaseModel {
   public author_name: string;
   public evaluator_name: string;
   public validator_name: string;
+  public author_id: number;
+  public evaluator_id: number;
+  public validator_id: number;
   public dpo_status: number = 0; // 0: NOK, 1: OK
   public dpo_opinion: string;
   public concerned_people_opinion: string;
