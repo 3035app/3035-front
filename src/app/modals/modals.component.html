@@ -322,19 +322,34 @@
         </button>
         <form class="pia-cardsBlock-item-form" (ngSubmit)="onSubmit()" [formGroup]="piaForm">
             <div>
-                <label for="author_name">{{ 'homepage.cards.author' | translate }}</label>
+                <!-- <label for="author_name">{{ 'homepage.cards.author' | translate }}</label>
                 <input formControlName="author_name" type="text" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}" id="author_name"
-                    required>
+                    required> -->
+                <label for="author_id">{{ 'homepage.cards.author' | translate }}</label>
+                <ng-select formControlName="author_id" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}">
+                    <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             <div>
-                <label for="evaluator_name">{{ 'homepage.cards.evaluation' | translate }}</label>
+                <!-- <label for="evaluator_name">{{ 'homepage.cards.evaluation' | translate }}</label>
                 <input formControlName="evaluator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}"
-                    id="evaluator_name" required>
+                    id="evaluator_name" required> -->
+                <label for="evaluator_id">{{ 'homepage.cards.evaluation' | translate }}</label>
+                <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}">
+                    <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             <div>
-                <label for="validator_name">{{ 'homepage.cards.validation' | translate }}</label>
+                <!-- <label for="validator_name">{{ 'homepage.cards.validation' | translate }}</label>
                 <input formControlName="validator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}"
-                    id="validator_name" required>
+                    id="validator_name" required> -->
+                <label for="validator_id">{{ 'homepage.cards.validation' | translate }}</label>
+                <ng-select formControlName="validator_id" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}">
+                    <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             
             <div class="pia-cardsBlock-item-status">
@@ -386,8 +401,8 @@
                     placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}" id="evaluator_name"> -->
             </div>
             <div>
-                <label for="validation_id">{{ 'homepage.cards.validation' | translate }}</label>
-                <ng-select formControlName="validation_id" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}">
+                <label for="validator_id">{{ 'homepage.cards.validation' | translate }}</label>
+                <ng-select formControlName="validator_id" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}">
                     <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
