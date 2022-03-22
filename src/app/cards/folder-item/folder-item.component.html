@@ -26,7 +26,7 @@
         <i class="fa fa-folder-open" aria-hidden="true"></i>
     </div>
     <form #folderForm="ngForm">
-        <input class="folder-title" [(ngModel)]="folder.name" name="name" required (focusout)="folderNameFocusOut()" [disabled]="!folder.can_access && hasFolderUsers" [readonly]="!folder.can_access && hasFolderUsers"/>
+        <input class="folder-title" [(ngModel)]="folder.name" name="name" required (focusout)="folderNameFocusOut()" [disabled]="!folder.can_access && hasFolderUsers && !hasManageFolderPermissions" [readonly]="!folder.can_access && hasFolderUsers && !hasManageFolderPermissions"/>
         <div class="form-field person-in-charge">
             <label class="title person-in-charge-label" for="person-in-charge">{{ 'homepage.cards.folder.person_in_charge' | translate }}</label>
             <div (click)="editField(personInCharge)"
