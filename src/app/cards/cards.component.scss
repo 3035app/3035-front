@@ -6,8 +6,6 @@ section {
   border: 2px solid $pia-dark-black;
 }
 
-
-
 // New PIA
 .pia-newBlock {
   > #pia-new-card {
@@ -369,7 +367,7 @@ section {
   position: relative;
   margin-right: 12px;
   margin-bottom: 40px;
-  height: 382px;
+  height: 424px;
   border: 1px solid $pia-gray;
   padding: 9px;
   background-color: transparent; //background: url("../../../assets/images/pia-bg.png") repeat center center;
@@ -402,10 +400,10 @@ section {
     left: 9px;
     right: 9px;
     border-top: 1px solid $pia-green;
-    padding-top: 21px;
+    padding-top: 16px;
     margin-top: 21px;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 9px;
     a {
       text-decoration: none;
       padding: 5.5px 21px;
@@ -501,7 +499,7 @@ section {
 
 .structure-info-button {
   color: $pia-green;
-  float:right;
+  float: right;
   &:hover {
     color: $pia-full-white;
   }

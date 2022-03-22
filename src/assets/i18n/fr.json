@@ -164,7 +164,7 @@
       "placeholder_redactor": "Sélectionner un rédacteur dans la liste",
       "evaluator": "Nom de l'Evaluateur",
       "placeholder_evaluator": "Sélectionner un évaluateur dans la liste",
-      "data_protection_officer": "Nom du Délégué à la protection des Données (DPO)",
+      "data_protection_officer": "Nom du DPO",
       "placeholder_data_protection_officer": "Sélectionner un DPO dans la liste",
       "date": "Date",
       "status": "Statut",
