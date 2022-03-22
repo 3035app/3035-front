@@ -322,31 +322,22 @@
         </button>
         <form class="pia-cardsBlock-item-form" (ngSubmit)="onSubmit()" [formGroup]="piaForm">
             <div>
-                <!-- <label for="author_name">{{ 'homepage.cards.author' | translate }}</label>
-                <input formControlName="author_name" type="text" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}" id="author_name"
-                    required> -->
-                <label for="author_id">{{ 'homepage.cards.author' | translate }}</label>
-                <ng-select formControlName="author_id" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}">
+                <label for="redactor_id">{{ 'homepage.cards.redactor' | translate }}</label>
+                <ng-select formControlName="redactor_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}">
                     <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
             </div>
             <div>
-                <!-- <label for="evaluator_name">{{ 'homepage.cards.evaluation' | translate }}</label>
-                <input formControlName="evaluator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}"
-                    id="evaluator_name" required> -->
-                <label for="evaluator_id">{{ 'homepage.cards.evaluation' | translate }}</label>
-                <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}">
+                <label for="evaluator_id">{{ 'homepage.cards.evaluator' | translate }}</label>
+                <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluator' | translate }}">
                     <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
             </div>
             <div>
-                <!-- <label for="validator_name">{{ 'homepage.cards.validation' | translate }}</label>
-                <input formControlName="validator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}"
-                    id="validator_name" required> -->
-                <label for="validator_id">{{ 'homepage.cards.validation' | translate }}</label>
-                <ng-select formControlName="validator_id" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}">
+                <label for="data_protection_officer_id">{{ 'homepage.cards.data_protection_officer' | translate }}</label>
+                <ng-select formControlName="data_protection_officer_id" placeholder="{{ 'homepage.cards.placeholder_data_protection_officer' | translate }}">
                     <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
@@ -383,40 +374,32 @@
                     required>
             </div>
             <div>
-                <label for="author_id">{{ 'homepage.cards.author' | translate }}</label>
-                <ng-select formControlName="author_id" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}">
+                <label for="redactor_id">{{ 'homepage.cards.redactor' | translate }}</label>
+                <ng-select formControlName="redactor_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}">
                     <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
-                <!-- <input formControlName="author" type="text" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}" id="author"
-                    required> -->
             </div>
             <div>
-                <label for="evaluator_id">{{ 'homepage.cards.evaluation' | translate }}</label>
-                <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}">
+                <label for="evaluator_id">{{ 'homepage.cards.evaluator' | translate }}</label>
+                <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluator' | translate }}">
                     <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
-                <!-- <input formControlName="evaluator_name" type="text"
-                    placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}" id="evaluator_name"> -->
             </div>
             <div>
-                <label for="validator_id">{{ 'homepage.cards.validation' | translate }}</label>
-                <ng-select formControlName="validator_id" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}">
+                <label for="data_protection_officer_id">{{ 'homepage.cards.data_protection_officer' | translate }}</label>
+                <ng-select formControlName="data_protection_officer_id" placeholder="{{ 'homepage.cards.placeholder_data_protection_officer' | translate }}">
                     <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
-                <!-- <input formControlName="validator_name" type="text"
-                placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}" id="validator_name"> -->
             </div>
             <div>
-                <label for="designated_controller_id">{{ 'homepage.cards.designated_controller' | translate }}</label>
-                <ng-select formControlName="designated_controller_id" placeholder="{{ 'homepage.cards.placeholder_designated_controller' | translate }}">
+                <label for="data_controller_id">{{ 'homepage.cards.data_controller' | translate }}</label>
+                <ng-select formControlName="data_controller_id" placeholder="{{ 'homepage.cards.placeholder_data_controller' | translate }}">
                     <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
-                <!-- <input formControlName="designated_controller" type="text" placeholder="{{ 'homepage.cards.placeholder_designated_controller' | translate }}"
-                    id="designated-controller"> -->
             </div>
             <p>&nbsp;</p>
             <div class="pia-cardsBlock-item-btn">

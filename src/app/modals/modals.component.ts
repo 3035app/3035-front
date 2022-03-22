@@ -49,22 +49,19 @@ export class ModalsComponent implements OnInit {
 
   ngOnInit() {
     this.piaForm = new FormGroup({
-      author_id: new FormControl(),
-      evaluator_id: new FormControl(),
-      validator_id: new FormControl(),
+      redactor_id: new FormControl({ value: this._modalsService.data?.processing?.redactor_id}),
+      evaluator_id: new FormControl({ value: this._modalsService.data?.processing?.evaluator_id}),
+      data_protection_officer_id: new FormControl({ value: this._modalsService.data?.processing?.data_protection_officer_id}),
       type: new FormControl()
     });
     
     this.processingForm = new FormGroup({
       name: new FormControl(),
-      author_id: new FormControl(),
-      designated_controller_id: new FormControl(),
+      redactor_id: new FormControl(),
+      data_controller_id: new FormControl(),
       evaluator_id: new FormControl(),
-      validator_id: new FormControl()
+      data_protection_officer_id: new FormControl()
     });
-    if (this.route.snapshot.data.processing) {
-      this.piaForm.setValue({author_id: this.route.snapshot.data.processing.author_id ? this.route.snapshot.data.processing.author_id : '', evaluator_id: this.route.snapshot.params.evaluator_id && this.route.snapshot.params.evaluator_id !== 'null' ? this.route.snapshot.params.evaluator_id : '', validator_id: this.route.snapshot.params.validator_id && this.route.snapshot.params.validator_id !== 'null' ? this.route.snapshot.params.validator_id : '', type: 'advanced'});
-    }
 
     this.folderForm = new FormGroup({
       name: new FormControl(),
@@ -97,9 +94,9 @@ export class ModalsComponent implements OnInit {
    */
   onSubmit() {
     const pia = new PiaModel();
-    pia.author_id = this.piaForm.value.author_id;
+    pia.redactor_id = this.piaForm.value.redactor_id;
     pia.evaluator_id = this.piaForm.value.evaluator_id;
-    pia.validator_id = this.piaForm.value.validator_id;
+    pia.data_protection_officer_id = this.piaForm.value.data_protection_officer_id;
     // disable the type feature
     pia.type = 'advanced';
     pia.processing = this._piaService.currentProcessing;
@@ -118,15 +115,16 @@ export class ModalsComponent implements OnInit {
   onSubmitProcessing() {
     const processing = new ProcessingModel();
     processing.name = this.processingForm.value.name;
-    processing.author_id = this.processingForm.value.author_id;
-    processing.designated_controller_id = this.processingForm.value.designated_controller_id;
-    console.log(processing);
+    processing.redactor_id = this.processingForm.value.redactor_id;
+    processing.data_controller_id = this.processingForm.value.data_controller_id;
+    processing.evaluator_pending_id = this.processingForm.value.evaluator_id;
+    processing.data_protection_officer_pending_id = this.processingForm.value.data_protection_officer_id;
 
-    // this._processingApi.create(processing, this._piaService.currentFolder).subscribe((newProcessing: ProcessingModel) => {
-    //   newProcessing.can_show = true;
-    //   this.piaForm.reset();
-    //   this.router.navigate(['processing', newProcessing.id, {evaluator_id: this.processingForm.value.evaluator_id, validator_id: this.processingForm.value.validator_id}]);
-    // });
+    this._processingApi.create(processing, this._piaService.currentFolder).subscribe((newProcessing: ProcessingModel) => {
+      newProcessing.can_show = true;
+      this.piaForm.reset();
+      this.router.navigate(['processing', newProcessing.id]);
+    });
   }
 
   /**

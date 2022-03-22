@@ -36,8 +36,6 @@
           </div>
       </div>
       </div>
-      
-      
 
       <form class="pia-cardsBlock-item-form"
             [formGroup]="processingForm">
@@ -52,25 +50,20 @@
                      id="pia-edit-name[{{processing.id}}]"
                      (focusout)="processingNameFocusOut()">
           </div>
-          <div (click)="processingAuthorFocusIn()">
-              <label for="pia-edit-author-name[{{processing.id}}]">{{ 'homepage.cards.author' | translate }}</label>
-              <input type="text"
-                     #processingAuthor
-                     formControlName="author"
-                     required
-                     placeholder="{{ 'homepage.cards.placeholder_author' | translate }}"
-                     id="pia-edit-author-name[{{processing.id}}]"
-                     (focusout)="processingAuthorFocusOut()">
+          <div>
+              <label for="pia-edit-author-name[{{processing.id}}]">{{ 'homepage.cards.redactor' | translate }}</label>
+              <ng-select formControlName="redactor_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}" id="pia-edit-author-name[{{processing.id}}]" (change)="processingRedactorChange()">
+                <ng-option *ngFor="let user of allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                  {{user.roles}}</ng-option>
+              </ng-select>
           </div>
-          <div (click)="processingDesignatedControllerFocusIn()">
-              <label for="pia-edit-designated-controller[{{processing.id}}]">{{ 'homepage.cards.designated_controller' | translate }}</label>
-              <input type="text"
-                     #processingDesignatedController
-                     formControlName="designated_controller"
-                     required
-                     placeholder="{{ 'homepage.cards.placeholder_designated_controller' | translate }}"
-                     id="pia-edit-designated-controller[{{processing.id}}]"
-                     (focusout)="processingDesignatedControllerFocusOut()">
+          <div>
+              <label for="pia-edit-designated-controller[{{processing.id}}]">{{ 'homepage.cards.data_controller' | translate }}</label>
+              <ng-select formControlName="data_controller_id" placeholder="{{ 'homepage.cards.placeholder_data_controller' | translate }}"
+                id="pia-edit-author-name[{{processing.id}}]" (change)="processingDataControllerChange()">
+                <ng-option *ngFor="let user of allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                  {{user.roles}}</ng-option>
+              </ng-select>
           </div>
         <div class="pia-cardsBlock-item-date">
             <div>{{ 'homepage.cards.date' | translate }}</div>

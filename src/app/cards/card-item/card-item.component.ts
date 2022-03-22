@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 import { PiaService } from '../../entry/pia.service';
 
@@ -26,28 +27,28 @@ export class CardItemComponent implements OnInit {
   @Output() onCheckChange: EventEmitter<any> = new EventEmitter();
   hasManageProcessingPermissions: boolean = false;
   hasProcessingUsers: boolean = true;
+  allUsers: any;
 
   @ViewChild('processingName') private processingName: ElementRef;
-  @ViewChild('processingAuthor') private processingAuthor: ElementRef;
-  @ViewChild('processingDesignatedController') private processingDesignatedController: ElementRef;
 
   constructor(
-    private _modalsService: ModalsService,
+    public _modalsService: ModalsService,
     public _piaService: PiaService,
     private processingApi: ProcessingApi,
     private permissionsService: PermissionsService,
-    private _userApi: UserApi
+    private _userApi: UserApi,
+    private i18n: TranslateService,
   ) {
 
   }
 
   ngOnInit() {
-
+    console.log(this.processing)
     this.processingForm = new FormGroup({
       id: new FormControl(this.processing.id),
       name: new FormControl({ value: this.processing.name, disabled: true }),
-      author: new FormControl({ value: this.processing.author, disabled: true }),
-      designated_controller: new FormControl({ value: this.processing.designated_controller, disabled: true })
+      redactor_id: new FormControl({ value: this.processing.redactor, disabled: true }),
+      data_controller_id: new FormControl({ value: this.processing.data_controller, disabled: true })
     });
 
     // add permission verification
@@ -66,7 +67,19 @@ export class CardItemComponent implements OnInit {
       if (processingUsers.length === 0) {
         this.hasProcessingUsers = false;
       }
-    })
+    });
+    const structureId = parseInt(localStorage.getItem('structure-id'), 10)
+    this._userApi.getAll(structureId).subscribe(users => {
+      this.allUsers = users;
+      this.allUsers = this.allUsers.map(user => {
+        const rolesLabel = [];
+        user.roles.forEach(role => {
+          rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
+        })
+        user.roles = rolesLabel.join('/');
+        return user;
+      });
+    });
   }
 
   /**
@@ -95,53 +108,25 @@ export class CardItemComponent implements OnInit {
   }
 
   /**
-   * Focuses pia author name field.
-   * @memberof CardItemComponent
-   */
-  processingAuthorFocusIn() {
-    this.processingAuthor.nativeElement.focus();
-  }
-
-  /**
    * Disables pia author name field and saves data.
    * @memberof CardItemComponent
    */
-  processingAuthorFocusOut() {
-    let userText = this.processingForm.controls['author'].value;
-    if (userText && typeof userText === 'string') {
-      userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
-    }
-    if (userText !== '') {
-      this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
-        theProcessing.author = this.processingForm.value.author;
-        this.processingApi.update(theProcessing).subscribe();
-      });
-    }
-  }
-
-  /**
-   * Focuses pia evaluator name field.
-   * @memberof CardItemComponent
-   */
-  processingDesignatedControllerFocusIn() {
-    this.processingDesignatedController.nativeElement.focus();
+  processingRedactorChange() {
+    this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
+      theProcessing.redactor_id = this.processingForm.value.redactor_id;
+      this.processingApi.update(theProcessing).subscribe();
+    });
   }
 
   /**
    * Disables pia evaluator name field and saves data.
    * @memberof CardItemComponent
    */
-  processingDesignatedControllerFocusOut() {
-    let userText = this.processingForm.controls['designated_controller'].value;
-    if (userText && typeof userText === 'string') {
-      userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
-    }
-    if (userText !== '') {
-      this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
-        theProcessing.designated_controller = this.processingForm.value.designated_controller;
-        this.processingApi.update(theProcessing).subscribe();
-      });
-    }
+  processingDataControllerChange() {
+    this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
+      theProcessing.data_controller_id = this.processingForm.value.data_controller_id;
+      this.processingApi.update(theProcessing).subscribe();
+    });
   }
 
   /**
