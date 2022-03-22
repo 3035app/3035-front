@@ -43,11 +43,12 @@ export class CardItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.processing)
     this.processingForm = new FormGroup({
       id: new FormControl(this.processing.id),
       name: new FormControl({ value: this.processing.name, disabled: true }),
       redactor_id: new FormControl({ value: this.processing.redactor, disabled: true }),
+      evaluator_id: new FormControl({ value: this.processing.evaluator_pending, disabled: true }),
+      data_protection_officer_id: new FormControl({ value: this.processing.data_protection_officer_pending, disabled: true }),
       data_controller_id: new FormControl({ value: this.processing.data_controller, disabled: true })
     });
 
@@ -108,7 +109,7 @@ export class CardItemComponent implements OnInit {
   }
 
   /**
-   * Disables pia author name field and saves data.
+   * Disables pia redactor field and saves data.
    * @memberof CardItemComponent
    */
   processingRedactorChange() {
@@ -119,7 +120,29 @@ export class CardItemComponent implements OnInit {
   }
 
   /**
-   * Disables pia evaluator name field and saves data.
+   * Disables pia evaluator field and saves data.
+   * @memberof CardItemComponent
+   */
+  processingEvaluatorChange() {
+    this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
+      theProcessing.evaluator_pending_id = this.processingForm.value.evaluator_id;
+      this.processingApi.update(theProcessing).subscribe();
+    });
+  }
+
+  /**
+   * Disables pia data protection officer field and saves data.
+   * @memberof CardItemComponent
+   */
+  processingDPOChange() {
+    this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
+      theProcessing.data_protection_officer_pending_id = this.processingForm.value.data_protection_officer_id;
+      this.processingApi.update(theProcessing).subscribe();
+    });
+  }
+
+  /**
+   * Disables pia data controller field and saves data.
    * @memberof CardItemComponent
    */
   processingDataControllerChange() {

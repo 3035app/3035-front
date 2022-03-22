@@ -49,9 +49,9 @@ export class ModalsComponent implements OnInit {
 
   ngOnInit() {
     this.piaForm = new FormGroup({
-      redactor_id: new FormControl({ value: this._modalsService.data?.processing?.redactor_id}),
-      evaluator_id: new FormControl({ value: this._modalsService.data?.processing?.evaluator_id}),
-      data_protection_officer_id: new FormControl({ value: this._modalsService.data?.processing?.data_protection_officer_id}),
+      redactor_id: new FormControl(),
+      evaluator_id: new FormControl(),
+      data_protection_officer_id: new FormControl(),
       type: new FormControl()
     });
     
