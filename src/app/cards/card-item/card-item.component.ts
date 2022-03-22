@@ -46,10 +46,10 @@ export class CardItemComponent implements OnInit {
     this.processingForm = new FormGroup({
       id: new FormControl(this.processing.id),
       name: new FormControl({ value: this.processing.name, disabled: true }),
-      redactor_id: new FormControl({ value: this.processing.redactor.id, disabled: true }),
-      evaluator_id: new FormControl({ value: this.processing.evaluator_pending.id, disabled: true }),
-      data_protection_officer_id: new FormControl({ value: this.processing.data_protection_officer_pending.id, disabled: true }),
-      data_controller_id: new FormControl({ value: this.processing.data_controller.id, disabled: true })
+      redactor_id: new FormControl({ value: this.processing.redactor ? this.processing.redactor.id : undefined, disabled: true }),
+      evaluator_id: new FormControl({ value: this.processing.evaluator_pending ? this.processing.evaluator_pending.id : undefined, disabled: true }),
+      data_protection_officer_id: new FormControl({ value: this.processing.data_protection_officer_pending ? this.processing.data_protection_officer_pending.id : undefined , disabled: true }),
+      data_controller_id: new FormControl({ value: this.processing.data_controller ? this.processing.data_controller.id : undefined, disabled: true })
     });
 
     // add permission verification
