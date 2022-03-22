@@ -449,7 +449,7 @@
             </div>
             <div *ngIf="_modalsService.data?.elementUsers?.length > 0">
                 <ul>
-                    <li *ngFor="let elementUser of _modalsService.data.elementUsers">{{elementUser.firstName}} {{elementUser.lastName}} <i class="fa fa-trash-o cursor-pointer ml-2" aria-hidden="true" (click)="onDeleteElementUser(elementUser.id)"></i></li>
+                    <li *ngFor="let elementUser of _modalsService.data.elementUsers">{{elementUser.firstName}} {{elementUser.lastName}} - {{elementUser.roles}} <i class="fa fa-trash-o cursor-pointer ml-2" aria-hidden="true" (click)="onDeleteElementUser(elementUser.id)"></i></li>
                 </ul>
             </div>
         </div>

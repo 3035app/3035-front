@@ -52,24 +52,40 @@ export class ModalsService {
       const structureId = parseInt(localStorage.getItem('structure-id'), 10)
       this._userApi.getAll(structureId).subscribe(users => {
         this.data.users = users;
-        this.data.users = this.data.users.map(user => {
-          const rolesLabel = [];
-          user.roles.forEach(role => {
-            rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
-          })
-          user.roles = rolesLabel.join('/');
-          return user;
-        });
+        this.data.users = this.usersWithRolesLabel(this.data.users);
       })
       if (modal_id === 'modal-list-element-permissions') {
         if (data.elementType === 'folder') {
-          this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => this.data.elementUsers = folderUsers)
+          this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => {
+            this.data.elementUsers = folderUsers;
+            this.data.elementUsers = this.usersWithRolesLabel(this.data.elementUsers);
+          })
         }
         if (data.elementType === 'processing') {
-          this._userApi.getProcessingUsers(this.data.elementId).subscribe(processingUsers => this.data.elementUsers = processingUsers)
+          this._userApi.getProcessingUsers(this.data.elementId).subscribe(processingUsers => {
+            this.data.elementUsers = processingUsers;
+            this.data.elementUsers = this.usersWithRolesLabel(this.data.elementUsers);
+          })
         }
       }
     }
+  }
+
+  /**
+   * Returns a list of users with their translated role labels.
+   * @param {array} users - user list.
+   * @returns {array}
+   * @memberof ModalsService
+   */
+  usersWithRolesLabel(users) {
+    return users.map(user => {
+      const rolesLabel = [];
+      user.roles.forEach(role => {
+        rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
+      })
+      user.roles = rolesLabel.join('/');
+      return user;
+    });
   }
 
   /**
