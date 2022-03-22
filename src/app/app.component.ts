@@ -64,9 +64,9 @@ export class AppComponent {
       'AccessToContextSection', 'AccessToPrinciplesSection', 'AccessToRisksSection', 'AccessToValidationSection',
     ];
 
-    roles['ROLE_REDACTOR'] = roles['ROLE_USER'].concat(['CanCreateProcessing', 'CanEditProcessing', 'CanCreatePIA', 'CanEditPIA', 'CanAskEvaluatePIA', 'CanCancelAskEvaluatePIA', 'CanCancelAskEvaluateProcessing', 'CanDeleteFolder', 'CanDeleteProcessing', 'CanDeletePIA']);
+    roles['ROLE_REDACTOR'] = roles['ROLE_USER'].concat(['CanEditProcessing', 'CanEditPIA', 'CanAskEvaluatePIA', 'CanCancelAskEvaluatePIA', 'CanCancelAskEvaluateProcessing']);
 
-    roles['ROLE_EVALUATOR'] = roles['ROLE_USER'].concat(['CanShowEvaluatePIA', 'CanEvaluatePIA', 'CanCancelPIAEvaluation', 'CanCancelProcessingEvaluation']);
+    roles['ROLE_EVALUATOR'] = roles['ROLE_USER'].concat(['CanCreateProcessing', 'CanCreatePIA', 'CanDeleteFolder', 'CanDeleteProcessing', 'CanDeletePIA', 'CanShowEvaluatePIA', 'CanEvaluatePIA', 'CanCancelPIAEvaluation', 'CanCancelProcessingEvaluation']);
 
     roles['ROLE_CONTROLLER'] = roles['ROLE_USER'].concat([
       'CanValidatePIA', 'CanCancelValidatePIA', 'CanShowEvaluatePIA'
