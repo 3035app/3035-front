@@ -9,6 +9,7 @@ export class Processing extends BaseModel {
   public description: string;
   // A supprimer
   public author: string;
+  public redactor: any;
   public redactor_id: number;
   public life_cycle: string;
   public storage: string;
@@ -81,6 +82,8 @@ export class Processing extends BaseModel {
   public can_show: boolean;
   public evaluator_pending_id: number;
   public data_protection_officer_pending_id: number;
+  public evaluator_pending: any;
+  public data_protection_officer_pending: any;
 }
 
 export enum ProcessingStatus {

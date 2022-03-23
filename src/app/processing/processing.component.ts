@@ -85,14 +85,15 @@ export class ProcessingComponent implements OnInit {
   }
 
   createPia() {
-    if (this._piaService.currentProcessing.evaluator_pending_id !== null && this._piaService.currentProcessing.data_protection_officer_pending_id !== null) {
+    console.log(this._piaService.currentProcessing);
+    if (this._piaService.currentProcessing.evaluator_pending && this._piaService.currentProcessing.data_protection_officer_pending) {
       const pia = new PiaModel();
-      pia.redactor_id = this._piaService.currentProcessing.redactor_id;
-      pia.evaluator_id = this._piaService.currentProcessing.evaluator_pending_id;
-      pia.data_protection_officer_id = this._piaService.currentProcessing.data_protection_officer_pending_id;
       // disable the type feature
       pia.type = 'advanced';
       pia.processing = this._piaService.currentProcessing;
+      pia.redactor_id = this._piaService.currentProcessing.redactor.id;
+      pia.evaluator_id = this._piaService.currentProcessing.evaluator_pending.id;
+      pia.data_protection_officer_id = this._piaService.currentProcessing.data_protection_officer_pending.id;
       this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
         this.router.navigate(['entry', newPia.id, 'section', 3, 'item', 1]);
       });

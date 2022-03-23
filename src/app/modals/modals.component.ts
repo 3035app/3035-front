@@ -176,14 +176,14 @@ export class ModalsComponent implements OnInit {
         const folder = new FolderModel();
         this._folderApi.updateFolderUser(this._modalsService.data.elementId, this.selectedUser, folder).subscribe(async () => {
           this.selectedUser = null;
-          this._modalsService.data.elementUsers = await this.fetchElementUsers()
+          this._modalsService.data.elementUsers = this._modalsService.usersWithRolesLabel(await this.fetchElementUsers());
         });
       }
       if (this._modalsService.data.elementType === 'processing') {
         const processing = new ProcessingModel();
         this._processingApi.updateProcessingUser(this._modalsService.data.elementId, this.selectedUser, processing).subscribe(async () => {
           this.selectedUser = null;
-          this._modalsService.data.elementUsers = await this.fetchElementUsers()
+          this._modalsService.data.elementUsers = this._modalsService.usersWithRolesLabel(await this.fetchElementUsers());
         });
       }
     }
