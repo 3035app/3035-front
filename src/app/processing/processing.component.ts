@@ -85,7 +85,6 @@ export class ProcessingComponent implements OnInit {
   }
 
   createPia() {
-    console.log(this._piaService.currentProcessing);
     if (this._piaService.currentProcessing.evaluator_pending && this._piaService.currentProcessing.data_protection_officer_pending) {
       const pia = new PiaModel();
       // disable the type feature

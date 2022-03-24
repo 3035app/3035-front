@@ -48,7 +48,7 @@ export class ModalsService {
       }
     }
     this.data = data || {};
-    if (modal_id === 'modal-list-element-permissions' || modal_id === 'modal-list-new-processing') {
+    if (modal_id === 'modal-list-element-permissions' || modal_id === 'modal-list-new-processing' || modal_id === 'modal-list-new-pia') {
       const structureId = parseInt(localStorage.getItem('structure-id'), 10)
       this._userApi.getAll(structureId).subscribe(users => {
         this.data.users = users;
