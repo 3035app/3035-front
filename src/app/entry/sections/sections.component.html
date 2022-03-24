@@ -1,11 +1,5 @@
 <div class="pia-sectionsBlock">
-  <div class="pia-sectionBlock-header">
-    <h1 class="truncate">{{ 'pia.header.pia' | translate }}</h1>
-    <a class="pia-icons pia-icon-close-big" *ngIf="_piaService.pia.processing" routerLink="/processing/{{ _piaService.pia.processing.id }}/pias" title="{{ 'pia.sections.homepage_link' | translate }}"></a>
-  </div>
-
   <div class="pia-sectionBlock-body">
-
     <ng-container *ngFor="let dataSection of data?.sections">
       <div *ngxPermissionsOnly="dataSection.permissions" id="{{dataSection.name}}">
 
@@ -27,7 +21,6 @@
   </div>
 </div>
 
-<!--<div class="pia-validatePIABlock" *ngxPermissionsOnly="['CanValidatePIA']">-->
 <div class="pia-validatePIABlock">
   <ng-container *ngIf="_sidStatusService.enableDpoValidation || _sidStatusService.piaIsRefused; else defaultButton">
     <a routerLink="/entry/{{_piaService.pia.id}}/section/4/item/4" class="btn btn-green btn-active" *ngIf="_sidStatusService.enablePiaValidation">{{ 'pia.sections.validate_pia' | translate }}</a>
@@ -37,5 +30,3 @@
     <a *ngIf="_piaService.pia.type == 'advanced'" class="btn btn-inactive">{{ 'pia.sections.validate_pia' | translate }}</a>
   </ng-template>
 </div>
-
-<app-attachments [pia]="_piaService.pia"></app-attachments>

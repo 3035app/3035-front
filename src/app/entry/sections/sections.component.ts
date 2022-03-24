@@ -31,10 +31,12 @@ export class SectionsComponent implements OnInit {
   async ngOnInit() {
     this.data = await this._appDataService.getDataNav(this._piaService.pia);
 
-    this.data.sections.forEach((section: any) => {
-      section.items.forEach((item: any) => {
-        this._sidStatusService.setSidStatus(this._piaService, section, item);
+    if (this._piaService.pias.length > 0) {
+      this.data.sections.forEach((section: any) => {
+        section.items.forEach((item: any) => {
+          this._sidStatusService.setSidStatus(this._piaService, section, item);
+        });
       });
-    });
+    }
   }
 }
