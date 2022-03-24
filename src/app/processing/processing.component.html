@@ -12,14 +12,43 @@
                     </div>
 
                     <div class="processing-section-body">
-
-                        <ng-container *ngFor="let section of sections">
-                            <div (click)="changeSection(section.id)" class="processing-section-title {{ section.name }}" [ngClass]="{'active': currentSection.id == section.id}">
-                                {{ section.title | translate }}
+                        <div id="context-section">
+                            <div class="processing-section-title">
+                                {{ 'sections.1.title' | translate }}
+                                <hr>
                             </div>
-                        </ng-container>
+                            <ul class="processing-section-list">
+                                <ng-container *ngFor="let section of sections; let i=index">
+                                    <li *ngIf="i < 2">
+                                        <a (click)="changeSection(section.id)"
+                                            [ngClass]="{'active': currentSection.id == section.id}" class="truncate">
+                                            {{ section.title | translate }}</a>
+                                        <!-- <i class="fa"
+                                            *ngIf="_sidStatusService.sidStatusIcon[_sidStatusService.itemStatus[dataSection.id + '.' + dataItem.id]]"
+                                            [ngClass]="_sidStatusService.sidStatusIcon[_sidStatusService.itemStatus[dataSection.id + '.' + dataItem.id]]"
+                                            aria-hidden="true"></i> -->
+                                    </li>
+                                </ng-container>
+                            </ul>
+                        </div>
+                        <div id="principles-section">
+                            <div class="processing-section-title">
+                                {{ 'sections.2.title' | translate }}
+                                <hr>
+                            </div>
+                            <ul class="processing-section-list">
+                                <ng-container *ngFor="let section of sections; let i=index">
+                                    <li *ngIf="i > 1">
+                                        <a (click)="changeSection(section.id)"
+                                            [ngClass]="{'active': currentSection.id == section.id}" class="truncate">
+                                            {{ section.title | translate }}</a>
+                                    </li>
+                                </ng-container>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <app-sections [section]="section" [item]="item"></app-sections>
                 <app-processing-attachments [processing]="processing"></app-processing-attachments>
             </aside>
         </div>

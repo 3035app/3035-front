@@ -16,24 +16,14 @@
       &.description-section {
         > div:last-child {
           h1 {
-            color: $pia-blue;
+            color: $pia-green;
           }
         }
         > div:first-child {
-          background-color: $pia-blue;
+          background-color: $pia-green;
         }
       }
       &.data-section {
-        > div:last-child {
-          h1 {
-            color: $pia-red;
-          }
-        }
-        > div:first-child {
-          background-color: $pia-red;
-        }
-      }
-      &.lifecycle-section {
         > div:last-child {
           h1 {
             color: $pia-green;
@@ -43,14 +33,24 @@
           background-color: $pia-green;
         }
       }
-      &.measures-section {
+      &.lifecycle-section {
         > div:last-child {
           h1 {
-            color: #ffd700;
+            color: $pia-blue;
           }
         }
         > div:first-child {
-          background-color: #ffd700;
+          background-color: $pia-blue;
+        }
+      }
+      &.measures-section {
+        > div:last-child {
+          h1 {
+            color: $pia-blue;
+          }
+        }
+        > div:first-child {
+          background-color: $pia-blue;
         }
       }
       > div:first-child {

@@ -1,4 +1,4 @@
-@import '../../../assets/stylesheets/variables';
+@import "../../../assets/stylesheets/variables";
 
 // Sections
 .pia {
@@ -83,43 +83,11 @@
       a {
         width: 81%;
         border-radius: 4px;
-        &:focus, &:hover, &:active, &.active {
+        &:focus,
+        &:hover,
+        &:active,
+        &.active {
           color: $pia-full-white !important;
-        }
-      }
-
-      #context-section {
-        .pia-sectionBlock-title {
-          color: $pia-green;
-          border-color: $pia-green;
-        }
-        hr {
-          max-width: 164px;
-        }
-        a {
-          &:focus, &:hover, &:active, &.active {
-            background-color: $pia-green;
-          }
-        }
-        .fa-pencil-square-o.pia-fa-valid, .fa-cog.pia-fa-valid, .fa-check-square-o {
-          color: $pia-green;
-        }
-      }
-      #principles-section {
-        .pia-sectionBlock-title {
-          color: $pia-blue;
-          border-color: $pia-blue;
-        }
-        hr {
-          max-width: 62px;
-        }
-        a {
-          &:focus, &:hover, &:active, &.active {
-            background-color: $pia-blue;
-          }
-        }
-        .fa-pencil-square-o.pia-fa-valid, .fa-cog.pia-fa-valid, .fa-check-square-o {
-          color: $pia-blue;
         }
       }
 
@@ -132,11 +100,16 @@
           max-width: 182px;
         }
         a {
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-red;
           }
         }
-        .fa-pencil-square-o.pia-fa-valid, .fa-cog.pia-fa-valid, .fa-check-square-o {
+        .fa-pencil-square-o.pia-fa-valid,
+        .fa-cog.pia-fa-valid,
+        .fa-check-square-o {
           color: $pia-red;
         }
       }
@@ -151,11 +124,15 @@
           display: none;
         }
         a {
-          &:focus, &:hover, &:active, &.active {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active {
             background-color: $pia-dark-black;
           }
         }
-        .fa-cog.pia-fa-valid, .fa-check-square-o {
+        .fa-cog.pia-fa-valid,
+        .fa-check-square-o {
           color: $pia-dark-black;
         }
       }
@@ -177,7 +154,9 @@
       text-align: center;
       text-decoration: none;
       &.btn-active {
-        &:focus, &:hover, &:active {
+        &:focus,
+        &:hover,
+        &:active {
           background-color: $pia-gray;
           border-color: $pia-gray;
         }
