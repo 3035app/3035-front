@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Input, EventEmitter, Output }
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { PiaService } from '../../entry/pia.service';
+import { AppDataService } from '../../services/app-data.service';
 
 import { ProcessingModel } from '@api/models';
 import { ProcessingApi, UserApi } from '@api/services';
@@ -26,28 +27,29 @@ export class CardItemComponent implements OnInit {
   @Output() onCheckChange: EventEmitter<any> = new EventEmitter();
   hasManageProcessingPermissions: boolean = false;
   hasProcessingUsers: boolean = true;
+  allUsers: any;
 
   @ViewChild('processingName') private processingName: ElementRef;
-  @ViewChild('processingAuthor') private processingAuthor: ElementRef;
-  @ViewChild('processingDesignatedController') private processingDesignatedController: ElementRef;
 
   constructor(
-    private _modalsService: ModalsService,
+    public _modalsService: ModalsService,
     public _piaService: PiaService,
     private processingApi: ProcessingApi,
     private permissionsService: PermissionsService,
-    private _userApi: UserApi
+    private _userApi: UserApi,
+    private appDataService: AppDataService,
   ) {
 
   }
 
   ngOnInit() {
-
     this.processingForm = new FormGroup({
       id: new FormControl(this.processing.id),
       name: new FormControl({ value: this.processing.name, disabled: true }),
-      author: new FormControl({ value: this.processing.author, disabled: true }),
-      designated_controller: new FormControl({ value: this.processing.designated_controller, disabled: true })
+      redactor_id: new FormControl({ value: this.processing.supervisors.redactor_id ? this.processing.supervisors.redactor_id : undefined, disabled: true }),
+      evaluator_id: new FormControl({ value: this.processing.supervisors.evaluator_pending_id ? this.processing.supervisors.evaluator_pending_id : undefined, disabled: true }),
+      data_protection_officer_id: new FormControl({ value: this.processing.supervisors.data_protection_officer_pending_id ? this.processing.supervisors.data_protection_officer_pending_id : undefined , disabled: true }),
+      data_controller_id: new FormControl({ value: this.processing.supervisors.data_controller_id ? this.processing.supervisors.data_controller_id : undefined, disabled: true })
     });
 
     // add permission verification
@@ -66,7 +68,7 @@ export class CardItemComponent implements OnInit {
       if (processingUsers.length === 0) {
         this.hasProcessingUsers = false;
       }
-    })
+    });
   }
 
   /**
@@ -95,53 +97,47 @@ export class CardItemComponent implements OnInit {
   }
 
   /**
-   * Focuses pia author name field.
+   * Disables pia redactor field and saves data.
    * @memberof CardItemComponent
    */
-  processingAuthorFocusIn() {
-    this.processingAuthor.nativeElement.focus();
+  processingRedactorChange() {
+    this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
+      theProcessing.redactor_id = this.processingForm.value.redactor_id;
+      this.processingApi.update(theProcessing).subscribe();
+    });
   }
 
   /**
-   * Disables pia author name field and saves data.
+   * Disables pia evaluator field and saves data.
    * @memberof CardItemComponent
    */
-  processingAuthorFocusOut() {
-    let userText = this.processingForm.controls['author'].value;
-    if (userText && typeof userText === 'string') {
-      userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
-    }
-    if (userText !== '') {
-      this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
-        theProcessing.author = this.processingForm.value.author;
-        this.processingApi.update(theProcessing).subscribe();
-      });
-    }
+  processingEvaluatorChange() {
+    this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
+      theProcessing.evaluator_pending_id = this.processingForm.value.evaluator_id;
+      this.processingApi.update(theProcessing).subscribe();
+    });
   }
 
   /**
-   * Focuses pia evaluator name field.
+   * Disables pia data protection officer field and saves data.
    * @memberof CardItemComponent
    */
-  processingDesignatedControllerFocusIn() {
-    this.processingDesignatedController.nativeElement.focus();
+  processingDPOChange() {
+    this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
+      theProcessing.data_protection_officer_pending_id = this.processingForm.value.data_protection_officer_id;
+      this.processingApi.update(theProcessing).subscribe();
+    });
   }
 
   /**
-   * Disables pia evaluator name field and saves data.
+   * Disables pia data controller field and saves data.
    * @memberof CardItemComponent
    */
-  processingDesignatedControllerFocusOut() {
-    let userText = this.processingForm.controls['designated_controller'].value;
-    if (userText && typeof userText === 'string') {
-      userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
-    }
-    if (userText !== '') {
-      this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
-        theProcessing.designated_controller = this.processingForm.value.designated_controller;
-        this.processingApi.update(theProcessing).subscribe();
-      });
-    }
+  processingDataControllerChange() {
+    this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
+      theProcessing.data_controller_id = this.processingForm.value.data_controller_id;
+      this.processingApi.update(theProcessing).subscribe();
+    });
   }
 
   /**

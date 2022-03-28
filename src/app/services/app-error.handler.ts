@@ -39,7 +39,7 @@ export class AppErrorHandler implements ErrorHandler {
       trans = trans + '.' + httpError.error.error_code;
     }
 
-    if (httpError.error.message.includes('messages.http.403')) {
+    if (httpError.error.message && httpError.error.message.includes('messages.http.403')) {
       trans += `.${httpError.error.message.replace('messages.http.403.', '')}`;
     }
 

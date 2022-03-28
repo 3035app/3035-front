@@ -322,19 +322,25 @@
         </button>
         <form class="pia-cardsBlock-item-form" (ngSubmit)="onSubmit()" [formGroup]="piaForm">
             <div>
-                <label for="author_name">{{ 'homepage.cards.author' | translate }}</label>
-                <input formControlName="author_name" type="text" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}" id="author_name"
-                    required>
+                <label for="redactor_id">{{ 'homepage.cards.redactor' | translate }}</label>
+                <ng-select formControlName="redactor_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}">
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             <div>
-                <label for="evaluator_name">{{ 'homepage.cards.evaluation' | translate }}</label>
-                <input formControlName="evaluator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}"
-                    id="evaluator_name" required>
+                <label for="evaluator_id">{{ 'homepage.cards.evaluator' | translate }}</label>
+                <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluator' | translate }}">
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             <div>
-                <label for="validator_name">{{ 'homepage.cards.validation' | translate }}</label>
-                <input formControlName="validator_name" type="text" placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}"
-                    id="validator_name" required>
+                <label for="data_protection_officer_id">{{ 'homepage.cards.data_protection_officer' | translate }}</label>
+                <ng-select formControlName="data_protection_officer_id" placeholder="{{ 'homepage.cards.placeholder_data_protection_officer' | translate }}">
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             
             <div class="pia-cardsBlock-item-status">
@@ -368,24 +374,32 @@
                     required>
             </div>
             <div>
-                <label for="author">{{ 'homepage.cards.author' | translate }}</label>
-                <input formControlName="author" type="text" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}" id="author"
-                    required>
+                <label for="redactor_id">{{ 'homepage.cards.redactor' | translate }}</label>
+                <ng-select formControlName="redactor_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}">
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             <div>
-                <label for="designated-controller">{{ 'homepage.cards.designated_controller' | translate }}</label>
-                <input formControlName="designated_controller" type="text" placeholder="{{ 'homepage.cards.placeholder_designated_controller' | translate }}"
-                    id="designated-controller" required>
+                <label for="evaluator_id">{{ 'homepage.cards.evaluator' | translate }}</label>
+                <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluator' | translate }}">
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             <div>
-                <label for="evaluator_name">{{ 'homepage.cards.evaluation' | translate }}</label>
-                <input formControlName="evaluator_name" type="text"
-                    placeholder="{{ 'homepage.cards.placeholder_evaluation' | translate }}" id="evaluator_name">
+                <label for="data_protection_officer_id">{{ 'homepage.cards.data_protection_officer' | translate }}</label>
+                <ng-select formControlName="data_protection_officer_id" placeholder="{{ 'homepage.cards.placeholder_data_protection_officer' | translate }}">
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             <div>
-                <label for="validator_name">{{ 'homepage.cards.validation' | translate }}</label>
-                <input formControlName="validator_name" type="text"
-                    placeholder="{{ 'homepage.cards.placeholder_validation' | translate }}" id="validator_name">
+                <label for="data_controller_id">{{ 'homepage.cards.data_controller' | translate }}</label>
+                <ng-select formControlName="data_controller_id" placeholder="{{ 'homepage.cards.placeholder_data_controller' | translate }}">
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                        {{user.roles}}</ng-option>
+                </ng-select>
             </div>
             <p>&nbsp;</p>
             <div class="pia-cardsBlock-item-btn">
@@ -426,7 +440,7 @@
                 <label for="name">{{ 'share.add_user_label' | translate }}</label>
             </div>
             <ng-select [(ngModel)]="selectedUser" placeholder="{{ 'share.placeholder_add_user' | translate }}" (change)="onChangeSelectUser()">
-                <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} - {{user.roles}}</ng-option>
+                <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} - {{user.roles}}</ng-option>
             </ng-select>
         </div>
         <div class="pia-cardsBlock-item-form form-separator">
@@ -435,7 +449,7 @@
             </div>
             <div *ngIf="_modalsService.data?.elementUsers?.length > 0">
                 <ul>
-                    <li *ngFor="let elementUser of _modalsService.data.elementUsers">{{elementUser.firstName}} {{elementUser.lastName}} <i class="fa fa-trash-o cursor-pointer ml-2" aria-hidden="true" (click)="onDeleteElementUser(elementUser.id)"></i></li>
+                    <li *ngFor="let elementUser of _modalsService.data.elementUsers">{{elementUser.firstName}} {{elementUser.lastName}} - {{elementUser.roles}} <i class="fa fa-trash-o cursor-pointer ml-2" aria-hidden="true" (click)="onDeleteElementUser(elementUser.id)"></i></li>
                 </ul>
             </div>
         </div>

@@ -28,7 +28,7 @@
     padding: 9px;
     background-color: $pia-full-white;
     padding-top: 6px;
-    height: 382px;
+    height: 422px;
     position: relative;
     &-attachment {
       display: inline-block;
@@ -70,12 +70,11 @@
       }
     }
     &-status {
-      margin-top: 5px;
       &-infos {
         width: 150px;
         div {
           color: $pia-gray;
-          font-size: 1.3rem;
+          font-size: 1rem;
           margin-bottom: -1px;
           font-style: italic;
           &:last-child {
@@ -232,7 +231,7 @@
       left: 9px;
       right: 9px;
       border-top: 1px solid $pia-green;
-      padding-top: 13px;
+      padding-top: 9px;
       margin-top: 21px;
       text-align: center;
       a,
@@ -359,5 +358,14 @@
 .ng-select {
   input {
     padding-bottom: 0 !important;
+    &:disabled {
+      background-color: transparent !important;
+    }
   }
+}
+
+.pia-cardsBlock-item-flex {
+  align-items: start;
+  display: flex;
+  justify-content: space-between;
 }

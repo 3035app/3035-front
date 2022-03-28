@@ -1,16 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 
 import { PiaModel } from '@api/models';
 import { PiaType } from '@api/model/pia.model';
+import { UserApi } from '@api/services';
+import { AuthenticationService } from '@security/authentication.service';
 
 @Injectable()
 export class AppDataService {
 
   private dataNav = { sections: null };
+  private allUsers: any;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private userApi: UserApi,
+    private i18n: TranslateService,
+    private authService: AuthenticationService
+  ) {
     this.loadArchitecture();
+    this.authService.isAuthenticated().then((isAuth: boolean) => {
+      if (isAuth) {
+        this.getAllUsers();
+      }
+    });
   }
 
   /**
@@ -46,10 +60,25 @@ export class AppDataService {
    * @memberof AppDataService
    */
   private async loadArchitecture() {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.http.get<any>('./assets/files/pia_architecture.json').subscribe(data => {
         this.dataNav = data;
         resolve();
+      });
+    });
+  }
+
+  public getAllUsers() {
+    const structureId = parseInt(localStorage.getItem('structure-id'), 10)
+    this.userApi.getAll(structureId).subscribe(users => {
+      this.allUsers = users;
+      this.allUsers = this.allUsers.map(user => {
+        const rolesLabel = [];
+        user.roles.forEach(role => {
+          rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
+        })
+        user.roles = rolesLabel.join('/');
+        return user;
       });
     });
   }
