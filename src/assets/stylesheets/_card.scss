@@ -358,6 +358,9 @@
 .ng-select {
   input {
     padding-bottom: 0 !important;
+    &:disabled {
+      background-color: transparent !important;
+    }
   }
 }
 
