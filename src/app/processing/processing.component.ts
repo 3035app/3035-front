@@ -18,6 +18,7 @@ export class ProcessingComponent implements OnInit {
   sections: any;
   currentSection: Section;
   pias: PiaModel[];
+  allUsers: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -85,19 +86,19 @@ export class ProcessingComponent implements OnInit {
   }
 
   createPia() {
-    if (this._piaService.currentProcessing.evaluator_pending && this._piaService.currentProcessing.data_protection_officer_pending) {
+    if (this._piaService.currentProcessing.supervisors.evaluator_pending_id && this._piaService.currentProcessing.supervisors.data_protection_officer_pending_id) {
       const pia = new PiaModel();
       // disable the type feature
       pia.type = 'advanced';
       pia.processing = this._piaService.currentProcessing;
-      pia.redactor_id = this._piaService.currentProcessing.redactor.id;
-      pia.evaluator_id = this._piaService.currentProcessing.evaluator_pending.id;
-      pia.data_protection_officer_id = this._piaService.currentProcessing.data_protection_officer_pending.id;
+      pia.redactor_id = this._piaService.currentProcessing.supervisors.redactor_id;
+      pia.evaluator_id = this._piaService.currentProcessing.supervisors.evaluator_pending_id;
+      pia.data_protection_officer_id = this._piaService.currentProcessing.supervisors.data_protection_officer_pending_id;
       this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
         this.router.navigate(['entry', newPia.id, 'section', 3, 'item', 1]);
       });
     } else {
-      this._modalsService.openModal('modal-list-new-pia', {processing: this._piaService.currentProcessing});
+      this._modalsService.openModal('modal-list-new-pia');
     }
   }
 }

@@ -84,6 +84,7 @@ export class Processing extends BaseModel {
   public data_protection_officer_pending_id: number;
   public evaluator_pending: any;
   public data_protection_officer_pending: any;
+  public supervisors: any;
 }
 
 export enum ProcessingStatus {

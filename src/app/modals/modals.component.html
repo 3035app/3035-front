@@ -324,21 +324,21 @@
             <div>
                 <label for="redactor_id">{{ 'homepage.cards.redactor' | translate }}</label>
                 <ng-select formControlName="redactor_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}">
-                    <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
             </div>
             <div>
                 <label for="evaluator_id">{{ 'homepage.cards.evaluator' | translate }}</label>
                 <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluator' | translate }}">
-                    <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
             </div>
             <div>
                 <label for="data_protection_officer_id">{{ 'homepage.cards.data_protection_officer' | translate }}</label>
                 <ng-select formControlName="data_protection_officer_id" placeholder="{{ 'homepage.cards.placeholder_data_protection_officer' | translate }}">
-                    <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                    <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
             </div>
@@ -440,7 +440,7 @@
                 <label for="name">{{ 'share.add_user_label' | translate }}</label>
             </div>
             <ng-select [(ngModel)]="selectedUser" placeholder="{{ 'share.placeholder_add_user' | translate }}" (change)="onChangeSelectUser()">
-                <ng-option *ngFor="let user of _modalsService.data?.users" [value]="user.id">{{user.firstName}} {{user.lastName}} - {{user.roles}}</ng-option>
+                <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} - {{user.roles}}</ng-option>
             </ng-select>
         </div>
         <div class="pia-cardsBlock-item-form form-separator">

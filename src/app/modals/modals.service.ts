@@ -6,13 +6,13 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class ModalsService {
-  data: { elementId?: number, elementType?: string, elementUsers?: any[], users?: any[], processing?: any };
+  data: { elementId?: number, elementType?: string, elementUsers?: any[] };
 
   constructor(
     private _router: Router,
     private _paginationService: PaginationService,
     private _userApi: UserApi,
-    private i18n: TranslateService,
+    private i18n: TranslateService
   ) {}
 
   /**
@@ -20,7 +20,7 @@ export class ModalsService {
    * @param {string} modal_id - Unique id of the modal which has to be opened.
    * @memberof ModalsService
    */
-  async openModal(modal_id: string, data?: { elementId?: number, elementType?: string, elementUsers?: any[], users?: any[], processing?: any }) {
+  async openModal(modal_id: string, data?: { elementId?: number, elementType?: string, elementUsers?: any[] }) {
     if (modal_id === 'pia-declare-measures' ||
         modal_id === 'pia-action-plan-no-evaluation' ||
         modal_id === 'pia-dpo-missing-evaluations') {
@@ -48,12 +48,7 @@ export class ModalsService {
       }
     }
     this.data = data || {};
-    if (modal_id === 'modal-list-element-permissions' || modal_id === 'modal-list-new-processing' || modal_id === 'modal-list-new-pia') {
-      const structureId = parseInt(localStorage.getItem('structure-id'), 10)
-      this._userApi.getAll(structureId).subscribe(users => {
-        this.data.users = users;
-        this.data.users = this.usersWithRolesLabel(this.data.users);
-      })
+    if (modal_id === 'modal-list-element-permissions' || modal_id === 'modal-list-new-processing') {
       if (modal_id === 'modal-list-element-permissions') {
         if (data.elementType === 'folder') {
           this._userApi.getFolderUsers(this.data.elementId).subscribe(folderUsers => {

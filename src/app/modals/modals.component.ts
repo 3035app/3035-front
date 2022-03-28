@@ -6,6 +6,8 @@ import { ModalsService } from './modals.service';
 import { MeasureService } from 'app/entry/entry-content/measures/measures.service';
 import { PiaService } from 'app/entry/pia.service';
 import { AttachmentsService } from 'app/entry/attachments/attachments.service';
+import { PermissionsService } from '@security/permissions.service';
+import { AppDataService } from '../services/app-data.service';
 
 import { PiaModel, FolderModel, ProcessingModel } from '@api/models';
 import { PiaApi, FolderApi, ProcessingApi, ProcessingAttachmentApi, UserApi } from '@api/services';
@@ -21,6 +23,7 @@ import { PiaType } from '@api/model/pia.model';
 })
 export class ModalsComponent implements OnInit {
   @Input() pia: any;
+  @Input() processing: any;
   newPia: PiaModel;
   newProcessing: ProcessingModel;
   newFolder: FolderModel;
@@ -31,6 +34,7 @@ export class ModalsComponent implements OnInit {
   enableSubmit = true;
   piaTypes: any;
   selectedUser: number;
+  allUsers: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,16 +48,37 @@ export class ModalsComponent implements OnInit {
     public processingAttachmentApi: ProcessingAttachmentApi,
     public processingAttachmentsService: ProcessingAttachmentsService,
     public _folderApi: FolderApi,
-    private userApi: UserApi
+    private userApi: UserApi,
+    private permissionsService: PermissionsService,
+    private appDataService: AppDataService
   ) {}
 
   ngOnInit() {
-    this.piaForm = new FormGroup({
-      redactor_id: new FormControl(),
-      evaluator_id: new FormControl(),
-      data_protection_officer_id: new FormControl(),
-      type: new FormControl()
-    });
+    if (this.processing) {
+      this.piaForm = new FormGroup({
+        redactor_id: new FormControl({ value: this.processing.supervisors.redactor_id ? this.processing.supervisors.redactor_id : undefined, disabled: true }),
+        evaluator_id: new FormControl({ value: this.processing.supervisors.evaluator_pending_id ? this.processing.supervisors.evaluator_pending_id : undefined, disabled: true }),
+        data_protection_officer_id: new FormControl({ value: this.processing.supervisors.data_protection_officer_pending_id ? this.processing.supervisors.data_protection_officer_pending_id : undefined, disabled: true }),
+        type: new FormControl()
+      });
+    
+      // add permission verification
+      const hasPerm$ = this.permissionsService.hasPermission('CanCreatePIA');
+      hasPerm$.then((bool: boolean) => {
+        // tslint:disable-next-line:forin
+        for (const field in this.piaForm.controls) {
+            const fc = this.piaForm.get(field);
+            bool ? fc.enable() : fc.disable();
+        }
+      });
+    } else {
+      this.piaForm = new FormGroup({
+        redactor_id: new FormControl(),
+        evaluator_id: new FormControl(),
+        data_protection_officer_id: new FormControl(),
+        type: new FormControl()
+      });
+    }
     
     this.processingForm = new FormGroup({
       name: new FormControl(),

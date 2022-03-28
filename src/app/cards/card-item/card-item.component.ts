@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 
 import { PiaService } from '../../entry/pia.service';
+import { AppDataService } from '../../services/app-data.service';
 
 import { ProcessingModel } from '@api/models';
 import { ProcessingApi, UserApi } from '@api/services';
@@ -37,7 +37,7 @@ export class CardItemComponent implements OnInit {
     private processingApi: ProcessingApi,
     private permissionsService: PermissionsService,
     private _userApi: UserApi,
-    private i18n: TranslateService,
+    private appDataService: AppDataService,
   ) {
 
   }
@@ -68,18 +68,6 @@ export class CardItemComponent implements OnInit {
       if (processingUsers.length === 0) {
         this.hasProcessingUsers = false;
       }
-    });
-    const structureId = parseInt(localStorage.getItem('structure-id'), 10)
-    this._userApi.getAll(structureId).subscribe(users => {
-      this.allUsers = users;
-      this.allUsers = this.allUsers.map(user => {
-        const rolesLabel = [];
-        user.roles.forEach(role => {
-          rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
-        })
-        user.roles = rolesLabel.join('/');
-        return user;
-      });
     });
   }
 
