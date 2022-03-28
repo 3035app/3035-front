@@ -54,7 +54,7 @@ export class AppDataService {
    * @memberof AppDataService
    */
   private async loadArchitecture() {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.http.get<any>('./assets/files/pia_architecture.json').subscribe(data => {
         this.dataNav = data;
         resolve();
