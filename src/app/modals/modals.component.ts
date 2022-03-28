@@ -6,6 +6,8 @@ import { ModalsService } from './modals.service';
 import { MeasureService } from 'app/entry/entry-content/measures/measures.service';
 import { PiaService } from 'app/entry/pia.service';
 import { AttachmentsService } from 'app/entry/attachments/attachments.service';
+import { PermissionsService } from '@security/permissions.service';
+import { AppDataService } from '../services/app-data.service';
 
 import { PiaModel, FolderModel, ProcessingModel } from '@api/models';
 import { PiaApi, FolderApi, ProcessingApi, ProcessingAttachmentApi, UserApi } from '@api/services';
@@ -21,6 +23,7 @@ import { PiaType } from '@api/model/pia.model';
 })
 export class ModalsComponent implements OnInit {
   @Input() pia: any;
+  @Input() processing: any;
   newPia: PiaModel;
   newProcessing: ProcessingModel;
   newFolder: FolderModel;
@@ -31,6 +34,7 @@ export class ModalsComponent implements OnInit {
   enableSubmit = true;
   piaTypes: any;
   selectedUser: number;
+  allUsers: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,27 +48,45 @@ export class ModalsComponent implements OnInit {
     public processingAttachmentApi: ProcessingAttachmentApi,
     public processingAttachmentsService: ProcessingAttachmentsService,
     public _folderApi: FolderApi,
-    private userApi: UserApi
+    private userApi: UserApi,
+    private permissionsService: PermissionsService,
+    private appDataService: AppDataService
   ) {}
 
   ngOnInit() {
-    this.piaForm = new FormGroup({
-      author_name: new FormControl(),
-      evaluator_name: new FormControl(),
-      validator_name: new FormControl(),
-      type: new FormControl()
-    });
+    if (this.processing) {
+      this.piaForm = new FormGroup({
+        redactor_id: new FormControl({ value: this.processing.supervisors.redactor_id ? this.processing.supervisors.redactor_id : undefined, disabled: true }),
+        evaluator_id: new FormControl({ value: this.processing.supervisors.evaluator_pending_id ? this.processing.supervisors.evaluator_pending_id : undefined, disabled: true }),
+        data_protection_officer_id: new FormControl({ value: this.processing.supervisors.data_protection_officer_pending_id ? this.processing.supervisors.data_protection_officer_pending_id : undefined, disabled: true }),
+        type: new FormControl()
+      });
+    
+      // add permission verification
+      const hasPerm$ = this.permissionsService.hasPermission('CanCreatePIA');
+      hasPerm$.then((bool: boolean) => {
+        // tslint:disable-next-line:forin
+        for (const field in this.piaForm.controls) {
+            const fc = this.piaForm.get(field);
+            bool ? fc.enable() : fc.disable();
+        }
+      });
+    } else {
+      this.piaForm = new FormGroup({
+        redactor_id: new FormControl(),
+        evaluator_id: new FormControl(),
+        data_protection_officer_id: new FormControl(),
+        type: new FormControl()
+      });
+    }
     
     this.processingForm = new FormGroup({
       name: new FormControl(),
-      author: new FormControl(),
-      designated_controller: new FormControl(),
-      evaluator_name: new FormControl(),
-      validator_name: new FormControl()
+      redactor_id: new FormControl(),
+      data_controller_id: new FormControl(),
+      evaluator_id: new FormControl(),
+      data_protection_officer_id: new FormControl()
     });
-    if (this.route.snapshot.data.processing) {
-      this.piaForm.setValue({author_name: this.route.snapshot.data.processing.author ? this.route.snapshot.data.processing.author : '', evaluator_name: this.route.snapshot.params.evaluator_name && this.route.snapshot.params.evaluator_name !== 'null' ? this.route.snapshot.params.evaluator_name : '', validator_name: this.route.snapshot.params.validator_name && this.route.snapshot.params.validator_name !== 'null' ? this.route.snapshot.params.validator_name : '', type: 'advanced'});
-    }
 
     this.folderForm = new FormGroup({
       name: new FormControl(),
@@ -97,10 +119,9 @@ export class ModalsComponent implements OnInit {
    */
   onSubmit() {
     const pia = new PiaModel();
-    console.log(this.piaForm.value.author_name, this.piaForm.value.evaluator_name, this.piaForm.value.validator_name)
-    pia.author_name = this.piaForm.value.author_name;
-    pia.evaluator_name = this.piaForm.value.evaluator_name;
-    pia.validator_name = this.piaForm.value.validator_name;
+    pia.redactor_id = this.piaForm.value.redactor_id;
+    pia.evaluator_id = this.piaForm.value.evaluator_id;
+    pia.data_protection_officer_id = this.piaForm.value.data_protection_officer_id;
     // disable the type feature
     pia.type = 'advanced';
     pia.processing = this._piaService.currentProcessing;
@@ -119,13 +140,15 @@ export class ModalsComponent implements OnInit {
   onSubmitProcessing() {
     const processing = new ProcessingModel();
     processing.name = this.processingForm.value.name;
-    processing.author = this.processingForm.value.author;
-    processing.designated_controller = this.processingForm.value.designated_controller;
+    processing.redactor_id = this.processingForm.value.redactor_id;
+    processing.data_controller_id = this.processingForm.value.data_controller_id;
+    processing.evaluator_pending_id = this.processingForm.value.evaluator_id;
+    processing.data_protection_officer_pending_id = this.processingForm.value.data_protection_officer_id;
 
     this._processingApi.create(processing, this._piaService.currentFolder).subscribe((newProcessing: ProcessingModel) => {
       newProcessing.can_show = true;
       this.piaForm.reset();
-      this.router.navigate(['processing', newProcessing.id, {evaluator_name: this.processingForm.value.evaluator_name, validator_name: this.processingForm.value.validator_name}]);
+      this.router.navigate(['processing', newProcessing.id]);
     });
   }
 
@@ -178,14 +201,14 @@ export class ModalsComponent implements OnInit {
         const folder = new FolderModel();
         this._folderApi.updateFolderUser(this._modalsService.data.elementId, this.selectedUser, folder).subscribe(async () => {
           this.selectedUser = null;
-          this._modalsService.data.elementUsers = await this.fetchElementUsers()
+          this._modalsService.data.elementUsers = this._modalsService.usersWithRolesLabel(await this.fetchElementUsers());
         });
       }
       if (this._modalsService.data.elementType === 'processing') {
         const processing = new ProcessingModel();
         this._processingApi.updateProcessingUser(this._modalsService.data.elementId, this.selectedUser, processing).subscribe(async () => {
           this.selectedUser = null;
-          this._modalsService.data.elementUsers = await this.fetchElementUsers()
+          this._modalsService.data.elementUsers = this._modalsService.usersWithRolesLabel(await this.fetchElementUsers());
         });
       }
     }

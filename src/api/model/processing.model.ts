@@ -7,12 +7,17 @@ export class Processing extends BaseModel {
   public name: string;
   public status: number;
   public description: string;
+  // A supprimer
   public author: string;
+  public redactor: any;
+  public redactor_id: number;
   public life_cycle: string;
   public storage: string;
   public standards: string;
   public processors: string;
+  // A supprimer
   public designated_controller: string;
+  public data_controller_id: number;
   public controllers: string;
   public non_eu_transfer: string;
   public processing_data_types: any;
@@ -75,6 +80,11 @@ export class Processing extends BaseModel {
     partially: false
   };
   public can_show: boolean;
+  public evaluator_pending_id: number;
+  public data_protection_officer_pending_id: number;
+  public evaluator_pending: any;
+  public data_protection_officer_pending: any;
+  public supervisors: any;
 }
 
 export enum ProcessingStatus {

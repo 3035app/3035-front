@@ -39,13 +39,13 @@
                 </a>
                 <span *ngIf="currentSection.id == 4 && processing.pias_count == 0" >
                     <a class="processing-next" (click)="createPia()" *ngxPermissionsOnly="['CanCreatePIA']">
-                        {{ 'processing.form.pia_section.new_pia_button' | translate }}
+                        {{ 'processing.form.next' | translate }}
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                     </a>
                 </span>
                 <span *ngIf="currentSection.id == 4 && processing.pias_count > 0">
                     <a class="processing-next" routerLink="/entry/{{pias[0].id}}/section/3/item/1">
-                        {{ 'processing.pia-list.item.actions.edit' | translate }}
+                        {{ 'processing.form.next' | translate }}
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                     </a>
                 </span>
@@ -61,4 +61,4 @@
     </div>
 </main>
 
-<app-modals></app-modals>
+<app-modals [processing]="processing"></app-modals>

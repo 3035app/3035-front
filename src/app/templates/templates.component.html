@@ -25,14 +25,14 @@
       </button>
       <form class="pia-cardsBlock-item-form" (ngSubmit)="onSubmitProcessing()" [formGroup]="processingForm">
           <div>
-              <label for="author">{{ 'homepage.cards.author' | translate }}</label>
-              <input formControlName="author" type="text" placeholder="{{ 'homepage.cards.placeholder_author' | translate }}" id="author"
+              <label for="redactor">{{ 'homepage.cards.redactor' | translate }}</label>
+              <input formControlName="author" type="text" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}" id="redactor"
                   required>
           </div>
           <div>
-              <label for="designated_controller">{{ 'homepage.cards.designated_controller' | translate }}</label>
-              <input formControlName="designated_controller" type="text" placeholder="{{ 'homepage.cards.placeholder_designated_controller' | translate }}"
-                  id="designated_controller" required>
+              <label for="data_controller">{{ 'homepage.cards.data_controller' | translate }}</label>
+              <input formControlName="designated_controller" type="text" placeholder="{{ 'homepage.cards.placeholder_data_controller' | translate }}"
+                  id="data_controller" required>
           </div>
           <p>&nbsp;</p>
           <div class="pia-cardsBlock-item-btn">

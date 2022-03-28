@@ -6,7 +6,6 @@ import { ProcessingFormComponent } from './processing-form/processing-form.compo
 import { ModalsService } from '../modals/modals.service';
 import { PiaService } from '../entry/pia.service';
 import { PiaApi } from '@api/services';
-import { PiaStatus } from '@api/model/pia.model';
 
 @Component({
   selector: 'app-processing',
@@ -19,6 +18,7 @@ export class ProcessingComponent implements OnInit {
   sections: any;
   currentSection: Section;
   pias: PiaModel[];
+  allUsers: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -86,19 +86,19 @@ export class ProcessingComponent implements OnInit {
   }
 
   createPia() {
-    if (this.route.snapshot.params.evaluator_name !== 'null' && this.route.snapshot.params.validator_name !== 'null') {
+    if (this._piaService.currentProcessing.supervisors.evaluator_pending_id && this._piaService.currentProcessing.supervisors.data_protection_officer_pending_id) {
       const pia = new PiaModel();
-      pia.author_name = this._piaService.currentProcessing.author;
-      pia.evaluator_name = this.route.snapshot.params.evaluator_name;
-      pia.validator_name = this.route.snapshot.params.validator_name;
       // disable the type feature
-      pia.type = 'advanced'; // this.piaForm.value.type;
+      pia.type = 'advanced';
       pia.processing = this._piaService.currentProcessing;
+      pia.redactor_id = this._piaService.currentProcessing.supervisors.redactor_id;
+      pia.evaluator_id = this._piaService.currentProcessing.supervisors.evaluator_pending_id;
+      pia.data_protection_officer_id = this._piaService.currentProcessing.supervisors.data_protection_officer_pending_id;
       this.piaApi.create(pia).subscribe((newPia: PiaModel) => {
         this.router.navigate(['entry', newPia.id, 'section', 3, 'item', 1]);
       });
     } else {
-      this._modalsService.openModal('modal-list-new-pia')
+      this._modalsService.openModal('modal-list-new-pia');
     }
   }
 }
