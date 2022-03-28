@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { PiaModel } from '@api/models';
 import { PiaType } from '@api/model/pia.model';
 import { UserApi } from '@api/services';
+import { AuthenticationService } from '@security/authentication.service';
 
 @Injectable()
 export class AppDataService {
@@ -16,9 +17,14 @@ export class AppDataService {
     private http: HttpClient,
     private userApi: UserApi,
     private i18n: TranslateService,
+    private authService: AuthenticationService
   ) {
     this.loadArchitecture();
-    this.getAllUsers();
+    this.authService.isAuthenticated().then((isAuth: boolean) => {
+      if (isAuth) {
+        this.getAllUsers();
+      }
+    });
   }
 
   /**
@@ -62,7 +68,7 @@ export class AppDataService {
     });
   }
 
-  private getAllUsers() {
+  public getAllUsers() {
     const structureId = parseInt(localStorage.getItem('structure-id'), 10)
     this.userApi.getAll(structureId).subscribe(users => {
       this.allUsers = users;

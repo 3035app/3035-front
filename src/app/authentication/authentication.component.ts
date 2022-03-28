@@ -4,6 +4,7 @@ import { AuthenticationService } from '@security/authentication.service';
 import { User } from '@security/user.model';
 import { environment } from 'environments/environment';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { AppDataService } from 'app/services/app-data.service';
 
 @Component({
   selector: 'app-authentication',
@@ -27,7 +28,11 @@ export class AuthenticationComponent implements OnInit {
   public error = false;
   public backendUrl = '#'
 
-  constructor(public authService: AuthenticationService, public router: Router) {
+  constructor(
+    public authService: AuthenticationService,
+    public router: Router,
+    private appDataService: AppDataService
+  ) {
     this.backendUrl = environment.api.host + '/resetting/request'
   }
 
@@ -39,7 +44,7 @@ export class AuthenticationComponent implements OnInit {
           this.error = true;
           return;
         }
-
+        this.appDataService.getAllUsers();
         this.router.navigate(['home']);
       },
       (err) => {
