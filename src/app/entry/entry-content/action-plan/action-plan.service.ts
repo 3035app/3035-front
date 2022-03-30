@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Evaluation } from '../evaluations/evaluation.model';
-import { Measure } from '../measures/measure.model';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguagesService } from '../../../services/languages.service'
 
 // new import
-import { EvaluationModel, AnswerModel, MeasureModel } from '@api/models';
-import { EvaluationApi, AnswerApi, MeasureApi } from '@api/services';
+import { EvaluationModel, MeasureModel } from '@api/models';
+import { EvaluationApi, MeasureApi } from '@api/services';
 
 @Injectable()
 export class ActionPlanService {
@@ -48,7 +47,7 @@ export class ActionPlanService {
     const section = this.data.sections.filter((s) => {
       return s.id === 3;
     });
-    console.log(section);
+
     section[0].items.forEach((item) => {
       if (item.evaluation_mode === 'item') {
         item.questions.forEach(q => {
