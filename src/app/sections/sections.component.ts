@@ -9,7 +9,7 @@ import { PiaModel } from '@api/models';
 @Component({
   selector: 'app-sections',
   templateUrl: './sections.component.html',
-  styleUrls: ['../processing/processing.component.scss', '../entry/sections/sections.component.scss'],
+  styleUrls: ['../processing/processing.component.scss', './sections.component.scss'],
   providers: []
 })
 export class SectionsComponent implements OnInit {
