@@ -17,7 +17,7 @@ import { AuthenticationComponent } from 'app/authentication/authentication.compo
 import { CardsComponent } from 'app/cards/cards.component';
 import { CardItemComponent } from 'app/cards/card-item/card-item.component';
 import { EntryComponent } from 'app/entry/entry.component';
-import { SectionsComponent } from 'app/entry/sections/sections.component';
+import { SectionsComponent } from 'app/sections/sections.component';
 import { SidStatusService } from 'app/services/sid-status.service';
 import { AttachmentsComponent } from 'app/entry/attachments/attachments.component';
 import { EntryContentComponent } from 'app/entry/entry-content/entry-content.component';

@@ -716,7 +716,7 @@
 
       <div 
         class="form-field validate-container ready" 
-        *ngIf="processing.status === processingStatus.STATUS_DOING"
+        *ngIf="processing.status === processingStatus.STATUS_DOING && currentSection.id == 4"
       >
         <button 
           class="btn btn-green expanded"
@@ -726,7 +726,7 @@
         </button>
       </div>
 
-      <app-evaluation-block [processing]="processing" (processingUpdated)="onProcessngUpdated($event)"></app-evaluation-block>
+      <app-evaluation-block [processing]="processing" (processingUpdated)="onProcessngUpdated($event)" *ngIf="currentSection.id == 4"></app-evaluation-block>
 
     </form>
   </main>

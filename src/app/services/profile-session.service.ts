@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import 'rxjs/add/operator/catch';
 import { AuthenticationService } from '@security/authentication.service';
 import { UserProfile, UserProfileStructure } from '@api/model/user-profile.model';
+import { AppDataService } from 'app/services/app-data.service';
 
 @Injectable()
 export class ProfileSession {
@@ -13,7 +14,8 @@ export class ProfileSession {
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private appDataService: AppDataService
   ) {
 
     if (localStorage.getItem('structure-id') !== null) {
@@ -45,7 +47,7 @@ export class ProfileSession {
     this.currentStructure = structure;
     localStorage.setItem('structure-name', structure.name);
     localStorage.setItem('structure-id', structure.id);
-    
+    this.appDataService.getAllUsers();
     this.router.navigate(['folders']);
   }
   
