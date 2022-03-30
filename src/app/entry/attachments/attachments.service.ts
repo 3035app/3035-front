@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import * as b64ToBlob from 'b64toBlob';
 
 import { ModalsService } from '../../modals/modals.service';
 
@@ -27,21 +26,21 @@ export class AttachmentsService {
    * @memberof AttachmentsService
    */
   async listAttachments() {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.attachmentApi.getAll(this.pia.id).subscribe((entries: AttachmentModel[]) => {
         this.attachments = entries;
         resolve();
       });
     });
   }
-
+  
   /**
    * Update all signed attachement.
    * @returns {Promise}
    * @memberof AttachmentsService
    */
   async updateSignedAttachmentsList() {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.signedAttachments = [];
 
       this.attachmentApi.getAll(this.pia.id).subscribe((entries: AttachmentModel[]) => {

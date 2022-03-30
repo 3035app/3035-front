@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, OnDestroy, DoCheck } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { KnowledgeBaseService } from './knowledge-base/knowledge-base.service';
@@ -12,8 +12,9 @@ import { SidStatusService } from '../services/sid-status.service';
 import { GlobalEvaluationService } from '../services/global-evaluation.service';
 
 // new import
-import { PiaModel, AnswerModel } from '@api/models';
-import { PiaApi, AnswerApi } from '@api/services';
+import { AnswerModel, ProcessingModel } from '@api/models';
+import { AnswerApi } from '@api/services';
+import { ProcessingService } from '../processing/processing.service';
 
 
 
@@ -30,8 +31,13 @@ export class EntryComponent implements OnInit, OnDestroy, DoCheck {
   questions: any;
   measureToRemoveFromTags: string;
   subscription: Subscription;
+  processing: ProcessingModel;
+  processingSections: any;
+  currentSection = {id: 0};
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private _modalsService: ModalsService,
     private _appDataService: AppDataService,
     private _sidStatusService: SidStatusService,
@@ -40,17 +46,25 @@ export class EntryComponent implements OnInit, OnDestroy, DoCheck {
     private _actionPlanService: ActionPlanService,
     private _globalEvaluationService: GlobalEvaluationService,
     private _measureService: MeasureService,
-    private answerApi: AnswerApi
-
+    private answerApi: AnswerApi,
+    private _processingService: ProcessingService
   ) { }
 
   async ngOnInit() {
     let sectionId = parseInt(this.route.snapshot.params['section_id'], 10);
     let itemId = parseInt(this.route.snapshot.params['item_id'], 10);
-
+    this.processingSections = this.route.snapshot.data.processingSections;
+    
     this._globalEvaluationService.answerEditionEnabled = true;
 
-    this.data = await this._appDataService.getDataNav();
+    this.data = await this._appDataService.getDataNav(this._piaService.pia);
+
+    this.data.sections.forEach((section: any) => {
+      section.items.forEach((item: any) => {
+        this._sidStatusService.setSidStatus(this._piaService, section, item);
+      });
+    });
+
     this.route.params.subscribe(
       (params: Params) => {
         sectionId = parseInt(params['section_id'], 10);
@@ -58,14 +72,19 @@ export class EntryComponent implements OnInit, OnDestroy, DoCheck {
         this.getSectionAndItem(sectionId, itemId);
         window.scroll(0, 0);
       }
-    );
-
-    // Suscribe to measure service messages
-    this.subscription = this._measureService.behaviorSubject.subscribe((val) => {
-      this.measureToRemoveFromTags = val;
+      );
+      
+      // Suscribe to measure service messages
+      this.subscription = this._measureService.behaviorSubject.subscribe((val) => {
+        this.measureToRemoveFromTags = val;
+      });
+      this._processingService.retrieveCurrentProcessing(this._piaService.pia.processing.id).subscribe(processing => {
+        if (processing) {
+          this.processing = processing;
+      }
     });
   }
-
+  
   async ngDoCheck() {
     if (this.measureToRemoveFromTags && this.measureToRemoveFromTags.length > 0) {
       const measureName = this.measureToRemoveFromTags;
@@ -101,26 +120,21 @@ export class EntryComponent implements OnInit, OnDestroy, DoCheck {
           }
         });
       });
-
-      // For each of these questions, get their respective answer
-      // listQuestions.forEach(questionsSet => {
-      //   questionsSet.forEach(q => {
-      //
-      //     this.answerApi.getByRef(this._piaService.pia.id, q.id).subscribe((theAnswer: AnswerModel) => {
-      //       if (theAnswer.data && theAnswer.data.list.length > 0 && theAnswer.data.list.includes(measureName)) {
-      //         const index = theAnswer.data.list.indexOf(measureName);
-      //         theAnswer.data.list.splice(index, 1);
-      //         this.answerApi.update(theAnswer).subscribe();
-      //
-      //       }
-      //     });
-      //   });
-      // });
     }
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+    /**
+   * Change processing section
+   *
+   * @param sectionId
+   */
+  changeProcessingSection(sectionId) {
+    this.router.navigate([`/processing/${this.processing.id}`, {sectionId}]);
+    window.scrollTo(0, 0);
   }
 
   /**
