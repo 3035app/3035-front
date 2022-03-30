@@ -3,9 +3,7 @@
     <div class="row">
         <!-- Left sidebar (sections) -->
         <div class="small-12 medium-3 columns">
-            <aside class="pia-leftSidebarBlock">
-                <app-sections [section]="section" [item]="item"></app-sections>
-            </aside>
+            <app-sections [currentProcessingSection]="currentSection" [processing]="processing" [processingSections]="processingSections" (changeProcessingSectionEvent)="changeProcessingSection($event)" [piaSection]="section" [piaItem]="item"></app-sections>
         </div>
 
         <!-- Main entry content -->

@@ -15,7 +15,7 @@ import { PiaApi } from '@api/services';
 export class ProcessingComponent implements OnInit {
   @ViewChild(ProcessingFormComponent) formComponent: ProcessingFormComponent;
   processing: ProcessingModel;
-  sections: any;
+  processingSections: any;
   currentSection: Section;
   pias: PiaModel[];
   allUsers: any;
@@ -30,7 +30,7 @@ export class ProcessingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sections = this.route.snapshot.data.sections;
+    this.processingSections = this.route.snapshot.data.sections;
     this.processing = this.route.snapshot.data.processing;
 
     this._piaService.currentProcessing = this.processing;
@@ -45,7 +45,11 @@ export class ProcessingComponent implements OnInit {
       });
     });
 
-    this.changeSection(1);
+    if (this.route.snapshot.params.sectionId) {
+      this.changeSection(parseInt(this.route.snapshot.params.sectionId, 10));
+    } else {
+      this.changeSection(1);
+    }
   }
 
   /**
@@ -54,13 +58,13 @@ export class ProcessingComponent implements OnInit {
    * @param sectionId
    */
   changeSection(sectionId) {
-    this.currentSection = this.sections.filter((section) => section.id === sectionId)[0];
+    this.currentSection = this.processingSections.filter((section) => section.id === sectionId)[0];
     window.scrollTo(0, 0);
   }
 
   public displayKnowledgeBaseForSection(section?: Section): void {
     if (section === null) {
-      section = this.sections
+      section = this.processingSections
     }
     if (section.id === 1) {
       this.formComponent.updateKnowledgeBase([

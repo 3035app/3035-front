@@ -3,54 +3,7 @@
     <div class="row">
         <!-- Left sidebar (sections) -->
         <div class="small-12 medium-3 columns">
-            <aside class="pia-leftSidebar">
-                <div class="processing-sections">
-                    <div class="processing-section-header">
-                        <h1 class="truncate" title="{{processing.name}}">{{ processing.name }}</h1>
-                        <a class="pia-icons pia-icon-close-big" routerLink="/folders/{{ processing.folder.id }}"
-                            title="{{ 'processing.sections.homepage_link' | translate }}"></a>
-                    </div>
-
-                    <div class="processing-section-body">
-                        <div id="context-section">
-                            <div class="processing-section-title">
-                                {{ 'sections.1.title' | translate }}
-                                <hr>
-                            </div>
-                            <ul class="processing-section-list">
-                                <ng-container *ngFor="let section of sections; let i=index">
-                                    <li *ngIf="i < 2">
-                                        <a (click)="changeSection(section.id)"
-                                            [ngClass]="{'active': currentSection.id == section.id}" class="truncate">
-                                            {{ section.title | translate }}</a>
-                                        <!-- <i class="fa"
-                                            *ngIf="_sidStatusService.sidStatusIcon[_sidStatusService.itemStatus[dataSection.id + '.' + dataItem.id]]"
-                                            [ngClass]="_sidStatusService.sidStatusIcon[_sidStatusService.itemStatus[dataSection.id + '.' + dataItem.id]]"
-                                            aria-hidden="true"></i> -->
-                                    </li>
-                                </ng-container>
-                            </ul>
-                        </div>
-                        <div id="principles-section">
-                            <div class="processing-section-title">
-                                {{ 'sections.2.title' | translate }}
-                                <hr>
-                            </div>
-                            <ul class="processing-section-list">
-                                <ng-container *ngFor="let section of sections; let i=index">
-                                    <li *ngIf="i > 1">
-                                        <a (click)="changeSection(section.id)"
-                                            [ngClass]="{'active': currentSection.id == section.id}" class="truncate">
-                                            {{ section.title | translate }}</a>
-                                    </li>
-                                </ng-container>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <app-sections [section]="section" [item]="item"></app-sections>
-                <app-processing-attachments [processing]="processing"></app-processing-attachments>
-            </aside>
+            <app-sections [currentProcessingSection]="currentSection" [processing]="processing" [processingSections]="processingSections" (changeProcessingSectionEvent)="changeSection($event)"></app-sections>
         </div>
 
         <!-- Main form content -->
@@ -72,7 +25,7 @@
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                     </a>
                 </span>
-                <span *ngIf="currentSection.id == 4 && processing.pias_count > 0">
+                <span *ngIf="currentSection.id == 4 && processing.pias_count > 0 && pias">
                     <a class="processing-next" routerLink="/entry/{{pias[0].id}}/section/3/item/1">
                         {{ 'processing.form.next' | translate }}
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>

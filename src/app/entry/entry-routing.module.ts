@@ -4,6 +4,7 @@ import { EntryComponent } from 'app/entry/entry.component';
 import { AuthenticationGuardService } from '@security/authentication-guard.service';
 import { PiaResolve } from 'app/services/pia.resolve.service';
 import { PiaService } from 'app/entry/pia.service';
+import { ProcessingSectionsResolve } from 'app/processing/processing-form/processing-sections.resolve.service';
 
 const routes: Routes = [
   {
@@ -24,13 +25,16 @@ const routes: Routes = [
   {
     path: 'entry/:id/section/:section_id/item/:item_id',
     component: EntryComponent,
-    canActivate: [AuthenticationGuardService, PiaResolve]
+    canActivate: [AuthenticationGuardService, PiaResolve],
+    resolve: {
+      processingSections: ProcessingSectionsResolve,
+    }
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [PiaService, PiaResolve]
+  providers: [PiaService, PiaResolve, ProcessingSectionsResolve]
 })
 export class EntryRoutingModule { }
