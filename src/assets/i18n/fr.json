@@ -299,8 +299,8 @@
     "form": {
       "previous": "Section précédente",
       "next": "Section suivante",
-      "ask_validate_button": "Demander l'évaluation du traitement",
-      "cancel_ask_validate_button": "Annuler la demande d'évaluation du traitement",
+      "ask_validate_button": "Demander l'évaluation du contexte et des principes fondamentaux",
+      "cancel_ask_validate_button": "Annuler la demande d'évaluation du contexte et des principes fondamentaux",
       "description": {
         "title": "Quelles sont les finalités du traitement ? Sont-elles déterminées, explicites et légitimes ?",
         "placeholder": "Listez les finalités du traitement. Expliquez en quoi elles sont déterminées, explicites et légitimes."
