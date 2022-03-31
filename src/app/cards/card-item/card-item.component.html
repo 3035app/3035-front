@@ -19,9 +19,13 @@
                   <i class="fa fa-files-o" aria-hidden="true"></i>
                   <a href="javascript:;" (click)="duplicateProcessing()">{{ 'homepage.cards.item.tools.duplicate' | translate }}</a>
                 </li>
-                <li>
+                <!-- <li>
                   <i class="fa fa-file-text-o" aria-hidden="true"></i>
                   <a routerLink="/processing/{{processing.id}}/pias" [innerHTML]="'homepage.cards.item.tools.show_pias' | translate"></a>
+                </li> -->
+                <li *ngIf="lastPia">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  <a routerLink="/summary/{{lastPia.id}}" [innerHTML]="'homepage.cards.item.tools.show_pia' | translate"></a>
                 </li>
                 <li *ngxPermissionsOnly="['CanDeleteProcessing']">
                   <i class="fa fa-trash-o" aria-hidden="true"></i>

@@ -5,7 +5,7 @@ import { PiaService } from '../../entry/pia.service';
 import { AppDataService } from '../../services/app-data.service';
 
 import { ProcessingModel } from '@api/models';
-import { ProcessingApi, UserApi } from '@api/services';
+import { PiaApi, ProcessingApi, UserApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
 import { ModalsService } from '../../modals/modals.service';
 
@@ -28,6 +28,7 @@ export class CardItemComponent implements OnInit {
   hasManageProcessingPermissions: boolean = false;
   hasProcessingUsers: boolean = true;
   allUsers: any;
+  lastPia: any;
 
   @ViewChild('processingName') private processingName: ElementRef;
 
@@ -38,11 +39,13 @@ export class CardItemComponent implements OnInit {
     private permissionsService: PermissionsService,
     private _userApi: UserApi,
     private appDataService: AppDataService,
+    private piaApi: PiaApi
   ) {
 
   }
 
   ngOnInit() {
+    // console.log(this._piaService)
     this.processingForm = new FormGroup({
       id: new FormControl(this.processing.id),
       name: new FormControl({ value: this.processing.name, disabled: true }),
@@ -68,6 +71,10 @@ export class CardItemComponent implements OnInit {
       if (processingUsers.length === 0) {
         this.hasProcessingUsers = false;
       }
+    });
+
+    this.piaApi.getAll({'processing': this.processing.id}).subscribe((pias) => {
+      this.lastPia = pias[0];
     });
   }
 
