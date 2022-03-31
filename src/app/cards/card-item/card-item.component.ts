@@ -45,7 +45,6 @@ export class CardItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this._piaService)
     this.processingForm = new FormGroup({
       id: new FormControl(this.processing.id),
       name: new FormControl({ value: this.processing.name, disabled: true }),
