@@ -68,7 +68,6 @@ export class SummaryComponent implements OnInit {
     this.dataNav = await this._appDataService.getDataNav();
     this.piaTypes = PiaType;
     this.pia = this._piaService.pia;
-    console.log(this.pia)
     this.processingDataTypeApi.getAll(this.pia.processing.id).subscribe(pdts => {
       this.processingDataTypes = pdts;
     });
