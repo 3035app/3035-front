@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import * as html2canvas from 'html2canvas';
 import { saveSvgAsPng } from 'save-svg-as-png';
 import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
+import { Location } from '@angular/common'
 
 import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-plan.service';
 import { AppDataService } from 'app/services/app-data.service';
@@ -54,7 +55,8 @@ export class SummaryComponent implements OnInit {
     private evaluationApi: EvaluationApi,
     private answerApi: AnswerApi,
     private measureApi: MeasureApi,
-    private processingDataTypeApi: ProcessingDataTypeService
+    private processingDataTypeApi: ProcessingDataTypeService,
+    private location: Location
   ) { }
 
   async ngOnInit() {
@@ -515,5 +517,9 @@ export class SummaryComponent implements OnInit {
     if (actionPlanOverview) {
       actionPlanOverview.classList.toggle('hide');
     }
+  }
+
+  back(): void {
+    window.history.back();
   }
 }

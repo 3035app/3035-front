@@ -197,7 +197,8 @@
           "action_plan": "Afficher le<br>plan d'action",
           "pia": "Afficher le<br>PIA",
           "remove": "Supprimer",
-          "show_pias": "Voir les PIAs"
+          "show_pias": "Voir les PIAs",
+          "show_pia": "Voir le PIA"
         },
         "edit_pia": "Éditer le PIA",
         "consult_pia": "Consulter le PIA",
