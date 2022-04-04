@@ -111,10 +111,15 @@
     </div>
 
     <div class="pia-entryContentBlock-footer-nav">
-      <a [ngClass]="{'mask': _paginationService.hasPreviousLink === false}" class="pia-previousLink" routerLink="/entry/{{_piaService.pia.id}}/section/{{_paginationService.previousLink.section}}/item/{{_paginationService.previousLink.item}}">
+      <a *ngIf="_paginationService.hasPreviousLink" class="pia-previousLink" routerLink="/entry/{{_piaService.pia.id}}/section/{{_paginationService.previousLink.section}}/item/{{_paginationService.previousLink.item}}">
           <i class="fa fa-angle-double-left" aria-hidden="true"></i>
           {{ _paginationService.previousLink.title | translate }}
-      </a><a [ngClass]="{'mask': _paginationService.hasNextLink === false}" class="pia-nextLink" routerLink="/entry/{{_piaService.pia.id}}/section/{{_paginationService.nextLink.section}}/item/{{_paginationService.nextLink.item}}">
+      </a>
+      <a *ngIf="!_paginationService.hasPreviousLink" class="pia-previousLink" (click)="changeProcessingSection()">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          {{ 'sections.last_processing_section' | translate }}
+      </a>
+      <a [ngClass]="{'mask': _paginationService.hasNextLink === false}" class="pia-nextLink" routerLink="/entry/{{_piaService.pia.id}}/section/{{_paginationService.nextLink.section}}/item/{{_paginationService.nextLink.item}}">
           {{ _paginationService.nextLink.title | translate }}
           <i class="fa fa-angle-double-right" aria-hidden="true"></i>
       </a>
