@@ -159,6 +159,7 @@
         position: relative;
         margin-top: 5px;
         .pia-previousLink, .pia-nextLink {
+          cursor: pointer;
           display: inline-block;
           vertical-align: middle;
           width: 49.5%;

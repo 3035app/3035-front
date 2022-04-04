@@ -300,6 +300,7 @@
     "form": {
       "previous": "Section précédente",
       "next": "Section suivante",
+      "risk_evaluation": "Evaluation des risques",
       "ask_validate_button": "Demander l'évaluation du contexte et des principes fondamentaux",
       "cancel_ask_validate_button": "Annuler la demande d'évaluation du contexte et des principes fondamentaux",
       "description": {
@@ -1484,6 +1485,7 @@
     "treatment_lock": "Veuillez remplir les autres sections avant de pouvoir saisir l'avis des personnes concernées."
   },
   "sections": {
+    "last_processing_section": "Contexte et principes fondamentaux",
     "1": {
       "title": "Contexte",
       "short_help": "Cette section vous permet d'obtenir une vision claire du(des) traitement(s) de données à caractère personnel considéré(s).",

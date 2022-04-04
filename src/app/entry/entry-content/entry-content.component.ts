@@ -1,4 +1,4 @@
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import 'rxjs/add/operator/map'
 
@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SidStatusService } from '../../services/sid-status.service';
 import { GlobalEvaluationService } from '../../services/global-evaluation.service';
 import { KnowledgeBaseService } from '../knowledge-base/knowledge-base.service';
+import { ProcessingModel } from '@api/models';
 
 @Component({
   selector: 'app-entry-content',
@@ -23,6 +24,7 @@ export class EntryContentComponent implements OnInit, OnChanges {
   @Input() item: any;
   @Input() questions: any;
   @Input() data: any;
+  @Input() processing: ProcessingModel;
 
   constructor(private _router: Router,
               private _appDataService: AppDataService,
@@ -149,6 +151,16 @@ export class EntryContentComponent implements OnInit, OnChanges {
   cancelValidateEvaluation() {
     this._globalEvaluationService.cancelValidation();
     this._modalsService.openModal('back-to-evaluation');
+  }
+
+  /**
+   * Go to last processing section
+   *
+   *
+   */
+  changeProcessingSection() {
+    this._router.navigate([`/processing/${this.processing.id}`, {sectionId: 4}]);
+    window.scrollTo(0, 0);
   }
 
 }

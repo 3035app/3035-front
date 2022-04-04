@@ -21,13 +21,13 @@
                 </a>
                 <span *ngIf="currentSection.id == 4 && processing.pias_count == 0" >
                     <a class="processing-next" (click)="createPia()" *ngxPermissionsOnly="['CanCreatePIA']">
-                        {{ 'processing.form.next' | translate }}
+                        {{ 'processing.form.risk_evaluation' | translate }}
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                     </a>
                 </span>
                 <span *ngIf="currentSection.id == 4 && processing.pias_count > 0 && pias">
                     <a class="processing-next" routerLink="/entry/{{pias[0].id}}/section/3/item/1">
-                        {{ 'processing.form.next' | translate }}
+                        {{ 'processing.form.risk_evaluation' | translate }}
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                     </a>
                 </span>
