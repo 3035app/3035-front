@@ -102,7 +102,7 @@
           <div>{{ processing.pias_count }}</div>
         </div>
         <div class="pia-cardsBlock-item-btn bottom-actions">
-          <a routerLink="/processing/{{processing.id}}" class="btn btn-edit btn-green">{{ 'homepage.cards.item.consult_processing' | translate }}</a>
+          <a routerLink="/processing/{{processing.id}}" class="btn btn-edit btn-green">{{ (tenant === "sncf" ? 'homepage.cards.item.consult_pia' : 'homepage.cards.item.consult_processing') | translate }}</a>
         </div>
       </form>
   </div>

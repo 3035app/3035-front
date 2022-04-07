@@ -370,7 +370,7 @@
         <form class="pia-cardsBlock-item-form" (ngSubmit)="onSubmitProcessing()" [formGroup]="processingForm">
             <div>
                 <label for="name">{{ 'homepage.cards.processing_name' | translate }}</label>
-                <input formControlName="name" type="text" placeholder="{{ 'homepage.cards.placeholder_processing_name' | translate }}" id="name"
+                <input formControlName="name" type="text" placeholder="{{ (tenant === 'sncf' ? 'homepage.cards.placeholder_pia_name' : 'homepage.cards.placeholder_processing_name') | translate }}" id="name"
                     required>
             </div>
             <div>

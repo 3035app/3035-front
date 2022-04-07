@@ -13,6 +13,7 @@ import { PiaModel, FolderModel, ProcessingModel } from '@api/models';
 import { PiaApi, FolderApi, ProcessingApi, ProcessingAttachmentApi, UserApi } from '@api/services';
 import { AttachmentsService as ProcessingAttachmentsService } from 'app/processing/attachments/attachments.service';
 import { PiaType } from '@api/model/pia.model';
+import { environment } from 'environments/environment';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class ModalsComponent implements OnInit {
   piaTypes: any;
   selectedUser: number;
   allUsers: any;
+  tenant: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -51,7 +53,9 @@ export class ModalsComponent implements OnInit {
     private userApi: UserApi,
     private permissionsService: PermissionsService,
     private appDataService: AppDataService
-  ) {}
+  ) {
+    this.tenant = environment.tenant;
+  }
 
   ngOnInit() {
     if (this.processing) {

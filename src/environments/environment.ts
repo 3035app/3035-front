@@ -13,5 +13,6 @@ export const environment = {
     client_secret: '',
     host:          'https://backend.url',
     token_path:    '/oauth/v2/token'
-  }
+  },
+  tenant: "sncf"
 };
