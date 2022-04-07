@@ -5,6 +5,7 @@ import { SidStatusService } from '../services/sid-status.service';
 import { PiaService } from '../entry/pia.service';
 import { PiaApi } from '@api/services';
 import { PiaModel } from '@api/models';
+import { ModalsService } from 'app/modals/modals.service';
 
 @Component({
   selector: 'app-sections',
@@ -28,7 +29,8 @@ export class SectionsComponent implements OnInit {
     public _piaService: PiaService,
     private _appDataService: AppDataService,
     public _sidStatusService: SidStatusService,
-    private piaApi: PiaApi
+    private piaApi: PiaApi,
+    private _modalsService: ModalsService
   ) {}
 
   async ngOnInit() {
@@ -75,6 +77,10 @@ export class SectionsComponent implements OnInit {
         this._sidStatusService.setSidStatus(this._piaService, section, item);
       });
     });
+  }
+
+  openHistoryModal() {
+    this._modalsService.openModal('modal-pia-history');
   }
 
 }
