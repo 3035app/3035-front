@@ -19,6 +19,7 @@ export class FolderItemComponent implements OnInit {
   @Output() onCheckChange: EventEmitter<any> = new EventEmitter();
   @ViewChild('folderForm') folderForm: NgForm;
   hasManageFolderPermissions: boolean = false;
+  hasEditFolderPermissions: boolean = false;
   hasFolderUsers: boolean = true;
   
   constructor(
@@ -41,6 +42,7 @@ export class FolderItemComponent implements OnInit {
     });
 
     this.permissionsService.hasPermission('CanManageFolderPermissions').then((bool: boolean) => this.hasManageFolderPermissions = bool);
+    this.permissionsService.hasPermission('CanEditFolder').then((bool: boolean) => this.hasEditFolderPermissions = bool);
 
     this._userApi.getFolderUsers(this.folder.id).subscribe(folderUsers => {
       if (folderUsers.length === 0) {
@@ -64,7 +66,7 @@ export class FolderItemComponent implements OnInit {
    * @memberof FolderItemComponent
    */
   folderNameFocusOut() {
-    if (this.folder.can_access || this.hasManageFolderPermissions) {
+    if (this.hasEditFolderPermissions) {
       let userText = this.folderForm.controls['name'].value;
       if (userText  && typeof userText === 'string') {
         userText = userText.replace(/^\s+/, '').replace(/\s+$/, ''); // trim value
