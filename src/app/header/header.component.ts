@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   _hasOwnStructure: boolean = false;
   public currentRoute: string;
   public higherRole = {};
+  private tenant: string;
 
   constructor(
     private _router: Router,
@@ -36,6 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     protected session: ProfileSession
   ) {
     this.updateContrast();
+    this.tenant = environment.tenant;
   }
 
   ngOnInit() {

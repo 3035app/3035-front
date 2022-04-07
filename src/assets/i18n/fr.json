@@ -21,7 +21,8 @@
     "title": "Tableau de bord",
     "items": {
       "portfolio": "Portefeuille Client",
-      "processings": "Registre des traitements"
+      "processings": "Registre des traitements",
+      "processings_sncf": "Registre des PIAs"
     },
     "permissions": {
       "title": "Mes droits au sein de l'application"
@@ -135,7 +136,9 @@
       "new": "Nouveau...",
       "new_pia": "PIA",
       "new_processing": "Traitement",
+      "new_processing_sncf": "PIA",
       "new_from_template": "Traitement depuis un modèle",
+      "new_from_template_sncf": "PIA depuis un modèle",
       "new_folder": "Dossier",
       "import_pia": "Importer PIA",
       "list_rocket_content": "Lancez-vous ! Pour commencer<br>un PIA, cliquez sur le +",
@@ -148,6 +151,7 @@
     },
     "cards": {
       "processing_register": "Registre des traitements",
+      "processing_register_sncf": "Registre des PIAs",
       "new_pia": "Nouveau PIA",
       "placeholder_new_pia": "Nouveau PIA",
       "or": "ou",
@@ -556,7 +560,8 @@
   },
   "templates": {
     "pick": "Choisir",
-    "header": "Modèles de Traitement"
+    "header": "Modèles de Traitement",
+    "header_sncf": "Modèles de PIA"
   },
   "knowledge_base": {
     "title": "Base de connaissances",

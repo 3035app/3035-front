@@ -5,6 +5,7 @@ import { ProcessingApi } from '@api/services';
 import { ProcessingModel, TemplateModel } from '@api/models';
 import { PiaService } from '../entry/pia.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-templates',
@@ -16,6 +17,7 @@ export class TemplatesComponent implements OnInit {
   protected pickedTemplate: TemplateModel;
   public processing: ProcessingModel = new ProcessingModel();
   public processingForm: FormGroup;
+  private tenant: string;
 
   constructor(
     protected processingApi: ProcessingApi,
@@ -24,6 +26,7 @@ export class TemplatesComponent implements OnInit {
     public _modalsService: ModalsService,
     private _piaService: PiaService
   ) {
+    this.tenant = environment.tenant;
   }
 
   ngOnInit() {

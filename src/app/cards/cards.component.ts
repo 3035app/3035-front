@@ -105,6 +105,7 @@ export class CardsComponent implements OnInit {
   selectedFolder: any = [];
   selectedProcessing: any = [];
   public structure: any;
+  private tenant: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -119,7 +120,9 @@ export class CardsComponent implements OnInit {
     private answerApi: AnswerApi,
     private session: ProfileSession,
     private translate: TranslateService
-  ) { }
+  ) {
+    this.tenant = environment.tenant;
+   }
 
   ngOnInit() {
     this.structure = this.session.getCurrentStructure();
