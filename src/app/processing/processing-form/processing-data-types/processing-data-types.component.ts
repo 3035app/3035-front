@@ -2,6 +2,7 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ProcessingDataTypeModel } from '@api/models';
 import { ProcessingDataTypeApi } from '@api/services';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-processing-data-types',
@@ -26,9 +27,19 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
   public internet: Field       = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public other: Field          = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
+  hasEditPermission: boolean = false;
 
 
-  constructor(private processingDataTypeApi: ProcessingDataTypeApi) { }
+  constructor(
+    private processingDataTypeApi: ProcessingDataTypeApi,
+    private permissionsService: PermissionsService,
+  ) {
+    this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
+      if (hasPerm) {
+        this.hasEditPermission = true;
+      }
+    });
+  }
 
   /**
    * Update model value from form control value
@@ -39,7 +50,6 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
    */
   updateValue(reference: string, enable: boolean = false): void {
     const type = this[reference].processingDataType;
-console.log(type);
     // Create new
     if (!type.id) {
       // Set missing properties
