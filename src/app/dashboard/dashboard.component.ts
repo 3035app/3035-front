@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileSession } from 'app/services/profile-session.service';
 import { AuthenticationService } from '@security/authentication.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +28,7 @@ export class DashboardComponent implements OnInit {
       } });
     }
     if (this.session.hasOwnStructure()) {
-      this.items.push({ title: 'dashboard.items.processings', icon: 'fa-file-text', name: 'processings', action: () => {
+      this.items.push({ title: environment.tenant === "sncf" ? 'dashboard.items.processings_sncf' : 'dashboard.items.processings', icon: 'fa-file-text', name: 'processings', action: () => {
         this.session.navigateToOwnStructure();
       } });
     }

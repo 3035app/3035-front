@@ -8,6 +8,7 @@ import { ProcessingModel } from '@api/models';
 import { PiaApi, ProcessingApi, UserApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
 import { ModalsService } from '../../modals/modals.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-card-item',
@@ -29,6 +30,7 @@ export class CardItemComponent implements OnInit {
   hasProcessingUsers: boolean = true;
   allUsers: any;
   lastPia: any;
+  private tenant: string;
 
   @ViewChild('processingName') private processingName: ElementRef;
 
@@ -41,7 +43,7 @@ export class CardItemComponent implements OnInit {
     private appDataService: AppDataService,
     private piaApi: PiaApi
   ) {
-
+    this.tenant = environment.tenant;
   }
 
   ngOnInit() {
