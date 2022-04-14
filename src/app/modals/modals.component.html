@@ -462,7 +462,7 @@
             (click)="_modalsService.closeModal()">
             <span class="pia-icons pia-icon-close"></span>
         </button>
-        <p>{{ 'history.created_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
+        <p>{{ 'history.created_by' | translate }} {{ _modalsService.data?.history?.createdBy }} {{ 'history.on' | translate }} {{ _modalsService.data?.history?.createdOn }}</p>
         <p>{{ 'history.last_modification_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
         <p>{{ 'history.ask_evaluation_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
         <p>{{ 'history.evaluated_by' | translate }} ... {{ 'history.on' | translate }} ...</p>

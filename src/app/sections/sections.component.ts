@@ -80,7 +80,22 @@ export class SectionsComponent implements OnInit {
   }
 
   openHistoryModal() {
-    this._modalsService.openModal('modal-pia-history');
+    console.log(this.processing.trackings)
+    const history = {
+      createdBy: '',
+      createdOn: '',
+    };
+    if (this.processing.trackings) {
+      this.processing.trackings.forEach((action) => {
+        switch (action.activity) {
+          case 'created':
+            history.createdBy = action.fullname;
+            const date = new Date(action.date)
+            history.createdOn = date.toLocaleDateString();
+        }
+      });
+    }
+    this._modalsService.openModal('modal-pia-history', {history});
   }
 
 }
