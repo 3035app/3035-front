@@ -80,18 +80,67 @@ export class SectionsComponent implements OnInit {
   }
 
   openHistoryModal() {
-    console.log(this.processing.trackings)
     const history = {
       createdBy: '',
       createdOn: '',
+      updatedBy: '',
+      updatedOn: '',
+      evaluationRequestedBy: '',
+      evaluationRequestedOn: '',
+      evaluatedBy: '',
+      evaluatedOn: '',
+      issueRequestedBy: '',
+      issueRequestedOn: '',
+      noticedBy: '',
+      noticedOn: '',
+      validationRequestedBy: '',
+      validationRequestedOn: '',
+      validatedBy: '',
+      validatedOn: ''
     };
     if (this.processing.trackings) {
       this.processing.trackings.forEach((action) => {
         switch (action.activity) {
           case 'created':
             history.createdBy = action.fullname;
-            const date = new Date(action.date)
-            history.createdOn = date.toLocaleDateString();
+            const createDate = new Date(action.date)
+            history.createdOn = createDate.toLocaleDateString();
+            break;
+          case 'last-update':
+            history.updatedBy = action.fullname;
+            const updateDate = new Date(action.date)
+            history.updatedOn = updateDate.toLocaleDateString();
+            break;
+          case 'evaluation-request':
+            history.evaluationRequestedBy = action.fullname;
+            const evaluationRequestDate = new Date(action.date)
+            history.evaluationRequestedOn = evaluationRequestDate.toLocaleDateString();
+            break;
+          case 'evaluation':
+            history.evaluatedBy = action.fullname;
+            const evaluationDate = new Date(action.date)
+            history.evaluatedOn = evaluationDate.toLocaleDateString();
+            break;
+          case 'issue-request':
+            history.issueRequestedBy = action.fullname;
+            const issueRequestDate = new Date(action.date)
+            history.issueRequestedOn = issueRequestDate.toLocaleDateString();
+            break;
+          case 'notice-issued':
+            history.noticedBy = action.fullname;
+            const noticeDate = new Date(action.date)
+            history.noticedOn = noticeDate.toLocaleDateString();
+            break;
+          case 'validation-request':
+            history.validationRequestedBy = action.fullname;
+            const validationRequestDate = new Date(action.date)
+            history.validationRequestedOn = validationRequestDate.toLocaleDateString();
+            break;
+          case 'validated':
+            history.validatedBy = action.fullname;
+            const validateDate = new Date(action.date)
+            history.validatedOn = validateDate.toLocaleDateString();
+            break;
         }
       });
     }

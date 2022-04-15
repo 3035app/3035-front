@@ -463,13 +463,13 @@
             <span class="pia-icons pia-icon-close"></span>
         </button>
         <p>{{ 'history.created_by' | translate }} {{ _modalsService.data?.history?.createdBy }} {{ 'history.on' | translate }} {{ _modalsService.data?.history?.createdOn }}</p>
-        <p>{{ 'history.last_modification_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
-        <p>{{ 'history.ask_evaluation_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
-        <p>{{ 'history.evaluated_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
-        <p>{{ 'history.ask_opinion_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
-        <p>{{ 'history.opinion_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
-        <p>{{ 'history.ask_validation_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
-        <p>{{ 'history.validated_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
+        <p>{{ 'history.last_modification_by' | translate }} {{ _modalsService.data?.history?.updatedBy }} {{ 'history.on' | translate }} {{ _modalsService.data?.history?.updatedOn }}</p>
+        <p>{{ 'history.ask_evaluation_by' | translate }} {{ _modalsService.data?.history?.evaluationRequestedBy }} {{ 'history.on' | translate }} {{ _modalsService.data?.history?.evaluationRequestedOn }}</p>
+        <p>{{ 'history.evaluated_by' | translate }} {{ _modalsService.data?.history?.evaluatedBy }} {{ 'history.on' | translate }} {{ _modalsService.data?.history?.evaluatedOn }}</p>
+        <p>{{ 'history.ask_opinion_by' | translate }} {{ _modalsService.data?.history?.issueRequestedBy }} {{ 'history.on' | translate }} {{ _modalsService.data?.history?.issueRequestedOn }}</p>
+        <p>{{ 'history.opinion_by' | translate }} {{ _modalsService.data?.history?.noticedBy }} {{ 'history.on' | translate }} {{ _modalsService.data?.history?.noticedOn }}</p>
+        <p>{{ 'history.ask_validation_by' | translate }} {{ _modalsService.data?.history?.validationRequestedBy }} {{ 'history.on' | translate }} {{ _modalsService.data?.history?.validationRequestedOn }}</p>
+        <p>{{ 'history.validated_by' | translate }} {{ _modalsService.data?.history?.validatedBy }} {{ 'history.on' | translate }} {{ _modalsService.data?.history?.validatedOn }}</p>
         <p>{{ 'history.archived_by' | translate }} ... {{ 'history.on' | translate }} ...</p>
     </div>
 </div>
