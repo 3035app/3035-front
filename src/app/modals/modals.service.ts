@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class ModalsService {
-  data: { elementId?: number, elementType?: string, elementUsers?: any[] };
+  data: { elementId?: number, elementType?: string, elementUsers?: any[], history?: any };
 
   constructor(
     private _router: Router,
@@ -20,7 +20,7 @@ export class ModalsService {
    * @param {string} modal_id - Unique id of the modal which has to be opened.
    * @memberof ModalsService
    */
-  async openModal(modal_id: string, data?: { elementId?: number, elementType?: string, elementUsers?: any[] }) {
+  async openModal(modal_id: string, data?: { elementId?: number, elementType?: string, elementUsers?: any[], history?: any }) {
     if (modal_id === 'pia-declare-measures' ||
         modal_id === 'pia-action-plan-no-evaluation' ||
         modal_id === 'pia-dpo-missing-evaluations') {

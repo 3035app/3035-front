@@ -529,6 +529,7 @@
       "homepage_link": "Retourner à l'accueil",
       "validate_pia": "Valider le PIA",
       "refuse_pia": "PIA refusé",
+      "history": "Voir l'historique",
       "status": {
         "evaluation": {
           "title": "En attente d'évaluation",
@@ -1795,5 +1796,17 @@
     "add_user_label": "Partager avec des utilisateurs",
     "placeholder_add_user": "Ajouter des utilisateurs",
     "shared_users_list_label": "Liste des utilisateurs autorisés"
+  },
+  "history": {
+    "created_by": "Créé par",
+    "on": "le",
+    "last_modification_by": "Dernière modification de la fiche par",
+    "ask_evaluation_by": "Demande d'évaluation par",
+    "evaluated_by": "Evaluation effectuée par",
+    "ask_opinion_by": "Demande d'émission d'un avis par",
+    "opinion_by": "Avis émis par",
+    "ask_validation_by": "Demande de validation par",
+    "validated_by": "Validé par",
+    "archived_by": "Archivé par"
   }
 }
