@@ -80,6 +80,9 @@
                 translate }}</a>
         </ng-template>
     </div>
+    <div class="pia-validatePIABlock">
+        <a class="btn btn-active btn-green" (click)="openHistoryModal()">{{ 'pia.sections.history' | translate }}</a>
+    </div>
     <app-processing-attachments [processing]="processing" *ngIf="processing"></app-processing-attachments>
     <app-attachments [pia]="_piaService.pia" *ngIf="_piaService.pia?.id"></app-attachments>
 </aside>
