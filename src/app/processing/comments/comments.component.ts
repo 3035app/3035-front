@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ProcessingModel, ProcessingCommentModel } from '@api/models';
 import { ProcessingCommentApi } from '@api/services';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-processing-comments',
@@ -16,7 +17,10 @@ export class CommentsComponent implements OnInit {
   displayInput: boolean = false;
   displayList: boolean = false;
 
-  constructor(private processingCommentApi: ProcessingCommentApi) {
+  constructor(
+    private processingCommentApi: ProcessingCommentApi,
+    private i18n: TranslateService
+  ) {
   }
 
   ngOnInit() {
@@ -68,6 +72,13 @@ export class CommentsComponent implements OnInit {
 
   filterComments() {
     this.comments = this.processing.comments.filter(comment => comment.field === this.field);
+    this.comments.map(comment => {
+      const rolesLabel = [];
+      comment.commented_by.roles.forEach(role => {
+        rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
+      })
+      comment.commented_by.rolesLabel = rolesLabel.join('/');
+    });
   }
 
 }

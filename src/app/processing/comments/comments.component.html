@@ -16,7 +16,7 @@
     <div *ngFor="let comment of comments"  [ngClass]="displayList ? 'open' : 'close'"  class="processing-comments-content fadeIn">
       <div class="processing-comments-date">
         {{ 'processing.comments.comment' | translate }}
-        <time *ngIf="comment?.created_at && comment?.created_at.toString() !== 'Invalid Date'">{{comment.created_at | date: 'dd/MM/yyyy'}}</time>
+        <time *ngIf="comment?.created_at && comment?.created_at.toString() !== 'Invalid Date'">{{comment.created_at | date: 'dd/MM/yyyy'}} | {{ 'history.created_by' | translate }} {{comment?.commented_by?.firstName}} {{comment?.commented_by?.lastName}} | {{comment?.commented_by?.rolesLabel}}</time>
       </div>
       <textarea rows="3" disabled cols="50">{{comment.content}}</textarea>
     </div>

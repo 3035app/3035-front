@@ -6,4 +6,5 @@ export class ProcessingComment extends BaseModel {
   public field: string;
   public content: string;
   public created_at: Date;
+  public commented_by: any;
 }
