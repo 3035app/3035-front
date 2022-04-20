@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { CommentModel } from '@api/models';
 import { CommentApi } from '@api/services';
+import { TranslateService } from '@ngx-translate/core';
 
 import { MeasureService } from 'app/entry/entry-content/measures/measures.service';
 import { ModalsService } from 'app/modals/modals.service';
@@ -29,7 +30,8 @@ export class CommentsComponent implements OnInit {
   constructor(private el: ElementRef,
     private _measureService: MeasureService,
     private _modalsService: ModalsService,
-    private commentApi: CommentApi
+    private commentApi: CommentApi,
+    private i18n: TranslateService
   ) { }
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class CommentsComponent implements OnInit {
     this.commentApi.getAllByRef(this.pia.id, ref_to).subscribe((entries: CommentModel[]) => {
       this.comments = entries;
       this.comments.reverse();
+      this.commentsWithOwnerRolesLabel();
     });
 
     this.commentsForm = new FormGroup({
@@ -112,6 +115,7 @@ export class CommentsComponent implements OnInit {
         this.commentApi.create(commentRecord).subscribe((newComment: CommentModel) => {
           commentRecord.fromJson(newComment);
           this.comments.unshift(commentRecord);
+          this.commentsWithOwnerRolesLabel();
           this.commentsForm.controls['description'].setValue('');
           this.getCommentsAccordeonStatus();
           this.newCommentDisplayer = false;
@@ -140,6 +144,24 @@ export class CommentsComponent implements OnInit {
    */
   getCommentsAccordeonStatus() {
     return this.comments.length > 0 ? true : false;
+  }
+
+  /**
+   * Returns a list of comments with owner translated role labels.
+   * @param {array} comments - comment list.
+   * @returns {array}
+   * @memberof CommentsComponent
+   */
+  commentsWithOwnerRolesLabel() {
+    this.comments.map(comment => {
+      if (comment.commented_by && comment.commented_by.roles) {
+        const rolesLabel = [];
+        comment.commented_by.roles.forEach(role => {
+          rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
+        })
+      comment.commented_by.rolesLabel = rolesLabel.join('/');
+      }
+    });
   }
 
 }
