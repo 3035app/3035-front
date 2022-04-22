@@ -25,6 +25,7 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
   public log: Field            = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public location: Field       = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public internet: Field       = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public nir: Field            = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public other: Field          = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
   hasEditPermission: boolean = false;
