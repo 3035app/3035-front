@@ -445,6 +445,7 @@
       "log": "Données de connexion (ex. adresses Ip, logs, identifiants des terminaux, identifiants de connexion, informations d'horodatage, etc.)",
       "location": "Données de localisation (ex. déplacements, données GPS, GSM, ...)",
       "internet": "Internet(ex. cookies, traceurs, données de navigation, mesures d’audience, ...)",
+      "nir": "NIR",
       "other": "Autres catégories de données"
     }
   },
