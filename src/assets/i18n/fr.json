@@ -1284,6 +1284,9 @@
     "completed_evaluation": {
       "content": "Toutes les parties sont évaluées.<br>L'analyse peut être validée."
     },
+    "ask_evaluation": {
+      "content": "Votre demande d'évaluation a été envoyée à l'évaluateur, nous vous invitons désormais à compléter l'analyse de risques accessible à partir de la page suivante."
+    },
     "update_server_url": {
       "content": "L'adresse du serveur à été mise à jour."
     },

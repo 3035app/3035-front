@@ -6,7 +6,7 @@ import { ProcessingModel } from '@api/models';
 import { ProcessingApi, ProcessingDataTypeApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
 import { ProcessingStatus, ProcessingEvaluationStates } from '@api/model/processing.model';
-
+import { ModalsService } from '../../modals/modals.service';
 
 @Component({
   selector: 'app-processing-form',
@@ -30,7 +30,8 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
     private processingDataTypeApi: ProcessingDataTypeApi,
     private ref: ChangeDetectorRef,
     private permissionsService: PermissionsService,
-    private knowledgeBaseService: KnowledgeBaseService
+    private knowledgeBaseService: KnowledgeBaseService,
+    public _modalsService: ModalsService,
   ) {
     this.knowledgeBaseService.knowledgeBaseData = [];
     this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
@@ -189,6 +190,7 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
 
     this.processingApi.update(this.processing).subscribe((processing) => {
       this.processing = processing;
+      this._modalsService.openModal('modal-confirm-ask-processing-evaluation');
     });
   }
 
