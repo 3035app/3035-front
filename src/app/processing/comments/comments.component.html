@@ -2,9 +2,8 @@
   <div class="processing-comments-count">{{comments.length}} {{ 'processing.comments.count' | translate }}</div>
   <div class="processing-comments-infos">
     <div class="processing-comments-btn">
-      <button class="btn" type="button" (click)="toggleCommentInput()"><i class="fa fa-comment-o" aria-hidden="true"></i> {{ 'processing.comments.add' | translate }}</button>
-      <button class="btn" (click)="toggleCommentList()" type="button" title="{{ 'misc.display' | translate }}">
-      <span [ngClass]="displayList ? 'fa fa-angle-down' : 'fa fa-angle-up'"></span>
+      <button class="btn" type="button" (click)="toggleCommentInput()"><i class="fa fa-comment-o" aria-hidden="true"></i> {{ 'processing.comments.add' | translate }}
+        <span [ngClass]="displayInput ? 'fa fa-angle-down' : 'fa fa-angle-up'"></span>
       </button>
     </div>
   </div>
@@ -13,7 +12,7 @@
       <textarea formControlName="content" placeholder="{{ 'processing.comments.placeholder_new_comment' | translate }}" rows="8" cols="50"></textarea>
       <button type="submit" class="btn comment-submit btn-green">{{ 'processing.comments.new' | translate }}</button>
     </form>
-    <div *ngFor="let comment of comments"  [ngClass]="displayList ? 'open' : 'close'"  class="processing-comments-content fadeIn">
+    <div *ngFor="let comment of comments" class="processing-comments-content fadeIn">
       <div class="processing-comments-date">
         {{ 'processing.comments.comment' | translate }}
         <time *ngIf="comment?.created_at && comment?.created_at.toString() !== 'Invalid Date'">{{comment.created_at | date: 'dd/MM/yyyy'}} | {{ 'history.created_by' | translate }} {{comment?.commented_by?.firstName}} {{comment?.commented_by?.lastName}} | {{comment?.commented_by?.rolesLabel}}</time>

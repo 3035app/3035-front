@@ -15,7 +15,6 @@ export class CommentsComponent implements OnInit {
   commentForm: FormGroup;
   comments: ProcessingCommentModel[];
   displayInput: boolean = false;
-  displayList: boolean = false;
 
   constructor(
     private processingCommentApi: ProcessingCommentApi,
@@ -36,19 +35,7 @@ export class CommentsComponent implements OnInit {
    * @memberof CommentsComponent
    */
   toggleCommentInput() {
-    if (this.processing.comments.length) {
-      this.toggleCommentList();
-    }
-
     this.displayInput = !this.displayInput;
-  }
-
-  /**
-   * Show or hide comments list.
-   * @memberof CommentsComponent
-   */
-  toggleCommentList() {
-   this.displayList = !this.displayList;
   }
 
   /**
@@ -73,11 +60,13 @@ export class CommentsComponent implements OnInit {
   filterComments() {
     this.comments = this.processing.comments.filter(comment => comment.field === this.field);
     this.comments.map(comment => {
-      const rolesLabel = [];
-      comment.commented_by.roles.forEach(role => {
-        rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
-      })
-      comment.commented_by.rolesLabel = rolesLabel.join('/');
+      if (comment.commented_by && comment.commented_by.roles) {
+        const rolesLabel = [];
+        comment.commented_by.roles.forEach(role => {
+          rolesLabel.push(this.i18n.instant(`role_description.${role}.label`));
+        })
+        comment.commented_by.rolesLabel = rolesLabel.join('/');
+      }
     });
   }
 
