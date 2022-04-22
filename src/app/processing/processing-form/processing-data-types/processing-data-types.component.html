@@ -159,6 +159,29 @@
 </div>
 
 <div class="row">
+  <div class="processing-data-type small-12" id="nir-data">
+    <div class="type-enabled">
+      <input type="checkbox" [disabled]="!hasEditPermission"
+        [(ngModel)]="nir.enabled"
+        (change)="updateValue('nir', true)">
+      <label class="enabled-label" for="nir">{{ 'processing-data-types.form.nir'| translate }}</label>
+    </div>
+    <div class="type-retention-period" *ngIf="nir.enabled">
+      <label class="label" for="nir-retention-period">{{ 'processing-data-types.form.retention-period'| translate }}</label>
+      <input type="text" class="retention-period" [disabled]="!hasEditPermission"
+        [(ngModel)]="nir.processingDataType.retention_period"
+        (change)="updateValue('nir')">
+    </div>
+    <div class="type-sensitive" *ngIf="nir.enabled">
+      <label class="label" for="nir-sensitive">{{ 'processing-data-types.form.sensitive'| translate }}</label>
+      <input type="checkbox" class="sensitive" [disabled]="!hasEditPermission"
+        [(ngModel)]="nir.processingDataType.sensitive"
+        (change)="updateValue('nir')">
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="processing-data-type small-12" id="other-data">
     <div class="type-enabled">
       <input class="field" type="checkbox" [disabled]="!hasEditPermission"
