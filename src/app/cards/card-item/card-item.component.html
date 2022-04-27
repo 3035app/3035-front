@@ -56,7 +56,7 @@
           </div>
           <div>
               <label for="pia-edit-redactor-name[{{processing.id}}]">{{ 'homepage.cards.redactor' | translate }}</label>
-              <ng-select formControlName="redactor_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}" id="pia-edit-redactor-name[{{processing.id}}]" (change)="processingRedactorChange()">
+              <ng-select formControlName="redactors_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}" id="pia-edit-redactor-name[{{processing.id}}]" (change)="processingRedactorChange()" [multiple]="true">
                 <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                   {{user.roles}}</ng-option>
               </ng-select>

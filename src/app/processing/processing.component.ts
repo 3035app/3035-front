@@ -95,7 +95,7 @@ export class ProcessingComponent implements OnInit {
       // disable the type feature
       pia.type = 'advanced';
       pia.processing = this._piaService.currentProcessing;
-      pia.redactor_id = this._piaService.currentProcessing.supervisors.redactor_id;
+      pia.redactors_id = this._piaService.currentProcessing.supervisors.redactors_id;
       pia.evaluator_id = this._piaService.currentProcessing.supervisors.evaluator_pending_id;
       pia.data_protection_officer_id = this._piaService.currentProcessing.supervisors.data_protection_officer_pending_id;
       this.piaApi.create(pia).subscribe((newPia: PiaModel) => {

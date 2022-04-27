@@ -322,8 +322,8 @@
         </button>
         <form class="pia-cardsBlock-item-form" (ngSubmit)="onSubmit()" [formGroup]="piaForm">
             <div>
-                <label for="redactor_id">{{ 'homepage.cards.redactor' | translate }}</label>
-                <ng-select formControlName="redactor_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}">
+                <label for="redactors_id">{{ 'homepage.cards.redactor' | translate }}</label>
+                <ng-select formControlName="redactors_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}" [multiple]="true">
                     <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
@@ -374,8 +374,8 @@
                     required>
             </div>
             <div>
-                <label for="redactor_id">{{ 'homepage.cards.redactor' | translate }}</label>
-                <ng-select formControlName="redactor_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}">
+                <label for="redactors_id">{{ 'homepage.cards.redactor' | translate }}</label>
+                <ng-select formControlName="redactors_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}" [multiple]="true">
                     <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
                         {{user.roles}}</ng-option>
                 </ng-select>
