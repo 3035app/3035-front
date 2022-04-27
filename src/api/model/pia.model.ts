@@ -13,7 +13,7 @@ export class Pia extends BaseModel {
   public evaluator_name: string;
   // A supprimer
   public validator_name: string;
-  public redactor_id: number;
+  public redactors_id: number;
   public evaluator_id: number;
   public data_protection_officer_id: number;
   public dpo_status: number = 0; // 0: NOK, 1: OK

@@ -31,6 +31,7 @@ export class CardItemComponent implements OnInit {
   allUsers: any;
   lastPia: any;
   private tenant: string;
+  selectedRedactors: any;
 
   @ViewChild('processingName') private processingName: ElementRef;
 
@@ -47,10 +48,11 @@ export class CardItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.selectedRedactors = this.processing.supervisors.redactor_id;
     this.processingForm = new FormGroup({
       id: new FormControl(this.processing.id),
       name: new FormControl({ value: this.processing.name, disabled: true }),
-      redactor_id: new FormControl({ value: this.processing.supervisors.redactor_id ? this.processing.supervisors.redactor_id : undefined, disabled: true }),
+      redactors_id: new FormControl({ value: this.processing.supervisors.redactors_id ? this.processing.supervisors.redactors_id : undefined, disabled: true }),
       evaluator_id: new FormControl({ value: this.processing.supervisors.evaluator_pending_id ? this.processing.supervisors.evaluator_pending_id : undefined, disabled: true }),
       data_protection_officer_id: new FormControl({ value: this.processing.supervisors.data_protection_officer_pending_id ? this.processing.supervisors.data_protection_officer_pending_id : undefined , disabled: true }),
       data_controller_id: new FormControl({ value: this.processing.supervisors.data_controller_id ? this.processing.supervisors.data_controller_id : undefined, disabled: true })
@@ -110,7 +112,7 @@ export class CardItemComponent implements OnInit {
    */
   processingRedactorChange() {
     this.processingApi.get(this.processingForm.value.id).subscribe((theProcessing: ProcessingModel) => {
-      theProcessing.redactor_id = this.processingForm.value.redactor_id;
+      theProcessing.redactors_id = this.processingForm.value.redactors_id;
       this.processingApi.update(theProcessing).subscribe();
     });
   }

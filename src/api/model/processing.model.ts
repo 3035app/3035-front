@@ -10,7 +10,7 @@ export class Processing extends BaseModel {
   // A supprimer
   public author: string;
   public redactor: any;
-  public redactor_id: number;
+  public redactors_id: number;
   public life_cycle: string;
   public storage: string;
   public standards: string;

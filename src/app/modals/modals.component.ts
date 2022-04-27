@@ -60,7 +60,7 @@ export class ModalsComponent implements OnInit {
   ngOnInit() {
     if (this.processing) {
       this.piaForm = new FormGroup({
-        redactor_id: new FormControl({ value: this.processing.supervisors.redactor_id ? this.processing.supervisors.redactor_id : undefined, disabled: true }),
+        redactors_id: new FormControl({ value: this.processing.supervisors.redactors_id ? this.processing.supervisors.redactors_id : undefined, disabled: true }),
         evaluator_id: new FormControl({ value: this.processing.supervisors.evaluator_pending_id ? this.processing.supervisors.evaluator_pending_id : undefined, disabled: true }),
         data_protection_officer_id: new FormControl({ value: this.processing.supervisors.data_protection_officer_pending_id ? this.processing.supervisors.data_protection_officer_pending_id : undefined, disabled: true }),
         type: new FormControl()
@@ -77,7 +77,7 @@ export class ModalsComponent implements OnInit {
       });
     } else {
       this.piaForm = new FormGroup({
-        redactor_id: new FormControl(),
+        redactors_id: new FormControl(),
         evaluator_id: new FormControl(),
         data_protection_officer_id: new FormControl(),
         type: new FormControl()
@@ -86,7 +86,7 @@ export class ModalsComponent implements OnInit {
     
     this.processingForm = new FormGroup({
       name: new FormControl(),
-      redactor_id: new FormControl(),
+      redactors_id: new FormControl(),
       data_controller_id: new FormControl(),
       evaluator_id: new FormControl(),
       data_protection_officer_id: new FormControl()
@@ -123,7 +123,7 @@ export class ModalsComponent implements OnInit {
    */
   onSubmit() {
     const pia = new PiaModel();
-    pia.redactor_id = this.piaForm.value.redactor_id;
+    pia.redactors_id = this.piaForm.value.redactors_id;
     pia.evaluator_id = this.piaForm.value.evaluator_id;
     pia.data_protection_officer_id = this.piaForm.value.data_protection_officer_id;
     // disable the type feature
@@ -144,7 +144,7 @@ export class ModalsComponent implements OnInit {
   onSubmitProcessing() {
     const processing = new ProcessingModel();
     processing.name = this.processingForm.value.name;
-    processing.redactor_id = this.processingForm.value.redactor_id;
+    processing.redactors_id = this.processingForm.value.redactors_id;
     processing.data_controller_id = this.processingForm.value.data_controller_id;
     processing.evaluator_pending_id = this.processingForm.value.evaluator_id;
     processing.data_protection_officer_pending_id = this.processingForm.value.data_protection_officer_id;
