@@ -359,15 +359,18 @@
       <fieldset *ngIf="currentSection.id == 4" id="measures" class="form-section">
         <div class="form-field" (click)="updateKnowledgeBase()">
           <label class="title">{{ 'processing.form.informed_concerned_people' | translate }}</label>
-          <div class="small-12">
-            <div class="type-enabled">
-              <input type="checkbox" class="field" name="informed_mention_form" [disabled]="!hasEditPermission"
-                [(ngModel)]="processing.informed_concerned_people.mention_form" (change)="updateProcessing()" id="informed_mention_form">
-              <label class="enabled-label" for="informed_mention_form">{{ 'processing_informed_concerned_people.form.mention_form'|
-                translate }}</label>
-            </div>
-          </div>
-          <div class="small-12">
+          <!-- <div class="small-12">
+            <div class="type-enabled"> -->
+              <!-- <input type="checkbox" class="field" name="informed_mention_form" [disabled]="!hasEditPermission"
+                [(ngModel)]="processing.informed_concerned_people.mention_form" (change)="updateProcessing()" id="informed_mention_form"> -->
+              <!-- <label class="enabled-label" for="informed_mention_form">{{ 'processing_informed_concerned_people.form.mention_form'|
+                translate }}</label> -->
+              <app-processing-informed-mention [(ngModel)]="processing.processing_data_types" name="informed_mention_form" id="informed_mention_form"
+                (change)="updateProcessing(true)"
+                [processingId]="processing.id"></app-processing-informed-mention>
+            <!-- </div>
+          </div> -->
+          <!-- <div class="small-12">
             <div class="type-enabled">
               <input type="checkbox" class="field" name="informed_mention_contract" [disabled]="!hasEditPermission"
                 [(ngModel)]="processing.informed_concerned_people.mention_contract" (change)="updateProcessing()" id="informed_mention_contract">
@@ -406,11 +409,11 @@
               <label class="enabled-label" for="informed_other">{{ 'processing_informed_concerned_people.form.other'| translate
                 }}</label>
             </div>
-          </div>
+          </div> -->
           <app-processing-comments [processing]="processing" [field]="'informed_concerned_people'"></app-processing-comments>
         </div>
 
-        <div class="form-field">
+        <!-- <div class="form-field">
           <label class="title" for="processing-consent">{{ 'processing.form.consent.title' | translate }}</label>
           <div (click)="editField(consent, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
             class="pia-questionBlock-contentText"
@@ -433,7 +436,7 @@
             (focusin)="editField($event.target, ['PIA_LGL_CONS', 'PIA_LGL_INFO', 'PIA_DEF_CONS'])"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'consent'"></app-processing-comments>
-        </div>
+        </div> -->
 
         <div class="form-field" (click)="updateKnowledgeBase()">
           <label class="title">{{ 'processing.form.consent_concerned_people' |

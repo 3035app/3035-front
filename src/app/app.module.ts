@@ -76,6 +76,7 @@ import { ProcessingComponent } from './processing/processing.component';
 import { ProcessingFormComponent} from './processing/processing-form/processing-form.component';
 import { ProcessingService} from './processing/processing.service';
 import { ProcessingDataTypesComponent } from './processing/processing-form/processing-data-types/processing-data-types.component';
+import { ProcessingInformedMentionComponent } from './processing/processing-form/processing-informed-mention/processing-informed-mention.component';
 import { PiasListComponent } from './pias/list/list.component';
 import { PiasListItemComponent } from './pias/list/item/item.component';
 import { ProcessingDataTypeService } from '@api/service';
@@ -181,6 +182,7 @@ export function createTranslateLoader(http: HttpClient) {
     ProcessingComponent,
     ProcessingFormComponent,
     ProcessingDataTypesComponent,
+    ProcessingInformedMentionComponent,
     PiasListComponent,
     PiasListItemComponent,
     EditableFieldComponent,
