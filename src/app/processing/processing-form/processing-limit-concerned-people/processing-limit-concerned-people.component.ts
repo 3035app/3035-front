@@ -5,28 +5,24 @@ import { ProcessingDataTypeApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
 
 @Component({
-  selector: 'app-processing-data-types',
-  templateUrl: './processing-data-types.component.html',
-  styleUrls: ['./processing-data-types.component.scss'],
+  selector: 'app-processing-limit-concerned-people',
+  templateUrl: './processing-limit-concerned-people.component.html',
+  styleUrls: ['./processing-limit-concerned-people.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ProcessingDataTypesComponent),
+      useExisting: forwardRef(() => ProcessingLimitConcernedPeopleComponent),
       multi: true
     }
   ]
 })
 
-export class ProcessingDataTypesComponent implements ControlValueAccessor {
-  public identification: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public personal: Field       = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public professional: Field   = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public financial: Field      = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public log: Field            = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public location: Field       = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public internet: Field       = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public nir: Field            = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public other: Field          = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+export class ProcessingLimitConcernedPeopleComponent implements ControlValueAccessor {
+  public limit_contact_dpo: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public limit_contact_referent: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public limit_customer_area_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public limit_paper_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public limit_other: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
   hasEditPermission: boolean = false;
 
@@ -92,7 +88,7 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
   writeValue(value: any): void {
     if (value) {
       value.forEach((type: ProcessingDataTypeModel) => {
-        if (this[type.reference]) {
+        if (this[type.reference]) { 
           this[type.reference].enabled = true;
           this[type.reference].processingDataType = type;
         }

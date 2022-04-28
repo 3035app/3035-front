@@ -1,0 +1,57 @@
+<div class="row processing-data-types">
+  <div class="processing-data-type small-12" id="subcontractors_obligations_yes-data">
+    <div class="type-enabled">
+      <input type="checkbox" class="field" id="subcontractors_obligations_yes" [disabled]="!hasEditPermission"
+        [(ngModel)]="subcontractors_obligations_yes.enabled"
+        (change)="updateValue('subcontractors_obligations_yes', true)"
+      >
+      <label class="enabled-label" for="subcontractors_obligations_yes">{{ 'processing_subcontractors_obligations.form.yes'| translate }}</label>
+    </div>
+    <div class="type-comment" *ngIf="subcontractors_obligations_yes.enabled">
+      <textarea style="width: 100%"
+        placeholder="{{'processing.comments.comment' | translate}}" 
+        (change)="updateValue('subcontractors_obligations_yes')"
+        [(ngModel)]="subcontractors_obligations_yes.processingDataType.data"
+        [disabled]="!hasEditPermission"
+      ></textarea>
+    </div>
+  </div>
+</div>
+<div class="row processing-data-types">
+  <div class="processing-data-type small-12" id="subcontractors_obligations_no-data">
+    <div class="type-enabled">
+      <input type="checkbox" class="field" id="subcontractors_obligations_no" [disabled]="!hasEditPermission"
+        [(ngModel)]="subcontractors_obligations_no.enabled"
+        (change)="updateValue('subcontractors_obligations_no', true)"
+      >
+      <label class="enabled-label" for="subcontractors_obligations_no">{{ 'processing_subcontractors_obligations.form.no'| translate }}</label>
+    </div>
+    <div class="type-comment" *ngIf="subcontractors_obligations_no.enabled">
+      <textarea style="width: 100%"
+        placeholder="{{'processing.comments.comment' | translate}}" 
+        (change)="updateValue('subcontractors_obligations_no')"
+        [(ngModel)]="subcontractors_obligations_no.processingDataType.data"
+        [disabled]="!hasEditPermission"
+      ></textarea>
+    </div>
+  </div>
+</div>
+<div class="row processing-data-types">
+  <div class="processing-data-type small-12" id="subcontractors_obligations_partially-data">
+    <div class="type-enabled">
+      <input type="checkbox" class="field" id="subcontractors_obligations_partially" [disabled]="!hasEditPermission"
+        [(ngModel)]="subcontractors_obligations_partially.enabled"
+        (change)="updateValue('subcontractors_obligations_partially', true)"
+      >
+      <label class="enabled-label" for="subcontractors_obligations_partially">{{ 'processing_subcontractors_obligations.form.partially'| translate }}</label>
+    </div>
+    <div class="type-comment" *ngIf="subcontractors_obligations_partially.enabled">
+      <textarea style="width: 100%"
+        placeholder="{{'processing.comments.comment' | translate}}" 
+        (change)="updateValue('subcontractors_obligations_partially')"
+        [(ngModel)]="subcontractors_obligations_partially.processingDataType.data"
+        [disabled]="!hasEditPermission"
+      ></textarea>
+    </div>
+  </div>
+</div>
