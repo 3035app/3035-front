@@ -25,6 +25,7 @@ export class ProcessingInformedConcernedPeopleComponent implements ControlValueA
   public informed_phone: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public informed_other: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
+  @Input() processingStatus: number;
   hasEditPermission: boolean = false;
 
 

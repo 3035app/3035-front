@@ -1,7 +1,7 @@
 <div class="row processing-data-types">
   <div class="processing-data-type small-12" id="subcontractors_obligations_yes-data">
     <div class="type-enabled">
-      <input type="checkbox" class="field" id="subcontractors_obligations_yes" [disabled]="!hasEditPermission"
+      <input type="checkbox" class="field" id="subcontractors_obligations_yes" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="subcontractors_obligations_yes.enabled"
         (change)="updateValue('subcontractors_obligations_yes', true)"
       >
@@ -12,7 +12,7 @@
         placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('subcontractors_obligations_yes')"
         [(ngModel)]="subcontractors_obligations_yes.processingDataType.data"
-        [disabled]="!hasEditPermission"
+        [disabled]="!hasEditPermission || processingStatus >= 1"
       ></textarea>
     </div>
   </div>
@@ -20,7 +20,7 @@
 <div class="row processing-data-types">
   <div class="processing-data-type small-12" id="subcontractors_obligations_no-data">
     <div class="type-enabled">
-      <input type="checkbox" class="field" id="subcontractors_obligations_no" [disabled]="!hasEditPermission"
+      <input type="checkbox" class="field" id="subcontractors_obligations_no" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="subcontractors_obligations_no.enabled"
         (change)="updateValue('subcontractors_obligations_no', true)"
       >
@@ -31,7 +31,7 @@
         placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('subcontractors_obligations_no')"
         [(ngModel)]="subcontractors_obligations_no.processingDataType.data"
-        [disabled]="!hasEditPermission"
+        [disabled]="!hasEditPermission || processingStatus >= 1"
       ></textarea>
     </div>
   </div>
@@ -39,7 +39,7 @@
 <div class="row processing-data-types">
   <div class="processing-data-type small-12" id="subcontractors_obligations_partially-data">
     <div class="type-enabled">
-      <input type="checkbox" class="field" id="subcontractors_obligations_partially" [disabled]="!hasEditPermission"
+      <input type="checkbox" class="field" id="subcontractors_obligations_partially" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="subcontractors_obligations_partially.enabled"
         (change)="updateValue('subcontractors_obligations_partially', true)"
       >
@@ -50,7 +50,7 @@
         placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('subcontractors_obligations_partially')"
         [(ngModel)]="subcontractors_obligations_partially.processingDataType.data"
-        [disabled]="!hasEditPermission"
+        [disabled]="!hasEditPermission || processingStatus >= 1"
       ></textarea>
     </div>
   </div>

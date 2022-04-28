@@ -24,6 +24,7 @@ export class ProcessingDeleteConcernedPeopleComponent implements ControlValueAcc
   public delete_paper_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public delete_other: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
+  @Input() processingStatus: number;
   hasEditPermission: boolean = false;
 
 

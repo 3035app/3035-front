@@ -27,6 +27,7 @@ export class ProcessingConsentConcernedPeopleComponent implements ControlValueAc
   public consent_signing_standard_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public consent_other: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
+  @Input() processingStatus: number;
   hasEditPermission: boolean = false;
 
 

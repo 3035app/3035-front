@@ -1,7 +1,7 @@
 <div class="row processing-data-types">
   <div class="processing-data-type small-12" id="delete_contact_dpo-data">
     <div class="type-enabled">
-      <input type="checkbox" class="field" id="delete_contact_dpo" [disabled]="!hasEditPermission"
+      <input type="checkbox" class="field" id="delete_contact_dpo" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="delete_contact_dpo.enabled"
         (change)="updateValue('delete_contact_dpo', true)"
       >
@@ -12,7 +12,7 @@
         placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('delete_contact_dpo')"
         [(ngModel)]="delete_contact_dpo.processingDataType.data"
-        [disabled]="!hasEditPermission"
+        [disabled]="!hasEditPermission || processingStatus >= 1"
       ></textarea>
     </div>
   </div>
@@ -20,7 +20,7 @@
 <div class="row processing-data-types">
   <div class="processing-data-type small-12" id="delete_contact_referent-data">
     <div class="type-enabled">
-      <input type="checkbox" class="field" id="delete_contact_referent" [disabled]="!hasEditPermission"
+      <input type="checkbox" class="field" id="delete_contact_referent" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="delete_contact_referent.enabled"
         (change)="updateValue('delete_contact_referent', true)"
       >
@@ -31,7 +31,7 @@
         placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('delete_contact_referent')"
         [(ngModel)]="delete_contact_referent.processingDataType.data"
-        [disabled]="!hasEditPermission"
+        [disabled]="!hasEditPermission || processingStatus >= 1"
       ></textarea>
     </div>
   </div>
@@ -39,7 +39,7 @@
 <div class="row processing-data-types">
   <div class="processing-data-type small-12" id="delete_customer_area_form-data">
     <div class="type-enabled">
-      <input type="checkbox" class="field" id="delete_customer_area_form" [disabled]="!hasEditPermission"
+      <input type="checkbox" class="field" id="delete_customer_area_form" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="delete_customer_area_form.enabled"
         (change)="updateValue('delete_customer_area_form', true)"
       >
@@ -50,7 +50,7 @@
         placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('delete_customer_area_form')"
         [(ngModel)]="delete_customer_area_form.processingDataType.data"
-        [disabled]="!hasEditPermission"
+        [disabled]="!hasEditPermission || processingStatus >= 1"
       ></textarea>
     </div>
   </div>
@@ -58,7 +58,7 @@
 <div class="row processing-data-types">
   <div class="processing-data-type small-12" id="delete_paper_form-data">
     <div class="type-enabled">
-      <input type="checkbox" class="field" id="delete_paper_form" [disabled]="!hasEditPermission"
+      <input type="checkbox" class="field" id="delete_paper_form" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="delete_paper_form.enabled"
         (change)="updateValue('delete_paper_form', true)"
       >
@@ -69,7 +69,7 @@
         placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('delete_paper_form')"
         [(ngModel)]="delete_paper_form.processingDataType.data"
-        [disabled]="!hasEditPermission"
+        [disabled]="!hasEditPermission || processingStatus >= 1"
       ></textarea>
     </div>
   </div>
@@ -77,7 +77,7 @@
 <div class="row processing-data-types">
   <div class="processing-data-type small-12" id="delete_other-data">
     <div class="type-enabled">
-      <input type="checkbox" class="field" id="delete_other" [disabled]="!hasEditPermission"
+      <input type="checkbox" class="field" id="delete_other" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="delete_other.enabled"
         (change)="updateValue('delete_other', true)"
       >
@@ -88,7 +88,7 @@
         placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('delete_other')"
         [(ngModel)]="delete_other.processingDataType.data"
-        [disabled]="!hasEditPermission"
+        [disabled]="!hasEditPermission || processingStatus >= 1"
       ></textarea>
     </div>
   </div>

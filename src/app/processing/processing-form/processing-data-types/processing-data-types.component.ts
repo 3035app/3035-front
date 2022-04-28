@@ -28,6 +28,7 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
   public nir: Field            = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public other: Field          = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
+  @Input() processingStatus: number;
   hasEditPermission: boolean = false;
 
 

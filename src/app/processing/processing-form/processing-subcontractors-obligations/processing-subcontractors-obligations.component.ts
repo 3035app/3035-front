@@ -22,6 +22,7 @@ export class ProcessingSubcontractorsObligationsComponent implements ControlValu
   public subcontractors_obligations_no: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public subcontractors_obligations_partially: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
+  @Input() processingStatus: number;
   hasEditPermission: boolean = false;
 
 

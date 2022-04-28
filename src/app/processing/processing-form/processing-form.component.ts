@@ -42,6 +42,7 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.processing)
     this.isFullyFilled();
   }
 
@@ -81,7 +82,7 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
    */
   editField(element: any, knowledgeBaseItemIdentifier?: string[]) {
     this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
-      if (hasPerm) {
+      if (hasPerm && this.processing.status < 1) {
         this.elementId = element.id;
 
         this.loadEditor(element);

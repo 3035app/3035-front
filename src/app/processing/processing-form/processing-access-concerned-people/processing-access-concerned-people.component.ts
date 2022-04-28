@@ -24,6 +24,7 @@ export class ProcessingAccessConcernedPeopleComponent implements ControlValueAcc
   public access_paper_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   public access_other: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
+  @Input() processingStatus: number;
   hasEditPermission: boolean = false;
 
 
