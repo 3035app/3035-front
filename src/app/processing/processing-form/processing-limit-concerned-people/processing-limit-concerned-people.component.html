@@ -1,0 +1,95 @@
+<div class="row processing-data-types">
+  <div class="processing-data-type small-12" id="limit_contact_dpo-data">
+    <div class="type-enabled">
+      <input type="checkbox" class="field" id="limit_contact_dpo" [disabled]="!hasEditPermission"
+        [(ngModel)]="limit_contact_dpo.enabled"
+        (change)="updateValue('limit_contact_dpo', true)"
+      >
+      <label class="enabled-label" for="limit_contact_dpo">{{ 'processing_limit_concerned_people.form.contact_dpo'| translate }}</label>
+    </div>
+    <div class="type-comment" *ngIf="limit_contact_dpo.enabled">
+      <textarea style="width: 100%"
+        placeholder="{{'processing.comments.comment' | translate}}" 
+        (change)="updateValue('limit_contact_dpo')"
+        [(ngModel)]="limit_contact_dpo.processingDataType.data"
+        [disabled]="!hasEditPermission"
+      ></textarea>
+    </div>
+  </div>
+</div>
+<div class="row processing-data-types">
+  <div class="processing-data-type small-12" id="limit_contact_referent-data">
+    <div class="type-enabled">
+      <input type="checkbox" class="field" id="limit_contact_referent" [disabled]="!hasEditPermission"
+        [(ngModel)]="limit_contact_referent.enabled"
+        (change)="updateValue('limit_contact_referent', true)"
+      >
+      <label class="enabled-label" for="limit_contact_referent">{{ 'processing_limit_concerned_people.form.contact_referent'| translate }}</label>
+    </div>
+    <div class="type-comment" *ngIf="limit_contact_referent.enabled">
+      <textarea style="width: 100%"
+        placeholder="{{'processing.comments.comment' | translate}}" 
+        (change)="updateValue('limit_contact_referent')"
+        [(ngModel)]="limit_contact_referent.processingDataType.data"
+        [disabled]="!hasEditPermission"
+      ></textarea>
+    </div>
+  </div>
+</div>
+<div class="row processing-data-types">
+  <div class="processing-data-type small-12" id="limit_customer_area_form-data">
+    <div class="type-enabled">
+      <input type="checkbox" class="field" id="limit_customer_area_form" [disabled]="!hasEditPermission"
+        [(ngModel)]="limit_customer_area_form.enabled"
+        (change)="updateValue('limit_customer_area_form', true)"
+      >
+      <label class="enabled-label" for="limit_customer_area_form">{{ 'processing_limit_concerned_people.form.customer_area_form'| translate }}</label>
+    </div>
+    <div class="type-comment" *ngIf="limit_customer_area_form.enabled">
+      <textarea style="width: 100%"
+        placeholder="{{'processing.comments.comment' | translate}}" 
+        (change)="updateValue('limit_customer_area_form')"
+        [(ngModel)]="limit_customer_area_form.processingDataType.data"
+        [disabled]="!hasEditPermission"
+      ></textarea>
+    </div>
+  </div>
+</div>
+<div class="row processing-data-types">
+  <div class="processing-data-type small-12" id="limit_paper_form-data">
+    <div class="type-enabled">
+      <input type="checkbox" class="field" id="limit_paper_form" [disabled]="!hasEditPermission"
+        [(ngModel)]="limit_paper_form.enabled"
+        (change)="updateValue('limit_paper_form', true)"
+      >
+      <label class="enabled-label" for="limit_paper_form">{{ 'processing_limit_concerned_people.form.paper_form'| translate }}</label>
+    </div>
+    <div class="type-comment" *ngIf="limit_paper_form.enabled">
+      <textarea style="width: 100%"
+        placeholder="{{'processing.comments.comment' | translate}}" 
+        (change)="updateValue('limit_paper_form')"
+        [(ngModel)]="limit_paper_form.processingDataType.data"
+        [disabled]="!hasEditPermission"
+      ></textarea>
+    </div>
+  </div>
+</div>
+<div class="row processing-data-types">
+  <div class="processing-data-type small-12" id="limit_other-data">
+    <div class="type-enabled">
+      <input type="checkbox" class="field" id="limit_other" [disabled]="!hasEditPermission"
+        [(ngModel)]="limit_other.enabled"
+        (change)="updateValue('limit_other', true)"
+      >
+      <label class="enabled-label" for="limit_other">{{ 'processing_limit_concerned_people.form.other'| translate }}</label>
+    </div>
+    <div class="type-comment" *ngIf="limit_other.enabled">
+      <textarea style="width: 100%"
+        placeholder="{{'processing.comments.comment' | translate}}" 
+        (change)="updateValue('limit_other')"
+        [(ngModel)]="limit_other.processingDataType.data"
+        [disabled]="!hasEditPermission"
+      ></textarea>
+    </div>
+  </div>
+</div>

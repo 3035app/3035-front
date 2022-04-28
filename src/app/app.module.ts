@@ -76,7 +76,12 @@ import { ProcessingComponent } from './processing/processing.component';
 import { ProcessingFormComponent} from './processing/processing-form/processing-form.component';
 import { ProcessingService} from './processing/processing.service';
 import { ProcessingDataTypesComponent } from './processing/processing-form/processing-data-types/processing-data-types.component';
-import { ProcessingInformedMentionComponent } from './processing/processing-form/processing-informed-mention/processing-informed-mention.component';
+import { ProcessingInformedConcernedPeopleComponent } from './processing/processing-form/processing-informed-concerned-people/processing-informed-concerned-people.component';
+import { ProcessingConsentConcernedPeopleComponent } from './processing/processing-form/processing-consent-concerned-people/processing-consent-concerned-people.component';
+import { ProcessingAccessConcernedPeopleComponent } from './processing/processing-form/processing-access-concerned-people/processing-access-concerned-people.component';
+import { ProcessingDeleteConcernedPeopleComponent } from './processing/processing-form/processing-delete-concerned-people/processing-delete-concerned-people.component';
+import { ProcessingLimitConcernedPeopleComponent } from './processing/processing-form/processing-limit-concerned-people/processing-limit-concerned-people.component';
+import { ProcessingSubcontractorsObligationsComponent } from './processing/processing-form/processing-subcontractors-obligations/processing-subcontractors-obligations.component';
 import { PiasListComponent } from './pias/list/list.component';
 import { PiasListItemComponent } from './pias/list/item/item.component';
 import { ProcessingDataTypeService } from '@api/service';
@@ -182,7 +187,12 @@ export function createTranslateLoader(http: HttpClient) {
     ProcessingComponent,
     ProcessingFormComponent,
     ProcessingDataTypesComponent,
-    ProcessingInformedMentionComponent,
+    ProcessingInformedConcernedPeopleComponent,
+    ProcessingConsentConcernedPeopleComponent,
+    ProcessingAccessConcernedPeopleComponent,
+    ProcessingDeleteConcernedPeopleComponent,
+    ProcessingLimitConcernedPeopleComponent,
+    ProcessingSubcontractorsObligationsComponent,
     PiasListComponent,
     PiasListItemComponent,
     EditableFieldComponent,

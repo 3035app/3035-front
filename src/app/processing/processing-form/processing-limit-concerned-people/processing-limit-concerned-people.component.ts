@@ -5,25 +5,24 @@ import { ProcessingDataTypeApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
 
 @Component({
-  selector: 'app-processing-informed-mention',
-  templateUrl: './processing-informed-mention.component.html',
-  styleUrls: ['./processing-informed-mention.component.scss'],
+  selector: 'app-processing-limit-concerned-people',
+  templateUrl: './processing-limit-concerned-people.component.html',
+  styleUrls: ['./processing-limit-concerned-people.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ProcessingInformedMentionComponent),
+      useExisting: forwardRef(() => ProcessingLimitConcernedPeopleComponent),
       multi: true
     }
   ]
 })
 
-export class ProcessingInformedMentionComponent implements ControlValueAccessor {
-  public informed_mention_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public informed_mention_contract: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public informed_terms: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public informed_display: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public informed_phone: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public informed_other: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+export class ProcessingLimitConcernedPeopleComponent implements ControlValueAccessor {
+  public limit_contact_dpo: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public limit_contact_referent: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public limit_customer_area_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public limit_paper_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public limit_other: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
   hasEditPermission: boolean = false;
 
