@@ -5,28 +5,27 @@ import { ProcessingDataTypeApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
 
 @Component({
-  selector: 'app-processing-data-types',
-  templateUrl: './processing-data-types.component.html',
-  styleUrls: ['./processing-data-types.component.scss'],
+  selector: 'app-processing-consent-concerned-people',
+  templateUrl: './processing-consent-concerned-people.component.html',
+  styleUrls: ['./processing-consent-concerned-people.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ProcessingDataTypesComponent),
+      useExisting: forwardRef(() => ProcessingConsentConcernedPeopleComponent),
       multi: true
     }
   ]
 })
 
-export class ProcessingDataTypesComponent implements ControlValueAccessor {
-  public identification: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public personal: Field       = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public professional: Field   = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public financial: Field      = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public log: Field            = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public location: Field       = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public internet: Field       = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public nir: Field            = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
-  public other: Field          = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+export class ProcessingConsentConcernedPeopleComponent implements ControlValueAccessor {
+  public consent_optin_website: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public consent_optin_user_space: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public consent_phone: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public consent_paper: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public consent_signing_paper_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public consent_signing_contract: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public consent_signing_standard_form: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
+  public consent_other: Field = {enabled: false, processingDataType: new ProcessingDataTypeModel()};
   @Input() processingId: number;
   hasEditPermission: boolean = false;
 
@@ -92,7 +91,7 @@ export class ProcessingDataTypesComponent implements ControlValueAccessor {
   writeValue(value: any): void {
     if (value) {
       value.forEach((type: ProcessingDataTypeModel) => {
-        if (this[type.reference]) {
+        if (this[type.reference]) { 
           this[type.reference].enabled = true;
           this[type.reference].processingDataType = type;
         }
