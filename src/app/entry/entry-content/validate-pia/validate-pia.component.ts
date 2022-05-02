@@ -6,6 +6,8 @@ import { ModalsService } from 'app/modals/modals.service';
 import { AttachmentsService } from 'app/entry/attachments/attachments.service';
 import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-plan.service';
 import { TranslateService } from '@ngx-translate/core';
+import { createTokenForExternalReference } from '@angular/compiler/src/identifiers';
+import { AppDataService } from '../../../services/app-data.service';
 
 @Component({
   selector: 'app-validate-pia',
@@ -19,14 +21,24 @@ export class ValidatePIAComponent implements OnInit {
   validateForm: FormGroup;
   attachment: any;
 
-  constructor(private el: ElementRef,
+  constructor(
+    private el: ElementRef,
     private _modalsService: ModalsService,
     public _attachmentsService: AttachmentsService,
     private _actionPlanService: ActionPlanService,
     private _translateService: TranslateService,
-    public _piaService: PiaService) { }
+    public _piaService: PiaService,
+    private _appDataService: AppDataService
+  ) { }
 
   ngOnInit() {
+    if (this._appDataService.allUsers) {
+      this._appDataService.allUsers.forEach((user) => {
+        if (user.id === this._piaService.pia.processing.supervisors.data_controller_id) {
+          this._piaService.pia.validator_name = `${user.firstName} ${user.lastName}`
+        }
+      });
+    }
     this.validateForm = new FormGroup({
       validateStatus1: new FormControl(),
       validateStatus2: new FormControl(),

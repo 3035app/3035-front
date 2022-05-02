@@ -1230,7 +1230,7 @@
   },
   "validation_page": {
     "responsible": "Responsable de la validation du PIA : ",
-    "after_reading": "Après lecture intégrale du PIA concernant le traitement des données liées à l'activité de : ",
+    "after_reading": "Après lecture intégrale du PIA : ",
     "confirmation1": "Je confirme que la description du contexte de mon traitement est conforme à la réalité.",
     "confirmation2": "Je confirme avoir pris connaissance des risques existants en fonction des mesures actuellement mises en oeuvre ou prévues.",
     "confirmation3": "Je valide les mesures correctives indiquées.",

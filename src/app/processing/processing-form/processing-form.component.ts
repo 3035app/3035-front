@@ -42,7 +42,6 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.processing)
     this.isFullyFilled();
   }
 

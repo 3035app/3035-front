@@ -11,7 +11,7 @@ import { AuthenticationService } from '@security/authentication.service';
 export class AppDataService {
 
   private dataNav = { sections: null };
-  private allUsers: any;
+  public allUsers: any;
 
   constructor(
     private http: HttpClient,
