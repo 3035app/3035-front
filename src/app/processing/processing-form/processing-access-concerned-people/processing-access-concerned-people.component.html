@@ -9,7 +9,6 @@
     </div>
     <div class="type-comment" *ngIf="access_contact_dpo.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('access_contact_dpo')"
         [(ngModel)]="access_contact_dpo.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -28,7 +27,6 @@
     </div>
     <div class="type-comment" *ngIf="access_contact_referent.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('access_contact_referent')"
         [(ngModel)]="access_contact_referent.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -47,7 +45,6 @@
     </div>
     <div class="type-comment" *ngIf="access_customer_area_form.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('access_customer_area_form')"
         [(ngModel)]="access_customer_area_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -66,7 +63,6 @@
     </div>
     <div class="type-comment" *ngIf="access_paper_form.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('access_paper_form')"
         [(ngModel)]="access_paper_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -85,7 +81,6 @@
     </div>
     <div class="type-comment" *ngIf="access_other.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('access_other')"
         [(ngModel)]="access_other.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"

@@ -9,7 +9,6 @@
     </div>
     <div class="type-comment" *ngIf="subcontractors_obligations_yes.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('subcontractors_obligations_yes')"
         [(ngModel)]="subcontractors_obligations_yes.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -28,7 +27,6 @@
     </div>
     <div class="type-comment" *ngIf="subcontractors_obligations_no.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('subcontractors_obligations_no')"
         [(ngModel)]="subcontractors_obligations_no.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -47,7 +45,6 @@
     </div>
     <div class="type-comment" *ngIf="subcontractors_obligations_partially.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('subcontractors_obligations_partially')"
         [(ngModel)]="subcontractors_obligations_partially.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"

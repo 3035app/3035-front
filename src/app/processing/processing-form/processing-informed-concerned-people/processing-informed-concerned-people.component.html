@@ -9,7 +9,6 @@
     </div>
     <div class="type-comment" *ngIf="informed_mention_form.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('informed_mention_form')"
         [(ngModel)]="informed_mention_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -28,7 +27,6 @@
     </div>
     <div class="type-comment" *ngIf="informed_mention_contract.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('informed_mention_contract')"
         [(ngModel)]="informed_mention_contract.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -47,7 +45,6 @@
     </div>
     <div class="type-comment" *ngIf="informed_terms.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('informed_terms')"
         [(ngModel)]="informed_terms.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -66,7 +63,6 @@
     </div>
     <div class="type-comment" *ngIf="informed_display.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('informed_display')"
         [(ngModel)]="informed_display.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -85,7 +81,6 @@
     </div>
     <div class="type-comment" *ngIf="informed_phone.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('informed_phone')"
         [(ngModel)]="informed_phone.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -104,7 +99,6 @@
     </div>
     <div class="type-comment" *ngIf="informed_other.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('informed_other')"
         [(ngModel)]="informed_other.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"

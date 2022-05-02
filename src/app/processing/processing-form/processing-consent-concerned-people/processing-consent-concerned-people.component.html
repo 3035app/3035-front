@@ -9,7 +9,6 @@
     </div>
     <div class="type-comment" *ngIf="consent_optin_website.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('consent_optin_website')"
         [(ngModel)]="consent_optin_website.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -28,7 +27,6 @@
     </div>
     <div class="type-comment" *ngIf="consent_optin_user_space.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('consent_optin_user_space')"
         [(ngModel)]="consent_optin_user_space.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -47,7 +45,6 @@
     </div>
     <div class="type-comment" *ngIf="consent_phone.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('consent_phone')"
         [(ngModel)]="consent_phone.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -66,7 +63,6 @@
     </div>
     <div class="type-comment" *ngIf="consent_paper.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('consent_paper')"
         [(ngModel)]="consent_paper.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -85,7 +81,6 @@
     </div>
     <div class="type-comment" *ngIf="consent_signing_paper_form.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('consent_signing_paper_form')"
         [(ngModel)]="consent_signing_paper_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -104,7 +99,6 @@
     </div>
     <div class="type-comment" *ngIf="consent_signing_contract.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('consent_signing_contract')"
         [(ngModel)]="consent_signing_contract.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -123,7 +117,6 @@
     </div>
     <div class="type-comment" *ngIf="consent_signing_standard_form.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('consent_signing_standard_form')"
         [(ngModel)]="consent_signing_standard_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -142,7 +135,6 @@
     </div>
     <div class="type-comment" *ngIf="consent_other.enabled">
       <textarea style="width: 100%"
-        placeholder="{{'processing.comments.comment' | translate}}" 
         (change)="updateValue('consent_other')"
         [(ngModel)]="consent_other.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
