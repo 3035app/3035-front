@@ -27,8 +27,11 @@
   &-item {
     padding: 9px;
     background-color: $pia-full-white;
+    display: flex;
+    flex-direction: column;
     padding-top: 6px;
     position: relative;
+    min-height: 484px;
     &-attachment {
       display: inline-block;
       position: absolute;
@@ -146,6 +149,10 @@
       }
     }
     &-form {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
       div {
         label {
           color: $pia-green;
@@ -173,7 +180,7 @@
           input {
             margin-top: 0;
             font-size: 2.1rem;
-            padding-bottom: 23px;
+            // padding-bottom: 23px;
             height: auto;
           }
         }
@@ -226,8 +233,12 @@
     }
     &-btn {
       border-top: 1px solid $pia-green;
+      // bottom: 9px;
+      // left: 9px;
       margin-top: 8px;
       padding-top: 9px;
+      // position: absolute;
+      // right: 9px;
       text-align: center;
       a,
       button {

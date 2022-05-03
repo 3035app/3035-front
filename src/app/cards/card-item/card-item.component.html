@@ -19,10 +19,6 @@
                   <i class="fa fa-files-o" aria-hidden="true"></i>
                   <a href="javascript:;" (click)="duplicateProcessing()">{{ 'homepage.cards.item.tools.duplicate' | translate }}</a>
                 </li>
-                <!-- <li>
-                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                  <a routerLink="/processing/{{processing.id}}/pias" [innerHTML]="'homepage.cards.item.tools.show_pias' | translate"></a>
-                </li> -->
                 <li *ngIf="lastPia">
                   <i class="fa fa-file-text-o" aria-hidden="true"></i>
                   <a routerLink="/summary/{{lastPia.id}}" [innerHTML]="'homepage.cards.item.tools.show_pia' | translate"></a>
@@ -43,64 +39,66 @@
 
       <form class="pia-cardsBlock-item-form"
             [formGroup]="processingForm">
-          <input type="hidden" formControlName="id">
-          <div (click)="processingNameFocusIn()">
-              <label for="pia-edit-name[{{processing.id}}]">{{ 'homepage.cards.processing_name' | translate }}</label>
-              <input type="text"
-                     #processingName
-                     formControlName="name"
-                     required
-                     placeholder="{{ 'homepage.cards.placeholder_processing_name' | translate }}"
-                     id="pia-edit-name[{{processing.id}}]"
-                     (focusout)="processingNameFocusOut()">
+          <div class="form-group">
+            <input type="hidden" formControlName="id">
+            <div (click)="processingNameFocusIn()">
+                <label for="pia-edit-name[{{processing.id}}]">{{ 'homepage.cards.processing_name' | translate }}</label>
+                <input type="text"
+                       #processingName
+                       formControlName="name"
+                       required
+                       placeholder="{{ 'homepage.cards.placeholder_processing_name' | translate }}"
+                       id="pia-edit-name[{{processing.id}}]"
+                       (focusout)="processingNameFocusOut()">
+            </div>
+            <div>
+                <label for="pia-edit-redactor-name[{{processing.id}}]">{{ 'homepage.cards.redactor' | translate }}</label>
+                <ng-select formControlName="redactors_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}" id="pia-edit-redactor-name[{{processing.id}}]" (change)="processingRedactorChange()" [multiple]="true">
+                  <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                    {{user.roles}}</ng-option>
+                </ng-select>
+            </div>
+            <div>
+                <label for="pia-edit-evaluator-name[{{processing.id}}]">{{ 'homepage.cards.evaluator' | translate }}</label>
+                <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluator' | translate }}" id="pia-edit-evaluator-name[{{processing.id}}]" (change)="processingEvaluatorChange()">
+                  <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                    {{user.roles}}</ng-option>
+                </ng-select>
+            </div>
+            <div>
+                <label for="pia-edit-data-protection-officer-name[{{processing.id}}]">{{ 'homepage.cards.data_protection_officer' | translate }}</label>
+                <ng-select formControlName="data_protection_officer_id" placeholder="{{ 'homepage.cards.placeholder_data_protection_officer' | translate }}" id="pia-edit-data-protection-officer-name[{{processing.id}}]" (change)="processingDPOChange()">
+                  <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                    {{user.roles}}</ng-option>
+                </ng-select>
+            </div>
+            <div>
+                <label for="pia-edit-designated-controller[{{processing.id}}]">{{ 'homepage.cards.data_controller' | translate }}</label>
+                <ng-select formControlName="data_controller_id" placeholder="{{ 'homepage.cards.placeholder_data_controller' | translate }}"
+                  id="pia-edit-author-name[{{processing.id}}]" (change)="processingDataControllerChange()">
+                  <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
+                    {{user.roles}}</ng-option>
+                </ng-select>
+            </div>
+          <div class="pia-cardsBlock-item-flex">
+            <div class="pia-cardsBlock-item-date">
+                <div>{{ 'homepage.cards.date' | translate }}</div>
+                <time>{{ processing.created_at | date: 'dd/MM/yyyy' }}</time>
+            </div>
+            <div class="pia-cardsBlock-item-status">
+                <div class="pia-cardsBlock-item-status-infos">
+                    <div>{{ 'homepage.cards.status' | translate }}</div>
+                    <div>
+                      {{ ('processing.statuses.' + processing.status) | translate }}
+                    </div>
+                </div>
+            </div>
           </div>
-          <div>
-              <label for="pia-edit-redactor-name[{{processing.id}}]">{{ 'homepage.cards.redactor' | translate }}</label>
-              <ng-select formControlName="redactors_id" placeholder="{{ 'homepage.cards.placeholder_redactor' | translate }}" id="pia-edit-redactor-name[{{processing.id}}]" (change)="processingRedactorChange()" [multiple]="true">
-                <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
-                  {{user.roles}}</ng-option>
-              </ng-select>
+          <div class="pia-cardsBlock-item-pias-number">
+            <label for="pia-edit-validator-name">{{ 'homepage.cards.pias_number' | translate }}</label>
+            <div>{{ processing.pias_count }}</div>
           </div>
-          <div>
-              <label for="pia-edit-evaluator-name[{{processing.id}}]">{{ 'homepage.cards.evaluator' | translate }}</label>
-              <ng-select formControlName="evaluator_id" placeholder="{{ 'homepage.cards.placeholder_evaluator' | translate }}" id="pia-edit-evaluator-name[{{processing.id}}]" (change)="processingEvaluatorChange()">
-                <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
-                  {{user.roles}}</ng-option>
-              </ng-select>
           </div>
-          <div>
-              <label for="pia-edit-data-protection-officer-name[{{processing.id}}]">{{ 'homepage.cards.data_protection_officer' | translate }}</label>
-              <ng-select formControlName="data_protection_officer_id" placeholder="{{ 'homepage.cards.placeholder_data_protection_officer' | translate }}" id="pia-edit-data-protection-officer-name[{{processing.id}}]" (change)="processingDPOChange()">
-                <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
-                  {{user.roles}}</ng-option>
-              </ng-select>
-          </div>
-          <div>
-              <label for="pia-edit-designated-controller[{{processing.id}}]">{{ 'homepage.cards.data_controller' | translate }}</label>
-              <ng-select formControlName="data_controller_id" placeholder="{{ 'homepage.cards.placeholder_data_controller' | translate }}"
-                id="pia-edit-author-name[{{processing.id}}]" (change)="processingDataControllerChange()">
-                <ng-option *ngFor="let user of appDataService.allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}} -
-                  {{user.roles}}</ng-option>
-              </ng-select>
-          </div>
-        <div class="pia-cardsBlock-item-flex">
-          <div class="pia-cardsBlock-item-date">
-              <div>{{ 'homepage.cards.date' | translate }}</div>
-              <time>{{ processing.created_at | date: 'dd/MM/yyyy' }}</time>
-          </div>
-          <div class="pia-cardsBlock-item-status">
-              <div class="pia-cardsBlock-item-status-infos">
-                  <div>{{ 'homepage.cards.status' | translate }}</div>
-                  <div>
-                    {{ ('processing.statuses.' + processing.status) | translate }}
-                  </div>
-              </div>
-          </div>
-        </div>
-        <div class="pia-cardsBlock-item-pias-number">
-          <label for="pia-edit-validator-name">{{ 'homepage.cards.pias_number' | translate }}</label>
-          <div>{{ processing.pias_count }}</div>
-        </div>
         <div class="pia-cardsBlock-item-btn bottom-actions">
           <a routerLink="/processing/{{processing.id}}" class="btn btn-edit btn-green">{{ (tenant === "sncf" ? 'homepage.cards.item.consult_pia' : 'homepage.cards.item.consult_processing') | translate }}</a>
         </div>
