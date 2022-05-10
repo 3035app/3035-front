@@ -10,7 +10,7 @@ import { PiaService } from 'app/entry/pia.service';
 import { environment } from 'environments/environment';
 
 import { FolderModel, ProcessingModel, EvaluationModel } from '@api/models';
-import { FolderApi, ProcessingApi, MeasureApi, EvaluationApi, PiaApi, AnswerApi } from '@api/services';
+import { FolderApi, ProcessingApi, MeasureApi, EvaluationApi, PiaApi, AnswerApi, CommentApi } from '@api/services';
 import { PermissionsService } from '@security/permissions.service';
 import { ProfileSession } from '../services/profile-session.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -33,7 +33,6 @@ interface ProcessingCsvRow {
   created_at: string;
   updated_at: string;
   concerned_people: string;
-  consent: string;
   context_of_implementation: string;
   controllers: string;
   description: string;
@@ -45,17 +44,22 @@ interface ProcessingCsvRow {
   name: string;
   non_eu_transfer: string;
   processors: string;
-  rights_guarantee: string;
   standards: string;
   status: string;
   storage: string;
   processing_data_types: string;
   recipients: string;
+  comments: string;
+  informed_concerned_people: string,
+  consent_concerned_people: string,
+  access_concerned_people: string,
+  delete_concerned_people: string,
+  limit_concerned_people: string,
+  subcontractors_obligations: string,
 }
 
 
 interface PiaCsvRow {
-  id: number;
   processing_id: number;
   author_name: string;
   concerned_people_opinion: string;
@@ -88,7 +92,6 @@ interface PiaCsvRow {
 export class CardsComponent implements OnInit {
   newProcessing: ProcessingModel;
   processingForm: FormGroup;
-  // importPiaForm: FormGroup;
   sortOrder: string;
   sortValue: string;
   viewStyle: { view: string }
@@ -100,7 +103,6 @@ export class CardsComponent implements OnInit {
   piaToExport: PiaCsvRow[] = [];
   piaToExportOdt: any = [];
   exportIsLoading: boolean = false;
-  // canCreatePIA: boolean;
   canCreateProcessing: boolean;
   selectedFolder: any = [];
   selectedProcessing: any = [];
@@ -119,7 +121,8 @@ export class CardsComponent implements OnInit {
     private folderApi: FolderApi,
     private answerApi: AnswerApi,
     private session: ProfileSession,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private commentApi: CommentApi,
   ) {
     this.tenant = environment.tenant;
    }
@@ -355,20 +358,55 @@ export class CardsComponent implements OnInit {
     </p>`
   }
 
-  getProcessingDataTypes(dataTypes) {
+  getProcessingDataTypes(dataTypes, duration = true, translation = 'processing-data-types') {
     if (!dataTypes) { return''; }
     let processingDataTypes = ``;
 
     dataTypes.forEach(type =>
       processingDataTypes += this.getP(`
-      <p>- ${this.translate.instant(`processing-data-types.form.${type.reference}`)}</p>
+      <p>- ${this.translate.instant(`${translation}.form.${type.reference}`)}</p>
       <p>
-        <span>${this.translate.instant(`processing-data-types.form.retention-period`)}: ${type.retention_period} (${type.sensitive ? this.translate.instant(`processing-data-types.form.sensitive-affirmative`) : ''})</span>
+        <span>${duration ? `${this.translate.instant(`processing-data-types.form.retention-period`)}: ${type.retention_period} (${type.sensitive ? this.translate.instant(`processing-data-types.form.sensitive-affirmative`) : ''})` : ''}</span>
       </p>
+      ${type.data ? `<p>${type.data}</p>` : ''}
       `)
       )
 
     return processingDataTypes;
+  }
+
+  getProcessingComments(comments, field?) {
+    let processingComments = `<p>Commentaires :</p>`;
+    JSON.parse(comments).forEach(comment => {
+      if (comment.field === field) {
+        if (comment.commented_by && comment.commented_by.roles) {
+          const rolesLabel = [];
+          comment.commented_by.roles.forEach(role => {
+            rolesLabel.push(this.translate.instant(`role_description.${role}.label`));
+          })
+        comment.commented_by.rolesLabel = rolesLabel.join('/');
+        }
+        const date = comment.created_at && new Date(comment.created_at);
+        processingComments += `<p>Commentaire ${date && date.toLocaleDateString()} | ${this.translate.instant(`history.created_by`)} ${comment.commented_by.firstName}  | ${comment.commented_by.rolesLabel}</p><p>${comment.content}</p>`
+      }
+    });
+    return processingComments;
+  }
+
+  getPiaComments(comments) {
+    let piaComments = `<p>Commentaires :</p>`;
+    comments.forEach(comment => {
+      if (comment.commented_by && comment.commented_by.roles) {
+        const rolesLabel = [];
+        comment.commented_by.roles.forEach(role => {
+          rolesLabel.push(this.translate.instant(`role_description.${role}.label`));
+        })
+      comment.commented_by.rolesLabel = rolesLabel.join('/');
+      }
+      const date = comment.created_at && new Date(comment.created_at);
+      piaComments += `<p>Commentaire ${date && date.toLocaleDateString()} | ${this.translate.instant(`history.created_by`)} ${comment.commented_by.firstName}  | ${comment.commented_by.rolesLabel}</p><p>${comment.description}</p>`
+    });
+    return piaComments;
   }
 
   getPiaInformation(data) {
@@ -479,7 +517,7 @@ export class CardsComponent implements OnInit {
   }
 
   getProcessing(data: ProcessingCsvRow) {
-    if (!data) {return''}
+    if (!data) { return '' }
     
     return `
       ${this.geth1Title(this.translate.instant('summary.processing')+' "'+data.name+'"')}
@@ -488,55 +526,70 @@ export class CardsComponent implements OnInit {
       ${this.getP(this.translate.instant('processing.path')+': '+data.parent_path)}
 
       ${this.geth2Title(this.translate.instant('processing.form.sections.description.title'))}
-
-      ${this.geth3Title(this.translate.instant('processing.form.description.title'))}
-      ${this.getP(data.description)}
-
+      
       ${this.geth3Title(this.translate.instant('processing.form.context_of_implementation.title'))}
       ${this.getP(data.context_of_implementation)}
-
+      
       ${this.geth3Title(this.translate.instant('processing.form.controllers.title'))}
       ${this.getP(data.controllers)}
-
-      ${this.geth3Title(this.translate.instant('processing.form.lawfulness.title'))}
-      ${this.getP(data.lawfulness)}
-
+      ${this.getProcessingComments(data.comments, 'controllers')}
+      
       ${this.geth3Title(this.translate.instant('processing.form.standards.title'))}
       ${this.getP(data.standards)}
-
-      ${this.geth3Title(this.translate.instant('processing.form.consent.title'))}
-      ${this.getP(data.consent)}
-
-      ${this.geth3Title(this.translate.instant('processing.form.rights_guarantee.title'))}
-      ${this.getP(data.rights_guarantee)}
-
+      
       ${this.geth2Title(this.translate.instant('processing.form.sections.data.title'))}
-
+      
       ${this.geth3Title(this.translate.instant('processing.form.data-types'))}
       ${this.getProcessingDataTypes(JSON.parse(data.processing_data_types))}
 
-      ${this.geth3Title(this.translate.instant('processing.form.concerned_people.title'))}
-      ${this.getP(data.concerned_people)}
-
-      ${this.geth3Title(this.translate.instant('processing.form.exactness.title'))}
-      ${this.getP(data.exactness)}
-
-      ${this.geth3Title(this.translate.instant('processing.form.minimization.title'))}
-      ${this.getP(data.minimization)}
+      ${this.geth3Title(this.translate.instant('processing.form.lifecycle.title'))}
+      ${this.getP(data.life_cycle)}
 
       ${this.geth3Title(this.translate.instant('processing.form.storage.title'))}
       ${this.getP(data.storage)}
 
-      ${this.geth2Title(this.translate.instant('processing.form.sections.lifecycle.title'))}
-
-      ${this.geth3Title(this.translate.instant('processing.form.lifecycle.title'))}
-      ${this.getP(data.life_cycle)}
+      ${this.geth3Title(this.translate.instant('processing.form.concerned_people.title'))}
+      ${this.getP(data.concerned_people)}
 
       ${this.geth3Title(this.translate.instant('processing.form.processors.title'))}
       ${this.getP(data.processors)}
 
       ${this.geth3Title(this.translate.instant('processing.form.recipients.title'))}
       ${this.getP(data.recipients)}
+
+      ${this.geth2Title(this.translate.instant('processing.form.sections.lifecycle.title'))}
+
+      ${this.geth3Title(this.translate.instant('processing.form.description.title'))}
+      ${this.getP(data.description)}
+      
+      ${this.geth3Title(this.translate.instant('processing.form.lawfulness.title'))}
+      ${this.getP(data.lawfulness)}
+
+      ${this.geth3Title(this.translate.instant('processing.form.minimization.title'))}
+      ${this.getP(data.minimization)}
+
+      ${this.geth3Title(this.translate.instant('processing.form.exactness.title'))}
+      ${this.getP(data.exactness)}
+
+      ${this.geth2Title(this.translate.instant('processing.form.sections.measures.title'))}
+
+      ${this.geth3Title(this.translate.instant('processing.form.informed_concerned_people'))}
+      ${this.getProcessingDataTypes(JSON.parse(data.informed_concerned_people), false, 'processing_informed_concerned_people')}
+
+      ${this.geth3Title(this.translate.instant('processing.form.consent_concerned_people'))}
+      ${this.getProcessingDataTypes(JSON.parse(data.consent_concerned_people), false, 'processing_consent_concerned_people')}
+
+      ${this.geth3Title(this.translate.instant('processing.form.access_concerned_people'))}
+      ${this.getProcessingDataTypes(JSON.parse(data.access_concerned_people), false, 'processing_access_concerned_people')}
+
+      ${this.geth3Title(this.translate.instant('processing.form.delete_concerned_people'))}
+      ${this.getProcessingDataTypes(JSON.parse(data.delete_concerned_people), false, 'processing_delete_concerned_people')}
+
+      ${this.geth3Title(this.translate.instant('processing.form.limit_concerned_people'))}
+      ${this.getProcessingDataTypes(JSON.parse(data.limit_concerned_people), false, 'processing_limit_concerned_people')}
+
+      ${this.geth3Title(this.translate.instant('processing.form.subcontractors_obligations'))}
+      ${this.getProcessingDataTypes(JSON.parse(data.subcontractors_obligations), false, 'processing_subcontractors_obligations')}
 
       ${this.geth3Title(this.translate.instant('processing.form.non-eu-transfer.title'))}
       ${this.getP(data.non_eu_transfer)}
@@ -545,7 +598,6 @@ export class CardsComponent implements OnInit {
 
   async getRisks(data) {
     if (!data) {return''};
-
     let risks = `${this.geth2Title(this.translate.instant('sections.3.title'))}`;
     await Promise.all(this._piaService.data.sections.map(async (section) => {
 
@@ -570,6 +622,8 @@ export class CardsComponent implements OnInit {
                   currentRiskSection += `${this.geth4Title(measure.title)}`
                   currentRiskSection += `${this.getP(measure.content)}`
 
+                  const comments = await this.commentApi.getAllByRef(data.id, measure.id).toPromise();
+                  currentRiskSection += `${this.getPiaComments(comments)}`;
                   if(evaluation) {
                     currentRiskSection += `${this.getBorderedEvaluation(this.translate.instant(evaluation.title), evaluation.evaluation_comment)}`
                   }
@@ -579,9 +633,9 @@ export class CardsComponent implements OnInit {
             currentRiskSection += `${this.geth3Title(this.translate.instant(item.title))} <br/>`;
             await Promise.all( item.questions.map(async (question) => {
               const answerModel = await this.answerApi.getByRef(data.id, question.id).toPromise();
-
+              const comments = await this.commentApi.getAllByRef(data.id, question.id).toPromise();
               currentRiskSection += `${this.geth4Title(this.translate.instant(question.title))}`
-
+              
               /* An answer exists */
               if (answerModel && answerModel.data) {
                 const content = [];
@@ -603,6 +657,9 @@ export class CardsComponent implements OnInit {
                       currentRiskSection += `${this.getBorderedEvaluation(this.translate.instant(evaluation.title), evaluation.evaluation_comment)}`
                     }
                   }
+                }
+                if (comments.length > 0) {
+                  currentRiskSection += `${this.getPiaComments(comments)}`;
                 }
               }
             }));
@@ -637,9 +694,6 @@ export class CardsComponent implements OnInit {
     } catch (e) {
       console.log(e)
     }
-
-    //console.info('folderToExport', this.folderToExport)
-    //console.info('processingToExport', this.processingToExport)
 
     let fileData = '';
 
@@ -732,25 +786,31 @@ export class CardsComponent implements OnInit {
         'author',
         'created_at',
         'updated_at',
-        'concerned_people',
-        'consent',
         'context_of_implementation',
         'controllers',
-        'description',
-        'designated_controller',
-        'exactness',
-        'lawfulness',
-        'life_cycle',
-        'minimization',
-        'non_eu_transfer',
-        'processors',
-        'rights_guarantee',
         'standards',
-        'status',
-        'storage',
         'processing_data_types',
-        'recipients'
-      ]}
+        'life_cycle',
+        'storage',
+        'concerned_people',
+        'processors',
+        'recipients',
+        'description',
+        'lawfulness',
+        'minimization',
+        'exactness',
+        'informed_concerned_people',
+        'consent_concerned_people',
+        'access_concerned_people',
+        'delete_concerned_people',
+        'limit_concerned_people',
+        'subcontractors_obligations',
+        'non_eu_transfer',
+        'designated_controller',
+        'status',
+        'comments'
+      ]
+    }
 
     new Angular5Csv(this.processingToExport, 'processing', optionsProcess)
 
@@ -873,6 +933,14 @@ export class CardsComponent implements OnInit {
   }
 
   processingToCsv(processing, parent, id): ProcessingCsvRow {
+    console.log(processing)
+    const processing_data_types = processing.processing_data_types.filter(data => data.reference === 'identification' || data.reference === 'personal' || data.reference === 'professional' || data.reference === 'financial' || data.reference === 'log' || data.reference === 'location' || data.reference === 'internet' || data.reference === 'nir' || data.reference === 'other');
+    const informed_concerned_people = processing.processing_data_types.filter(data => data.reference === 'informed_mention_form' || data.reference === 'informed_mention_contract' || data.reference === 'informed_terms' || data.reference === 'informed_display' || data.reference === 'informed_phone' || data.reference === 'informed_other');
+    const consent_concerned_people = processing.processing_data_types.filter(data => data.reference === 'consent_optin_website' || data.reference === 'consent_optin_user_space' || data.reference === 'consent_phone' || data.reference === 'consent_paper' || data.reference === 'consent_signing_paper_form' || data.reference === 'consent_signing_contract' || data.reference === 'consent_signing_standard_form' || data.reference === 'consent_other');
+    const access_concerned_people = processing.processing_data_types.filter(data => data.reference === 'access_contact_dpo' || data.reference === 'access_contact_referent' || data.reference === 'access_customer_area_form' || data.reference === 'access_paper_form' || data.reference === 'access_other');
+    const delete_concerned_people = processing.processing_data_types.filter(data => data.reference === 'delete_contact_dpo' || data.reference === 'delete_contact_referent' || data.reference === 'delete_customer_area_form' || data.reference === 'delete_paper_form' || data.reference === 'delete_other');
+    const limit_concerned_people = processing.processing_data_types.filter(data => data.reference === 'limit_contact_dpo' || data.reference === 'limit_contact_referent' || data.reference === 'limit_customer_area_form' || data.reference === 'limit_paper_form' || data.reference === 'limit_other');
+    const subcontractors_obligations = processing.processing_data_types.filter(data => data.reference === 'subcontractors_obligations_yes' || data.reference === 'subcontractors_obligations_no' || data.reference === 'subcontractors_obligations_partially');
     return {
       id: id,
       name: processing.name,
@@ -881,24 +949,29 @@ export class CardsComponent implements OnInit {
       author: processing.author,
       created_at: processing.created_at,
       updated_at: processing.updated_at,
-      concerned_people: processing.concerned_people,
-      consent: processing.consent,
       context_of_implementation: processing.context_of_implementation,
       controllers: processing.controllers,
-      description: processing.description,
-      designated_controller: processing.designated_controller,
-      exactness: processing.exactness,
-      lawfulness: processing.lawfulness,
+      standards: processing.standards,
+      processing_data_types: JSON.stringify(processing_data_types),
       life_cycle: processing.life_cycle,
-      minimization: processing.minimization,
-      non_eu_transfer: processing.non_eu_transfer,
-      processing_data_types: JSON.stringify(processing.processing_data_types),
+      storage: processing.storage,
+      concerned_people: processing.concerned_people,
       processors: processing.processors,
       recipients: processing.recipients,
-      rights_guarantee: processing.rights_guarantee,
-      standards: processing.standards,
+      description: processing.description,
+      lawfulness: processing.lawfulness,
+      minimization: processing.minimization,
+      exactness: processing.exactness,
+      informed_concerned_people: JSON.stringify(informed_concerned_people),
+      consent_concerned_people: JSON.stringify(consent_concerned_people),
+      access_concerned_people: JSON.stringify(access_concerned_people),
+      delete_concerned_people: JSON.stringify(delete_concerned_people),
+      limit_concerned_people: JSON.stringify(limit_concerned_people),
+      subcontractors_obligations: JSON.stringify(subcontractors_obligations),
+      non_eu_transfer: processing.non_eu_transfer,
+      designated_controller: processing.designated_controller,
       status: processing.status,
-      storage: processing.storage
+      comments: JSON.stringify(processing.comments)
     }
   }
 
@@ -912,9 +985,8 @@ export class CardsComponent implements OnInit {
         answer: answer.data
       }
     });
-
+    console.log(pia)
     return {
-      id: pia.id,
       processing_id: processingId,
       author_name: pia.author_name,
       concerned_people_opinion: pia.concerned_people_opinion,
