@@ -451,58 +451,58 @@
   },
   "processing_informed_concerned_people": {
     "form": {
-      "mention_form": "Mention dans un formulaire",
-      "mention_contract": "Mention dans le contrat de travail",
-      "terms": "Conditions générales de vente",
-      "display": "Affichage dans les locaux",
-      "phone": "Par téléphone",
-      "other": "Autre"
+      "informed_mention_form": "Mention dans un formulaire",
+      "informed_mention_contract": "Mention dans le contrat de travail",
+      "informed_terms": "Conditions générales de vente",
+      "informed_display": "Affichage dans les locaux",
+      "informed_phone": "Par téléphone",
+      "informed_other": "Autre"
     }
   },
   "processing_consent_concerned_people": {
     "form": {
-      "optin_website": "Opt-in sur le site Internet",
-      "optin_user_space": "Opt-in sur l'espace utilisateur",
-      "phone": "Par téléphone",
-      "paper": "Sur papier libre",
-      "signing_paper_form": "Signature d'un formulaire papier",
-      "signing_contract": "Signature d'un contrat",
-      "signing_standard_form": "Signature d'un formulaire normalisé",
-      "other": "Autre"
+      "consent_optin_website": "Opt-in sur le site Internet",
+      "consent_optin_user_space": "Opt-in sur l'espace utilisateur",
+      "consent_phone": "Par téléphone",
+      "consent_paper": "Sur papier libre",
+      "consent_signing_paper_form": "Signature d'un formulaire papier",
+      "consent_signing_contract": "Signature d'un contrat",
+      "consent_signing_standard_form": "Signature d'un formulaire normalisé",
+      "consent_other": "Autre"
     }
   },
   "processing_access_concerned_people": {
     "form": {
-      "contact_dpo": "Contact direct du DPO",
-      "contact_referent": "Contact du référent RGPD",
-      "customer_area_form": "Formulaire sur l'espace client",
-      "paper_form": "Formulaire papier",
-      "other": "Autre"
+      "access_contact_dpo": "Contact direct du DPO",
+      "access_contact_referent": "Contact du référent RGPD",
+      "access_customer_area_form": "Formulaire sur l'espace client",
+      "access_paper_form": "Formulaire papier",
+      "access_other": "Autre"
     }
   },
   "processing_delete_concerned_people": {
     "form": {
-      "contact_dpo": "Contact direct du DPO",
-      "contact_referent": "Contact du référent RGPD",
-      "customer_area_form": "Formulaire sur l'espace client",
-      "paper_form": "Formulaire papier",
-      "other": "Autre"
+      "delete_contact_dpo": "Contact direct du DPO",
+      "delete_contact_referent": "Contact du référent RGPD",
+      "delete_customer_area_form": "Formulaire sur l'espace client",
+      "delete_paper_form": "Formulaire papier",
+      "delete_other": "Autre"
     }
   },
   "processing_limit_concerned_people": {
     "form": {
-      "contact_dpo": "Contact direct du DPO",
-      "contact_referent": "Contact du référent RGPD",
-      "customer_area_form": "Formulaire sur l'espace client",
-      "paper_form": "Formulaire papier",
-      "other": "Autre"
+      "limit_contact_dpo": "Contact direct du DPO",
+      "limit_contact_referent": "Contact du référent RGPD",
+      "limit_customer_area_form": "Formulaire sur l'espace client",
+      "limit_paper_form": "Formulaire papier",
+      "limit_other": "Autre"
     }
   },
   "processing_subcontractors_obligations": {
     "form": {
-      "yes": "Oui",
-      "no": "Non",
-      "partially": "Partiellement"
+      "subcontractors_obligations_yes": "Oui",
+      "subcontractors_obligations_no": "Non",
+      "subcontractors_obligations_partially": "Partiellement"
     }
   },
   "pia": {
