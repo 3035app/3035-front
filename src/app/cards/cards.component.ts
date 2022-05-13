@@ -377,8 +377,11 @@ export class CardsComponent implements OnInit {
 
   getProcessingComments(comments, field?) {
     let processingComments = `<p>Commentaires :</p>`;
+    let hasComment = false;
+    console.log(comments)
     JSON.parse(comments).forEach(comment => {
       if (comment.field === field) {
+        hasComment = true;
         if (comment.commented_by && comment.commented_by.roles) {
           const rolesLabel = [];
           comment.commented_by.roles.forEach(role => {
@@ -390,7 +393,10 @@ export class CardsComponent implements OnInit {
         processingComments += `<p>Commentaire ${date && date.toLocaleDateString()} | ${this.translate.instant(`history.created_by`)} ${comment.commented_by.firstName}  | ${comment.commented_by.rolesLabel}</p><p>${comment.content}</p>`
       }
     });
-    return processingComments;
+    if (hasComment) {
+      return processingComments;
+    }
+    return '';
   }
 
   getPiaComments(comments) {
@@ -529,6 +535,7 @@ export class CardsComponent implements OnInit {
       
       ${this.geth3Title(this.translate.instant('processing.form.context_of_implementation.title'))}
       ${this.getP(data.context_of_implementation)}
+      ${this.getProcessingComments(data.comments, 'context')}
       
       ${this.geth3Title(this.translate.instant('processing.form.controllers.title'))}
       ${this.getP(data.controllers)}
@@ -536,63 +543,81 @@ export class CardsComponent implements OnInit {
       
       ${this.geth3Title(this.translate.instant('processing.form.standards.title'))}
       ${this.getP(data.standards)}
+      ${this.getProcessingComments(data.comments, 'standards')}
       
       ${this.geth2Title(this.translate.instant('processing.form.sections.data.title'))}
       
       ${this.geth3Title(this.translate.instant('processing.form.data-types'))}
       ${this.getProcessingDataTypes(JSON.parse(data.processing_data_types))}
+      ${this.getProcessingComments(data.comments, 'data-types')}
 
       ${this.geth3Title(this.translate.instant('processing.form.lifecycle.title'))}
       ${this.getP(data.life_cycle)}
+      ${this.getProcessingComments(data.comments, 'lifecycle')}
 
       ${this.geth3Title(this.translate.instant('processing.form.storage.title'))}
       ${this.getP(data.storage)}
+      ${this.getProcessingComments(data.comments, 'storage')}
 
       ${this.geth3Title(this.translate.instant('processing.form.concerned_people.title'))}
       ${this.getP(data.concerned_people)}
+      ${this.getProcessingComments(data.comments, 'concerned_people')}
 
       ${this.geth3Title(this.translate.instant('processing.form.processors.title'))}
       ${this.getP(data.processors)}
+      ${this.getProcessingComments(data.comments, 'processors')}
 
       ${this.geth3Title(this.translate.instant('processing.form.recipients.title'))}
       ${this.getP(data.recipients)}
+      ${this.getProcessingComments(data.comments, 'recipients')}
 
       ${this.geth2Title(this.translate.instant('processing.form.sections.lifecycle.title'))}
 
       ${this.geth3Title(this.translate.instant('processing.form.description.title'))}
       ${this.getP(data.description)}
+      ${this.getProcessingComments(data.comments, 'description')}
       
       ${this.geth3Title(this.translate.instant('processing.form.lawfulness.title'))}
       ${this.getP(data.lawfulness)}
+      ${this.getProcessingComments(data.comments, 'lawfulness')}
 
       ${this.geth3Title(this.translate.instant('processing.form.minimization.title'))}
       ${this.getP(data.minimization)}
+      ${this.getProcessingComments(data.comments, 'minimization')}
 
       ${this.geth3Title(this.translate.instant('processing.form.exactness.title'))}
       ${this.getP(data.exactness)}
+      ${this.getProcessingComments(data.comments, 'exactness')}
 
       ${this.geth2Title(this.translate.instant('processing.form.sections.measures.title'))}
 
       ${this.geth3Title(this.translate.instant('processing.form.informed_concerned_people'))}
       ${this.getProcessingDataTypes(JSON.parse(data.informed_concerned_people), false, 'processing_informed_concerned_people')}
+      ${this.getProcessingComments(data.comments, 'informed_concerned_people')}
 
       ${this.geth3Title(this.translate.instant('processing.form.consent_concerned_people'))}
       ${this.getProcessingDataTypes(JSON.parse(data.consent_concerned_people), false, 'processing_consent_concerned_people')}
+      ${this.getProcessingComments(data.comments, 'consent_concerned_people')}
 
       ${this.geth3Title(this.translate.instant('processing.form.access_concerned_people'))}
       ${this.getProcessingDataTypes(JSON.parse(data.access_concerned_people), false, 'processing_access_concerned_people')}
+      ${this.getProcessingComments(data.comments, 'access_concerned_people')}
 
       ${this.geth3Title(this.translate.instant('processing.form.delete_concerned_people'))}
       ${this.getProcessingDataTypes(JSON.parse(data.delete_concerned_people), false, 'processing_delete_concerned_people')}
+      ${this.getProcessingComments(data.comments, 'delete_concerned_people')}
 
       ${this.geth3Title(this.translate.instant('processing.form.limit_concerned_people'))}
       ${this.getProcessingDataTypes(JSON.parse(data.limit_concerned_people), false, 'processing_limit_concerned_people')}
+      ${this.getProcessingComments(data.comments, 'limit_concerned_people')}
 
       ${this.geth3Title(this.translate.instant('processing.form.subcontractors_obligations'))}
       ${this.getProcessingDataTypes(JSON.parse(data.subcontractors_obligations), false, 'processing_subcontractors_obligations')}
+      ${this.getProcessingComments(data.comments, 'subcontractors_obligations')}
 
       ${this.geth3Title(this.translate.instant('processing.form.non-eu-transfer.title'))}
       ${this.getP(data.non_eu_transfer)}
+      ${this.getProcessingComments(data.comments, 'non-eu-transfer')}
     `;
   }
 
@@ -933,7 +958,6 @@ export class CardsComponent implements OnInit {
   }
 
   processingToCsv(processing, parent, id): ProcessingCsvRow {
-    console.log(processing)
     const processing_data_types = processing.processing_data_types.filter(data => data.reference === 'identification' || data.reference === 'personal' || data.reference === 'professional' || data.reference === 'financial' || data.reference === 'log' || data.reference === 'location' || data.reference === 'internet' || data.reference === 'nir' || data.reference === 'other');
     const informed_concerned_people = processing.processing_data_types.filter(data => data.reference === 'informed_mention_form' || data.reference === 'informed_mention_contract' || data.reference === 'informed_terms' || data.reference === 'informed_display' || data.reference === 'informed_phone' || data.reference === 'informed_other');
     const consent_concerned_people = processing.processing_data_types.filter(data => data.reference === 'consent_optin_website' || data.reference === 'consent_optin_user_space' || data.reference === 'consent_phone' || data.reference === 'consent_paper' || data.reference === 'consent_signing_paper_form' || data.reference === 'consent_signing_contract' || data.reference === 'consent_signing_standard_form' || data.reference === 'consent_other');
