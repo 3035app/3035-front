@@ -1169,8 +1169,8 @@
       "2": "Améliorable",
       "3": "Acceptable"
     },
-    "processing_validated": "Traitement validé",
-    "processing_partialy_validated": "Traitement validé avec réserves",
+    "processing_validated": "Contexte et principes fondamentaux validé",
+    "processing_partialy_validated": "Contexte et principes fondamentaux validé avec réserves",
     "cancel": "Annuler la validation"
   },
   "help": {
