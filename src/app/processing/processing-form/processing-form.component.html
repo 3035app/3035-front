@@ -64,7 +64,7 @@
             [(ngModel)]="processing.context_of_implementation"
             [ngClass]="{ 'hide': (processingForm.form.controls['context_of_implementation']?.value && processingForm.form.controls['context_of_implementation']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'context'"></app-processing-comments>
         </div>
@@ -90,7 +90,7 @@
             [(ngModel)]="processing.controllers"
             [ngClass]="{ 'hide': (processingForm.form.controls['controllers']?.value && processingForm.form.controls['controllers']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_VAL_RT', 'PIA_LGL_DESC', 'PIA_DEF_RT'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'controllers'"></app-processing-comments>
         </div>
@@ -116,7 +116,7 @@
             [(ngModel)]="processing.standards"
             [ngClass]="{ 'hide': (processingForm.form.controls['standards']?.value && processingForm.form.controls['standards']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_FOND'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'standards'"></app-processing-comments>
         </div>
@@ -150,7 +150,7 @@
             [(ngModel)]="processing.life_cycle"
             [ngClass]="{ 'hide': (processingForm.form.controls['lifecycle']?.value && processingForm.form.controls['lifecycle']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_LFC'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'lifecycle'"></app-processing-comments>
         </div>
@@ -176,7 +176,7 @@
             [(ngModel)]="processing.storage"
             [ngClass]="{ 'hide': (processingForm.form.controls['storage']?.value && processingForm.form.controls['storage']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_SUPT'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'storage'"></app-processing-comments>
         </div>
@@ -202,7 +202,7 @@
             [(ngModel)]="processing.concerned_people"
             [ngClass]="{ 'hide': (processingForm.form.controls['concerned-people']?.value && processingForm.form.controls['concerned-people']?.value.length > 0) }"
             (focusin)="editField($event.target)"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'concerned_people'"></app-processing-comments>
         </div>
@@ -219,7 +219,7 @@
             [(ngModel)]="processing.processors"
             [ngClass]="{ 'hide': (processingForm.form.controls['processors']?.value && processingForm.form.controls['processors']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'processors'"></app-processing-comments>
         </div>
@@ -236,7 +236,7 @@
             [(ngModel)]="processing.recipients"
             [ngClass]="{ 'hide': (processingForm.form.controls['recipients']?.value && processingForm.form.controls['recipients']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_ST', 'PIA_LGL_DEST'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'recipients'"></app-processing-comments>
         </div>
@@ -264,7 +264,7 @@
             [(ngModel)]="processing.description"
             [ngClass]="{ 'hide': (processingForm.form.controls['description']?.value && processingForm.form.controls['description']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_DESC', 'PIA_LGL_FIN'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'description'"></app-processing-comments>
         </div>
@@ -290,7 +290,7 @@
             [(ngModel)]="processing.lawfulness"
             [ngClass]="{ 'hide': (processingForm.form.controls['lawfulness']?.value && processingForm.form.controls['lawfulness']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_FOND'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'lawfulness'"></app-processing-comments>
         </div>
@@ -316,7 +316,7 @@
             [(ngModel)]="processing.minimization"
             [ngClass]="{ 'hide': (processingForm.form.controls['minimization']?.value && processingForm.form.controls['minimization']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_MINI', 'PIA_DF_MINC', 'PIA_DEF_MIND'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'minimization'"></app-processing-comments>
         </div>
@@ -342,7 +342,7 @@
             [(ngModel)]="processing.exactness"
             [ngClass]="{ 'hide': (processingForm.form.controls['exactness']?.value && processingForm.form.controls['exactness']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_DEF_EXA'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'exactness'"></app-processing-comments>
         </div>
@@ -459,7 +459,7 @@
             [(ngModel)]="processing.non_eu_transfer"
             [ngClass]="{ 'hide': (processingForm.form.controls['non-eu-transfer']?.value && processingForm.form.controls['non-eu-transfer']?.value.length > 0) }"
             (focusin)="editField($event.target, ['PIA_LGL_TRAN'])"
-            [disabled]="processing.status >= 1"
+            [disabled]="processing.status >= 1 || !hasEditPermission"
           ></textarea>
           <app-processing-comments [processing]="processing" [field]="'non-eu-transfer'"></app-processing-comments>
         </div>

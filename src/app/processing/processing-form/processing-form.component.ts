@@ -61,7 +61,7 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
     if (dataTypes) {
       return
     }
-
+    
     this.processingApi.update(this.processing).subscribe(() => { });
   }
 
@@ -80,8 +80,8 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
    * @memberof ProcessingFormComponent
    */
   editField(element: any, knowledgeBaseItemIdentifier?: string[]) {
-    this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
-      if (hasPerm && this.processing.status < 1) {
+    // this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
+      if (this.hasEditPermission && this.processing.status < 1) {
         this.elementId = element.id;
 
         this.loadEditor(element);
@@ -91,7 +91,7 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
       }
 
       this.isFullyFilled();
-    });
+    // });
   }
 
   /**
