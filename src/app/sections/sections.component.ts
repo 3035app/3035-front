@@ -6,6 +6,7 @@ import { PiaService } from '../entry/pia.service';
 import { PiaApi } from '@api/services';
 import { PiaModel } from '@api/models';
 import { ModalsService } from 'app/modals/modals.service';
+import { HistoryService } from 'app/services/history.service';
 
 @Component({
   selector: 'app-sections',
@@ -30,7 +31,8 @@ export class SectionsComponent implements OnInit {
     private _appDataService: AppDataService,
     public _sidStatusService: SidStatusService,
     private piaApi: PiaApi,
-    private _modalsService: ModalsService
+    private _modalsService: ModalsService,
+    private _historyService: HistoryService
   ) {}
 
   async ngOnInit() {
@@ -80,70 +82,7 @@ export class SectionsComponent implements OnInit {
   }
 
   openHistoryModal() {
-    const history = {
-      createdBy: '',
-      createdOn: '',
-      updatedBy: '',
-      updatedOn: '',
-      evaluationRequestedBy: '',
-      evaluationRequestedOn: '',
-      evaluatedBy: '',
-      evaluatedOn: '',
-      issueRequestedBy: '',
-      issueRequestedOn: '',
-      noticedBy: '',
-      noticedOn: '',
-      validationRequestedBy: '',
-      validationRequestedOn: '',
-      validatedBy: '',
-      validatedOn: ''
-    };
-    if (this.processing.trackings) {
-      this.processing.trackings.forEach((action) => {
-        switch (action.activity) {
-          case 'created':
-            history.createdBy = action.fullname;
-            const createDate = new Date(action.date)
-            history.createdOn = createDate.toLocaleDateString();
-            break;
-          case 'last-update':
-            history.updatedBy = action.fullname;
-            const updateDate = new Date(action.date)
-            history.updatedOn = updateDate.toLocaleDateString();
-            break;
-          case 'evaluation-request':
-            history.evaluationRequestedBy = action.fullname;
-            const evaluationRequestDate = new Date(action.date)
-            history.evaluationRequestedOn = evaluationRequestDate.toLocaleDateString();
-            break;
-          case 'evaluation':
-            history.evaluatedBy = action.fullname;
-            const evaluationDate = new Date(action.date)
-            history.evaluatedOn = evaluationDate.toLocaleDateString();
-            break;
-          case 'issue-request':
-            history.issueRequestedBy = action.fullname;
-            const issueRequestDate = new Date(action.date)
-            history.issueRequestedOn = issueRequestDate.toLocaleDateString();
-            break;
-          case 'notice-issued':
-            history.noticedBy = action.fullname;
-            const noticeDate = new Date(action.date)
-            history.noticedOn = noticeDate.toLocaleDateString();
-            break;
-          case 'validation-request':
-            history.validationRequestedBy = action.fullname;
-            const validationRequestDate = new Date(action.date)
-            history.validationRequestedOn = validationRequestDate.toLocaleDateString();
-            break;
-          case 'validated':
-            history.validatedBy = action.fullname;
-            const validateDate = new Date(action.date)
-            history.validatedOn = validateDate.toLocaleDateString();
-            break;
-        }
-      });
-    }
+    const history = this._historyService.getFormatedHistory(this.processing.trackings);
     this._modalsService.openModal('modal-pia-history', {history});
   }
 

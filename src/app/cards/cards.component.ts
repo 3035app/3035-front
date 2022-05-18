@@ -14,6 +14,7 @@ import { FolderApi, ProcessingApi, MeasureApi, EvaluationApi, PiaApi, AnswerApi,
 import { PermissionsService } from '@security/permissions.service';
 import { ProfileSession } from '../services/profile-session.service';
 import { TranslateService } from '@ngx-translate/core';
+import { HistoryService } from 'app/services/history.service';
 
 
 interface FolderCsvRow {
@@ -56,6 +57,7 @@ interface ProcessingCsvRow {
   delete_concerned_people: string,
   limit_concerned_people: string,
   subcontractors_obligations: string,
+  trackings: any
 }
 
 
@@ -123,6 +125,7 @@ export class CardsComponent implements OnInit {
     private session: ProfileSession,
     private translate: TranslateService,
     private commentApi: CommentApi,
+    private _historyService: HistoryService,
   ) {
     this.tenant = environment.tenant;
    }
@@ -378,7 +381,7 @@ export class CardsComponent implements OnInit {
   getProcessingComments(comments, field?) {
     let processingComments = `<p>Commentaires :</p>`;
     let hasComment = false;
-    console.log(comments)
+
     JSON.parse(comments).forEach(comment => {
       if (comment.field === field) {
         hasComment = true;
@@ -524,9 +527,11 @@ export class CardsComponent implements OnInit {
 
   getProcessing(data: ProcessingCsvRow) {
     if (!data) { return '' }
-    
+
+    const history = this._historyService.getFormatedHistory(data.trackings);
+
     return `
-      ${this.geth1Title(this.translate.instant('summary.processing')+' "'+data.name+'"')}
+      ${this.geth1Title(this.translate.instant('summary.pia')+' "'+data.name+'"')}
       
       ${this.getP(data.updated_at)}
       ${this.getP(this.translate.instant('processing.path')+': '+data.parent_path)}
@@ -618,6 +623,18 @@ export class CardsComponent implements OnInit {
       ${this.geth3Title(this.translate.instant('processing.form.non-eu-transfer.title'))}
       ${this.getP(data.non_eu_transfer)}
       ${this.getProcessingComments(data.comments, 'non-eu-transfer')}
+
+      ${this.geth2Title(this.translate.instant('history.title'))}
+      
+      ${this.getP(this.translate.instant('history.created_by') + ' ' + history.createdBy + ' ' + this.translate.instant('history.on') + ' ' + history.createdOn)}
+      ${this.getP(this.translate.instant('history.last_modification_by') + ' ' + history.updatedBy + ' ' + this.translate.instant('history.on') + ' ' + history.updatedOn)}
+      ${this.getP(this.translate.instant('history.ask_evaluation_by') + ' ' + history.evaluationRequestedBy + ' ' + this.translate.instant('history.on') + ' ' + history.evaluationRequestedOn)}
+      ${this.getP(this.translate.instant('history.evaluated_by') + ' ' + history.evaluatedBy + ' ' + this.translate.instant('history.on') + ' ' + history.evaluatedOn)}
+      ${this.getP(this.translate.instant('history.ask_opinion_by') + ' ' + history.issueRequestedBy + ' ' + this.translate.instant('history.on') + ' ' + history.issueRequestedOn)}
+      ${this.getP(this.translate.instant('history.opinion_by') + ' ' + history.noticedBy + ' ' + this.translate.instant('history.on') + ' ' + history.noticedOn)}
+      ${this.getP(this.translate.instant('history.ask_validation_by') + ' ' + history.validationRequestedBy + ' ' + this.translate.instant('history.on') + ' ' + history.validationRequestedOn)}
+      ${this.getP(this.translate.instant('history.validated_by') + ' ' + history.validatedBy + ' ' + this.translate.instant('history.on') + ' ' + history.validatedOn)}
+
     `;
   }
 
@@ -734,7 +751,6 @@ export class CardsComponent implements OnInit {
       <br/>
 
       ${this.getPiaInformation(pia)}
-      //${this.getProcessing(this.processingToExport.find(process => process.id === pia.processing.id))}
 
       ${risks}
 
@@ -934,7 +950,12 @@ export class CardsComponent implements OnInit {
         }
         this.folderToExport.push(this.folderToCsv(folderData))
         const folderIds = folderData.children.map(children => children.id)
-        const ProcessingIds = folderData.processings.map(process => process.id)
+        const ProcessingIds = [];
+        folderData.processings.forEach(process => {
+          if (process.can_show) {
+            ProcessingIds.push(process.id);
+          }
+        })
         try {
           await this.getDataToExport(folderIds, ProcessingIds, folderData)
         } catch (e) {
@@ -995,7 +1016,8 @@ export class CardsComponent implements OnInit {
       non_eu_transfer: processing.non_eu_transfer,
       designated_controller: processing.designated_controller,
       status: processing.status,
-      comments: JSON.stringify(processing.comments)
+      comments: JSON.stringify(processing.comments),
+      trackings: processing.trackings
     }
   }
 
@@ -1009,7 +1031,7 @@ export class CardsComponent implements OnInit {
         answer: answer.data
       }
     });
-    console.log(pia)
+
     return {
       processing_id: processingId,
       author_name: pia.author_name,

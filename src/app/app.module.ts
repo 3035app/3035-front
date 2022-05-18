@@ -96,6 +96,7 @@ import { EvaluationBlockComponent } from './processing/evaluation-block/evaluati
 import { ReportingComponent } from './reporting/reporting.component';
 import { SearchService } from "./search/search.service";
 import { NgSelectModule } from '@ng-select/ng-select';
+import { HistoryService } from 'app/services/history.service';
 
 const providersList: any = [
   AppDataService,
@@ -116,6 +117,7 @@ const providersList: any = [
   ProcessingAttachmentsService,
   ProcessingDataTypeService,
   SearchService,
+  HistoryService,
   {
     provide: ErrorHandler,
     useClass: AppErrorHandler,

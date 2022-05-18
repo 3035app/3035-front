@@ -1418,6 +1418,7 @@
       "4": "Maximale"
     },
     "processing": "Traitement",
+    "pia": "PIA",
     "action_plan": {
       "title": "Plan d'action",
       "fundamental_principles": "Principes fondamentaux",
@@ -1802,6 +1803,7 @@
     "shared_users_list_label": "Liste des utilisateurs autorisés"
   },
   "history": {
+    "title": "Historique du PIA",
     "created_by": "Créé par",
     "on": "le",
     "last_modification_by": "Dernière modification de la fiche par",
