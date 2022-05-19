@@ -731,6 +731,14 @@ export class CardsComponent implements OnInit {
     this.processingToExport = [];
     this.piaToExportOdt = [];
 
+    this.selectedProcessing.forEach((process, index) => {
+      this._piaService.processings.forEach((processing) => {
+        if (processing.id === process && !processing.can_show) {
+          this.selectedProcessing.splice(index, 1);
+        }
+      })
+    })
+
     try {
       await this.getDataToExport(this.selectedFolder, this.selectedProcessing)
     } catch (e) {
@@ -927,7 +935,6 @@ export class CardsComponent implements OnInit {
   async getDataToExport(folder, processing, parentFolder = null) {
     if (processing && Array.isArray(processing) && processing.length > 0) {
       await Promise.all(processing.map(async processId => {
-
         const data: any = await this.processingApi.export(processId).toPromise();
         // pia for csv
         await Promise.all(data.pias.map(pia => this.piaToExport.push(this.piaToCsv(pia, processId))));
