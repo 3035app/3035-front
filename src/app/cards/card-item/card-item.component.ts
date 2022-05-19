@@ -32,6 +32,7 @@ export class CardItemComponent implements OnInit {
   lastPia: any;
   private tenant: string;
   selectedRedactors: any;
+  risk_analysis: boolean = false;
 
   @ViewChild('processingName') private processingName: ElementRef;
 
@@ -48,6 +49,9 @@ export class CardItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.processing.pias_count > 0) {
+      this.risk_analysis = true;
+    }
     this.selectedRedactors = this.processing.supervisors.redactor_id;
     this.processingForm = new FormGroup({
       id: new FormControl(this.processing.id),

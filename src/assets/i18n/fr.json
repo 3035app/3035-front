@@ -186,6 +186,7 @@
         "advanced": "Traitement avec analyse d'impact"
       },
       "pias_number": "Nombre de PIA",
+      "risk_analysis": "Analyse de risque",
       "folder": {
         "title": "Dossier",
         "parent": "Dossier parent",
