@@ -400,13 +400,17 @@
     },
     "statuses": {
       "STATUS_DOING": "En cours",
+      "STATUS_UNDER_EVALUATION": "A évaluer",
+      "STATUS_EVALUATED": "Evalué",
       "STATUS_UNDER_VALIDATION": "À valider",
       "STATUS_VALIDATED": "Validé",
       "STATUS_ARCHIVED": "Archivé",
       "0": "En cours",
-      "1": "À valider",
-      "2": "Validé",
-      "3": "Archivé"
+      "1": "À évaluer",
+      "2": "Evalué",
+      "3": "A valider",
+      "4": "Validé",
+      "5": "Archivé"
     },
     "path": "Classement",
     "pia-list": {
