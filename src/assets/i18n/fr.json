@@ -1412,6 +1412,13 @@
     "concerned_people_name": "Noms des personnes concernées",
     "concerned_people_status": "Statuts des personnes concernées",
     "concerned_people_opinion": "Opinions des personnes concernées",
+    "rssi_searched_opinion": "Recherche de l'avis du RSSI",
+    "rssi_search_status_ok": "L'avis du RSSI a été demandé.",
+    "rssi_search_status_nok": "L'avis du RSSI n'est pas applicable.",
+    "rssi_unsearched_opinion_comment": "Raison pour laquelle l'avis du RSSI n'est pas applicable",
+    "rssi_name": "Nom du RSSI",
+    "rssi_status": "Statut du RSSI",
+    "rssi_opinion": "Opinion du RSSI",
     "modification_made": "Modifications apportées",
     "rejection_reason": "Raison du refus",
     "creation_date": "Date de création",
@@ -1492,10 +1499,15 @@
     "placeholder_dpo_name": "Nom(s) du(des) DPD",
     "placeholder_dpo_opinion": "Précisez les raisons de votre choix",
     "dpo_lock": "Veuillez remplir les autres sections avant de pouvoir saisir l'avis du DPD.",
+    "rssi_opinion": "Avis du RSSI",
+    "placeholder_rssi_name": "Nom(s) du(des) RSSI",
+    "placeholder_rssi_opinion": "Précisez les raisons de votre choix",
+    "rssi_lock": "Veuillez remplir les autres sections avant de pouvoir saisir l'avis du RSSI.",
     "people_opinion": "Avis des personnes concernées",
     "placeholder_concerned_people_name": "Nom(s) de la(des) personne(s) concernée(s)",
     "placeholder_people_opinion": "Décrivez comment les avis ont été collectés et quelle en est l'analyse. Dans le cas où les avis n'ont pas été recherchés, en préciser les raisons.",
     "placeholder_search_content": "Justifier la raison pour laquelle l’avis des personnes concernées n’a pas été demandé.",
+    "placeholder_rssi_search_content": "Justifier la raison pour laquelle l’avis du RSSI n'est pas applicable.",
     "treatment_ok": "Le traitement pourrait être mis en oeuvre.",
     "treatment_nok": "Le traitement ne devrait pas être mis en oeuvre.",
     "treatment_lock": "Veuillez remplir les autres sections avant de pouvoir saisir l'avis des personnes concernées."
@@ -1739,7 +1751,7 @@
           "short_help": "Planifiez en détail la mise en œuvre des mesures complémentaires déterminées au cours du PIA. Cette partie est automatiquement mise à jour en fonction des évaluations faites de chaque élément composant l'analyse d'impact."
         },
         "3": {
-          "title": "Avis du DPD et des personnes concernées",
+          "title": "Avis du RSSI, du DPD et des personnes concernées",
           "short_help": "Présentez le conseil de la personne en charge des aspects informatique et libertés (délégué à la protection des données s'il existe). Présentez l'avis des personnes concernées ou de leurs représentants."
         },
         "4": {
