@@ -25,7 +25,7 @@ export class Pia extends BaseModel {
   public hiss_opinion: string;
   public hiss_processing_implemented_status: number = 0; // 0: NOK, 1: OK
   public requested_hiss_opinion: boolean = false; // 0 : false, 1: true
-  public rssi_searched_content: string;
+  public requested_hiss_opinion_text: string;
   public rejection_reason: string;
   public applied_adjustments: string;
   public dpos_names: string;

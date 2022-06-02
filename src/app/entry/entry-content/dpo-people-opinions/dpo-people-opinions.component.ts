@@ -119,8 +119,8 @@ export class DPOPeopleOpinionsComponent implements OnInit {
     }
 
     // RSSI unsearched field
-    if (this._piaService.pia.concerned_people_searched_content && this._piaService.pia.concerned_people_searched_content.length > 0) {
-      this.rssiSearchedOpinionsForm.controls['rssiSearchContent'].patchValue(this._piaService.pia.concerned_people_searched_content);
+    if (this._piaService.pia.requested_hiss_opinion_text && this._piaService.pia.requested_hiss_opinion_text.length > 0) {
+      this.rssiSearchedOpinionsForm.controls['rssiSearchContent'].patchValue(this._piaService.pia.requested_hiss_opinion_text);
       this.rssiSearchedOpinionsForm.controls['rssiSearchContent'].disable();
     }
 
@@ -451,6 +451,24 @@ export class DPOPeopleOpinionsComponent implements OnInit {
       this.rssiSearchedOpinionsForm.controls['rssiSearchContent'].enable();
       document.getElementById('pia-rssi-search-content').focus();
     }
+  }
+
+  /**
+   * Updates RSSI search content.
+   * @memberof DPOPeopleOpinionsComponent
+   */
+  rssiSearchContentFocusOut() {
+    let userText = this.rssiSearchedOpinionsForm.controls['rssiSearchContent'].value;
+    if (userText && typeof userText === 'string') {
+      userText = userText.replace(/^\s+/, '').replace(/\s+$/, '');
+    }
+    this._piaService.pia.requested_hiss_opinion_text = userText;
+    this._piaService.saveCurrentPia().subscribe((updatedPia: PiaModel) => {
+      this._sidStatusService.setSidStatus(this._piaService, { id: 4 }, { id: 3 });
+      if (userText && userText.length > 0) {
+        this.rssiSearchedOpinionsForm.controls['rssiSearchContent'].disable();
+      }
+    });
   }
 
   /**
