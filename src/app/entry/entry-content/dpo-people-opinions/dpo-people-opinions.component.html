@@ -62,20 +62,20 @@
           </p>
           <div class="pia-entryContentBlock-content-people-treatment">
             <div>
-              <input type="radio" id="dpoAvis-1" [checked]="_piaService.pia.hiss_processing_implemented_status == 1"
+              <input type="radio" id="dpoAvis-3" [checked]="_piaService.pia.hiss_processing_implemented_status == 1"
                 (click)="enableRssiStatusRadioButtons()" (change)="rssiStatusFocusOut()"
                 formControlName="rssiStatus" value="1">
-              <label for="dpoAvis-1">
+              <label for="dpoAvis-3">
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <i class="fa fa-check" aria-hidden="true"></i>
                 <span>{{ 'opinions.treatment_ok' | translate }}</span>
               </label>
             </div>
             <div>
-              <input type="radio" id="dpoAvis-2" [checked]="_piaService.pia.hiss_processing_implemented_status == 0"
+              <input type="radio" id="dpoAvis-4" [checked]="_piaService.pia.hiss_processing_implemented_status == 0"
                 (click)="enableRssiStatusRadioButtons()" (change)="rssiStatusFocusOut()"
                 formControlName="rssiStatus" value="0">
-              <label for="dpoAvis-2">
+              <label for="dpoAvis-4">
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <i class="fa fa-close" aria-hidden="true"></i>
                 <span>{{ 'opinions.treatment_nok' | translate }}</span>
