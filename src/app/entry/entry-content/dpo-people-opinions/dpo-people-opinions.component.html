@@ -1,5 +1,98 @@
 <div class="pia-ValidationDPO">
   <div class="pia-entryContentBlock-content">
+    <!-- RSSI opinions -->
+    <div class="pia-entryContentBlock-content-people">
+      <div>
+        <h2>{{ 'opinions.rssi_opinion' | translate }}</h2>
+      </div>
+      <ng-container *ngIf="_sidStatusService.enableDpoValidation; else disableRssiBLock">
+    
+        <!-- Opinion searched or not searched -->
+        <form style="margin-top:16px;" [formGroup]="rssiSearchedOpinionsForm">
+          <div class="pia-entryContentBlock-content-people-treatment">
+            <div>
+              <input type="radio" id="rssi-choice-searched"
+                [attr.dirty]="_piaService.pia.requested_hiss_opinion === true"
+                [checked]="_piaService.pia.requested_hiss_opinion === true"
+                (click)="enableRssiSearchedOpinionRadioButtons()" (change)="rssiSearchedOpinionsFocusOut()"
+                formControlName="rssiSearchStatus" value="true">
+              <label for="rssi-choice-searched">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>{{ 'summary.rssi_search_status_ok' | translate }}</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="rssi-choice-unsearched"
+                [attr.dirty]="_piaService.pia.requested_hiss_opinion === false"
+                [checked]="_piaService.pia.requested_hiss_opinion === false"
+                (click)="enableRssiSearchedOpinionRadioButtons()" (change)="rssiSearchedOpinionsFocusOut()"
+                formControlName="rssiSearchStatus" value="false">
+              <label for="rssi-choice-unsearched">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <i class="fa fa-close" aria-hidden="true"></i>
+                <span>{{ 'summary.rssi_search_status_nok' | translate }}</span>
+              </label>
+            </div>
+          </div>
+          <div (click)="rssiSearchContentFocusIn()" *ngIf="displayRssiSearchContent"
+            class="pia-entryContentBlock-content-DPO-reasons">
+            <textarea (focusout)="rssiSearchContentFocusOut()" (keyup)="autoTextareaResize($event)"
+              id="pia-rssi-search-content" rows="8" formControlName="rssiSearchContent" cols="50"
+              placeholder="{{ 'opinions.placeholder_rssi_search_content' | translate }}"></textarea>
+          </div>
+        </form>
+    
+        <!-- Opinion content -->
+        <form style="margin-top:30px;" *ngIf="displayRssiOpinion" (click)="checkRssiName()"
+          [formGroup]="rssiForm">
+          <p>
+            <span>
+              <ng-container *ngIf="!_piaService.pia.status || _piaService.pia.status < 2; else displayNames2">
+                <div style="display:inline-block;" (click)="rssiNameFocusIn()">
+                  <input #PeopleNames type="text" class="DPOName" (change)="rssiNameFocusOut()"
+                    formControlName="rssiNames"
+                    placeholder="{{ 'opinions.placeholder_rssi_name' | translate }}">
+                </div>
+              </ng-container>
+              <ng-template #displayNames2>
+                {{_piaService.pia.hiss_name}}
+              </ng-template>
+            </span>{{ 'opinions.content' | translate }}
+          </p>
+          <div class="pia-entryContentBlock-content-people-treatment">
+            <div>
+              <input type="radio" id="dpoAvis-1" [checked]="_piaService.pia.hiss_processing_implemented_status == 1"
+                (click)="enableRssiStatusRadioButtons()" (change)="rssiStatusFocusOut()"
+                formControlName="rssiStatus" value="1">
+              <label for="dpoAvis-1">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <span>{{ 'opinions.treatment_ok' | translate }}</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="dpoAvis-2" [checked]="_piaService.pia.hiss_processing_implemented_status == 0"
+                (click)="enableRssiStatusRadioButtons()" (change)="rssiStatusFocusOut()"
+                formControlName="rssiStatus" value="0">
+              <label for="dpoAvis-2">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <i class="fa fa-close" aria-hidden="true"></i>
+                <span>{{ 'opinions.treatment_nok' | translate }}</span>
+              </label>
+            </div>
+          </div>
+          <div (click)="rssiOpinionFocusIn()" class="pia-entryContentBlock-content-people-reasons">
+            <textarea (focusout)="rssiOpinionFocusOut()" (keyup)="autoTextareaResize($event)"
+              id="pia-opinions-rssi" rows="8" formControlName="rssiOpinion" cols="50"
+              placeholder="{{ 'opinions.placeholder_rssi_opinion' | translate }}"></textarea>
+          </div>
+        </form>
+      </ng-container>
+      <ng-template #disableRssiBLock>
+        {{ 'opinions.treatment_lock' | translate }}
+      </ng-template>
+    </div>
     <!-- DPO opinions -->
     <div class="pia-entryContentBlock-content-DPO">
       <div>
