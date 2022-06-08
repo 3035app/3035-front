@@ -215,6 +215,8 @@ export class GlobalEvaluationService {
     let dpoFilled = false;
     let concernedPeopleOpinionSearchedFieldsFilled = false;
     let concernedPeopleOpinionUnsearchedFieldsFilled = false;
+    let rssiOpinionSearchedFieldsFilled = false;
+    let rssiOpinionUnsearchedFieldsFilled = false;
     // All DPO fields filled = OK
     if (this.pia.dpos_names && this.pia.dpos_names.length > 0 && (this.pia.dpo_status === 0 || this.pia.dpo_status === 1)
       && this.pia.dpo_opinion && this.pia.dpo_opinion.length > 0) {
@@ -237,10 +239,26 @@ export class GlobalEvaluationService {
       }
     }
 
+    // RSSI opinion unsearched + no search reason field filled = OK
+    if (this.pia.requested_hiss_opinion === false) {
+      if (this.pia.requested_hiss_opinion_text && this.pia.requested_hiss_opinion_text.length > 0) {
+        rssiOpinionUnsearchedFieldsFilled = true;
+      }
+    }
+
+    // RSSI opinion searched + name(s) + status + opinions = OK :
+    if (this.pia.requested_hiss_opinion === true) {
+      if (this.pia.hiss_name && this.pia.hiss_name.length > 0
+        && (this.pia.hiss_processing_implemented_status === 0 || this.pia.hiss_processing_implemented_status === 1)
+        && this.pia.hiss_opinion && this.pia.hiss_opinion.length > 0) {
+        rssiOpinionSearchedFieldsFilled = true;
+      }
+    }
+
     // Treatment which validates the subsection if everything is OK
     // DPO filled + unsearched opinion scenario filled OR DPO filled + searched opinion scenario filled
-    if ((dpoFilled === true && concernedPeopleOpinionUnsearchedFieldsFilled === true)
-      || (dpoFilled === true && concernedPeopleOpinionSearchedFieldsFilled === true)) {
+    if ((dpoFilled === true && concernedPeopleOpinionUnsearchedFieldsFilled === true && rssiOpinionUnsearchedFieldsFilled === true)
+      || (dpoFilled === true && concernedPeopleOpinionSearchedFieldsFilled === true && rssiOpinionSearchedFieldsFilled === true) || (dpoFilled === true && concernedPeopleOpinionSearchedFieldsFilled === true && rssiOpinionUnsearchedFieldsFilled === true) || (dpoFilled === true && concernedPeopleOpinionUnsearchedFieldsFilled === true && rssiOpinionSearchedFieldsFilled === true)) {
       this.status = 7;
       this.enablePiaValidation = [0, 2, 3].includes(this.pia.status);
       this.piaIsRefused = [1, 4].includes(this.pia.status);
