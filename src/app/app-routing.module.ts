@@ -23,6 +23,8 @@ import { ProcessingResolve } from './processing/processing.resolve.service';
 import { StructureResolve } from './structure/structure.resolve.service';
 import { StructureComponent } from 'app/structure/structure.component';
 import { ReportingComponent } from 'app/reporting/reporting.component';
+import {SsoComponent} from './sso/sso.component';
+import {SsoService} from './services/sso.service';
 
 
 const routes: Routes = [
@@ -32,6 +34,7 @@ const routes: Routes = [
   },
   { path: '', component: AuthenticationComponent },
   { path: 'logout', component: AuthenticationComponent },
+  { path: 'callback', component: SsoComponent },
   {
     path: 'summary/:id',
     component: SummaryComponent ,
@@ -76,7 +79,8 @@ const routes: Routes = [
     PiaService,
     PiaResolve,
     ProcessingResolve,
-    StructureResolve
+    StructureResolve,
+    SsoService
   ]
 })
 
