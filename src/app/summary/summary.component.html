@@ -122,7 +122,76 @@
               <div [innerHTML]="pia.processing.consent"></div>
               <!-- Processing rights guarantee -->
               <h4>{{ 'processing.form.rights_guarantee.title' | translate }}</h4>
-              <div [innerHTML]="pia.processing.rights_guarantee"></div>
+              <div class="row processing-data-types">
+                <div class="processing-data-type small-12" id="informed_mention_form-data">
+                  <div *ngFor="let pdt of processingInformed">
+                    <div *ngIf="pdt.data">
+                      <h5>{{ 'processing_informed_concerned_people.form.' + pdt.reference | translate }}</h5>
+                      <div>{{ pdt.data }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Processing Consent -->
+              <h4>{{ 'processing.form.consent.title' | translate }}</h4>
+              <div class="row processing-data-types">
+                <div class="processing-data-type small-12" id="consent_mention_form-data">
+                  <div *ngFor="let pdt of processingConsent">
+                    <div *ngIf="pdt.data">
+                      <h5>{{ 'processing_consent_concerned_people.form.' + pdt.reference | translate }}</h5>
+                      <div>{{ pdt.data }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Processing Access of data -->
+              <h4>{{ 'processing.form.access_concerned_people' | translate }}</h4>
+              <div class="row processing-data-types">
+                <div class="processing-data-type small-12" id="access_mention_form-data">
+                  <div *ngFor="let pdt of processingAccess">
+                    <div *ngIf="pdt.data">
+                      <h5>{{ 'processing_access_concerned_people.form.' + pdt.reference | translate }}</h5>
+                      <div>{{ pdt.data }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Processing Delete -->
+              <h4>{{ 'processing.form.delete_concerned_people' | translate }}</h4>
+              <div class="row processing-data-types">
+                <div class="processing-data-type small-12" id="delete_mention_form-data">
+                  <div *ngFor="let pdt of processingDelete">
+                    <div *ngIf="pdt.data">
+                      <h5>{{ 'processing_delete_concerned_people.form.' + pdt.reference | translate }}</h5>
+                      <div>{{ pdt.data }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Processing Limitation -->
+              <h4>{{ 'processing.form.limit_concerned_people' | translate }}</h4>
+              <div class="row processing-data-types">
+                <div class="processing-data-type small-12" id="limit_mention_form-data">
+                  <div *ngFor="let pdt of processingLimit">
+                    <div *ngIf="pdt.data">
+                      <h5>{{ 'processing_limit_concerned_people.form.' + pdt.reference | translate }}</h5>
+                      <div>{{ pdt.data }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Processing Subcontractors -->
+              <h4>{{ 'processing.form.subcontractors_obligations' | translate }}</h4>
+              <div class="row processing-data-types">
+                <div class="processing-data-type small-12" id="subcontractors_mention_form-data">
+                  <div *ngFor="let pdt of processingSubcontractors">
+                    <div *ngIf="pdt.data">
+                      <h5>{{ 'processing_subcontractors_obligations.form.' + pdt.reference | translate }}</h5>
+                      <div>{{ pdt.data }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <h3>{{ 'processing.form.sections.data.title' | translate }}</h3>
             <div class="databox">
