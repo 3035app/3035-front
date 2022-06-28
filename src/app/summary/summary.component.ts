@@ -32,7 +32,13 @@ export class SummaryComponent implements OnInit {
 
   content: any[];
   pia: any;
-  processingDataTypes: ProcessingDataType[]
+  processingInformed: ProcessingDataType[];
+  processingAccess: ProcessingDataType[];
+  processingConsent: ProcessingDataType[];
+  processingDelete: ProcessingDataType[];
+  processingLimit: ProcessingDataType[];
+  processingSubcontractors: ProcessingDataType[];
+  processingDataTypes: ProcessingDataType[];
   allData: Object;
   dataNav: any;
   displayMainPiaData: boolean;
@@ -69,7 +75,36 @@ export class SummaryComponent implements OnInit {
     this.piaTypes = PiaType;
     this.pia = this._piaService.pia;
     this.processingDataTypeApi.getAll(this.pia.processing.id).subscribe(pdts => {
-      this.processingDataTypes = pdts;
+      var informed = [];
+      var consent = [];
+      var access = [];
+      var del = [];
+      var limit = [];
+      var subcontractors = [];
+      var datatypes = [];      for (var i = 0; i < pdts.length; i++) {
+        if (['informed_mention_form', 'informed_mention_contract', 'informed_terms', 'informed_display', 'informed_phone', 'informed_other'].indexOf(pdts[i].reference) > -1) {
+          informed.push(pdts[i]);
+        } else if ( ['consent_optin_website', 'consent_optin_user_space', 'consent_optin_user_space', 'consent_phone', 'consent_paper', 'consent_signing_paper_form', 'consent_signing_contract', 'consent_signing_standard_form', 'consent_other'].indexOf(pdts[i].reference) > -1) {
+          consent.push(pdts[i]);
+        } else if ( ['access_contact_dpo', 'access_contact_referent', 'access_customer_area_form', 'access_paper_form', 'access_other'].indexOf(pdts[i].reference) > -1) {
+          access.push(pdts[i]);
+        } else if ( ['limit_contact_dpo', 'limit_contact_referent', 'limit_customer_area_form', 'limit_paper_form', 'limit_other'].indexOf(pdts[i].reference) > -1) {
+          limit.push(pdts[i]);
+        } else if ( ['delete_contact_dpo', 'delete_contact_referent', 'delete_customer_area_form', 'delete_paper_form', 'delete_other'].indexOf(pdts[i].reference) > -1) {
+          del.push(pdts[i]);
+        } else if ( ['subcontractors_obligations_yes','subcontractors_obligations_no', 'subcontractors_obligations_partially'].indexOf(pdts[i].reference) > -1) {
+          subcontractors.push(pdts[i]);
+        } else {
+          datatypes.push(pdts[i]);
+        }
+      }
+      this.processingInformed = informed;
+      this.processingConsent = consent;
+      this.processingAccess = access;
+      this.processingDelete = del;
+      this.processingLimit = limit;
+      this.processingSubcontractors = subcontractors;
+      this.processingDataTypes = datatypes;
     });
     this.displayMainPiaData = true;
     this.displayActionPlan = true;
