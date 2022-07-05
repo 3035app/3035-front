@@ -803,7 +803,7 @@
       "PIA_ORG_ORG": {
         "placeholder": "Décrivez ici l'organisation de la protection de la vie privée au sein de votre organisme.",
         "name": "Organisation de la politique de protection de la vie privée",
-        "description": "Existence d’une organisation apte à diriger et contrôler la protection des données à caractère personnel au sein de l’organisme (désignation d'un un CIL/DPD, création d'un comité de suivi, etc.).",
+        "description": "Existence d’une organisation apte à diriger et contrôler la protection des données à caractère personnel au sein de l’organisme (désignation d'un un CIL/DPO, création d'un comité de suivi, etc.).",
         "source": "WIKI Organisation"
       },
       "PIA_ORG_POL": {
@@ -1403,9 +1403,9 @@
       "0": "Le traitement ne devrait pas être mis en oeuvre.",
       "1": "Le traitement pourrait être mis en oeuvre."
     },
-    "dpo_name": "Nom du DPD",
-    "dpo_status": "Statut du DPD",
-    "dpo_opinion": "Opinion du DPD",
+    "dpo_name": "Nom du DPO",
+    "dpo_status": "Statut du DPO",
+    "dpo_opinion": "Opinion du DPO",
     "concerned_people_searched_opinion": "Recherche de l'avis des personnes concernées",
     "people_search_status_ok": "L'avis des personnes concernées a été demandé.",
     "people_search_status_nok": "L'avis des personnes concernées n'a pas été demandé.",
@@ -1496,10 +1496,10 @@
   "opinions": {
     "edit": "Éditer",
     "content": ", considère(nt) que :",
-    "dpo_opinion": "Avis du DPD",
-    "placeholder_dpo_name": "Nom(s) du(des) DPD",
+    "dpo_opinion": "Avis du DPO",
+    "placeholder_dpo_name": "Nom(s) du(des) DPO",
     "placeholder_dpo_opinion": "Précisez les raisons de votre choix",
-    "dpo_lock": "Veuillez remplir les autres sections avant de pouvoir saisir l'avis du DPD.",
+    "dpo_lock": "Veuillez remplir les autres sections avant de pouvoir saisir l'avis du DPO.",
     "rssi_opinion": "Avis du RSSI",
     "placeholder_rssi_name": "Nom(s) du(des) RSSI",
     "placeholder_rssi_opinion": "Précisez les raisons de votre choix",
@@ -1752,7 +1752,7 @@
           "short_help": "Planifiez en détail la mise en œuvre des mesures complémentaires déterminées au cours du PIA. Cette partie est automatiquement mise à jour en fonction des évaluations faites de chaque élément composant l'analyse d'impact."
         },
         "3": {
-          "title": "Avis du RSSI, du DPD et des personnes concernées",
+          "title": "Avis du RSSI, du DPO et des personnes concernées",
           "short_help": "Présentez le conseil de la personne en charge des aspects informatique et libertés (délégué à la protection des données s'il existe). Présentez l'avis des personnes concernées ou de leurs représentants."
         },
         "4": {
