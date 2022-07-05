@@ -10,11 +10,12 @@
         <!-- Opinion searched or not searched -->
         <form style="margin-top:16px;" [formGroup]="rssiSearchedOpinionsForm">
           <div class="pia-entryContentBlock-content-people-treatment">
-            <div>
+            <div (click)="enableRssiSearchedOpinionRadioButtons()">
               <input type="radio" id="rssi-choice-searched"
                 [attr.dirty]="_piaService.pia.requested_hiss_opinion === true"
                 [checked]="_piaService.pia.requested_hiss_opinion === true"
-                (click)="enableRssiSearchedOpinionRadioButtons()" (change)="rssiSearchedOpinionsFocusOut()"
+                (change)="rssiSearchedOpinionsFocusOut()"
+                disabled
                 formControlName="rssiSearchStatus" value="true">
               <label for="rssi-choice-searched">
                 <i class="fa fa-circle" aria-hidden="true"></i>
@@ -22,11 +23,12 @@
                 <span>{{ 'summary.rssi_search_status_ok' | translate }}</span>
               </label>
             </div>
-            <div>
+            <div (click)="enableRssiSearchedOpinionRadioButtons()">
               <input type="radio" id="rssi-choice-unsearched"
                 [attr.dirty]="_piaService.pia.requested_hiss_opinion === false"
                 [checked]="_piaService.pia.requested_hiss_opinion === false"
-                (click)="enableRssiSearchedOpinionRadioButtons()" (change)="rssiSearchedOpinionsFocusOut()"
+                (change)="rssiSearchedOpinionsFocusOut()"
+                disabled
                 formControlName="rssiSearchStatus" value="false">
               <label for="rssi-choice-unsearched">
                 <i class="fa fa-circle" aria-hidden="true"></i>
@@ -39,7 +41,7 @@
             class="pia-entryContentBlock-content-DPO-reasons">
             <textarea (focusout)="rssiSearchContentFocusOut()" (keyup)="autoTextareaResize($event)"
               id="pia-rssi-search-content" rows="8" formControlName="rssiSearchContent" cols="50"
-              placeholder="{{ 'opinions.placeholder_rssi_search_content' | translate }}"></textarea>
+              placeholder="{{ 'opinions.placeholder_rssi_search_content' | translate }}" disabled></textarea>
           </div>
         </form>
     
@@ -104,7 +106,7 @@
             <span>
               <ng-container *ngIf="!_piaService.pia.status || _piaService.pia.status < 2; else displayNames1">
                 <div style="display:inline-block;" (click)="dpoNameFocusIn()">
-                  <input (focusout)="dpoNameFocusOut()" #DpoNames type="text" class="DPOName" formControlName="DPONames" placeholder="{{ 'opinions.placeholder_dpo_name' | translate }}">
+                  <input (focusout)="dpoNameFocusOut()" #DpoNames type="text" class="DPOName" formControlName="DPONames" placeholder="{{ 'opinions.placeholder_dpo_name' | translate }}" disabled>
                 </div>
               </ng-container>
               <ng-template #displayNames1>
@@ -113,13 +115,13 @@
             </span>{{ 'opinions.content' | translate }}
           </p>
           <div class="pia-entryContentBlock-content-DPO-treatment">
-            <div>
+            <div (click)="enableDpoStatusRadioButtons()">
               <input type="radio"
                      id="treatment-1"
                      [attr.dirty]="_piaService.pia.dpo_status === 1"
                      [checked]="_piaService.pia.dpo_status === 1"
-                     (click)="enableDpoStatusRadioButtons()"
                      (change)="dpoStatusFocusOut()"
+                     disabled
                      formControlName="DPOStatus"
                      value="1">
               <label for="treatment-1">
@@ -128,13 +130,13 @@
                 <span>{{ 'opinions.treatment_ok' | translate }}</span>
               </label>
             </div>
-            <div>
+            <div (click)="enableDpoStatusRadioButtons()">
               <input type="radio"
                      id="treatment-2"
                      [attr.dirty]="_piaService.pia.dpo_status === 0"
                      [checked]="_piaService.pia.dpo_status === 0"
-                     (click)="enableDpoStatusRadioButtons()"
                      (change)="dpoStatusFocusOut()"
+                     disabled
                      formControlName="DPOStatus"
                      value="0">
               <label for="treatment-2">
@@ -145,7 +147,7 @@
             </div>
           </div>
           <div (click)="dpoOpinionFocusIn()" class="pia-entryContentBlock-content-DPO-reasons">
-            <textarea (focusout)="dpoOpinionFocusOut()" (keyup)="autoTextareaResize($event)" id="pia-opinions-dpo" formControlName="DPOOpinion" rows="8" cols="50" placeholder="{{ 'opinions.placeholder_dpo_opinion' | translate }}"></textarea>
+            <textarea (focusout)="dpoOpinionFocusOut()" (keyup)="autoTextareaResize($event)" id="pia-opinions-dpo" formControlName="DPOOpinion" rows="8" cols="50" placeholder="{{ 'opinions.placeholder_dpo_opinion' | translate }}" disabled></textarea>
           </div>
         </form>
       </ng-container>
@@ -166,13 +168,13 @@
         <!-- Opinions searched or not searched -->
         <form style="margin-top:16px;" [formGroup]="searchedOpinionsForm">
           <div class="pia-entryContentBlock-content-people-treatment">
-            <div>
+            <div (click)="enableConcernedPeopleSearchedOpinionRadioButtons()">
               <input type="radio"
                       id="concerned-people-choice-searched"
                       [attr.dirty]="_piaService.pia.concerned_people_searched_opinion === true"
                       [checked]="_piaService.pia.concerned_people_searched_opinion === true"
-                      (click)="enableConcernedPeopleSearchedOpinionRadioButtons()"
                       (change)="searchedOpinionsFocusOut()"
+                      disabled
                       formControlName="searchStatus"
                       value="true">
               <label for="concerned-people-choice-searched">
@@ -181,13 +183,13 @@
                 <span>{{ 'summary.people_search_status_ok' | translate }}</span>
               </label>
             </div>
-            <div>
+            <div (click)="enableConcernedPeopleSearchedOpinionRadioButtons()">
               <input type="radio"
                       id="concerned-people-choice-unsearched"
                       [attr.dirty]="_piaService.pia.concerned_people_searched_opinion === false"
                       [checked]="_piaService.pia.concerned_people_searched_opinion === false"
-                      (click)="enableConcernedPeopleSearchedOpinionRadioButtons()"
                       (change)="searchedOpinionsFocusOut()"
+                      disabled
                       formControlName="searchStatus"
                       value="false">
               <label for="concerned-people-choice-unsearched">
@@ -198,7 +200,7 @@
             </div>
           </div>
           <div (click)="peopleSearchContentFocusIn()" *ngIf="displayPeopleSearchContent" class="pia-entryContentBlock-content-DPO-reasons">
-            <textarea (focusout)="peopleSearchContentFocusOut()" (keyup)="autoTextareaResize($event)" id="pia-people-search-content" rows="8" formControlName="searchContent" cols="50" placeholder="{{ 'opinions.placeholder_search_content' | translate }}"></textarea>
+            <textarea (focusout)="peopleSearchContentFocusOut()" (keyup)="autoTextareaResize($event)" id="pia-people-search-content" rows="8" formControlName="searchContent" cols="50" placeholder="{{ 'opinions.placeholder_search_content' | translate }}" disabled></textarea>
           </div>
         </form>
 

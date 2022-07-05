@@ -6,7 +6,8 @@ import {Pia} from 'app/entry/pia.model';
 import { PiaService } from 'app/entry/pia.service';
 
 // new import
-import {PiaModel} from '@api/models';
+import { PiaModel } from '@api/models';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-dpo-people-opinions',
@@ -26,10 +27,20 @@ export class DPOPeopleOpinionsComponent implements OnInit {
   displayRssiSearchContent = false;
   @ViewChild('DpoNames') private elementRef1: ElementRef;
   @ViewChild('PeopleNames') private elementRef2: ElementRef;
+  hasOpinionPermission: boolean = false;
 
-  constructor(private el: ElementRef,
-              public _sidStatusService: SidStatusService,
-              public _piaService: PiaService) { }
+  constructor(
+    private el: ElementRef,
+    public _sidStatusService: SidStatusService,
+    public _piaService: PiaService,
+    private permissionsService: PermissionsService,
+  ) {
+      this.permissionsService.hasPermission('CanGiveOpinion').then((hasPerm: boolean) => {
+        if (hasPerm) {
+          this.hasOpinionPermission = true;
+        }
+      });
+    }
 
   ngOnInit() {
     this.DPOForm = new FormGroup({
@@ -163,7 +174,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   dpoNameFocusIn() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.DPOForm.controls['DPONames'].enable();
@@ -200,7 +211,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   enableDpoStatusRadioButtons() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.DPOForm.controls['DPOStatus'].enable();
@@ -223,7 +234,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   dpoOpinionFocusIn() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.DPOForm.controls['DPOOpinion'].enable();
@@ -254,7 +265,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   enableConcernedPeopleSearchedOpinionRadioButtons() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.searchedOpinionsForm.controls['searchStatus'].enable();
@@ -287,7 +298,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   peopleSearchContentFocusIn() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.searchedOpinionsForm.controls['searchContent'].enable();
@@ -412,7 +423,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   enableRssiSearchedOpinionRadioButtons() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.rssiSearchedOpinionsForm.controls['rssiSearchStatus'].enable();
@@ -445,7 +456,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   rssiSearchContentFocusIn() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.rssiSearchedOpinionsForm.controls['rssiSearchContent'].enable();

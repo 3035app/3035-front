@@ -8,6 +8,7 @@ import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-p
 import { TranslateService } from '@ngx-translate/core';
 import { createTokenForExternalReference } from '@angular/compiler/src/identifiers';
 import { AppDataService } from '../../../services/app-data.service';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-validate-pia',
@@ -20,6 +21,7 @@ export class ValidatePIAComponent implements OnInit {
   data: { sections: any };
   validateForm: FormGroup;
   attachment: any;
+  hasValidationPermission: boolean = false;
 
   constructor(
     private el: ElementRef,
@@ -28,8 +30,15 @@ export class ValidatePIAComponent implements OnInit {
     private _actionPlanService: ActionPlanService,
     private _translateService: TranslateService,
     public _piaService: PiaService,
-    private _appDataService: AppDataService
-  ) { }
+    private _appDataService: AppDataService,
+    private permissionsService: PermissionsService,
+  ) {
+      this.permissionsService.hasPermission('CanValidatePIA').then((hasPerm: boolean) => {
+        if (hasPerm) {
+          this.hasValidationPermission = true;
+        }
+      });
+  }
 
   ngOnInit() {
     if (this._appDataService.allUsers) {
