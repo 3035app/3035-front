@@ -13,7 +13,7 @@ import { AttachmentsService } from './attachments.service';
 export class AttachmentsComponent implements OnInit {
 
   @Input() processing: ProcessingModel;
-  attachmentForm: FormGroup;
+  processingAttachmentForm: FormGroup;
 
   constructor(public attachmentsService: AttachmentsService) { }
 
@@ -21,7 +21,7 @@ export class AttachmentsComponent implements OnInit {
     this.attachmentsService.processing = this.processing;
     this.attachmentsService.listAttachments();
 
-    this.attachmentForm = new FormGroup({
+    this.processingAttachmentForm = new FormGroup({
       attachment_file: new FormControl('', [])
     });
   }
