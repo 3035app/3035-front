@@ -1150,6 +1150,7 @@
   },
   "evaluations": {
     "title": "Évaluation",
+    "title_detail": "(Le DPO sera notifié de votre choix)",
     "to_correct": "À corriger",
     "improvable": "Améliorable",
     "acceptable": "Acceptable",
