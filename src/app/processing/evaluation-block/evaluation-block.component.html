@@ -3,6 +3,9 @@
 
     <h2>{{ 'evaluations.title' | translate }}</h2>
 
+    <textarea class="field" id="evaluation_comment" #evaluationComment required name="evaluation_comment" minRows="8"
+      cols="50" (focusOut)="updateEvaluation()" [(ngModel)]="processing.evaluation_comment"></textarea>
+
     <div class="evaluate-buttons">
       <button
         class="btn btn-red"
@@ -29,17 +32,6 @@
       </button>
     </div>
 
-    <textarea
-      class="field"
-      id="evaluation_comment"
-      #evaluationComment
-      required
-      name="evaluation_comment"
-      minRows="8"
-      cols="50"
-      (focusOut)="updateEvaluation()"
-      [(ngModel)]="processing.evaluation_comment"
-    ></textarea>
   </div>
 
   <div class="cancel-evaluation-container" *ngIf="processing.status === processingStatus.STATUS_VALIDATED">
@@ -58,6 +50,10 @@
   <div class="form-field evaluation-container" *ngxPermissionsOnly="['CanShowEvaluatePIA']">
 
     <h2>{{ 'evaluations.title' | translate }}</h2>
+
+    <div class="field" id="evaluation_comment" class="pia-questionBlock-contentText">
+      {{ processing.evaluation_comment }}
+    </div>
 
     <div class="evaluate-buttons">
       <button
@@ -85,13 +81,6 @@
       </button>
     </div>
 
-    <div
-      class="field"
-      id="evaluation_comment"
-      class="pia-questionBlock-contentText"
-    >
-      {{ processing.evaluation_comment }}
-    </div>
   </div>
   <ng-container *ngxPermissionsOnly="['CanCancelProcessingEvaluation']">
     <div class="cancel-evaluation-container" *ngIf="processing.status === processingStatus.STATUS_VALIDATED">
