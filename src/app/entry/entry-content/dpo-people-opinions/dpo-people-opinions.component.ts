@@ -329,7 +329,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   concernedPeopleNameFocusIn() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.peopleForm.controls['peopleNames'].enable();
@@ -367,7 +367,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   enableConcernedPeopleStatusRadioButtons() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.peopleForm.controls['peopleStatus'].enable();
@@ -392,7 +392,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   concernedPeopleOpinionFocusIn() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example  || !this.hasOpinionPermission) {
       return false;
     } else {
       this.peopleForm.controls['peopleOpinion'].enable();
@@ -487,7 +487,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   rssiNameFocusIn() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.rssiForm.controls['rssiNames'].enable();
@@ -525,7 +525,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   enableRssiStatusRadioButtons() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example || !this.hasOpinionPermission) {
       return false;
     } else {
       this.rssiForm.controls['rssiStatus'].enable();
@@ -550,7 +550,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    * @memberof DPOPeopleOpinionsComponent
    */
   rssiOpinionFocusIn() {
-    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example) {
+    if (this._piaService.pia.status >= 2 || this._piaService.pia.is_example  || !this.hasOpinionPermission) {
       return false;
     } else {
       this.rssiForm.controls['rssiOpinion'].enable();

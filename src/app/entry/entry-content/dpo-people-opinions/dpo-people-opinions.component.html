@@ -54,7 +54,9 @@
                 <div style="display:inline-block;" (click)="rssiNameFocusIn()">
                   <input #PeopleNames type="text" class="DPOName" (change)="rssiNameFocusOut()"
                     formControlName="rssiNames"
-                    placeholder="{{ 'opinions.placeholder_rssi_name' | translate }}">
+                    placeholder="{{ 'opinions.placeholder_rssi_name' | translate }}"
+                    disabled
+                  >
                 </div>
               </ng-container>
               <ng-template #displayNames2>
@@ -63,20 +65,24 @@
             </span>{{ 'opinions.content' | translate }}
           </p>
           <div class="pia-entryContentBlock-content-people-treatment">
-            <div>
+            <div (click)="enableRssiStatusRadioButtons()">
               <input type="radio" id="dpoAvis-3" [checked]="_piaService.pia.hiss_processing_implemented_status == 1"
-                (click)="enableRssiStatusRadioButtons()" (change)="rssiStatusFocusOut()"
-                formControlName="rssiStatus" value="1">
+                (change)="rssiStatusFocusOut()"
+                formControlName="rssiStatus" value="1"
+                disabled
+              >
               <label for="dpoAvis-3">
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <i class="fa fa-check" aria-hidden="true"></i>
                 <span>{{ 'opinions.treatment_ok' | translate }}</span>
               </label>
             </div>
-            <div>
+            <div (click)="enableRssiStatusRadioButtons()">
               <input type="radio" id="dpoAvis-4" [checked]="_piaService.pia.hiss_processing_implemented_status == 0"
-                (click)="enableRssiStatusRadioButtons()" (change)="rssiStatusFocusOut()"
-                formControlName="rssiStatus" value="0">
+                (change)="rssiStatusFocusOut()"
+                formControlName="rssiStatus" value="0"
+                disabled
+              >
               <label for="dpoAvis-4">
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <i class="fa fa-close" aria-hidden="true"></i>
@@ -87,7 +93,7 @@
           <div (click)="rssiOpinionFocusIn()" class="pia-entryContentBlock-content-people-reasons">
             <textarea (focusout)="rssiOpinionFocusOut()" (keyup)="autoTextareaResize($event)"
               id="pia-opinions-rssi" rows="8" formControlName="rssiOpinion" cols="50"
-              placeholder="{{ 'opinions.placeholder_rssi_opinion' | translate }}"></textarea>
+              placeholder="{{ 'opinions.placeholder_rssi_opinion' | translate }}" disabled></textarea>
           </div>
         </form>
       </ng-container>
@@ -210,7 +216,7 @@
             <span>
               <ng-container *ngIf="!_piaService.pia.status || _piaService.pia.status < 2; else displayNames2">
                 <div style="display:inline-block;" (click)="concernedPeopleNameFocusIn()">
-                  <input #PeopleNames type="text" class="DPOName" (change)="concernedPeopleNameFocusOut()" formControlName="peopleNames" placeholder="{{ 'opinions.placeholder_concerned_people_name' | translate }}">
+                  <input #PeopleNames type="text" class="DPOName" (change)="concernedPeopleNameFocusOut()" formControlName="peopleNames" placeholder="{{ 'opinions.placeholder_concerned_people_name' | translate }}" disabled>
                 </div>
               </ng-container>
               <ng-template #displayNames2>
@@ -219,28 +225,28 @@
             </span>{{ 'opinions.content' | translate }}
           </p>
           <div class="pia-entryContentBlock-content-people-treatment">
-            <div>
+            <div (click)="enableConcernedPeopleStatusRadioButtons()">
               <input type="radio"
                       id="dpoAvis-1"
                       [checked]="_piaService.pia.concerned_people_status == 1"
-                      (click)="enableConcernedPeopleStatusRadioButtons()"
                       (change)="concernedPeopleStatusFocusOut()"
                       formControlName="peopleStatus"
-                      value="1">
+                      value="1"
+                      disabled>
               <label for="dpoAvis-1">
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <i class="fa fa-check" aria-hidden="true"></i>
                 <span>{{ 'opinions.treatment_ok' | translate }}</span>
               </label>
             </div>
-            <div>
+            <div (click)="enableConcernedPeopleStatusRadioButtons()">
               <input type="radio"
                       id="dpoAvis-2"
                       [checked]="_piaService.pia.concerned_people_status == 0"
-                      (click)="enableConcernedPeopleStatusRadioButtons()"
                       (change)="concernedPeopleStatusFocusOut()"
                       formControlName="peopleStatus"
-                      value="0">
+                      value="0"
+                      disabled>
               <label for="dpoAvis-2">
                 <i class="fa fa-circle" aria-hidden="true"></i>
                 <i class="fa fa-close" aria-hidden="true"></i>
@@ -249,7 +255,7 @@
             </div>
           </div>
           <div (click)="concernedPeopleOpinionFocusIn()" class="pia-entryContentBlock-content-people-reasons">
-            <textarea (focusout)="concernedPeopleopinionFocusOut()" (keyup)="autoTextareaResize($event)" id="pia-opinions-people" rows="8" formControlName="peopleOpinion" cols="50" placeholder="{{ 'opinions.placeholder_people_opinion' | translate }}"></textarea>
+            <textarea (focusout)="concernedPeopleopinionFocusOut()" (keyup)="autoTextareaResize($event)" id="pia-opinions-people" rows="8" formControlName="peopleOpinion" cols="50" placeholder="{{ 'opinions.placeholder_people_opinion' | translate }}" disabled></textarea>
           </div>
         </form>
       </ng-container>
