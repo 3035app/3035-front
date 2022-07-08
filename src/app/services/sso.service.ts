@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BaseService} from '@api/service/base.service';
-import {Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class SsoService extends BaseService<any> {
@@ -12,8 +11,6 @@ export class SsoService extends BaseService<any> {
   }
 
   public fetchJwtToken(code: String, redirectUri: String) {
-    return this
-      .httpGetOne('/authBySso/{code}?redirect_uri={redirectUri}', {code: code, redirectUri: redirectUri})
-    ;
+    return this.http.get(`${environment.api.host}/authBySso/${code}?redirect_uri=${redirectUri}`);
   }
 }

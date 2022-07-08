@@ -21,10 +21,11 @@ export class SsoComponent implements OnInit {
     this.route.queryParams
       .filter(params => params.code)
       .subscribe(params => {
-          this.ssoService.fetchJwtToken(params.code, environment.sncf.callback_url).subscribe((token) => {
-            localStorage.setItem('token', token)
-            this.router.navigate(['/'])
-          })
+          this.ssoService.fetchJwtToken(params.code, environment.sncf.callback_url)
+            .subscribe((token) => {
+              localStorage.setItem('token', JSON.stringify(token))
+              this.router.navigate(['/'])
+            })
         }
       );
   }
