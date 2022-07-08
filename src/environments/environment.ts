@@ -15,5 +15,9 @@ export const environment = {
     token_path:    '/oauth/v2/token'
   },
   tenant: 'sncf',
-  sncf_callback_url: 'http://url-de-prod'
+  sncf: {
+    callback_url: 'http://url-prod/callback/',
+    connect_url: 'https://url_prod/IDP/',
+    connect_id: 'Pialab'
+  }
 };

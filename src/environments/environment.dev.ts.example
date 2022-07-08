@@ -15,5 +15,9 @@ export const environment = {
     host:          'http://localhost:8000',
     token_path:    '/oauth/v2/token'
   },
-  sncf_callback_url: 'http://localhost:4200/callback/'
+  sncf: {
+    callback_url: 'http://localhost:4200/callback/',
+    connect_url: 'https://idp-dev.sncf.fr/openam/oauth2/IDP/',
+    connect_id: 'Pialab'
+  }
 };
