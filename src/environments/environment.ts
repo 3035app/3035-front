@@ -14,5 +14,6 @@ export const environment = {
     host:          'https://backend.url',
     token_path:    '/oauth/v2/token'
   },
-  tenant: "sncf"
+  tenant: 'sncf',
+  sncf_callback_url: 'http://url-de-prod'
 };

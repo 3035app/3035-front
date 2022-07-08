@@ -15,4 +15,5 @@ export const environment = {
     host:          'http://localhost:8000',
     token_path:    '/oauth/v2/token'
   },
+  sncf_callback_url: 'http://localhost:4200/callback/'
 };
