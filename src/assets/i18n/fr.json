@@ -1830,7 +1830,9 @@
     "ask_opinion_by": "Demande d'émission d'un avis par",
     "opinion_by": "Avis émis par",
     "ask_validation_by": "Demande de validation par",
+    "pia_validation": "Validation du PIA",
     "validated_by": "Validé par",
+    "rejected_by": "Rejeté par",
     "archived_by": "Archivé par"
   }
 }

@@ -27,7 +27,9 @@ export class HistoryService {
       validationRequestedBy: '',
       validationRequestedOn: '',
       validatedBy: '',
-      validatedOn: ''
+      validatedOn: '',
+      rejectedBy: '',
+      rejectedOn: ''
     };
 
     if (trackings) {
@@ -69,9 +71,14 @@ export class HistoryService {
             history.validationRequestedOn = validationRequestDate.toLocaleDateString();
             break;
           case 'validated':
-            history.validatedBy = action.owner;
+            history.validatedBy = "Validé par " + action.owner;
             const validateDate = new Date(action.date)
-            history.validatedOn = validateDate.toLocaleDateString();
+            history.validatedOn = "le " + validateDate.toLocaleDateString();
+            break;
+          case 'rejected':
+            history.rejectedBy = "Refusé par " + action.owner;
+            const rejectDate = new Date(action.date)
+            history.rejectedOn = "le " + rejectDate.toLocaleDateString();
             break;
         }
       });
