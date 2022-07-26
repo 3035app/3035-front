@@ -97,6 +97,7 @@ import { ReportingComponent } from './reporting/reporting.component';
 import { SearchService } from "./search/search.service";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HistoryService } from 'app/services/history.service';
+import { SsoComponent } from './sso/sso.component';
 
 const providersList: any = [
   AppDataService,
@@ -204,7 +205,8 @@ export function createTranslateLoader(http: HttpClient) {
     ProcessingAttachmentsComponent,
     ProcessingAttachmentItemComponent,
     EvaluationBlockComponent,
-    ReportingComponent
+    ReportingComponent,
+    SsoComponent
   ],
   imports: [
     ChartsModule,
