@@ -19,6 +19,8 @@
                         <button type="submit" [disabled]="!authForm.valid" class="btn btn-green" id="authentication-submit" title="{{ 'homepage.cards.placeholder_start' | translate }}">{{ 'authentication.form.submit' | translate }}</button>
                         <a href="{{backendUrl}}">{{ 'authentication.forgotten_password' | translate }}</a>
                     </fieldset>
+
+                    <a href="{{ sncfConnectUrl }}authorize?client_id={{ sncfConnectId }}&redirect_uri={{ callbackUrl }}&ui_locales=fr&response_type=code&scope=openid">SNCF LOGIN</a>
                 </form>
             </div>
         </div>

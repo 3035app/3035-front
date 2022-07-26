@@ -26,12 +26,18 @@ export class AuthenticationComponent implements OnInit {
   public user = new User('', '');
   public error = false;
   public backendUrl = '#'
+  public callbackUrl = '';
+  public sncfConnectUrl = '';
+  public sncfConnectId = '';
 
   constructor(
     public authService: AuthenticationService,
     public router: Router,
   ) {
     this.backendUrl = environment.api.host + '/resetting/request'
+    this.callbackUrl = environment.sncf.callback_url
+    this.sncfConnectUrl = environment.sncf.connect_url;
+    this.sncfConnectId = environment.sncf.connect_id
   }
 
   onSubmit() {
