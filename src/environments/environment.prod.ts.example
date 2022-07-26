@@ -10,4 +10,9 @@ export const environment = {
     host:          'https://app.admin.pialab.io',
     token_path:    '/oauth/v2/token'
   },
+  sncf: {
+    callback_url: 'http://localhost:4200/callback/',
+    connect_url: 'https://idp-dev.sncf.fr/openam/oauth2/IDP/',
+    connect_id: 'Pialab'
+  }
 };
