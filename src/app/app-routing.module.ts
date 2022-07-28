@@ -72,7 +72,7 @@ const routes: Routes = [
     PortfolioRoutingModule,
     DashboardRoutingModule,
     ProcessingRoutingModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes),
   ],
   exports: [RouterModule],
   providers: [
