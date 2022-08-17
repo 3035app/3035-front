@@ -3,7 +3,7 @@
     <div class="type-enabled">
       <input type="checkbox" class="field" id="subcontractors_obligations_yes" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="subcontractors_obligations_yes.enabled"
-        (change)="updateValue('subcontractors_obligations_yes', true)"
+        (change)="updateRadioValue('subcontractors_obligations_yes')"
       >
       <label class="enabled-label" for="subcontractors_obligations_yes">{{ 'processing_subcontractors_obligations.form.subcontractors_obligations_yes'| translate }}</label>
     </div>
@@ -21,7 +21,7 @@
     <div class="type-enabled">
       <input type="checkbox" class="field" id="subcontractors_obligations_no" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="subcontractors_obligations_no.enabled"
-        (change)="updateValue('subcontractors_obligations_no', true)"
+        (change)="updateRadioValue('subcontractors_obligations_no')"
       >
       <label class="enabled-label" for="subcontractors_obligations_no">{{ 'processing_subcontractors_obligations.form.subcontractors_obligations_no'| translate }}</label>
     </div>
@@ -39,7 +39,7 @@
     <div class="type-enabled">
       <input type="checkbox" class="field" id="subcontractors_obligations_partially" [disabled]="!hasEditPermission || processingStatus >= 1"
         [(ngModel)]="subcontractors_obligations_partially.enabled"
-        (change)="updateValue('subcontractors_obligations_partially', true)"
+        (change)="updateRadioValue('subcontractors_obligations_partially')"
       >
       <label class="enabled-label" for="subcontractors_obligations_partially">{{ 'processing_subcontractors_obligations.form.subcontractors_obligations_partially'| translate }}</label>
     </div>

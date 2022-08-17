@@ -41,33 +41,9 @@ export class ProcessingSubcontractorsObligationsComponent implements ControlValu
    * Update model value from form control value
    *
    * @param reference
-   * @param field
-   * @param value
    */
-  updateValue(reference: string, enable: boolean = false): void {
+  updateValue(reference: string): void {
     const type = this[reference].processingDataType;
-    // Create new
-    if (!type.id) {
-      // Set missing properties
-      type.processing_id = this.processingId;
-      type.reference = reference;
-      // Create on server
-      this.processingDataTypeApi.create(type).subscribe((theType: ProcessingDataTypeModel) => {
-        // Udate model
-        this[reference].processingDataType = theType;
-      });
-
-      return;
-    }
-
-    // Disable existing
-    if (enable) {
-      // Delete from server
-      this.processingDataTypeApi.delete(type).subscribe(() => {
-        // Clear model
-        this[reference].processingDataType = new ProcessingDataTypeModel();
-      });
-    }
 
     // Update existing on server
     this.processingDataTypeApi.get(type.id).subscribe(pdt => {
@@ -77,6 +53,48 @@ export class ProcessingSubcontractorsObligationsComponent implements ControlValu
         this[reference].processingDataType = theType;
       });
     });
+  }
+
+  /**
+   * Update model value from form control radio value
+   *
+   * @param reference
+   */
+  updateRadioValue(reference: string): void {
+    const typeToUpdate = this[reference].processingDataType;
+    // Create new
+    if (!typeToUpdate.id) {
+      // Set missing properties
+      typeToUpdate.processing_id = this.processingId;
+      typeToUpdate.reference = reference;
+      // Create on server
+      this.processingDataTypeApi.create(typeToUpdate).subscribe((theType: ProcessingDataTypeModel) => {
+        // Udate model
+        this[reference].processingDataType = theType;
+      });
+    }
+
+    const allTypes = [this.subcontractors_obligations_yes.processingDataType, this.subcontractors_obligations_no.processingDataType, this.subcontractors_obligations_partially.processingDataType]
+    for (const type of allTypes) {
+      // Disable existing
+      if (type.id) {
+        // Delete from server
+        this.processingDataTypeApi.delete(type).subscribe(() => {
+          // Clear model
+          this[type.reference].processingDataType = new ProcessingDataTypeModel();
+          this[type.reference].enabled = false;
+        });
+        // Update existing on server
+        this.processingDataTypeApi.get(type.id).subscribe(pdt => {
+          const thePdt = Object.assign(pdt, type); // Fix missing .toJson method because « type » var is not of type ProcessingDataTypeModel
+          this.processingDataTypeApi.update(thePdt).subscribe((theType: ProcessingDataTypeModel) => {
+            // update model
+            this[type.reference].processingDataType = theType;
+          });
+        });
+      }
+  
+    }
   }
 
   /**
