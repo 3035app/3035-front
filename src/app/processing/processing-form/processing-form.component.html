@@ -467,7 +467,7 @@
 
       <div 
         class="form-field validate-container ready" 
-        *ngIf="processing.status === processingStatus.STATUS_DOING && currentSection.id == 4"
+        *ngIf="processing.status === processingStatus.STATUS_DOING && currentSection.id == 4 && hasEditPermission"
       >
         <button 
           class="btn btn-green expanded"
