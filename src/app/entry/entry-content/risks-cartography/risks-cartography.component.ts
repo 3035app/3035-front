@@ -320,7 +320,7 @@ export class RisksCartographyComponent implements OnInit, OnDestroy {
     const grad = context.createLinearGradient(50, 50, 150, 150);
 
     // Dotted lines params
-    context.setLineDash([0.1, 1.8]);
+    // context.setLineDash([0.1, 1.8]);
     context.lineWidth = 0.6;
 
     // Dotted lines
@@ -402,6 +402,9 @@ export class RisksCartographyComponent implements OnInit, OnDestroy {
     context.lineTo(tox - headlength * Math.cos(angle - Math.PI / 6), toy - headlength * Math.sin(angle - Math.PI / 6));
     context.moveTo(tox, toy);
     context.lineTo(tox - headlength * Math.cos(angle + Math.PI / 6), toy - headlength * Math.sin(angle + Math.PI / 6));
+    // context.fillStyle = '#000000';
+    // context.strokeStyle = '#000000';
+    // context.lineWidth = 2;
   }
 
 }
