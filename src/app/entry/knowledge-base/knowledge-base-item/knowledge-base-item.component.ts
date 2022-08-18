@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { KnowledgeBaseService } from '../knowledge-base.service';
 import { TranslateService } from '@ngx-translate/core';
 import { GlobalEvaluationService } from '../../../services/global-evaluation.service';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-knowledge-base-item',
@@ -15,13 +16,20 @@ export class KnowledgeBaseItemComponent implements OnInit {
   @Input() itemKb: any;
   @Output() newMeasureEvent: EventEmitter<any> = new EventEmitter<any>();
   titleKb: string;
+  hasEditPermission: boolean = false;
 
   constructor(private el: ElementRef, private router: Router,
               private _knowledgeBaseService: KnowledgeBaseService,
               private _translateService: TranslateService,
               public _globalEvaluationService: GlobalEvaluationService,
-              private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private permissionsService: PermissionsService,) {
     this.router = router;
+    this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
+      if (hasPerm) {
+        this.hasEditPermission = true;
+      }
+    });
   }
 
   ngOnInit() {

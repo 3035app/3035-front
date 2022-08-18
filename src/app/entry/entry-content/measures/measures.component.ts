@@ -6,6 +6,7 @@ import { GlobalEvaluationService } from 'app/services/global-evaluation.service'
 
 import { EvaluationModel, AnswerModel, MeasureModel } from '@api/models';
 import { EvaluationApi, AnswerApi, MeasureApi } from '@api/services';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-measures',
@@ -24,6 +25,7 @@ export class MeasuresComponent implements OnInit, OnDestroy {
   displayDeleteButton = true;
   measureForm: FormGroup;
   measureModel: MeasureModel = new MeasureModel();
+  hasEditPermission: boolean = false;
 
   constructor(
     public _globalEvaluationService: GlobalEvaluationService,
@@ -34,7 +36,15 @@ export class MeasuresComponent implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private evaluationApi: EvaluationApi,
     private answerApi: AnswerApi,
-  private measureApi: MeasureApi) { }
+    private measureApi: MeasureApi,
+    private permissionsService: PermissionsService,
+  ) {
+    this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
+      if (hasPerm) {
+        this.hasEditPermission = true;
+      }
+    });
+  }
 
   ngOnInit() {
     this.measureForm = new FormGroup({
