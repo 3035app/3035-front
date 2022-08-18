@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ProcessingModel, ProcessingAttachmentModel } from '@api/models';
 import { ProcessingApi, ProcessingAttachmentApi } from '@api/services';
 import { AttachmentsService } from './attachments.service';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-processing-attachments',
@@ -14,8 +15,18 @@ export class AttachmentsComponent implements OnInit {
 
   @Input() processing: ProcessingModel;
   processingAttachmentForm: FormGroup;
+  hasEditPermission: boolean = false;
 
-  constructor(public attachmentsService: AttachmentsService) { }
+  constructor(
+    public attachmentsService: AttachmentsService,
+    private permissionsService: PermissionsService,
+  ) {
+    this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
+      if (hasPerm) {
+        this.hasEditPermission = true;
+      }
+    });
+  }
 
   ngOnInit() {
     this.attachmentsService.processing = this.processing;
