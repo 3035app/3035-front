@@ -7,6 +7,7 @@ import { PiaService } from 'app/entry/pia.service';
 
 import { EvaluationModel } from '@api/models';
 import { EvaluationApi } from '@api/services';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-action-plan-implementation',
@@ -19,11 +20,23 @@ export class ActionPlanImplementationComponent implements OnInit {
   evaluation: EvaluationModel;
   actionPlanForm: FormGroup;
   displayEditButton = false;
+  hasEvaluationPermission: boolean = false;
+  estimatedImplementationDate: string = '';
 
   @ViewChild('estimatedEvaluationDate') private estimatedEvaluationDate: ElementRef;
   @ViewChild('personInCharge') private personInCharge: ElementRef;
 
-  constructor(private _piaService: PiaService, private evaluationApi: EvaluationApi) { }
+  constructor(
+    private _piaService: PiaService,
+    private evaluationApi: EvaluationApi,
+    private permissionsService: PermissionsService,
+  ) {
+    this.permissionsService.hasPermission('CanEvaluatePIA').then((hasPerm: boolean) => {
+      if (hasPerm) {
+        this.hasEvaluationPermission = true;
+      }
+    });
+  }
 
   ngOnInit() {
     this.actionPlanForm = new FormGroup({
@@ -38,6 +51,7 @@ export class ActionPlanImplementationComponent implements OnInit {
         const finalMonth = (month.length === 1 ? '0' : '' ) + month;
         const finalDate =  date.getFullYear() + '-' + finalMonth + '-' + date.getDate();
         this.actionPlanForm.controls['estimatedEvaluationDate'].patchValue(finalDate);
+        this.estimatedImplementationDate = date.getDate() + '-' + finalMonth + '-' + date.getFullYear();
         // TODO Unable to FocusIn with Firefox
         // this.actionPlanForm.controls['estimatedEvaluationDate'].disable();
       }
