@@ -54,8 +54,11 @@
                             <li *ngIf="!dataItem.hide">
                                 <a routerLink="/entry/{{_piaService.pia.id}}/section/{{dataSection.id}}/item/{{dataItem.id}}"
                                     [ngClass]="{'active': piaSection?.id == dataSection.id && piaItem?.id == dataItem.id}"
-                                    class="truncate">
+                                    class="truncate" *ngIf="!hasEditPermission || processing.status >= 4">
                                     {{ dataItem.title | translate }}</a>
+                                <span [ngClass]="{'active': piaSection?.id == dataSection.id && piaItem?.id == dataItem.id}"
+                                    class="truncate" *ngIf="hasEditPermission && processing.status < 4">
+                                    {{ dataItem.title | translate }}</span>
                                 <i class="fa"
                                     *ngIf="_sidStatusService.sidStatusIcon[_sidStatusService.itemStatus[dataSection.id + '.' + dataItem.id]]"
                                     [ngClass]="_sidStatusService.sidStatusIcon[_sidStatusService.itemStatus[dataSection.id + '.' + dataItem.id]]"

@@ -7,6 +7,7 @@ import { PiaApi } from '@api/services';
 import { PiaModel } from '@api/models';
 import { ModalsService } from 'app/modals/modals.service';
 import { HistoryService } from 'app/services/history.service';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-sections',
@@ -25,6 +26,7 @@ export class SectionsComponent implements OnInit {
   @Input() piaItem: { id: number, title: string, evaluation_mode: string, short_help: string, questions: any };
   data: { sections: any };
   pias: any;
+  hasEditPermission: boolean = false;
 
   constructor(
     public _piaService: PiaService,
@@ -32,8 +34,15 @@ export class SectionsComponent implements OnInit {
     public _sidStatusService: SidStatusService,
     private piaApi: PiaApi,
     private _modalsService: ModalsService,
-    private _historyService: HistoryService
-  ) {}
+    private _historyService: HistoryService,
+    private permissionsService: PermissionsService,
+  ) {
+    this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
+      if (hasPerm) {
+        this.hasEditPermission = true;
+      }
+    });
+  }
 
   async ngOnInit() {
     this.data = await this._appDataService.getDataNav(this._piaService.pia);
