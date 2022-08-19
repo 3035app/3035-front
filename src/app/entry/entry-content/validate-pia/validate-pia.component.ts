@@ -151,7 +151,7 @@ export class ValidatePIAComponent implements OnInit {
     const simpleValidationBtn = document.getElementById('pia-simple-validation');
     const signValidationBtn = document.getElementById('pia-sign-validation');
 
-    [].forEach.call(radioButtons, function(currentRadioBtn) {
+    [].forEach.call(radioButtons, function (currentRadioBtn) {
       if (!currentRadioBtn.checked) {
         allBtnChecked = false;
       }
@@ -159,6 +159,9 @@ export class ValidatePIAComponent implements OnInit {
     if (allBtnChecked) {
       simpleValidationBtn.removeAttribute('disabled');
       signValidationBtn.removeAttribute('disabled');
+    } else {
+      simpleValidationBtn.setAttribute('disabled', 'true');
+      signValidationBtn.setAttribute('disabled', 'true');
     }
   }
 }
