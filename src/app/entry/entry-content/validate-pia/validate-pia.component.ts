@@ -156,7 +156,7 @@ export class ValidatePIAComponent implements OnInit {
         allBtnChecked = false;
       }
     });
-    if (allBtnChecked) {
+    if (allBtnChecked && this.hasValidationPermission) {
       simpleValidationBtn.removeAttribute('disabled');
       signValidationBtn.removeAttribute('disabled');
     } else {
