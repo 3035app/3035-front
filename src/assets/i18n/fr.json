@@ -1326,7 +1326,7 @@
       "content": "La partie est prête pour<br>la validation de l'analyse."
     },
     "validate_evaluation_to_correct": {
-      "content": "Désolé,<br>Plusieurs champs doivent être corrigés.<br>Retour au mode d'édition<br>pour apporter des corrections."
+      "content": "Les mesures n'ayant pas toutes été évaluées comme « A améliorer » ou « Acceptable », il a été demandé au rédacteur d'apporter des corrections"
     },
     "declare_measures": {
       "content": "Avant d'évaluer les risques,<br>vous devez déclarer les mesures<br>existantes ou prévues.",
