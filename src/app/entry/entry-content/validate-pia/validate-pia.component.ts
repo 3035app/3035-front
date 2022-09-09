@@ -1,12 +1,9 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
 import { PiaService } from 'app/entry/pia.service';
 import { ModalsService } from 'app/modals/modals.service';
 import { AttachmentsService } from 'app/entry/attachments/attachments.service';
 import { ActionPlanService } from 'app/entry/entry-content/action-plan//action-plan.service';
-import { TranslateService } from '@ngx-translate/core';
-import { createTokenForExternalReference } from '@angular/compiler/src/identifiers';
 import { AppDataService } from '../../../services/app-data.service';
 import { PermissionsService } from '@security/permissions.service';
 
@@ -18,17 +15,17 @@ import { PermissionsService } from '@security/permissions.service';
 })
 export class ValidatePIAComponent implements OnInit {
 
-  data: { sections: any };
-  validateForm: FormGroup;
   attachment: any;
+  data: { sections: any };
   hasValidationPermission: boolean = false;
+  validateForm: FormGroup;
+  validatePiaAttachmentForm: FormGroup;
 
   constructor(
     private el: ElementRef,
     private _modalsService: ModalsService,
     public _attachmentsService: AttachmentsService,
     private _actionPlanService: ActionPlanService,
-    private _translateService: TranslateService,
     public _piaService: PiaService,
     private _appDataService: AppDataService,
     private permissionsService: PermissionsService,
@@ -38,6 +35,7 @@ export class ValidatePIAComponent implements OnInit {
           this.hasValidationPermission = true;
         }
       });
+      console.log(1, this._attachmentsService)
   }
 
   ngOnInit() {
@@ -48,6 +46,9 @@ export class ValidatePIAComponent implements OnInit {
             }
         });
     }
+    this.validatePiaAttachmentForm = new FormGroup({
+        attachment_file: new FormControl('', [])
+    });
     this.validateForm = new FormGroup({
         validateStatus1: new FormControl(),
         validateStatus2: new FormControl(),
@@ -62,6 +63,8 @@ export class ValidatePIAComponent implements OnInit {
     this._attachmentsService.pia = this._piaService.pia;
     this._attachmentsService.updateSignedAttachmentsList();
     this._actionPlanService.listActionPlan();
+    console.log(4, this._attachmentsService._co)
+    console.log(4, this._co)
   }
 
   /**
@@ -69,8 +72,11 @@ export class ValidatePIAComponent implements OnInit {
    * @memberof ValidatePIAComponent
    */
   addAttachment() {
-    const attachment: any = document.querySelector('[formcontrolname="attachment_file"]');
+    console.log('-- addAttachment')
+    console.log(2, this)
     this._attachmentsService.pia_signed = 1;
+    const attachment: any = document.querySelector('[formcontrolname="attachment_file"]');
+    console.log(3, attachment)
     attachment.click();
   }
 
@@ -79,7 +85,8 @@ export class ValidatePIAComponent implements OnInit {
    * @param {number} id - Attachment id.
    * @memberof ValidatePIAComponent
    */
-  downloadAttachment(id: number) {
+   downloadAttachment(id: number) {
+    console.log('-- downloadAttachment')
     this._attachmentsService.downloadAttachment(id);
   }
 

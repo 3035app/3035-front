@@ -1,5 +1,5 @@
 <div class="pia-attachmentsBlock">
-  <p>{{ 'pia.attachments.title' | translate }}</p>
+  <p>{{ 'pia.attachments.title' | translate }}**</p>
 
   <app-processing-attachment-item *ngFor="let attachment of attachmentsService.processing.attachments;let i=index" [attachment]="attachment" [processing]="processing"></app-processing-attachment-item>
 
