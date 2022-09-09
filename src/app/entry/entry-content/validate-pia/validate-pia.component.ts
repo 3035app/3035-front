@@ -79,7 +79,7 @@ export class ValidatePIAComponent implements OnInit {
    * @param {event} event - Any kind of event.
    * @memberof ValidatePIAComponent
    */
-   uploadAttachement(event: Event) {
+  uploadAttachement(event: Event) {
     const attachment_file = (<HTMLInputElement>event.target).files[0];
     this._attachmentsService.upload(attachment_file)
   }
@@ -89,7 +89,7 @@ export class ValidatePIAComponent implements OnInit {
    * @param {number} id - Attachment id.
    * @memberof ValidatePIAComponent
    */
-   downloadAttachment(id: number) {
+  downloadAttachment(id: number) {
     this._attachmentsService.downloadAttachment(id);
   }
 
