@@ -35,8 +35,7 @@ export class ValidatePIAComponent implements OnInit {
           this.hasValidationPermission = true;
         }
       });
-      console.log(1, this._attachmentsService)
-  }
+    }
 
   ngOnInit() {
     if (this._appDataService.allUsers) {
@@ -63,8 +62,6 @@ export class ValidatePIAComponent implements OnInit {
     this._attachmentsService.pia = this._piaService.pia;
     this._attachmentsService.updateSignedAttachmentsList();
     this._actionPlanService.listActionPlan();
-    console.log(4, this._attachmentsService._co)
-    console.log(4, this._co)
   }
 
   /**
@@ -72,12 +69,19 @@ export class ValidatePIAComponent implements OnInit {
    * @memberof ValidatePIAComponent
    */
   addAttachment() {
-    console.log('-- addAttachment')
-    console.log(2, this)
     this._attachmentsService.pia_signed = 1;
     const attachment: any = document.querySelector('[formcontrolname="attachment_file"]');
-    console.log(3, attachment)
     attachment.click();
+  }
+
+  /**
+   * Allows users to upload an attachment for a specific Processing.
+   * @param {event} event - Any kind of event.
+   * @memberof ValidatePIAComponent
+   */
+   uploadAttachement(event: Event) {
+    const attachment_file = (<HTMLInputElement>event.target).files[0];
+    this._attachmentsService.upload(attachment_file)
   }
 
   /**
@@ -86,7 +90,6 @@ export class ValidatePIAComponent implements OnInit {
    * @memberof ValidatePIAComponent
    */
    downloadAttachment(id: number) {
-    console.log('-- downloadAttachment')
     this._attachmentsService.downloadAttachment(id);
   }
 

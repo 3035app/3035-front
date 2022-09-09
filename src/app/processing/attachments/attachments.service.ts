@@ -51,7 +51,6 @@ export class AttachmentsService {
         attachment.fromJson(newAttachment);
         this.processing.attachments.unshift(attachment);
       });
-
     }
   }
 

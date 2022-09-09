@@ -69,7 +69,7 @@
   </div>
 
   <form enctype="multipart/form-data" [formGroup]="validatePiaAttachmentForm" *ngIf="hasValidationPermission">
-    <input type="file" formControlName="attachment_file" id="attachment_file" (change)="attachmentsService.uploadAttachement($event)" class="hide">
+    <input type="file" formControlName="attachment_file" id="attachment_file" (change)="uploadAttachement($event)" class="hide">
     <button [ngClass]="{'disabled-validation': _piaService.pia.is_example}" type="button" (click)="addAttachment()" *ngIf="_piaService.pia.status === 3" class="pia-entryContentBlock-submitAttachmentButton btn btn-red">{{ 'validation_page.add_signed_pia' | translate }}</button>
   </form>
 
