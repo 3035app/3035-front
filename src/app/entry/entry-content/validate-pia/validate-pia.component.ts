@@ -42,27 +42,26 @@ export class ValidatePIAComponent implements OnInit {
 
   ngOnInit() {
     if (this._appDataService.allUsers) {
-      this._appDataService.allUsers.forEach((user) => {
-        if (user.id === this._piaService.pia.processing.supervisors.data_controller_id) {
-          this._piaService.pia.validator_name = `${user.firstName} ${user.lastName}`
-        }
-      });
+        this._appDataService.allUsers.forEach((user) => {
+            if (user.id === this._piaService.pia.processing.supervisors.data_controller_id) {
+                this._piaService.pia.validator_name = `${user.firstName} ${user.lastName}`
+            }
+        });
     }
     this.validateForm = new FormGroup({
-      validateStatus1: new FormControl(),
-      validateStatus2: new FormControl(),
-      validateStatus3: new FormControl(),
-      validateStatus4: new FormControl()
+        validateStatus1: new FormControl(),
+        validateStatus2: new FormControl(),
+        validateStatus3: new FormControl(),
+        validateStatus4: new FormControl()
     });
-
     this.validateForm.controls['validateStatus1'].patchValue(this._piaService.pia.status > 1);
     this.validateForm.controls['validateStatus2'].patchValue(this._piaService.pia.status > 1);
     this.validateForm.controls['validateStatus3'].patchValue(this._piaService.pia.status > 1);
     this.validateForm.controls['validateStatus4'].patchValue(this._piaService.pia.status > 1);
-
+    // initialize pia
+    this._attachmentsService.pia = this._piaService.pia;
     this._attachmentsService.updateSignedAttachmentsList();
     this._actionPlanService.listActionPlan();
-
   }
 
   /**

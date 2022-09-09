@@ -43,7 +43,6 @@ export class AttachmentsComponent implements OnInit {
    */
   addAttachment() {
     const attachment = <HTMLInputElement>document.querySelector('[formcontrolname="attachment_file"]');
-
     attachment.click();
   }
 }
