@@ -18,7 +18,9 @@ export class AttachmentsService {
   constructor(
     private _modalsService: ModalsService,
     private attachmentApi: AttachmentApi
-  ) { }
+  ) {
+    this.attachments = [];
+  }
 
   /**
    * List all attachments.

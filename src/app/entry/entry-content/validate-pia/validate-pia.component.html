@@ -55,6 +55,7 @@
 
       <!-- Display adequate text according to the signed attachment available or not -->
       <div class="pia-entryContentBlock-content-status" *ngIf="_piaService.pia.status === 3">
+        {{ _attachmentsService }}
         <ng-container *ngIf="!_attachmentsService.attachment_signed; else piaSignedAndValidated">
           <p>{{ 'validation_page.waiting_for_signature' | translate }}</p>
           <i class="fa fa-cog" aria-hidden="true"></i>
