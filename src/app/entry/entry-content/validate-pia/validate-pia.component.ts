@@ -80,8 +80,7 @@ export class ValidatePIAComponent implements OnInit {
    * @memberof ValidatePIAComponent
    */
   uploadAttachement(event: Event) {
-    const attachment_file = (<HTMLInputElement>event.target).files[0];
-    this._attachmentsService.upload(attachment_file)
+    this._attachmentsService.upload((<HTMLInputElement>event.target).files[0]);
   }
 
   /**
