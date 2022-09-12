@@ -1,8 +1,8 @@
 <div class="container pia-validationBlock ">
   <div class="pia-entryContentBlock-content">
     <div class="pia-entryContentBlock-content-list">
-      <p>({{_piaService.pia.updated_at | date: 'dd/MM/yyyy'}})</p>
-      <p>{{ 'validation_page.responsible' | translate }}<span class="blue">{{_piaService.pia.validator_name}}</span>.</p>
+      <p>({{ _piaService.pia.updated_at | date: 'dd/MM/yyyy' }})</p>
+      <p>{{ 'validation_page.responsible' | translate }}<span class="blue">{{ _piaService.pia.validator_name }}</span>.</p>
       <p>{{ 'validation_page.after_reading' | translate }}</p>
       <form [formGroup]="validateForm" novalidate>
         <div class="pia-entryContentBlock-content-list-confirm" [ngClass]="{'validate': _piaService.pia.status > 1}">
@@ -55,7 +55,6 @@
 
       <!-- Display adequate text according to the signed attachment available or not -->
       <div class="pia-entryContentBlock-content-status" *ngIf="_piaService.pia.status === 3">
-        {{ _attachmentsService }}
         <ng-container *ngIf="!_attachmentsService.attachment_signed; else piaSignedAndValidated">
           <p>{{ 'validation_page.waiting_for_signature' | translate }}</p>
           <i class="fa fa-cog" aria-hidden="true"></i>
@@ -68,6 +67,8 @@
 
     </div>
   </div>
+
+  <app-attachment-item *ngFor="let attachment of _attachmentsService.attachments;let i=index" [attachment]="attachment" [pia]="pia"></app-attachment-item>
 
   <form enctype="multipart/form-data" [formGroup]="validatePiaAttachmentForm" *ngIf="hasValidationPermission">
     <input type="file" formControlName="attachment_file" id="attachment_file" (change)="uploadAttachement($event)" class="hide">
@@ -87,7 +88,7 @@
         <h2>{{ 'validation_page.latest_signed_attachment' | translate }}</h2>
         <div>
           <span class="pia-icons pia-icon-file-pdf-blue"></span>
-          <a href="javascript:;" (click)="downloadAttachment(_attachmentsService.attachment_signed.id)">{{_attachmentsService.attachment_signed.name}}</a>
+          <a href="javascript:;" (click)="downloadAttachment(_attachmentsService.attachment_signed.id)">{{ _attachmentsService.attachment_signed.name }}</a>
           <button *ngIf="_piaService.pia.status !== 4" type="button" class="btn" (click)="removeAttachment(_attachmentsService.attachment_signed.id)" title="{{ 'validation_page.remove_attachment' | translate }}"><span class="pia-icons pia-icon-close"></span></button>
         </div>
       </div>
@@ -97,9 +98,9 @@
         <h2>{{ 'validation_page.signed_attachments_history' | translate }}</h2>
         <div *ngFor="let signed_attachment of _attachmentsService.signedAttachments;let i=index">
           <span class="pia-icons pia-icon-file-pdf-blue"></span>
-          <a href="javascript:;" (click)="downloadAttachment(signed_attachment.id)" *ngIf="signed_attachment.file && signed_attachment.file.length > 0; else signedAttachmentName">{{signed_attachment.name}}</a>
+          <a href="javascript:;" (click)="downloadAttachment(signed_attachment.id)" *ngIf="signed_attachment.file && signed_attachment.file.length > 0; else signedAttachmentName">{{ signed_attachment.name }}</a>
           <ng-template #signedAttachmentName>
-            <span><del>{{signed_attachment.name}}</del></span>
+            <span><del>{{ signed_attachment.name }}</del></span>
           </ng-template>
           <div *ngIf="signed_attachment.comment" [innerHTML]="signed_attachment.comment|nl2br"></div>
         </div>
@@ -109,8 +110,8 @@
     <!-- Links and tools block -->
     <div class="pia-entryContentBlock-footer-validationTools">
       <a routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i><p>{{ 'validation_page.tools.dashboard' | translate }}</p></a>
-      <a routerLink="/summary/{{_piaService.pia.id}}"><i class="fa fa-file-text-o" aria-hidden="true"></i><p>{{ 'validation_page.tools.display_pia' | translate }}</p></a>
-      <a routerLink="/summary/{{_piaService.pia.id}}" [queryParams]="{ displayOnlyActionPlan: true }"><i class="fa fa-file-excel-o" aria-hidden="true"></i><p>{{ 'validation_page.tools.action_plan' | translate }}</p></a>
+      <a routerLink="/summary/{{ _piaService.pia.id }}"><i class="fa fa-file-text-o" aria-hidden="true"></i><p>{{ 'validation_page.tools.display_pia' | translate }}</p></a>
+      <a routerLink="/summary/{{ _piaService.pia.id }}" [queryParams]="{ displayOnlyActionPlan: true }"><i class="fa fa-file-excel-o" aria-hidden="true"></i><p>{{ 'validation_page.tools.action_plan' | translate }}</p></a>
     </div>
 
   </div>
