@@ -24,7 +24,7 @@
               </label>
             </div>
             <div (click)="enableRssiSearchedOpinionRadioButtons()">
-              <input type="radio" id="rssi-choice-unsearched"
+                <input type="radio" id="rssi-choice-unsearched"
                 [attr.dirty]="_piaService.pia.requested_hiss_opinion === false"
                 [checked]="_piaService.pia.requested_hiss_opinion === false"
                 (change)="rssiSearchedOpinionsFocusOut()"
@@ -40,11 +40,11 @@
           <div (click)="rssiSearchContentFocusIn()" *ngIf="displayRssiSearchContent"
             class="pia-entryContentBlock-content-DPO-reasons">
             <textarea (focusout)="rssiSearchContentFocusOut()" (keyup)="autoTextareaResize($event)"
-              id="pia-rssi-search-content" rows="8" formControlName="rssiSearchContent" cols="50"
+            id="pia-rssi-search-content" rows="8" formControlName="rssiSearchContent" cols="50"
               placeholder="{{ 'opinions.placeholder_rssi_search_content' | translate }}" disabled></textarea>
           </div>
         </form>
-    
+
         <!-- Opinion content -->
         <form style="margin-top:30px;" *ngIf="displayRssiOpinion" (click)="checkRssiName()"
           [formGroup]="rssiForm">
@@ -60,7 +60,7 @@
                 </div>
               </ng-container>
               <ng-template #displayNames2>
-                {{_piaService.pia.hiss_name}}
+                {{ _piaService.pia.hiss_name }}
               </ng-template>
             </span>{{ 'opinions.content' | translate }}
           </p>
@@ -116,7 +116,7 @@
                 </div>
               </ng-container>
               <ng-template #displayNames1>
-                {{_piaService.pia.dpos_names}}
+                {{ _piaService.pia.dpos_names }}
               </ng-template>
             </span>{{ 'opinions.content' | translate }}
           </p>
@@ -220,7 +220,7 @@
                 </div>
               </ng-container>
               <ng-template #displayNames2>
-                {{_piaService.pia.people_names}}
+                {{ _piaService.pia.people_names }}
               </ng-template>
             </span>{{ 'opinions.content' | translate }}
           </p>
