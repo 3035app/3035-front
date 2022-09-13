@@ -98,12 +98,14 @@ export class PaginationService {
    * @memberof EntryContentComponent
    */
   getNextSectionItem(status_start: number, status_end: number) {
+    // console.log('-- getNextSectionItem')
     let goto_section = null;
     let goto_item = null;
 
     const itemStatus = Object.keys(this._sidStatusService.itemStatus).sort().reduce(
       (r, k) => (r[k] = this._sidStatusService.itemStatus[k], r), {}
     );
+    // console.log(status_start, status_end, itemStatus)
 
     for (const el in itemStatus) {
       if (this._sidStatusService.itemStatus.hasOwnProperty(el) &&
@@ -116,9 +118,12 @@ export class PaginationService {
         break;
       }
     }
+    // console.log('-- reference_to:', goto_section, goto_item)
 
     if (!goto_section || !goto_item) {
-      if (this.nextLink.section && this.nextLink.item && this.nextLink.section !== 4 && this.nextLink.item !== 3) {
+      // console.log(this.nextLink)
+      // #FIXME  why add "&& this.nextLink.item !== 3" to condition?
+      if (this.nextLink.section && this.nextLink.item && this.nextLink.section !== 4) {
         goto_section = this.nextLink.section;
         goto_item = this.nextLink.item;
       } else {
