@@ -93,6 +93,7 @@ export class EntryContentComponent implements OnInit, OnChanges {
   }
 
   /**
+   * @TODO
    * Allow an user to validate evaluation for a section.
    * @memberof EntryContentComponent
    */
@@ -123,7 +124,9 @@ export class EntryContentComponent implements OnInit, OnChanges {
    * @memberof EntryContentComponent
    */
   private goToNextSectionItem(status_start: number, status_end: number) {
+    // console.log('-- goToNextSectionItem')
     const goto_section_item = this._paginationService.getNextSectionItem(status_start, status_end)
+    // console.log(status_start, status_end, goto_section_item)
 
     this._router.navigate([
       'entry',
