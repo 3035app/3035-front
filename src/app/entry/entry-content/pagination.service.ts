@@ -97,7 +97,7 @@ export class PaginationService {
    * @param {number} status_end - To status.
    * @memberof EntryContentComponent
    */
-   getNextSectionItem(status_start: number, status_end: number) {
+  getNextSectionItem(status_start: number, status_end: number) {
     // console.log('-- getNextSectionItem')
     let goto_section = null;
     let goto_item = null;
@@ -121,7 +121,7 @@ export class PaginationService {
     // console.log('-- reference_to:', goto_section, goto_item)
 
     if (!goto_section || !goto_item) {
-    //   console.log(this.nextLink)
+      // console.log(this.nextLink)
       // #FIXME  why add "&& this.nextLink.item !== 3" to condition?
       if (this.nextLink.section && this.nextLink.item && this.nextLink.section !== 4) {
         goto_section = this.nextLink.section;
