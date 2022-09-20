@@ -34,6 +34,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   lastSelectedTag: string;
   elementId: String;
   editor: any;
+  hasEditPermission: boolean = false;
 
   constructor(private el: ElementRef,
     private _knowledgeBaseService: KnowledgeBaseService,
@@ -45,7 +46,13 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     private evaluationApi: EvaluationApi,
     private measureApi: MeasureApi,
     private permissionsService: PermissionsService
-  ) { }
+  ) {
+      this.permissionsService.hasPermission('CanEditPIA').then((hasPerm: boolean) => {
+        if (hasPerm) {
+          this.hasEditPermission = true;
+        }
+      });
+   }
 
   async ngOnInit() {
     this._globalEvaluationService.answerEditionEnabled = true;
@@ -119,7 +126,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
    * @memberof QuestionsComponent
    */
   enableGauge() {
-    if (this._globalEvaluationService.answerEditionEnabled) {
+    if (this._globalEvaluationService.answerEditionEnabled && this.hasEditPermission) {
       this.questionForm.controls['gauge'].enable();
     } else {
       this.questionForm.controls['gauge'].disable();
@@ -132,33 +139,35 @@ export class QuestionsComponent implements OnInit, OnDestroy {
    * @memberof QuestionsComponent
    */
   checkGaugeChanges(event: any) {
-    const value: string = event.target.value;
-    const bgElement = event.target.parentNode.querySelector('.pia-gaugeBlock-background');
-    bgElement.classList.remove('pia-gaugeBlock-background-1');
-    bgElement.classList.remove('pia-gaugeBlock-background-2');
-    bgElement.classList.remove('pia-gaugeBlock-background-3');
-    bgElement.classList.remove('pia-gaugeBlock-background-4');
-    bgElement.classList.add('pia-gaugeBlock-background-' + value);
-    const gaugeValue = parseInt(this.questionForm.value.gauge, 10);
-    if (this.answer && this.answer.id) {
-      this.answer.data = { text: this.answer.data.text, gauge: gaugeValue, list: this.answer.data.list };
-      this.answerApi.update(this.answer).subscribe((updatedAnswer: AnswerModel) => {
-        this.answer = updatedAnswer;
-        this._ngZone.run(() => {
-          this._globalEvaluationService.validate();
+    if (this._globalEvaluationService.answerEditionEnabled && this.hasEditPermission) {
+      const value: string = event.target.value;
+      const bgElement = event.target.parentNode.querySelector('.pia-gaugeBlock-background');
+      bgElement.classList.remove('pia-gaugeBlock-background-1');
+      bgElement.classList.remove('pia-gaugeBlock-background-2');
+      bgElement.classList.remove('pia-gaugeBlock-background-3');
+      bgElement.classList.remove('pia-gaugeBlock-background-4');
+      bgElement.classList.add('pia-gaugeBlock-background-' + value);
+      const gaugeValue = parseInt(this.questionForm.value.gauge, 10);
+      if (this.answer && this.answer.id) {
+        this.answer.data = { text: this.answer.data.text, gauge: gaugeValue, list: this.answer.data.list };
+        this.answerApi.update(this.answer).subscribe((updatedAnswer: AnswerModel) => {
+          this.answer = updatedAnswer;
+          this._ngZone.run(() => {
+            this._globalEvaluationService.validate();
+          });
         });
-      });
-    } else {
-      this.answer = new AnswerModel();
-      this.answer.pia_id = this.pia.id;
-      this.answer.reference_to = this.question.id;
-      this.answer.data = { text: null, gauge: gaugeValue, list: [] };
-      this.answerApi.create(this.answer).subscribe((createdAnswer: AnswerModel) => {
-        this.answer = createdAnswer;
-        this._ngZone.run(() => {
-          this._globalEvaluationService.validate();
+      } else {
+        this.answer = new AnswerModel();
+        this.answer.pia_id = this.pia.id;
+        this.answer.reference_to = this.question.id;
+        this.answer.data = { text: null, gauge: gaugeValue, list: [] };
+        this.answerApi.create(this.answer).subscribe((createdAnswer: AnswerModel) => {
+          this.answer = createdAnswer;
+          this._ngZone.run(() => {
+            this._globalEvaluationService.validate();
+          });
         });
-      });
+      }
     }
   }
 
@@ -167,12 +176,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
    * @memberof QuestionsComponent
    */
   questionContentFocusIn() {
-    this.permissionsService.hasPermission('CanEditPIA').then((hasPerm: boolean) => {
-      if (hasPerm && this._globalEvaluationService.answerEditionEnabled) {
-        this.loadEditor();
-      }
-    });
-
+    if (this.hasEditPermission && this._globalEvaluationService.answerEditionEnabled) {
+      this.loadEditor();
+    }
   }
 
   /**

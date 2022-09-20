@@ -6,7 +6,7 @@
 
       <!-- Gauge -->
       <div class="pia-gaugeBlock" *ngIf="question.answer_type == 'gauge'">
-        <input type="range" (focus)="enableGauge()" (change)="checkGaugeChanges($event)" formControlName="gauge" min="0" max="4" step="1">
+        <input type="range" (focus)="enableGauge()" (change)="checkGaugeChanges($event)" formControlName="gauge" min="0" max="4" step="1" [attr.disabled]="!_globalEvaluationService.answerEditionEnabled || !hasEditPermission ? true : null">
         <div>
           <div>{{ 'questions.gauges.0' | translate }}</div>
           <div>{{ 'questions.gauges.1' | translate }}</div>
