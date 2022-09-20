@@ -39,7 +39,7 @@
             class="pia-entryContentBlock-content-DPO-reasons">
             <textarea (focusout)="rssiSearchContentFocusOut()" (keyup)="autoTextareaResize($event)"
               id="pia-rssi-search-content" rows="8" formControlName="rssiSearchContent" cols="50"
-              placeholder="{{ 'opinions.placeholder_rssi_search_content' | translate }}"></textarea>
+              placeholder="{{ 'opinions.placeholder_rssi_search_content' | translate }}" [attr.disabled]="!hasOpinionPermission ? true : null"></textarea>
           </div>
         </form>
 
