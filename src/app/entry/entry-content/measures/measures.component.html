@@ -38,7 +38,8 @@
                   [ngClass]="{ 'hide': (!editor && measureForm.controls['measureContent'].value && measureForm.controls['measureContent'].value.length > 0) }"
                   rows="8"
                   cols="50"
-                  placeholder="{{ measure.placeholder | translate }}"></textarea>
+                  placeholder="{{ measure.placeholder | translate }}"
+                  [disabled]="!hasEditPermission"></textarea>
       </div>
     </div>
   </form>

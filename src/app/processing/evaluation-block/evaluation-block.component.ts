@@ -80,7 +80,7 @@ export class EvaluationBlockComponent implements OnInit, AfterViewChecked {
         content_style: 'body {background-color:#eee!important;}',
         selector: '#' + element.id,
         toolbar: 'undo redo bold italic alignleft aligncenter alignright bullist numlist outdent indent',
-        skin_url: 'assets/skins/lightgray',
+        skin_url: '/assets/skins/lightgray',
         init_instance_callback:(editor) => {
           editor.setContent(this.processing.evaluation_comment);  
         },

@@ -385,7 +385,7 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
       content_style: 'body {background-color:#eee!important;}',
       selector: '#' + elementId,
       toolbar: 'undo redo bold italic alignleft aligncenter alignright bullist numlist outdent indent',
-      skin_url: 'assets/skins/lightgray',
+      skin_url: '/assets/skins/lightgray',
       setup: editor => {
         if (field === 'actionPlanComment') {
           this.editor = editor;

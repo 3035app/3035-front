@@ -80,7 +80,6 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
    * @memberof ProcessingFormComponent
    */
   editField(element: any, knowledgeBaseItemIdentifier?: string[]) {
-    // this.permissionsService.hasPermission('CanEditProcessing').then((hasPerm: boolean) => {
       if (this.hasEditPermission && this.processing.status < 1) {
         this.elementId = element.id;
 
@@ -91,7 +90,6 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
       }
 
       this.isFullyFilled();
-    // });
   }
 
   /**
@@ -114,7 +112,7 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
       content_style: 'body {background-color:#eee!important;}',
       selector: '#' + element.id,
       toolbar: 'undo redo bold italic alignleft aligncenter alignright bullist numlist outdent indent',
-      skin_url: 'assets/skins/lightgray',
+      skin_url: '/assets/skins/lightgray',
       setup: editor => {
         this.editor = editor;
 
@@ -139,6 +137,7 @@ export class ProcessingFormComponent implements OnDestroy, OnInit {
    * @memberof ProcessingFormComponent
    */
   private closeEditor() {
+    console.log('Close editor')
     tinymce.remove(this.editor);
     this.isFullyFilled();
     this.editor = null;
