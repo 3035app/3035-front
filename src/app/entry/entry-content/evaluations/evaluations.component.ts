@@ -13,6 +13,7 @@ import { PiaService } from 'app/entry/pia.service';
 
 import { EvaluationModel, AnswerModel } from '@api/models';
 import { EvaluationApi, AnswerApi } from '@api/services';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-evaluations',
@@ -41,6 +42,7 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
   evaluationCommentElementId: String;
   editor: any;
   editorEvaluationComment: any;
+  hasEvaluationPermission: boolean = false;
 
   constructor(private el: ElementRef,
     public _globalEvaluationService: GlobalEvaluationService,
@@ -50,7 +52,15 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
     private _piaService: PiaService,
     private _translateService: TranslateService,
     private evaluationApi: EvaluationApi,
-    private answerApi: AnswerApi) { }
+    private answerApi: AnswerApi,
+    private permissionsService: PermissionsService,
+  ) {
+      this.permissionsService.hasPermission('CanEvaluatePIA').then((hasPerm: boolean) => {
+        if (hasPerm) {
+          this.hasEvaluationPermission = true;
+        }
+      });
+    }
 
   ngOnInit() {
     // Prefix item
@@ -249,7 +259,7 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
    * @memberof EvaluationsComponent
    */
   actionPlanCommentFocusIn() {
-    if (this._globalEvaluationService.evaluationEditionEnabled) {
+    if (this._globalEvaluationService.evaluationEditionEnabled && this.hasEvaluationPermission) {
       this._knowledgeBaseService.placeholder = this._translateService.instant('evaluations.placeholder_improvable1');
       this.loadEditor('actionPlanComment', true);
     }
@@ -280,7 +290,7 @@ export class EvaluationsComponent implements OnInit, AfterViewChecked, OnDestroy
    * @memberof EvaluationsComponent
    */
   evaluationCommentFocusIn() {
-    if (this._globalEvaluationService.evaluationEditionEnabled) {
+    if (this._globalEvaluationService.evaluationEditionEnabled && this.hasEvaluationPermission) {
       this._knowledgeBaseService.placeholder = this.comment_placeholder;
       this.loadEditor('evaluationComment', true);
     }
