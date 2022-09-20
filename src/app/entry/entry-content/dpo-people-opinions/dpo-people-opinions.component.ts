@@ -27,6 +27,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
   displayRssiSearchContent = false;
   @ViewChild('DpoNames') private elementRef1: ElementRef;
   @ViewChild('PeopleNames') private elementRef2: ElementRef;
+  @ViewChild('RssiNames') private elementRef3: ElementRef;
   hasOpinionPermission: boolean = false;
 
   constructor(
@@ -491,7 +492,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
       return false;
     } else {
       this.rssiForm.controls['rssiNames'].enable();
-      this.elementRef2.nativeElement.focus();
+      this.elementRef3.nativeElement.focus();
     }
   }
 
@@ -628,7 +629,7 @@ export class DPOPeopleOpinionsComponent implements OnInit {
    */
   checkRssiName() {
     if (!this.rssiForm.controls['rssiNames'].value) {
-      this.elementRef2.nativeElement.focus();
+      this.elementRef3.nativeElement.focus();
       this.rssiForm.controls['rssiStatus'].disable();
       this.rssiForm.controls['rssiOpinion'].disable();
       this.rssiForm.controls['rssiStatus'].patchValue(null);
