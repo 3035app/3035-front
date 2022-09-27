@@ -12,7 +12,7 @@
                               cols="50"
                               formControlName="rejectionReason"
                               (focusout)="rejectionReasonFocusOut()"
-                              [disabled]="_piaService.pia.status === 1"
+                              [attr.disabled]="_piaService.pia.status !== 1 || !hasValidationPermission ? true : null"
                               placeholder="{{ 'rejection_page.rejection_reason_placeholder' | translate }}"></textarea>
                 </div>
             </div>

@@ -6,6 +6,7 @@ import { ModalsService } from 'app/modals/modals.service';
 import { PiaService } from 'app/entry/pia.service';
 import { SidStatusService } from 'app/services/sid-status.service';
 import { TranslateService } from '@ngx-translate/core';
+import { PermissionsService } from '@security/permissions.service';
 
 @Component({
   selector: 'app-refuse-pia',
@@ -19,13 +20,22 @@ export class RefusePIAComponent implements OnInit {
   showRejectionReasonButtons: boolean;
   showResendValidationButton: boolean;
   modificationsMadeForm: FormGroup;
+  hasValidationPermission: boolean = false;
 
   constructor(private router: Router,
     private el: ElementRef,
     private _modalsService: ModalsService,
     private _sidStatusService: SidStatusService,
     private _translateService: TranslateService,
-    public _piaService: PiaService) { }
+    public _piaService: PiaService,
+    private permissionsService: PermissionsService,
+  ) { 
+      this.permissionsService.hasPermission('CanValidatePIA').then((hasPerm: boolean) => {
+        if (hasPerm) {
+          this.hasValidationPermission = true;
+        }
+      });
+  }
 
   ngOnInit() {
     this.rejectionReasonForm = new FormGroup({
@@ -93,7 +103,7 @@ export class RefusePIAComponent implements OnInit {
    * @memberof RefusePIAComponent
    */
   rejectionReasonFocusIn() {
-    if (this._piaService.pia.status === 1) {
+    if (this._piaService.pia.status !== 1 || this.hasValidationPermission) {
       return false;
     } else {
       this.rejectionReasonForm.controls['rejectionReason'].enable();
