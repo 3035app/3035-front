@@ -75,7 +75,7 @@ export class EvaluationBlockComponent implements OnInit, AfterViewChecked {
         plugins: 'autoresize lists',
         forced_root_block: false,
         autoresize_bottom_margin: 30,
-        auto_focus: element.id,
+        // auto_focus: element.id,
         autoresize_min_height: 40,
         content_style: 'body {background-color:#eee!important;}',
         selector: '#' + element.id,
