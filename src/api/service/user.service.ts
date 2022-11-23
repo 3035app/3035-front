@@ -21,7 +21,7 @@ export class UserService extends BaseService<User> {
   }
 
   public getAll(structureId: any): Observable<User[]> {
-    # workaround on red popup 404 (OP #1924)
+    // workaround on red popup 404 (OP #1924)
     if ( isNaN(structureId) ) {
       structureId = 0;
     }
