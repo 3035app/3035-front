@@ -5,7 +5,7 @@
 export const environment = {
   name: 'production',
   production: true,
-  version: '2.0.0',
+  version: '2.0.1',
   rollbar_key: '',
   date_format: 'DD MM YY HH:mm:ss',
   api: {
