@@ -104,6 +104,7 @@
             font-size: 1.5rem;
             width: 100%;
             text-align: center;
+            margin: 0;
         }
 
         fieldset {
@@ -115,10 +116,11 @@
         legend {
             width: 100%;
             text-align: center;
-            font-size: 1.3rem;
-            color: $pia-blue;
+            font-size: 1.6rem;
+            color: $pia-green;
             padding-top: 12px;
             font-weight: 500;
+            text-transform: uppercase;
         }
         label {
             padding-top: 10px;
@@ -142,18 +144,24 @@
                 padding-top: 1px;
             }
         }
-        button {
+        button, .btn-sso {
             display: block;
-            margin-top: 20px;
             margin-left: auto;
             margin-right: auto;
-            width: 120px;
             text-align: center;
             border-radius: 15px;
             text-decoration: none;
             font-size: 1.3rem;
             background-color: $pia-green;
             color: $pia-full-white;
+        }
+        button {
+            width: 120px;
+        }
+        .btn-sso {
+            margin-bottom: 40px;
+            margin-top: 40px;
+            width: 200px;
         }
         a {
             display: block;
@@ -164,6 +172,24 @@
             font-size: 0.9rem;
             color: $pia-green;
             cursor: pointer;
+        }
+        .separator {
+            color: $pia-green;
+            margin-bottom: 30px;
+            text-align: center;
+            &::before, &::after {
+                border: 1px solid $pia-green;
+                content: '';
+                display: inline-block;
+                margin-bottom: 3px;
+                width: 80px;
+            }
+            &::before {
+                margin-right: 2rem;
+            }
+            &::after {
+                margin-left: 2rem;
+            }
         }
     }
 }

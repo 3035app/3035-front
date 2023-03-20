@@ -10,7 +10,7 @@
     "logout": "Déconnexion",
     "profile": "Profil",
     "form": {
-      "legend": "S'identifier",
+      "legend": "S'identifier à votre espace",
       "username": "Identifiant",
       "password": "Mot de passe",
       "submit": "Se connecter",
