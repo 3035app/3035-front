@@ -7,7 +7,7 @@
                 <form class="pia-authenticationBlock-login" #authForm="ngForm" (ngSubmit)="onSubmit()">
                     <fieldset>
                         <legend>{{ 'authentication.form.legend' | translate }}</legend>
-                        <a class="btn btn-green btn-sso" href="{{ sncfConnectUrl }}authorize?client_id={{ sncfConnectId }}&redirect_uri={{ callbackUrl }}&ui_locales=fr&response_type=code&scope=openid">Connexion directe SNCF</a>
+                        <a class="btn btn-blue btn-sso" href="{{ sncfConnectUrl }}authorize?client_id={{ sncfConnectId }}&redirect_uri={{ callbackUrl }}&ui_locales=fr&response_type=code&scope=openid">Connexion directe SNCF</a>
                         <p class='separator'>OU</p>
                         <div>
                             <label for="authentication-username">{{ 'authentication.form.username' | translate }}</label>
