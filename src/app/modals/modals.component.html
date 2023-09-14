@@ -342,7 +342,7 @@
                         {{user.roles}}</ng-option>
                 </ng-select>
             </div>
-            
+
             <div class="pia-cardsBlock-item-status">
                 <div class="pia-cardsBlock-item-status-infos">
                     <div>{{ 'homepage.cards.status' | translate }}</div>
@@ -423,7 +423,7 @@
             </div>
             <div style="height: 50px;"></div>
             <div class="pia-cardsBlock-item-btn">
-                <button type="submit" [disabled]="folderForm.invalid" class="btn btn-green get-focus" id="pia-save-card-btn">{{ 'homepage.cards.create_folder' | translate }}</button>
+                <button type="submit" [disabled]="folderForm.invalid || submitInProgress" class="btn btn-green get-focus" id="pia-save-card-btn">{{ 'homepage.cards.create_folder' | translate }}</button>
             </div>
         </form>
     </div>
