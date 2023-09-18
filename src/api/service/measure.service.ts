@@ -3,11 +3,16 @@ import { BaseService } from './base.service';
 import { Observable } from 'rxjs/Observable';
 import { Measure } from '../model';
 import { Injectable } from '@angular/core';
+import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {filter, take} from 'rxjs/operators';
 
 @Injectable()
 export class MeasureService extends BaseService<Measure> {
 
   protected modelClass = Measure;
+  protected cache: { [key: string]: Measure[] } = {};
+  protected measuresSubject = new BehaviorSubject<Measure[]>(null);
 
   protected routing: any = {
     all: '/pias/{piaId}/measures',
@@ -15,7 +20,24 @@ export class MeasureService extends BaseService<Measure> {
   };
 
   public getAll(piaId: any): Observable<Measure[]> {
-    return this.httpGetAll(this.routing.all, { piaId: piaId });
+    if (this.cache[piaId]) {
+      this.measuresSubject.next(this.cache[piaId]);
+    } else {
+      this.httpGetAll(this.routing.all, { piaId: piaId }).subscribe((measures: Measure[]) => {
+        this.measuresSubject.next(measures)
+        this.cache[piaId] = measures;
+      });
+    }
+    return new Observable<Measure[]>(observer => {
+      this.measuresSubject
+        .pipe(
+          filter((value) => value !== null),
+          take(1)
+        )
+        .subscribe((measures: Measure[]) => {
+          observer.next(measures);
+        });
+    });
   }
 
   public get(piaId: any, id: any): Observable<Measure> {
