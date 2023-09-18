@@ -11,7 +11,7 @@ import {filter, take} from 'rxjs/operators';
 export class MeasureService extends BaseService<Measure> {
 
   protected modelClass = Measure;
-  protected cache: { [key: string]: Measure[] } = {};
+  protected cache: { [key: string]: {measures: Measure[], expiredAt: Date} } = {};
   protected measuresSubject = new BehaviorSubject<Measure[]>(null);
 
   protected routing: any = {
@@ -20,12 +20,15 @@ export class MeasureService extends BaseService<Measure> {
   };
 
   public getAll(piaId: any): Observable<Measure[]> {
-    if (this.cache[piaId]) {
-      this.measuresSubject.next(this.cache[piaId]);
+    if (this.cache[piaId] && this.cache[piaId].expiredAt > new Date()) {
+      this.measuresSubject.next(this.cache[piaId].measures);
     } else {
       this.httpGetAll(this.routing.all, { piaId: piaId }).subscribe((measures: Measure[]) => {
         this.measuresSubject.next(measures)
-        this.cache[piaId] = measures;
+        this.cache[piaId] = {
+          measures: measures,
+          expiredAt: new Date(new Date().getTime() + 1000 * 60)
+        };
       });
     }
     return new Observable<Measure[]>(observer => {
