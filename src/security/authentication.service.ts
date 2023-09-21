@@ -58,7 +58,6 @@ export class AuthenticationService {
         resolve(true);
         return;
       }
-
       this.fetchProfile().then(() => {
         resolve(true);
       });
