@@ -37,6 +37,7 @@ export class ModalsComponent implements OnInit {
   selectedUser: number;
   allUsers: any;
   tenant: string;
+  submitInProgress = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -65,7 +66,7 @@ export class ModalsComponent implements OnInit {
         data_protection_officer_id: new FormControl({ value: this.processing.supervisors.data_protection_officer_pending_id ? this.processing.supervisors.data_protection_officer_pending_id : undefined, disabled: true }),
         type: new FormControl()
       });
-    
+
       // add permission verification
       const hasPerm$ = this.permissionsService.hasPermission('CanCreatePIA');
       hasPerm$.then((bool: boolean) => {
@@ -83,7 +84,7 @@ export class ModalsComponent implements OnInit {
         type: new FormControl()
       });
     }
-    
+
     this.processingForm = new FormGroup({
       name: new FormControl(),
       redactors_id: new FormControl(),
@@ -162,16 +163,22 @@ export class ModalsComponent implements OnInit {
    * @memberof ModalsComponent
    */
   onSubmitFolder() {
+    this.submitInProgress = true;
     const folder = new FolderModel();
     folder.name = this.folderForm.value.name;
     folder.parent = this._piaService.currentFolder;
     folder.structure_id = folder.parent.structure_id;
 
-    this._folderApi.create(folder).subscribe((newFolder: FolderModel) => {
-      newFolder.can_access = true;
-      this._modalsService.closeModal();
-      this.folderForm.reset();
-      this._piaService.currentFolder.children.push(newFolder);
+    this._folderApi.create(folder).subscribe({
+      next: (newFolder: FolderModel) => {
+        newFolder.can_access = true;
+        this._modalsService.closeModal();
+        this.folderForm.reset();
+        this._piaService.currentFolder.children.push(newFolder);
+      },
+      complete: () => {
+        this.submitInProgress = false;
+      }
     });
   }
 
