@@ -8,7 +8,7 @@
       <label class="enabled-label" for="informed_mention_form">{{ 'processing_informed_concerned_people.form.informed_mention_form'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="informed_mention_form.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('informed_mention_form')"
         [(ngModel)]="informed_mention_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -26,7 +26,7 @@
       <label class="enabled-label" for="informed_mention_contract">{{ 'processing_informed_concerned_people.form.informed_mention_contract'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="informed_mention_contract.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('informed_mention_contract')"
         [(ngModel)]="informed_mention_contract.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -44,7 +44,7 @@
       <label class="enabled-label" for="informed_terms">{{ 'processing_informed_concerned_people.form.informed_terms'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="informed_terms.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('informed_terms')"
         [(ngModel)]="informed_terms.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -62,7 +62,7 @@
       <label class="enabled-label" for="informed_display">{{ 'processing_informed_concerned_people.form.informed_display'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="informed_display.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('informed_display')"
         [(ngModel)]="informed_display.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -80,7 +80,7 @@
       <label class="enabled-label" for="informed_phone">{{ 'processing_informed_concerned_people.form.informed_phone'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="informed_phone.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('informed_phone')"
         [(ngModel)]="informed_phone.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -98,7 +98,7 @@
       <label class="enabled-label" for="informed_other">{{ 'processing_informed_concerned_people.form.informed_other'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="informed_other.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('informed_other')"
         [(ngModel)]="informed_other.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"

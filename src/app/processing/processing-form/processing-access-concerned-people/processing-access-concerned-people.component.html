@@ -8,7 +8,7 @@
       <label class="enabled-label" for="access_contact_dpo">{{ 'processing_access_concerned_people.form.access_contact_dpo'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="access_contact_dpo.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('access_contact_dpo')"
         [(ngModel)]="access_contact_dpo.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -26,7 +26,7 @@
       <label class="enabled-label" for="access_contact_referent">{{ 'processing_access_concerned_people.form.access_contact_referent'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="access_contact_referent.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('access_contact_referent')"
         [(ngModel)]="access_contact_referent.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -44,7 +44,7 @@
       <label class="enabled-label" for="access_customer_area_form">{{ 'processing_access_concerned_people.form.access_customer_area_form'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="access_customer_area_form.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('access_customer_area_form')"
         [(ngModel)]="access_customer_area_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -62,7 +62,7 @@
       <label class="enabled-label" for="access_paper_form">{{ 'processing_access_concerned_people.form.access_paper_form'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="access_paper_form.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('access_paper_form')"
         [(ngModel)]="access_paper_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -80,7 +80,7 @@
       <label class="enabled-label" for="access_other">{{ 'processing_access_concerned_people.form.access_other'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="access_other.enabled">
-      <textarea style="width: 100%"
+      <textarea
         (change)="updateValue('access_other')"
         [(ngModel)]="access_other.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
