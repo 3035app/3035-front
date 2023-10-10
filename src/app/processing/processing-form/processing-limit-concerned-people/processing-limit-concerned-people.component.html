@@ -9,6 +9,7 @@
     </div>
     <div class="type-comment" *ngIf="limit_contact_dpo.enabled">
       <textarea
+        rows="10"
         (change)="updateValue('limit_contact_dpo')"
         [(ngModel)]="limit_contact_dpo.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -27,6 +28,7 @@
     </div>
     <div class="type-comment" *ngIf="limit_contact_referent.enabled">
       <textarea
+        rows="10"
         (change)="updateValue('limit_contact_referent')"
         [(ngModel)]="limit_contact_referent.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -45,6 +47,7 @@
     </div>
     <div class="type-comment" *ngIf="limit_customer_area_form.enabled">
       <textarea
+        rows="10"
         (change)="updateValue('limit_customer_area_form')"
         [(ngModel)]="limit_customer_area_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -63,6 +66,7 @@
     </div>
     <div class="type-comment" *ngIf="limit_paper_form.enabled">
       <textarea
+        rows="10"
         (change)="updateValue('limit_paper_form')"
         [(ngModel)]="limit_paper_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -81,6 +85,7 @@
     </div>
     <div class="type-comment" *ngIf="limit_other.enabled">
       <textarea
+        rows="10"
         (change)="updateValue('limit_other')"
         [(ngModel)]="limit_other.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"

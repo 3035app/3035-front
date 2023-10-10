@@ -8,7 +8,7 @@
       <label class="enabled-label" for="delete_contact_dpo">{{ 'processing_delete_concerned_people.form.delete_contact_dpo'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="delete_contact_dpo.enabled">
-      <textarea
+      <textarea rows="10"
         (change)="updateValue('delete_contact_dpo')"
         [(ngModel)]="delete_contact_dpo.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -26,7 +26,7 @@
       <label class="enabled-label" for="delete_contact_referent">{{ 'processing_delete_concerned_people.form.delete_contact_referent'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="delete_contact_referent.enabled">
-      <textarea
+      <textarea rows="10"
         (change)="updateValue('delete_contact_referent')"
         [(ngModel)]="delete_contact_referent.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -44,7 +44,7 @@
       <label class="enabled-label" for="delete_customer_area_form">{{ 'processing_delete_concerned_people.form.delete_customer_area_form'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="delete_customer_area_form.enabled">
-      <textarea
+      <textarea rows="10"
         (change)="updateValue('delete_customer_area_form')"
         [(ngModel)]="delete_customer_area_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -62,7 +62,7 @@
       <label class="enabled-label" for="delete_paper_form">{{ 'processing_delete_concerned_people.form.delete_paper_form'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="delete_paper_form.enabled">
-      <textarea
+      <textarea rows="10"
         (change)="updateValue('delete_paper_form')"
         [(ngModel)]="delete_paper_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -80,7 +80,7 @@
       <label class="enabled-label" for="delete_other">{{ 'processing_delete_concerned_people.form.delete_other'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="delete_other.enabled">
-      <textarea
+      <textarea rows="10"
         (change)="updateValue('delete_other')"
         [(ngModel)]="delete_other.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
