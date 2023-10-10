@@ -8,7 +8,8 @@
       <label class="enabled-label" for="limit_contact_dpo">{{ 'processing_limit_concerned_people.form.limit_contact_dpo'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="limit_contact_dpo.enabled">
-      <textarea style="width: 100%"
+      <textarea
+        rows="10"
         (change)="updateValue('limit_contact_dpo')"
         [(ngModel)]="limit_contact_dpo.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -26,7 +27,8 @@
       <label class="enabled-label" for="limit_contact_referent">{{ 'processing_limit_concerned_people.form.limit_contact_referent'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="limit_contact_referent.enabled">
-      <textarea style="width: 100%"
+      <textarea
+        rows="10"
         (change)="updateValue('limit_contact_referent')"
         [(ngModel)]="limit_contact_referent.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -44,7 +46,8 @@
       <label class="enabled-label" for="limit_customer_area_form">{{ 'processing_limit_concerned_people.form.limit_customer_area_form'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="limit_customer_area_form.enabled">
-      <textarea style="width: 100%"
+      <textarea
+        rows="10"
         (change)="updateValue('limit_customer_area_form')"
         [(ngModel)]="limit_customer_area_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -62,7 +65,8 @@
       <label class="enabled-label" for="limit_paper_form">{{ 'processing_limit_concerned_people.form.limit_paper_form'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="limit_paper_form.enabled">
-      <textarea style="width: 100%"
+      <textarea
+        rows="10"
         (change)="updateValue('limit_paper_form')"
         [(ngModel)]="limit_paper_form.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
@@ -80,7 +84,8 @@
       <label class="enabled-label" for="limit_other">{{ 'processing_limit_concerned_people.form.limit_other'| translate }}</label>
     </div>
     <div class="type-comment" *ngIf="limit_other.enabled">
-      <textarea style="width: 100%"
+      <textarea
+        rows="10"
         (change)="updateValue('limit_other')"
         [(ngModel)]="limit_other.processingDataType.data"
         [disabled]="!hasEditPermission || processingStatus >= 1"
