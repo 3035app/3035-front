@@ -12,4 +12,8 @@
 }
 .type-comment {
     margin-top: 1rem;
+    textarea {
+        width: 100%;
+        overflow: auto;
+    }
 }
